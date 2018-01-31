@@ -16,7 +16,7 @@ class BoostConan(ConanFile):
     exports_sources = _boost_archive, "FindBoost.cmake"
     no_copy_source = True
     build_policy = "missing"
-    short_path = True
+    short_paths = True
 
     def source(self):
         tools.unzip(self._boost_archive)
