@@ -53,7 +53,7 @@ class BoostConan(ConanFile):
         self._boost_stage_folder = os.path.join(self.build_folder, "stage")
         flags.append("--stagedir=%s" % self._boost_stage_folder)
         flags += self.get_libraries_list()
-        flags.append("toolset=msvc-14.1")
+        #flags.append("toolset=msvc-14.1")
         flags.append("link=static")
         flags.append("runtime-link=shared")
         flags.append("variant=debug")
