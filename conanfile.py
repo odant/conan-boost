@@ -38,10 +38,17 @@ class BoostConan(ConanFile):
         
     def bootstrap(self):
         boost_source_folder = os.path.join(self.source_folder, self._boost_name)
-        with tools.chdir(boost_source_folder):
-            cmd = "bootstrap.bat" if tools.os_info.is_windows else "./bootstrap.sh"
-            self.output.info("Current directory => %s" % os.getcwd())
-            self.run(cmd)
+        try:
+            with tools.chdir(boost_source_folder):
+                cmd = "bootstrap.bat vc155" if tools.os_info.is_windows else "./bootstrap.sh"
+                self.output.info("Current directory => %s" % os.getcwd())
+                self.run(cmd)
+        except Exception as e:
+            self.output.error(str(e))
+            log = os.path.join(boost_source_folder, "bootstrap.log")
+            if os.path.exists(log):
+                self.output.error(tools.load(log))
+            raise
         b2_exe = "b2.exe" if tools.os_info.is_windows else "b2"
         return os.path.join(boost_source_folder, b2_exe)
 
