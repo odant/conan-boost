@@ -42,6 +42,7 @@ class BoostConan(ConanFile):
             with tools.chdir(boost_source_folder):
                 cmd = "bootstrap.bat vc155" if tools.os_info.is_windows else "./bootstrap.sh"
                 self.output.info("Current directory => %s" % os.getcwd())
+                raise Exception
                 self.run(cmd)
         except Exception as e:
             self.output.error(str(e))
