@@ -48,6 +48,7 @@ class BoostConan(ConanFile):
             log = os.path.join(boost_source_folder, "bootstrap.log")
             if os.path.exists(log):
                 self.output.error(tools.load(log))
+            self.output.error("Bbbbbbbootstrap failed")
             raise
         b2_exe = "b2.exe" if tools.os_info.is_windows else "b2"
         return os.path.join(boost_source_folder, b2_exe)
