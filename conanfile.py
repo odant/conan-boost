@@ -68,6 +68,7 @@ class BoostConan(ConanFile):
         
     def package(self):
         if self._first_packing:
+            self.copy("FindBoost.cmake", dst=".", src=".")
             src_headers = os.path.join(self._boost_source_folder, "boost")
             dst_headers = os.path.join(self.package_folder, "include", "boost")
             self.output.info("Moving headers from %s to %s" % (src_headers, dst_headers))
