@@ -80,7 +80,12 @@ class BoostConan(ConanFile):
         tools.save(fname, content)
         
     def get_toolset(self):
-        return "msvc", "14.1", "cl.exe"
+        compiler_version = str(self.settings.compiler.version)
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+            with tools.vcvars(self.settings):
+                self.run("cl.exe")
+            compiler_version = "14.1" if compiler_version == "15" else "%s.0" % compiler_version
+            return "msvc", compiler_version, "cl.exe"
         
     def get_compiler_flags(self):
         return ""
