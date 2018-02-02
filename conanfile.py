@@ -71,6 +71,8 @@ class BoostConan(ConanFile):
 
     def get_libraries_list(self):
         libs = [
+            "--with-iostreams",
+            "--with-regex",
             "--with-system"
         ]
         return libs
