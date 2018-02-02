@@ -29,27 +29,24 @@ class BoostConan(ConanFile):
         self.output.info("-------------- Bootstrap ------------------------")
         b2 = self.bootstrap()
         self.run("%s -v" % b2)
+        self.output.info("-------------- user-config.jam ------------------")
+        self.generate_user_config_jam()
         self.output.info("-------------- Build libraries ------------------")
         flags = self.get_build_flags()
         boost_source_folder = os.path.join(self.source_folder, self._boost_name)
         with tools.chdir(boost_source_folder):
-            self.output.info("Current directory => %s" % os.getcwd())
-            self.run("%s %s stage" % (b2, " ".join(flags)))
+            with tools.vcvars(self.settings) if self.settings.compiler == "Visual Studio" else tools.no_op():
+            # location user-config.jam
+                with tools.environment_append({"BOOST_BUILD_PATH": os.path.join(self.build_folder, "build")}):
+                    self.output.info("Current directory => %s" % os.getcwd())
+                    self.run("%s %s stage" % (b2, " ".join(flags)))
         
     def bootstrap(self):
         boost_source_folder = os.path.join(self.source_folder, self._boost_name)
-        try:
-            with tools.chdir(boost_source_folder):
-                cmd = "bootstrap.ba" if tools.os_info.is_windows else "./bootstrap.sh"
-                self.output.info("Current directory => %s" % os.getcwd())
-                self.run(cmd)
-        except Exception as e:
-            self.output.error(str(e))
-            log = os.path.join(boost_source_folder, "bootstrap.log")
-            if os.path.exists(log):
-                self.output.error(tools.load(log))
-            self.output.error("Bbbbbbbootstrap failed")
-            raise
+        with tools.chdir(boost_source_folder):
+            cmd = "bootstrap.bat" if tools.os_info.is_windows else "./bootstrap.sh"
+            self.output.info("Current directory => %s" % os.getcwd())
+            self.run(cmd)
         b2_exe = "b2.exe" if tools.os_info.is_windows else "b2"
         return os.path.join(boost_source_folder, b2_exe)
 
@@ -70,6 +67,21 @@ class BoostConan(ConanFile):
             "--with-system"
         ]
         return libs
+        
+    def generate_user_config_jam(self):
+        content = ""
+        compiler, version, compiler_exe = self.get_toolset()
+        compiler_flags = self.get_compiler_flags()
+        content += "using %s : %s : %s : %s;\n" % (compiler, version, compiler_exe, compiler_flags)
+        self.output.info("Using current user-config.jam:\n%s" % content)
+        fname = os.path.join(self.build_folder, "build", "user-config.jam")
+        tools.save(fname, content)
+        
+    def get_toolset(self):
+        return "msvc", "14.1", "cl.exe"
+        
+    def get_compiler_flags(self):
+        return ""
         
     def package(self):
         self.copy("FindBoost.cmake", dst=".", src=".")

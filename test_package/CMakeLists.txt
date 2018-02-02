@@ -23,7 +23,7 @@ add_test(
 )
 
 add_executable(test_boost_system test_boost_system.cpp)
-target_link_libraries(test_boost_system Boost::system)
+target_link_libraries(test_boost_system Boost::disable_autolinking Boost::system)
 set_target_properties(test_boost_system
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"
