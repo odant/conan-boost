@@ -8,7 +8,12 @@ class BoostConan(ConanFile):
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
-    settings = "os", "compiler", "build_type", "arch"
+    settings = {
+        "os": ["Windows", "Linux"],
+        "compiler": ["Visual Studio", "gcc"],
+        "build_type": ["Debug"],
+        "arch": ["x86_64"]
+    }
     #------ internal ------
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
@@ -86,6 +91,8 @@ class BoostConan(ConanFile):
                 self.run("cl.exe")
             compiler_version = "14.1" if compiler_version == "15" else "%s.0" % compiler_version
             return "msvc", compiler_version, "cl.exe"
+        elif self.settings.os == "Linux" and self.settings.compiler == "gcc":
+            return "gcc", compiler_version[0], "g++"
         
     def get_compiler_flags(self):
         return ""
