@@ -29,10 +29,12 @@ class BoostConan(ConanFile):
         self.output.info("-------------- Bootstrap ------------------------")
         b2 = self.bootstrap()
         self.run("%s -v" % b2)
+        build_folder = os.path.join(self.build_folder, "build")
+        stage_folder = os.path.join(self.build_folder, "stage")
         self.output.info("-------------- user-config.jam ------------------")
-        self.generate_user_config_jam()
+        self.generate_user_config_jam(build_folder)
         self.output.info("-------------- Build libraries ------------------")
-        flags = self.get_build_flags()
+        flags = self.get_build_flags(build_folder, stage_folder)
         boost_source_folder = os.path.join(self.source_folder, self._boost_name)
         with tools.chdir(boost_source_folder):
             with tools.vcvars(self.settings) if self.settings.compiler == "Visual Studio" else tools.no_op():
@@ -50,10 +52,10 @@ class BoostConan(ConanFile):
         b2_exe = "b2.exe" if tools.os_info.is_windows else "b2"
         return os.path.join(boost_source_folder, b2_exe)
 
-    def get_build_flags(self):
+    def get_build_flags(self, build_folder, stage_folder):
         flags = ["-a -d2 --debug-configuration --debug-generator --abbreviate-paths --build-type=minimal"]
-        flags.append("--build-dir=%s" % os.path.join(self.build_folder, "build"))
-        flags.append("--stagedir=%s" % os.path.join(self.build_folder, "stage"))
+        flags.append("--build-dir=%s" % build_folder)
+        flags.append("--stagedir=%s" % stage_folder)
         flags += self.get_libraries_list()
         #flags.append("toolset=msvc-14.1")
         flags.append("link=static")
@@ -68,13 +70,13 @@ class BoostConan(ConanFile):
         ]
         return libs
         
-    def generate_user_config_jam(self):
+    def generate_user_config_jam(self, build_folder):
         content = ""
-        compiler, version, compiler_exe = self.get_toolset()
+        compiler, compiler_version, compiler_exe = self.get_toolset()
         compiler_flags = self.get_compiler_flags()
-        content += "using %s : %s : %s : %s;\n" % (compiler, version, compiler_exe, compiler_flags)
+        content += "using %s : %s : %s : %s;\n" % (compiler, compiler_version, compiler_exe, compiler_flags)
         self.output.info("Using current user-config.jam:\n%s" % content)
-        fname = os.path.join(self.build_folder, "build", "user-config.jam")
+        fname = os.path.join(build_folder, "user-config.jam")
         tools.save(fname, content)
         
     def get_toolset(self):
