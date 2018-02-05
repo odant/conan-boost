@@ -8,11 +8,15 @@ find_package(Boost REQUIRED COMPONENTS
     iostreams
     system
 )
+find_package(ZLIB REQUIRED)
 
 enable_testing()
 
 add_executable(test_boost_system test_boost_system.cpp)
-target_link_libraries(test_boost_system Boost::disable_autolinking Boost::system)
+target_link_libraries(test_boost_system
+    Boost::disable_autolinking
+    Boost::system
+)
 set_target_properties(test_boost_system
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"
@@ -25,7 +29,11 @@ add_test(
 )
 
 add_executable(test_boost_iostreams test_boost_iostreams.cpp)
-target_link_libraries(test_boost_iostreams Boost::disable_autolinking Boost::iostreams)
+target_link_libraries(test_boost_iostreams
+    Boost::disable_autolinking
+    Boost::iostreams
+    ZLIB::ZLIB
+)
 set_target_properties(test_boost_iostreams
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"

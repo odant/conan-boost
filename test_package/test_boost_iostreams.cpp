@@ -3,7 +3,7 @@
 
 #include <boost/iostreams/device/back_inserter.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
-#include <boost/iostreams/filter/counter.hpp>
+#include <boost/iostreams/filter/zlib.hpp>
 
 #include <iostream>
 #include <cstdlib>
@@ -45,7 +45,7 @@ int main(int, char**) {
     std::string compress_buffer;
     back_insert_device<std::string> compress_sink{compress_buffer};
     filtering_ostream compress_stream;
-    compress_stream.push(counter{});
+    compress_stream.push(zlib_compressor{});
     compress_stream.push(compress_sink);
     
     compress_stream << text << std::flush;
@@ -53,7 +53,7 @@ int main(int, char**) {
     
     array_source decompress_source{compress_buffer.data(), compress_buffer.size()};
     filtering_istream decompress_stream;
-    decompress_stream.push(counter{});
+    decompress_stream.push(zlib_decompressor{});
     decompress_stream.push(decompress_source);
     
     std::string decompress_buffer;

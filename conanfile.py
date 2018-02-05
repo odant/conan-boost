@@ -17,11 +17,15 @@ class BoostConan(ConanFile):
     #------ internal ------
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
+    _zlib_version = "1.2.11"
     #------ internal ------
     exports_sources = _boost_archive, "FindBoost.cmake"
     no_copy_source = True
     build_policy = "missing"
     short_paths = True
+
+    def requirements(self):
+        self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
 
     def source(self):
         self.output.info("-------------- Unzip sources --------------------")
@@ -79,9 +83,16 @@ class BoostConan(ConanFile):
         
     def generate_user_config_jam(self, build_folder):
         content = ""
+        # zlib
+        zlib_include = self.deps_cpp_info["zlib"].include_paths[0].replace("\\", "/")
+        zlib_libpath = self.deps_cpp_info["zlib"].lib_paths[0].replace("\\", "/")
+        zlib_lib = self.deps_cpp_info["zlib"].libs[0]
+        content += "using zlib : %s : <include>%s <search>%s <name>%s ;\n" % (self._zlib_version, zlib_include, zlib_libpath, zlib_lib)
+        # toolset
         compiler, compiler_version, compiler_exe = self.get_toolset()
         compiler_flags = self.get_compiler_flags()
         content += "using %s : %s : %s : %s;\n" % (compiler, compiler_version, compiler_exe, compiler_flags)
+        # write file
         self.output.info("Using current user-config.jam:\n%s" % content)
         fname = os.path.join(build_folder, "user-config.jam")
         tools.save(fname, content)
