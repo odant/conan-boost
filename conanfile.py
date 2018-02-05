@@ -14,6 +14,10 @@ class BoostConan(ConanFile):
         "build_type": ["Debug"],
         "arch": ["x86_64"]
     }
+    options = {
+        "fPIC": [True, False]
+    }
+    default_options = "fPIC=True"
     #------ internal ------
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
@@ -23,6 +27,10 @@ class BoostConan(ConanFile):
     no_copy_source = True
     build_policy = "missing"
     short_paths = True
+
+    def configure(self):
+        if self.settings.os == "Windows":
+            self.options.fPIC = False
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
@@ -66,11 +74,12 @@ class BoostConan(ConanFile):
         flags.append("--build-dir=%s" % build_folder)
         flags.append("--stagedir=%s" % stage_folder)
         flags += self.get_libraries_list()
-        #flags.append("toolset=msvc-14.1")
         flags.append("link=static")
         flags.append("runtime-link=shared")
         flags.append("variant=debug")
         flags.append("address-model=64")
+        if self.options.fPIC:
+            flags.append("cxxflags=\"-fPIC\"")
         return flags
 
     def get_libraries_list(self):
