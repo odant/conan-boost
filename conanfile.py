@@ -156,6 +156,7 @@ class BoostConan(ConanFile):
         self.copy("*.a", src="stage", dst="lib", keep_path=False)
 
     def package_info(self):
+        self.cpp_info.libs = tools.collect_libs(self)
         self.cpp_info.defines.append("BOOST_USE_STATIC_LIBS")
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
