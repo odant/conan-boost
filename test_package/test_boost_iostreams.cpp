@@ -63,7 +63,14 @@ int main(int, char**) {
         char buff[128];
         decompress_stream.read(buff, sizeof(buff));
         auto len = decompress_stream.gcount();
+#ifdef _WIN32
+#pragma warning(push)
+#pragma warning(disable: 4018)
+#endif
         assert(len >= 0 && len <= std::numeric_limits<std::string::size_type>::max());
+#ifdef _WIN32
+#pragma warning(pop)
+#endif
         decompress_buffer.append(buff, static_cast<std::string::size_type>(len));
     }
     
