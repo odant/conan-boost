@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <cassert>
+#include <limits>
 
 const std::string text = ""
 "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. Ourselves for determine attending how led gentleman sincerity. Valley afford uneasy joy she thrown though bed set. In me forming general prudent on country carried. Behaved an or suppose justice. Seemed whence how son rather easily and change missed. Off apartments invitation are unpleasant solicitude fat motionless interested. Hardly suffer wisdom wishes valley as an. As friendship advantages resolution it alteration stimulated he or increasing.\n"
@@ -39,7 +41,7 @@ int main(int, char**) {
     os << "Boost.IOStreams" << std::flush;
     if (std::string{buffer} != "Boost.IOStreams") {
         std::cout << __FILE__ << __LINE__ << std::endl;
-        std::abort();
+        std::exit(EXIT_FAILURE);
     }
     
     std::string compress_buffer;
@@ -60,12 +62,14 @@ int main(int, char**) {
     while (decompress_stream) {
         char buff[128];
         decompress_stream.read(buff, sizeof(buff));
-        decompress_buffer.append(buff, decompress_stream.gcount());
+        auto len = decompress_stream.gcount();
+        assert(len >= 0 && len <= std::numeric_limits<std::string::size_type>::max());
+        decompress_buffer.append(buff, static_cast<std::string::size_type>(len));
     }
     
     if (text != decompress_buffer) {
         std::cout << "Invalid compression/decompression " << __FILE__ << __LINE__ << std::endl;
-        std::abort();
+        std::exit(EXIT_FAILURE);
     }
     std::cout << "Original size: " << text.size() << std::endl;
     std::cout << "Compressed size: " << compress_buffer.size() << std::endl;
