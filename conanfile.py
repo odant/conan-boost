@@ -70,7 +70,8 @@ class BoostConan(ConanFile):
         return os.path.join(boost_source_folder, b2_exe)
 
     def get_build_flags(self, build_folder, stage_folder):
-        flags = ["-a -d2 --debug-configuration --debug-generator --abbreviate-paths --build-type=minimal"]
+        #flags = ["-a -d2 --debug-configuration --debug-generator --abbreviate-paths --build-type=minimal"]
+        flags = ["-a -d2 --abbreviate-paths --build-type=minimal"]
         flags.append("--build-dir=%s" % build_folder)
         flags.append("--stagedir=%s" % stage_folder)
         flags += self.get_libraries_list()
@@ -79,8 +80,6 @@ class BoostConan(ConanFile):
         flags.append("variant=%s" % str(self.settings.build_type).lower())
         address_model = "64" if self.settings.arch == "x86_64" else "32"
         flags.append("address-model=%s" % address_model)
-        if self.options.fPIC:
-            flags.append("cxxflags=\"-fPIC\"")
         return flags
 
     def get_libraries_list(self):
@@ -101,7 +100,7 @@ class BoostConan(ConanFile):
         # toolset
         compiler, compiler_version, compiler_exe = self.get_toolset()
         compiler_flags = self.get_compiler_flags()
-        content += "using %s : %s : %s : %s;\n" % (compiler, compiler_version, compiler_exe, compiler_flags)
+        content += "using %s : %s : %s : %s ;\n" % (compiler, compiler_version, compiler_exe, compiler_flags)
         # write file
         self.output.info("Using current user-config.jam:\n%s" % content)
         fname = os.path.join(build_folder, "user-config.jam")
@@ -118,7 +117,12 @@ class BoostConan(ConanFile):
             return "gcc", compiler_version[0], "g++"
         
     def get_compiler_flags(self):
-        return ""
+        flags = []
+        if self.options.fPIC:
+            flags.append("-fPIC")
+        if self.settings.compiler == "Visual Studio":
+            flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
+        return "<compileflags>\"%s\"" % " ".join(flags)
         
     def package(self):
         self.copy("FindBoost.cmake", dst=".", src=".")
