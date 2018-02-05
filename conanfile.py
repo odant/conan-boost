@@ -12,7 +12,7 @@ class BoostConan(ConanFile):
         "os": ["Windows", "Linux"],
         "compiler": ["Visual Studio", "gcc"],
         "build_type": ["Debug"],
-        "arch": ["x86_64"]
+        "arch": ["x86_64", "x86"]
     }
     options = {
         "fPIC": [True, False]
@@ -77,7 +77,8 @@ class BoostConan(ConanFile):
         flags.append("link=static")
         flags.append("runtime-link=shared")
         flags.append("variant=debug")
-        flags.append("address-model=64")
+        address_model = "64" if self.settings.arch == "x86_64" else "32"
+        flags.append("address-model=%s" % address_model)
         if self.options.fPIC:
             flags.append("cxxflags=\"-fPIC\"")
         return flags

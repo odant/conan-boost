@@ -32,11 +32,11 @@ matrix:
        CONAN_DOCKER_IMAGE: lasote/conangcc63
        CONAN_ARCHS: x86_64
 
-#    - <<: *linux_build
-#      env:
-#       CONAN_GCC_VERSIONS: 6
-#       CONAN_DOCKER_IMAGE: lasote/conangcc63
-#       CONAN_ARCHS: x86
+    - <<: *linux_build
+      env:
+       CONAN_GCC_VERSIONS: 6
+       CONAN_DOCKER_IMAGE: lasote/conangcc63
+       CONAN_ARCHS: x86
 
     - <<: *linux_build
       env:
@@ -44,11 +44,11 @@ matrix:
        CONAN_DOCKER_IMAGE: lasote/conangcc72
        CONAN_ARCHS: x86_64
 
-#    - <<: *linux_build
-#      env:
-#       CONAN_GCC_VERSIONS: 7
-#       CONAN_DOCKER_IMAGE: lasote/conangcc72
-#       CONAN_ARCHS: x86
+    - <<: *linux_build
+      env:
+       CONAN_GCC_VERSIONS: 7
+       CONAN_DOCKER_IMAGE: lasote/conangcc72
+       CONAN_ARCHS: x86
 
 install:
   - pip install conan
