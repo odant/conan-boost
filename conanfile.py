@@ -31,6 +31,9 @@ class BoostConan(ConanFile):
     def configure(self):
         if self.settings.os == "Windows":
             self.options.fPIC = False
+        if "libcxx" in self.settings.compiler.fields:
+            if self.settings.compiler.libcxx == "libstdc++":
+                raise Exception("This package is only compatible with libstdc++11")
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
