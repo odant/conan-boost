@@ -58,7 +58,7 @@ class BoostConan(ConanFile):
             # location user-config.jam
                 with tools.environment_append({"BOOST_BUILD_PATH": os.path.join(self.build_folder, "build")}):
                     self.output.info("Current directory => %s" % os.getcwd())
-                    self.run("%s %s stage" % (b2, " ".join(flags)))
+                    self.run("%s -j%s %s stage" % (b2, tools.cpu_count(), " ".join(flags)))
         
     def bootstrap(self):
         boost_source_folder = os.path.join(self.source_folder, self._boost_name)
@@ -84,9 +84,34 @@ class BoostConan(ConanFile):
 
     def get_libraries_list(self):
         libs = [
+            "--with-atomic",
+            "--with-chrono",
+            "--with-context",
+            "--with-coroutine",
+            "--with-date_time",
+            "--with-exception",
+            "--with-fiber",
+            "--with-filesystem",
+            "--with-graph",
+            "--with-graph_parallel",
             "--with-iostreams",
+            "--with-locale",
+            "--with-log",
+            "--with-math",
+            "--with-mpi",
+            "--with-program_options",
+            #"--with-python",
+            "--with-random",
             "--with-regex",
-            "--with-system"
+            "--with-serialization",
+            "--with-signals",
+            "--with-stacktrace",
+            "--with-system",
+            #"--with-test",
+            "--with-thread",
+            "--with-timer",
+            "--with-type_erasure",
+            "--with-wave"
         ]
         return libs
         
@@ -121,7 +146,7 @@ class BoostConan(ConanFile):
         if self.options.fPIC:
             flags.append("-fPIC")
         if self.settings.compiler == "Visual Studio":
-            flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
+            flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_DEPRECATE")
         return "<compileflags>\"%s\"" % " ".join(flags)
         
     def package(self):
