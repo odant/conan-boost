@@ -11,7 +11,7 @@ class BoostConan(ConanFile):
     settings = {
         "os": ["Windows", "Linux"],
         "compiler": ["Visual Studio", "gcc"],
-        "build_type": ["Debug"],
+        "build_type": ["Debug", "Release"],
         "arch": ["x86_64", "x86"]
     }
     options = {
@@ -76,7 +76,7 @@ class BoostConan(ConanFile):
         flags += self.get_libraries_list()
         flags.append("link=static")
         flags.append("runtime-link=shared")
-        flags.append("variant=debug")
+        flags.append("variant=%s" % str(self.settings.build_type).lower())
         address_model = "64" if self.settings.arch == "x86_64" else "32"
         flags.append("address-model=%s" % address_model)
         if self.options.fPIC:

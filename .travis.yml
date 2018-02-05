@@ -8,9 +8,6 @@ env:
     CONAN_CHANNEL: testing
     CONAN_STABLE_CHANNEL: stable
 
-#    CONAN_BUILD_TYPES: "\"Debug, Release\""
-    CONAN_BUILD_TYPES: "\"Debug\""
-
     CONAN_UPLOAD: https://api.bintray.com/conan/odant/conan
     CONAN_LOGIN_USERNAME: dvetutnev
     CONAN_STABLE_BRANCH_PATTERN: release/*

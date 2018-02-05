@@ -15,8 +15,6 @@ environment:
   CONAN_CHANNEL: testing
   CONAN_STABLE_CHANNEL: stable
 
-#  CONAN_BUILD_TYPES: Debug, Release
-  CONAN_BUILD_TYPES: Debug
   CONAN_VISUAL_RUNTIMES: MDd, MD
   
   CONAN_UPLOAD: https://api.bintray.com/conan/odant/conan
