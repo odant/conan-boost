@@ -1,6 +1,12 @@
 from conans import ConanFile, tools
+from conans.errors import ConanException
 import os
 
+def get_safe(options, name):
+    try:
+        return getattr(options, name, None)
+    except ConanException:
+        return None
 
 class BoostConan(ConanFile):
     name = "boost"
@@ -15,9 +21,10 @@ class BoostConan(ConanFile):
         "arch": ["x86_64", "x86"]
     }
     options = {
+        "shared": [False],
         "fPIC": [True, False]
     }
-    default_options = "fPIC=True"
+    default_options = "shared=False", "fPIC=True"
     #------ internal ------
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
@@ -29,8 +36,12 @@ class BoostConan(ConanFile):
     short_paths = True
 
     def configure(self):
+        # Position independent code
         if self.settings.os == "Windows":
-            self.options.fPIC = False
+            del self.options.fPIC
+        if self.settings.os != "Windows" and self.options.shared:
+            self.options.fPIC = True
+        # Only C++11
         if "libcxx" in self.settings.compiler.fields:
             if self.settings.compiler.libcxx == "libstdc++":
                 raise Exception("This package is only compatible with libstdc++11")
@@ -146,7 +157,7 @@ class BoostConan(ConanFile):
         
     def get_compiler_flags(self):
         flags = []
-        if self.options.fPIC:
+        if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
         if self.settings.compiler == "Visual Studio":
             flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_DEPRECATE")
