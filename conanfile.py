@@ -52,8 +52,9 @@ class BoostConan(ConanFile):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
         
     def build_requirements(self):
-        if self.settings.compiler == "Visual Studio":
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             self.build_requires("get_vcvars/[~=1.0]@%s/stable" % self.user)
+            self.build_requires("find_sdk_winxp/[~=1.0]@%s/stable" % self.user)
 
     def source(self):
         self.output.info("-------------- Unzip sources --------------------")
@@ -143,13 +144,17 @@ class BoostConan(ConanFile):
         tools.save(os.path.join(build_folder, "user-config.jam"), content)
 
     def get_build_environment(self):
-        if self.settings.compiler != "Visual Studio":
-            return {}
-        else:
+        env = {}
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             with tools.pythonpath(self):
-                from get_vcvars import get_vcvars
-                return get_vcvars(self.settings)
-
+                import get_vcvars
+                env = get_vcvars.get_vcvars(self.settings)
+                toolset = str(self.settings.compiler.get_safe("toolset"))
+                if toolset.endswith("_xp"):
+                    import find_sdk_winxp
+                    env = find_sdk_winxp.dict_append(self.settings.arch, env=env)
+        return env
+                
     def get_libraries_list(self):
         libs = [
             "--with-atomic",
@@ -181,6 +186,10 @@ class BoostConan(ConanFile):
             "--with-type_erasure",
             "--with-wave"
         ]
+        # No build Boost.Fiber for WinXP
+        toolset = str(self.settings.compiler.get_safe("toolset"))
+        if toolset.endswith("_xp"):
+            libs.remove("--with-fiber")
         return libs
 
     def get_toolset(self):
@@ -198,8 +207,14 @@ class BoostConan(ConanFile):
         flags = []
         if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
-        if self.settings.compiler == "Visual Studio":
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_DEPRECATE")
+            flags.append("/D_CRT_SECURE_NO_WARNINGS")
+            flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
+            toolset = str(self.settings.compiler.get_safe("toolset"))
+            if toolset.endswith("_xp"):
+                _win32_winnt = "0x502" if self.settings.arch == "x86_64" else "0x501"
+                flags.append("/D_WIN32_WINNT=%s" % _win32_winnt)
         return flags
         
     def package(self):
