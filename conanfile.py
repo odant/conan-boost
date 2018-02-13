@@ -208,7 +208,7 @@ class BoostConan(ConanFile):
         if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_DEPRECATE")
+            flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
             flags.append("/D_CRT_SECURE_NO_WARNINGS")
             flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
             toolset = str(self.settings.compiler.get_safe("toolset"))
