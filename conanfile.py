@@ -213,7 +213,7 @@ class BoostConan(ConanFile):
             flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
             toolset = str(self.settings.compiler.get_safe("toolset"))
             if toolset.endswith("_xp"):
-                _win32_winnt = "0x502" if self.settings.arch == "x86_64" else "0x501"
+                _win32_winnt = "0x0502" if self.settings.arch == "x86_64" else "0x0501"
                 flags.append("/D_WIN32_WINNT=%s" % _win32_winnt)
         return flags
         
