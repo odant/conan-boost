@@ -24,8 +24,8 @@
  
      template<class Y> friend class weak_ptr;
      template<class Y> friend class shared_ptr;
-+    template<class T> friend inline std::size_t hash_value(boost::weak_ptr<T> const & p) BOOST_SP_NOEXCEPT;
-+    template<class T, class U> friend inline bool operator==(weak_ptr<T> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT;
++    template<class Y> friend inline std::size_t hash_value(boost::weak_ptr<Y> const & p) BOOST_SP_NOEXCEPT;
++    template<class Y, class U> friend inline bool operator==(weak_ptr<Y> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT;
  
  #endif
  
@@ -35,14 +35,14 @@
  
 +// hash_value
 +
-+template< class T > struct hash;
++template<class Y> struct hash;
 +
-+template< class T > inline std::size_t hash_value(weak_ptr<T> const & p) BOOST_SP_NOEXCEPT
++template<class Y> inline std::size_t hash_value(weak_ptr<Y> const & p) BOOST_SP_NOEXCEPT
 +{
-+    return boost::hash< typename boost::weak_ptr<T>::element_type* >()(p.px);
++    return boost::hash<typename boost::weak_ptr<Y>::element_type* >()(p.px);
 +}
 +
-+template<class T, class U> inline bool operator==(weak_ptr<T> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT
++template<class Y, class U> inline bool operator==(weak_ptr<Y> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT
 +{
 +    return a.pn == b.pn;
 +}
