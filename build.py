@@ -44,7 +44,7 @@ if __name__ == "__main__":
     builder = ConanMultiPackager(
         username=username,
         visual_versions=visual_versions,
-        visual_runtimes=visual_runtimes
+        visual_runtimes=visual_runtimes,
         exclude_vcvars_precommand=True
     )
     builder.add_common_builds(pure_c=False)
