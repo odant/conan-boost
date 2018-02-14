@@ -32,7 +32,7 @@ class BoostConan(ConanFile):
     _boost_archive = _boost_name + ".tar.gz"
     _zlib_version = "[~=1.2.11]"
     #------ internal ------
-    exports_sources = _boost_archive, "FindBoost.cmake"
+    exports_sources = _boost_archive, "FindBoost.cmake", "boost.patch"
     no_copy_source = True
     build_policy = "missing"
     short_paths = True
@@ -62,6 +62,7 @@ class BoostConan(ConanFile):
         tools.rmdir(self._boost_name)
         tools.unzip(self._boost_archive)
         os.remove(self._boost_archive)
+        tools.patch(patch_file="boost.patch")
 
     def build(self):
         source_folder = os.path.join(self.source_folder, self._boost_name)

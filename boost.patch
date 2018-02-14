@@ -1,0 +1,52 @@
+--- a/boost_1_66_0/boost/multiprecision/detail/default_ops.hpp
++++ b/boost_1_66_0/boost/multiprecision/detail/default_ops.hpp
+@@ -379,7 +379,7 @@
+       eval_multiply(t, v);
+    }
+ }
+-#if !BOOST_WORKAROUND(BOOST_MSVC, < 1900)
++#if !BOOST_WORKAROUND(BOOST_MSVC, < 2500)
+ template <class T, class U>
+ inline typename enable_if_c<is_convertible<U, number<T, et_on> >::value && !is_convertible<U, T>::value>::type eval_multiply_default(T& t, const T& u, const U& v)
+ {
+@@ -498,7 +498,7 @@
+       eval_divide(t, v);
+    }
+ }
+-#if !BOOST_WORKAROUND(BOOST_MSVC, < 1900)
++#if !BOOST_WORKAROUND(BOOST_MSVC, < 2500)
+ template <class T, class U>
+ inline typename enable_if_c<is_convertible<U, number<T, et_on> >::value && !is_convertible<U, T>::value>::type eval_divide_default(T& t, const T& u, const U& v)
+ {
+--- a/boost_1_66_0/boost/smart_ptr/weak_ptr.hpp
++++ b/boost_1_66_0/boost/smart_ptr/weak_ptr.hpp
+@@ -231,6 +231,8 @@
+ 
+     template<class Y> friend class weak_ptr;
+     template<class Y> friend class shared_ptr;
++    template<class T> friend inline std::size_t hash_value(boost::weak_ptr<T> const & p) BOOST_SP_NOEXCEPT;
++    template<class T, class U> friend inline bool operator==(weak_ptr<T> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT;
+ 
+ #endif
+ 
+@@ -249,6 +251,20 @@
+     a.swap(b);
+ }
+ 
++// hash_value
++
++template< class T > struct hash;
++
++template< class T > inline std::size_t hash_value(weak_ptr<T> const & p) BOOST_SP_NOEXCEPT
++{
++    return boost::hash< typename boost::weak_ptr<T>::element_type* >()(p.px);
++}
++
++template<class T, class U> inline bool operator==(weak_ptr<T> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT
++{
++    return a.pn == b.pn;
++}
++
+ } // namespace boost
+ 
+ #endif  // #ifndef BOOST_SMART_PTR_WEAK_PTR_HPP_INCLUDED
