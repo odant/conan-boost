@@ -228,6 +228,7 @@ class BoostConan(ConanFile):
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
         self.cpp_info.defines.append("BOOST_USE_STATIC_LIBS")
+        self.cpp_info.defines.append("BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
-            self.cpp_info.defines.extend(["BOOST_ALL_NO_LIB"])
+            self.cpp_info.defines.append("BOOST_ALL_NO_LIB")

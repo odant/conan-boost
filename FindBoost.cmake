@@ -9,3 +9,13 @@ set(Boost_NO_SYSTEM_PATHS ON)
 
 include(${CMAKE_CURRENT_LIST_DIR}/_FindBoost.cmake)
 
+# Add defines from package_info
+set(Boost_FIND_COMPONENTS boost ${Boost_FIND_COMPONENTS})
+foreach(COMPONENT ${Boost_FIND_COMPONENTS})
+    if(TARGET Boost::${COMPONENT})
+        set_property(TARGET Boost::${COMPONENT} APPEND PROPERTY
+            INTERFACE_COMPILE_DEFINITIONS ${CONAN_COMPILE_DEFINITIONS_BOOST}
+        )
+    endif()
+endforeach()
+
