@@ -32,7 +32,7 @@ class BoostConan(ConanFile):
     _boost_archive = _boost_name + ".tar.gz"
     _zlib_version = "[~=1.2.11]"
     #------ internal ------
-    exports_sources = _boost_archive, "FindBoost.cmake", "boost.patch"
+    exports_sources = _boost_archive, "FindBoost.cmake", "_FindBoost.cmake", "boost.patch"
     no_copy_source = True
     build_policy = "missing"
     short_paths = True
@@ -220,6 +220,7 @@ class BoostConan(ConanFile):
         
     def package(self):
         self.copy("FindBoost.cmake", dst=".", src=".")
+        self.copy("_FindBoost.cmake", dst=".", src=".")
         self.copy(pattern="*", src="%s/boost" % self._boost_name, dst="include/boost")
         self.copy("*.lib", src="stage", dst="lib", keep_path=False)
         self.copy("*.a", src="stage", dst="lib", keep_path=False)
