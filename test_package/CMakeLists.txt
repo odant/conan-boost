@@ -4,19 +4,18 @@ cmake_minimum_required(VERSION 3.0)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
+find_package(ZLIB REQUIRED)
 find_package(Boost REQUIRED COMPONENTS
     iostreams
     regex
     system
 )
-find_package(ZLIB REQUIRED)
 
 enable_testing()
 
 add_executable(test_boost_iostreams test_boost_iostreams.cpp)
 target_link_libraries(test_boost_iostreams
     Boost::iostreams
-    ZLIB::ZLIB
 )
 set_target_properties(test_boost_iostreams
     PROPERTIES

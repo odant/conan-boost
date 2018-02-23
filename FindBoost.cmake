@@ -19,3 +19,9 @@ foreach(COMPONENT ${Boost_FIND_COMPONENTS})
     endif()
 endforeach()
 
+# Add zlib depends
+if(TARGET Boost::iostreams AND TARGET ZLIB::ZLIB)
+    set_property(TARGET Boost::iostreams APPEND PROPERTY
+        INTERFACE_LINK_LIBRARIES ZLIB::ZLIB
+    )
+endif()
