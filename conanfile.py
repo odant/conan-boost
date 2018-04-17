@@ -12,7 +12,7 @@ def get_safe(options, name):
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.66.0"
+    version = "1.67.0"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"

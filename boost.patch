@@ -1,6 +1,6 @@
---- a/boost_1_66_0/boost/multiprecision/detail/default_ops.hpp
-+++ b/boost_1_66_0/boost/multiprecision/detail/default_ops.hpp
-@@ -379,7 +379,7 @@
+--- a/boost_1_67_0/boost/multiprecision/detail/default_ops.hpp
++++ b/boost_1_67_0/boost/multiprecision/detail/default_ops.hpp
+@@ -380,7 +380,7 @@
        eval_multiply(t, v);
     }
  }
@@ -9,7 +9,7 @@
  template <class T, class U>
  inline typename enable_if_c<is_convertible<U, number<T, et_on> >::value && !is_convertible<U, T>::value>::type eval_multiply_default(T& t, const T& u, const U& v)
  {
-@@ -498,7 +498,7 @@
+@@ -499,7 +499,7 @@
        eval_divide(t, v);
     }
  }
@@ -18,8 +18,8 @@
  template <class T, class U>
  inline typename enable_if_c<is_convertible<U, number<T, et_on> >::value && !is_convertible<U, T>::value>::type eval_divide_default(T& t, const T& u, const U& v)
  {
---- a/boost_1_66_0/boost/smart_ptr/weak_ptr.hpp
-+++ b/boost_1_66_0/boost/smart_ptr/weak_ptr.hpp
+--- a/boost_1_67_0/boost/smart_ptr/weak_ptr.hpp
++++ b/boost_1_67_0/boost/smart_ptr/weak_ptr.hpp
 @@ -231,6 +231,8 @@
  
      template<class Y> friend class weak_ptr;
