@@ -141,7 +141,7 @@ class BoostConan(ConanFile):
     def get_build_environment(self):
         env = {}
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            env = tools.vcvars_dict(self.settings, filter_known_paths=True)
+            env = tools.vcvars_dict(self.settings, filter_known_paths=True, force=True)
             toolset = str(self.settings.compiler.get_safe("toolset"))
             if toolset.endswith("_xp"):
                 import find_sdk_winxp
