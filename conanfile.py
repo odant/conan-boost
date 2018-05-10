@@ -190,7 +190,7 @@ class BoostConan(ConanFile):
     
     # List compiler flags
     def get_compiler_flags(self):
-        flags = []
+        flags = ["-DBOOST_NO_AUTO_PTR"]
         if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
@@ -212,8 +212,11 @@ class BoostConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
-        self.cpp_info.defines.append("BOOST_USE_STATIC_LIBS")
-        self.cpp_info.defines.append("BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
+        self.cpp_info.defines = [
+            "BOOST_USE_STATIC_LIBS",
+            "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE",
+            "BOOST_NO_AUTO_PTR"
+        ]
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
             self.cpp_info.defines.append("BOOST_ALL_NO_LIB")
