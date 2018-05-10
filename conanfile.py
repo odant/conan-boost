@@ -25,7 +25,7 @@ class BoostConan(ConanFile):
     #------ internal ------
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
-    _zlib_version = "[~=1.2.11]"
+    _zlib_version = "1.2.11"
     #------ internal ------
     exports_sources = _boost_archive, "FindBoost.cmake", "_FindBoost.cmake", "boost.patch"
     no_copy_source = True
