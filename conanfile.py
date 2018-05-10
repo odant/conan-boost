@@ -22,11 +22,6 @@ class BoostConan(ConanFile):
         "build_type": ["Debug", "Release"],
         "arch": ["x86_64", "x86", "mips"]
     }
-    options = {
-        "shared": [False],
-        "fPIC": [True, False]
-    }
-    default_options = "shared=False", "fPIC=True"
     #------ internal ------
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
