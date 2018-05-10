@@ -1,10 +1,16 @@
+// Boost test for Conan package
+// Dmitriy Vetutnev, Odant, 2018
+
+
 #include <boost/system/error_code.hpp>
 #include <iostream>
 #include <cstdlib>
 
+
 using namespace boost::system;
 
 int main(int, char**) {
+
     error_code ec_1 = errc::make_error_code(errc::success);
     if (ec_1) {
         std::cout << "Error: errc::make_error_code(errc::success) is true " << __FILE__ << __LINE__ << std::endl;
