@@ -183,8 +183,6 @@ class BoostConan(ConanFile):
     def get_toolset(self):
         compiler_version = str(self.settings.compiler.version)
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            with tools.vcvars(self.settings):
-                self.run("cl.exe")
             compiler_version = "14.1" if compiler_version == "15" else "%s.0" % compiler_version
             return "msvc", compiler_version, "cl.exe"
         elif self.settings.os == "Linux" and self.settings.compiler == "gcc":
