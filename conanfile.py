@@ -33,11 +33,6 @@ class BoostConan(ConanFile):
     short_paths = True
 
     def configure(self):
-        # Position independent code
-        if self.settings.os == "Windows":
-            del self.options.fPIC
-        if self.settings.os != "Windows" and self.options.shared:
-            self.options.fPIC = True
         # Only C++11
         if "libcxx" in self.settings.compiler.fields:
             if self.settings.compiler.libcxx == "libstdc++":
