@@ -14,6 +14,7 @@ find_package(ZLIB REQUIRED)
 find_package(Boost REQUIRED
     atomic
     chrono
+    date_time
     iostreams
     regex
     system
@@ -48,6 +49,20 @@ add_test(
     NAME test_boost_chrono
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_chrono
+)
+
+
+add_executable(test_boost_date_time test_boost_date_time.cpp)
+target_link_libraries(test_boost_date_time Boost::date_time)
+set_target_properties(test_boost_date_time
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_date_time
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_date_time
 )
 
 
