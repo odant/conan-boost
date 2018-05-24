@@ -11,8 +11,9 @@ conan_basic_setup()
 
 find_package(Threads REQUIRED)
 find_package(ZLIB REQUIRED)
-find_package(Boost REQUIRED COMPONENTS
+find_package(Boost REQUIRED
     atomic
+    chrono
     iostreams
     regex
     system
@@ -33,6 +34,20 @@ add_test(
     NAME test_boost_atomic
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_atomic
+)
+
+
+add_executable(test_boost_chrono test_boost_chrono.cpp)
+target_link_libraries(test_boost_chrono Boost::chrono)
+set_target_properties(test_boost_chrono
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_chrono
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_chrono
 )
 
 
@@ -76,3 +91,4 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_system
 )
+
