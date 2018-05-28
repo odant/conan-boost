@@ -26,6 +26,7 @@ class BoostConan(ConanFile):
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
     _zlib_version = "1.2.11"
+    _icu_version = "61.1"
     #------ internal ------
     exports_sources = _boost_archive, "FindBoost.cmake", "_FindBoost.cmake", "boost.patch"
     no_copy_source = True
@@ -40,6 +41,7 @@ class BoostConan(ConanFile):
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
+        self.requires("icu/%s@%s/testing" % (self._icu_version, self.user))
         
     def build_requirements(self):
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
@@ -100,16 +102,26 @@ class BoostConan(ConanFile):
     def get_build_flags(self, build_folder, stage_folder):
         flags = ["-a -q -d2 --debug-configuration --debug-generator --abbreviate-paths --build-type=minimal"]
         #flags = ["-a -q -d2 --abbreviate-paths --build-type=minimal"]
-        flags.append("--build-dir=%s" % build_folder)
-        flags.append("--stagedir=%s" % stage_folder)
+        flags.extend([
+            "--build-dir=%s" % build_folder,
+            "--stagedir=%s" % stage_folder
+        ])
         flags += self.get_libraries_list()
         toolset, _, _ = self.get_toolset()
-        flags.append("toolset=%s" % toolset)
-        flags.append("link=static")
-        flags.append("runtime-link=shared")
-        flags.append("variant=%s" % str(self.settings.build_type).lower())
-        address_model = "64" if self.settings.arch == "x86_64" else "32"
-        flags.append("address-model=%s" % address_model)
+        flags.extend([
+            "toolset=%s" % toolset,
+            "link=static",
+            "runtime-link=shared",
+            "variant=%s" % str(self.settings.build_type).lower(),
+            "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32"}.get(str(self.settings.arch)),
+            # locale
+            "boost.locale.icu=on",
+            "boost.locale.iconv=off",
+            "boost.locale.winapi=off",
+            "boost.locale.std=off",
+            "boost.locale.posix=off",
+            "-sICU_PATH=%s" % self.deps_cpp_info["icu"].rootpath
+        ])
         return flags
 
     def generate_user_config_jam(self, build_folder):
