@@ -16,8 +16,10 @@ find_package(Boost REQUIRED
     chrono
     date_time
     iostreams
+    locale
     regex
     system
+    thread
 )
 
 
@@ -80,6 +82,46 @@ add_test(
 )
 
 
+find_package(ICU REQUIRED)
+
+add_executable(test_boost_locale_case_conv test_boost_locale_case_conv.cpp)
+target_link_libraries(test_boost_locale_case_conv
+    Boost::locale
+    Boost::system
+    Boost::thread
+    ICU::io
+)
+set_target_properties(test_boost_locale_case_conv
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_locale_case_conv
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_locale_case_conv
+)
+
+
+add_executable(test_boost_locale_utf_to_utf test_boost_locale_utf_to_utf.cpp)
+target_link_libraries(test_boost_locale_utf_to_utf
+    Boost::locale
+    Boost::system
+    Boost::thread
+    ICU::io
+)
+set_target_properties(test_boost_locale_utf_to_utf
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_locale_utf_to_utf
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_locale_utf_to_utf
+)
+
+
 add_executable(test_boost_regex test_boost_regex.cpp)
 target_link_libraries(test_boost_regex Boost::regex)
 set_target_properties(test_boost_regex
@@ -106,4 +148,3 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_system
 )
-

@@ -120,7 +120,8 @@ class BoostConan(ConanFile):
             "boost.locale.winapi=off",
             "boost.locale.std=off",
             "boost.locale.posix=off",
-            "-sICU_PATH=%s" % self.deps_cpp_info["icu"].rootpath
+            "-sICU_PATH=%s" % self.deps_cpp_info["icu"].rootpath.replace("\\", "/"),
+            "-sICU_LINK=\"/LIBPATH:%s icuio64d.lib icuin64d.lib icuuc64d.lib icudt64d.lib\"" % self.deps_cpp_info["icu"].lib_paths[0].replace("\\", "/")
         ])
         return flags
 
@@ -202,7 +203,12 @@ class BoostConan(ConanFile):
     
     # List compiler flags
     def get_compiler_flags(self):
-        flags = ["-DBOOST_NO_AUTO_PTR"]
+        flags = [
+            "-DBOOST_NO_AUTO_PTR",
+            #"-DBOOST_LOCALE_ENABLE_CHAR16_T",
+            #"-DBOOST_LOCALE_ENABLE_CHAR32_T",
+            "-DU_DISABLE_RENAMING=1"
+        ]
         if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
@@ -227,7 +233,10 @@ class BoostConan(ConanFile):
         self.cpp_info.defines = [
             "BOOST_USE_STATIC_LIBS",
             "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE",
-            "BOOST_NO_AUTO_PTR"
+            "BOOST_NO_AUTO_PTR",
+            #"BOOST_LOCALE_ENABLE_CHAR16_T",
+            #"BOOST_LOCALE_ENABLE_CHAR32_T",
+            "U_DISABLE_RENAMING=1"
         ]
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
