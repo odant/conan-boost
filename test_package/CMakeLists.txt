@@ -10,7 +10,6 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 find_package(Threads REQUIRED)
-find_package(ZLIB REQUIRED)
 find_package(Boost REQUIRED
     atomic
     chrono
@@ -82,14 +81,11 @@ add_test(
 )
 
 
-find_package(ICU REQUIRED)
-
 add_executable(test_boost_locale_case_conv test_boost_locale_case_conv.cpp)
 target_link_libraries(test_boost_locale_case_conv
     Boost::locale
     Boost::system
     Boost::thread
-    ICU::io
 )
 set_target_properties(test_boost_locale_case_conv
     PROPERTIES
@@ -108,7 +104,6 @@ target_link_libraries(test_boost_locale_utf_to_utf
     Boost::locale
     Boost::system
     Boost::thread
-    ICU::io
 )
 set_target_properties(test_boost_locale_utf_to_utf
     PROPERTIES
