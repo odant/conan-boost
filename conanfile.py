@@ -64,11 +64,12 @@ class BoostConan(ConanFile):
         build_folder = os.path.join(self.build_folder, "build")
         stage_folder = os.path.join(self.build_folder, "stage")
         #
-        self.output.info("-------------- Clear cache ----------------------")
-        self.clear_cache(source_folder)
         self.output.info("-------------- Bootstrap ------------------------")
         b2 = self.bootstrap(source_folder)
         self.run("%s -v" % b2)
+        project_conf = os.path.join(source_folder, "project-config.jam")
+        if os.path.exists(project_conf):
+            os.remove(project_conf)
         self.output.info("-------------- user-config.jam ------------------")
         self.generate_user_config_jam(build_folder)
         self.output.info("-------------- Build libraries ------------------")
@@ -83,16 +84,6 @@ class BoostConan(ConanFile):
                 self.output.info("-------------------------------------------------")
             self.output.info("Current directory => %s" % os.getcwd())
             self.run("%s -j%s %s stage" % (b2, tools.cpu_count(), " ".join(flags)))
-
-    def clear_cache(self, source_folder):
-        project_conf = os.path.join(source_folder, "project-config.jam")
-        if os.path.exists(project_conf):
-            os.remove(project_conf)
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            pattern = os.path.join(os.environ["TEMP"], "b2_msvc_*")
-            for fpath in glob.glob(pattern):
-                self.output.info("Remove %s" % fpath)
-                os.remove(fpath)
 
     def bootstrap(self, source_folder):
         env = self.get_build_environment()
@@ -170,7 +161,7 @@ class BoostConan(ConanFile):
                 import find_sdk_winxp
                 env = find_sdk_winxp.dict_append(self.settings.arch, env=env)
         return env
-                
+
     def get_libraries_list(self):
         libs = [
             "--with-atomic",
@@ -215,7 +206,7 @@ class BoostConan(ConanFile):
             return "msvc", compiler_version, "cl.exe"
         elif self.settings.os == "Linux" and self.settings.compiler == "gcc":
             return "gcc", compiler_version[0], "g++"
-    
+
     # List compiler flags
     def get_compiler_flags(self):
         flags = [
