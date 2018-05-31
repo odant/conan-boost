@@ -135,8 +135,8 @@ int main(int, char**) {
     {
         std::cout << "-- to_upper char32_t(UTF-32) --" << std::endl;
 
-        const std::u32string upper = u"\u042f" "Z" "\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
-        const std::u32string lower = u"\u044f" "z" "\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
+        const std::u32string upper = U"\u042f" "Z" "\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
+        const std::u32string lower = U"\u044f" "z" "\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
 
         const std::u32string toUpper = boost::locale::to_upper(lower);
 
