@@ -113,15 +113,25 @@ class BoostConan(ConanFile):
             "link=static",
             "runtime-link=shared",
             "variant=%s" % str(self.settings.build_type).lower(),
-            "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32"}.get(str(self.settings.arch)),
-            # locale
+            "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32"}.get(str(self.settings.arch))
+        ])
+        # locale use ICU
+        icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
+        icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
+        ext = "lib" if self.settings.os == "Windows" else "so"
+        icu_libs = []
+        for lib in self.deps_cpp_info["icu"].libs:
+            lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
+            lib = "%s.%s" % (lib, ext)
+            icu_libs.append(lib)
+        flags.extend([
             "boost.locale.icu=on",
             "boost.locale.iconv=off",
             "boost.locale.winapi=off",
             "boost.locale.std=off",
             "boost.locale.posix=off",
-            "-sICU_PATH=%s" % self.deps_cpp_info["icu"].rootpath.replace("\\", "/"),
-            "-sICU_LINK=\"/LIBPATH:%s icuio64d.lib icuin64d.lib icuuc64d.lib icudt64d.lib\"" % self.deps_cpp_info["icu"].lib_paths[0].replace("\\", "/")
+            "-sICU_PATH=%s" % icu_path,
+            "-sICU_LINK=\"%s\"" % " ".join(icu_libs)
         ])
         return flags
 
