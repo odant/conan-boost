@@ -63,6 +63,7 @@ if __name__ == "__main__":
     builds = builder.items
     if platform.system() == "Windows":
         builds = vs_add_toolset(builds)
+        builds = add_dll_sign(builds)
     if platform.system() == "Linux":
         builds = filter_libcxx(builds)
     # Replace build configurations
