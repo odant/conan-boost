@@ -214,7 +214,7 @@ class BoostConan(ConanFile):
             "-DU_DISABLE_RENAMING=1"
         ]
         # Enable char16_t and char32_t
-        if self.settings.compiler == "Visual Studio" and self.settings.compiler.version <= "14":
+        if self.settings.compiler == "Visual Studio":
             pass
         else:
             flags.extend([
@@ -248,7 +248,7 @@ class BoostConan(ConanFile):
             "BOOST_NO_AUTO_PTR"
         ]
         # Enable char16_t and char32_t
-        if self.settings.compiler == "Visual Studio" and self.settings.compiler.version <= "14":
+        if self.settings.compiler == "Visual Studio":
             pass
         else:
             self.cpp_info.defines.extend([
