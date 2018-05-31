@@ -118,11 +118,12 @@ class BoostConan(ConanFile):
         # locale use ICU
         icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
         icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
-        ext = "lib" if self.settings.os == "Windows" else "so"
+        prefix = "" if self.settings.os == "Windows" else "lib"
+        ext = ".lib" if self.settings.os == "Windows" else ".so"
         icu_libs = []
         for lib in self.deps_cpp_info["icu"].libs:
+            lib = "%s%s%s" % (prefix, lib, ext)
             lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
-            lib = "%s.%s" % (lib, ext)
             icu_libs.append(lib)
         flags.extend([
             "boost.locale.icu=on",
