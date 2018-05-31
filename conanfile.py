@@ -216,10 +216,16 @@ class BoostConan(ConanFile):
     def get_compiler_flags(self):
         flags = [
             "-DBOOST_NO_AUTO_PTR",
-            #"-DBOOST_LOCALE_ENABLE_CHAR16_T",
-            #"-DBOOST_LOCALE_ENABLE_CHAR32_T",
             "-DU_DISABLE_RENAMING=1"
         ]
+        # Enable char16_t and char32_t
+        if self.settings.compiler == "Visual Studio" and self.settings.compiler.version <= "14":
+            pass
+        else:
+            flags.extend([
+                "-DBOOST_LOCALE_ENABLE_CHAR16_T",
+                "-DBOOST_LOCALE_ENABLE_CHAR32_T"
+            ])
         if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
@@ -244,10 +250,16 @@ class BoostConan(ConanFile):
         self.cpp_info.defines = [
             "BOOST_USE_STATIC_LIBS",
             "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE",
-            "BOOST_NO_AUTO_PTR",
-            #"BOOST_LOCALE_ENABLE_CHAR16_T",
-            #"BOOST_LOCALE_ENABLE_CHAR32_T",
+            "BOOST_NO_AUTO_PTR"
         ]
+        # Enable char16_t and char32_t
+        if self.settings.compiler == "Visual Studio" and self.settings.compiler.version <= "14":
+            pass
+        else:
+            self.cpp_info.defines.extend([
+                "BOOST_LOCALE_ENABLE_CHAR16_T",
+                "BOOST_LOCALE_ENABLE_CHAR32_T"
+            ])
+        # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
             self.cpp_info.defines.append("BOOST_ALL_NO_LIB")
