@@ -247,7 +247,6 @@ class BoostConan(ConanFile):
             "BOOST_NO_AUTO_PTR",
             #"BOOST_LOCALE_ENABLE_CHAR16_T",
             #"BOOST_LOCALE_ENABLE_CHAR32_T",
-            "U_DISABLE_RENAMING=1"
         ]
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
