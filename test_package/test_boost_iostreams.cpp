@@ -1,3 +1,7 @@
+// Boost test for Conan package
+// Dmitriy Vetutnev, Odant, 2018
+
+
 #include <boost/iostreams/device/array.hpp>
 #include <boost/iostreams/stream.hpp>
 
@@ -9,6 +13,7 @@
 #include <cstdlib>
 #include <cassert>
 #include <limits>
+
 
 const std::string text = ""
 "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. Ourselves for determine attending how led gentleman sincerity. Valley afford uneasy joy she thrown though bed set. In me forming general prudent on country carried. Behaved an or suppose justice. Seemed whence how son rather easily and change missed. Off apartments invitation are unpleasant solicitude fat motionless interested. Hardly suffer wisdom wishes valley as an. As friendship advantages resolution it alteration stimulated he or increasing.\n"
@@ -32,9 +37,11 @@ const std::string text = ""
 "No comfort do written conduct at prevent manners on. Celebrated contrasted discretion him sympathize her collecting occasional. Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry.\n"
 "";
 
+
 using namespace boost::iostreams;
 
 int main(int, char**) {
+
     char buffer[512] = {0};
     array_sink sink{buffer};
     stream<array_sink> os{sink};
@@ -43,21 +50,22 @@ int main(int, char**) {
         std::cout << __FILE__ << __LINE__ << std::endl;
         std::exit(EXIT_FAILURE);
     }
-    
+
+
     std::string compress_buffer;
     back_insert_device<std::string> compress_sink{compress_buffer};
     filtering_ostream compress_stream;
     compress_stream.push(zlib_compressor{});
     compress_stream.push(compress_sink);
-    
+
     compress_stream << text << std::flush;
     compress_stream.pop();
-    
+
     array_source decompress_source{compress_buffer.data(), compress_buffer.size()};
     filtering_istream decompress_stream;
     decompress_stream.push(zlib_decompressor{});
     decompress_stream.push(decompress_source);
-    
+
     std::string decompress_buffer;
     while (decompress_stream) {
         char buff[128];
@@ -73,13 +81,14 @@ int main(int, char**) {
 #endif
         decompress_buffer.append(buff, static_cast<std::string::size_type>(len));
     }
-    
+
     if (text != decompress_buffer) {
         std::cout << "Invalid compression/decompression " << __FILE__ << __LINE__ << std::endl;
         std::exit(EXIT_FAILURE);
     }
     std::cout << "Original size: " << text.size() << std::endl;
     std::cout << "Compressed size: " << compress_buffer.size() << std::endl;
-    
+
+
     return EXIT_SUCCESS;
 }
