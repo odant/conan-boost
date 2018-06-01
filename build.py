@@ -17,9 +17,10 @@ if "CONAN_VISUAL_TOOLSETS" in os.environ:
     visual_toolsets = [s.strip() for s in os.environ["CONAN_VISUAL_TOOLSETS"].split(",")]
 dll_sign = False if "CONAN_DISABLE_DLL_SIGN" in os.environ else True
 
+
 def vs_get_toolsets(compiler_version):
     return visual_toolsets if not visual_toolsets is None else visual_default_toolsets.get(compiler_version)
-    
+
 def vs_add_toolset(builds):
     result = []
     for settings, options, env_vars, build_requires, reference in builds:
@@ -33,13 +34,23 @@ def vs_add_toolset(builds):
                 result.append([settings, options, env_vars, build_requires, reference])
     return result
 
+
 def filter_libcxx(builds):
     result = []
     for settings, options, env_vars, build_requires, reference in builds:
         if settings["compiler.libcxx"] == "libstdc++11":
             result.append([settings, options, env_vars, build_requires, reference])
     return result
-    
+
+
+def add_dll_sign(builds):
+    result = []
+    for settings, options, env_vars, build_requires, reference in builds:
+        options = deepcopy(options)
+        options["icu:dll_sign"] = dll_sign
+        result.append([settings, options, env_vars, build_requires, reference])
+    return result
+
 if __name__ == "__main__":
     builder = ConanMultiPackager(
         username=username,
@@ -52,6 +63,7 @@ if __name__ == "__main__":
     builds = builder.items
     if platform.system() == "Windows":
         builds = vs_add_toolset(builds)
+        builds = add_dll_sign(builds)
     if platform.system() == "Linux":
         builds = filter_libcxx(builds)
     # Replace build configurations
