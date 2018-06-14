@@ -215,7 +215,6 @@ class BoostConan(ConanFile):
 
     # List compiler flags
     def get_compiler_flags(self):
-        flags = ["-DBOOST_NO_AUTO_PTR"]
         flags = [
             "-DBOOST_NO_AUTO_PTR",
             "-DU_DISABLE_RENAMING=1"
