@@ -26,6 +26,10 @@ class BoostConan(ConanFile):
         "build_type": ["Debug", "Release"],
         "arch": ["x86_64", "x86", "mips"]
     }
+    options = {
+        "fPIC": [True, False]
+    }
+    default_options = "fPIC=True"
     #------ internal ------
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
@@ -39,14 +43,16 @@ class BoostConan(ConanFile):
 
     def configure(self):
         # Only C++11
-        if "libcxx" in self.settings.compiler.fields:
-            if self.settings.compiler.libcxx == "libstdc++":
-                raise Exception("This package is only compatible with libstdc++11")
+        if self.settings.compiler.get_safe("libcxx") == "libstdc++":
+            raise ConanException("This package is only compatible with libstdc++11")
+        # Position independent code
+        if self.settings.os == "Windows":
+            del self.options.fPIC
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
         self.requires("icu/%s@%s/testing" % (self._icu_version, self.user))
-        
+
     def build_requirements(self):
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             self.build_requires("find_sdk_winxp/[~=1.0]@%s/stable" % self.user)
