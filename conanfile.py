@@ -61,7 +61,9 @@ class BoostConan(ConanFile):
 
     def build_requirements(self):
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            self.build_requires("find_sdk_winxp/[~=1.0]@%s/stable" % self.user)
+            toolset = str(self.settings.compiler.get_safe("toolset"))
+            if toolset.endswith("_xp"):
+                self.build_requires("find_sdk_winxp/[>=1.0]@%s/stable" % self.user)
 
     def source(self):
         self.output.info("-------------- Unzip sources --------------------")

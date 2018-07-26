@@ -15,25 +15,15 @@ environment:
 
   CONAN_VISUAL_RUNTIMES: MDd, MD
   
-  CONAN_UPLOAD: https://api.bintray.com/conan/odant/conan
-  CONAN_LOGIN_USERNAME: dvetutnev
+  CONAN_UPLOAD: https://conan.kysa.me
+  CONAN_LOGIN_USERNAME: appveyor
   CONAN_STABLE_BRANCH_PATTERN: release/*
-  
+
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       CONAN_VISUAL_VERSIONS: 15
-      CONAN_VISUAL_TOOLSETS: v141_xp
-      CONAN_ARCHS: x86_64
-
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      CONAN_VISUAL_VERSIONS: 15
       CONAN_VISUAL_TOOLSETS: None
       CONAN_ARCHS: x86_64
-
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      CONAN_VISUAL_VERSIONS: 15
-      CONAN_VISUAL_TOOLSETS: v141_xp
-      CONAN_ARCHS: x86
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       CONAN_VISUAL_VERSIONS: 15
@@ -42,18 +32,8 @@ environment:
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       CONAN_VISUAL_VERSIONS: 14
-      CONAN_VISUAL_TOOLSETS: v140_xp
-      CONAN_ARCHS: x86_64
-
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      CONAN_VISUAL_VERSIONS: 14
       CONAN_VISUAL_TOOLSETS: None
       CONAN_ARCHS: x86_64
-
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      CONAN_VISUAL_VERSIONS: 14
-      CONAN_VISUAL_TOOLSETS: v140_xp
-      CONAN_ARCHS: x86
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       CONAN_VISUAL_VERSIONS: 14
@@ -61,16 +41,14 @@ environment:
       CONAN_ARCHS: x86
 
 install:
-  - git submodule update --init --recursive
-
   - set PATH=%PYTHON%;%PYTHON%\\Scripts\\;%PATH%
   - pip install conan
   - pip install conan_package_tools
 
   - conan user
-  
+
 build: false
-  
+
 test_script:
   - python build.py
 
