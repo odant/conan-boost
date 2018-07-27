@@ -37,6 +37,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_atomic
 )
+if(UNIX)
+    set_property(TEST test_boost_atomic PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_chrono test_boost_chrono.cpp)
@@ -51,6 +54,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_chrono
 )
+if(UNIX)
+    set_property(TEST test_boost_chrono PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_date_time test_boost_date_time.cpp)
@@ -65,6 +71,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_date_time
 )
+if(UNIX)
+    set_property(TEST test_boost_date_time PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_iostreams test_boost_iostreams.cpp)
@@ -79,6 +88,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_iostreams
 )
+if(UNIX)
+    set_property(TEST test_boost_iostreams PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_locale_case_conv test_boost_locale_case_conv.cpp)
@@ -97,6 +109,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_case_conv
 )
+if(UNIX)
+    set_property(TEST test_boost_locale_case_conv PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_locale_utf_to_utf test_boost_locale_utf_to_utf.cpp)
@@ -115,6 +130,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_utf_to_utf
 )
+if(UNIX)
+    set_property(TEST test_boost_locale_utf_to_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_regex test_boost_regex.cpp)
@@ -129,6 +147,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_regex
 )
+if(UNIX)
+    set_property(TEST test_boost_regex PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_system test_boost_system.cpp)
@@ -143,3 +164,7 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_system
 )
+if(UNIX)
+    set_property(TEST test_boost_system PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
+
