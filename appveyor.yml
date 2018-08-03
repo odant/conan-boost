@@ -14,7 +14,7 @@ environment:
   CONAN_STABLE_CHANNEL: stable
 
   CONAN_VISUAL_RUNTIMES: MDd, MD
-  
+
   CONAN_UPLOAD: https://conan.kysa.me
   CONAN_LOGIN_USERNAME: appveyor
   CONAN_STABLE_BRANCH_PATTERN: release/*
