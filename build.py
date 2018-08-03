@@ -23,6 +23,7 @@ def add_dll_sign(builds):
     result = []
     for settings, options, env_vars, build_requires, reference in builds:
         options = deepcopy(options)
+        options["zlib:dll_sign"] = dll_sign
         options["icu:dll_sign"] = dll_sign
         result.append([settings, options, env_vars, build_requires, reference])
     return result
