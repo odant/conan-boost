@@ -30,12 +30,9 @@ class BoostConan(ConanFile):
         "fPIC": [True, False]
     }
     default_options = "fPIC=True"
-    #------ internal ------
+    #
     _boost_name = "boost_%s" % version.replace(".", "_")
     _boost_archive = _boost_name + ".tar.gz"
-    _zlib_version = "1.2.11"
-    _icu_version = "61.1"
-    #------ internal ------
     exports_sources = (
         _boost_archive,
         "FindBoost.cmake",
@@ -43,9 +40,13 @@ class BoostConan(ConanFile):
         "boost.patch",
         "system_error_category_english_win.patch"
     )
+    #
     no_copy_source = True
     build_policy = "missing"
     short_paths = True
+    #
+    _zlib_version = "[>=1.2.3]"
+    _icu_version = "[>=61.1]"
 
     def configure(self):
         # Only C++11
@@ -57,7 +58,7 @@ class BoostConan(ConanFile):
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
-        self.requires("icu/%s@%s/testing" % (self._icu_version, self.user))
+        self.requires("icu/%s@%s/stable" % (self._icu_version, self.user))
 
     def build_requirements(self):
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
