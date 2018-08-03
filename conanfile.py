@@ -265,7 +265,7 @@ class BoostConan(ConanFile):
             "BOOST_NO_AUTO_PTR"
         ]
         if self.settings.os == "Windows":
-            self.cpp_info.defines.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
+            self.cpp_info.defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
         # Enable char16_t and char32_t
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             pass
