@@ -1,8 +1,9 @@
 // Boost test for Conan package
-// Dmitriy Vetutnev, Odant, 2018
+// Dmitriy Vetutnev, ODANT, 2018
 
 
 #include <boost/atomic.hpp>
+
 #include <thread>
 #include <iostream>
 #include <string>

@@ -1,8 +1,9 @@
 // Boost test for Conan package
-// Dmitriy Vetutnev, Odant, 2018
+// Dmitriy Vetutnev, ODANT, 2018
 
 
 #include <boost/regex.hpp>
+
 #include <iostream>
 #include <string>
 #include <cstdlib>

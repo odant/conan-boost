@@ -1,5 +1,5 @@
 // Boost test for Conan package
-// Dmitriy Vetutnev, Odant, 2018
+// Dmitriy Vetutnev, ODANT, 2018
 
 
 #include <boost/iostreams/device/array.hpp>

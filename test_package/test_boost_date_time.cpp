@@ -1,9 +1,10 @@
 // Boost test for Conan package
-// Dmitriy Vetutnev, Odant, 2018
+// Dmitriy Vetutnev, ODANT, 2018
 
 
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
+
 #include <iostream>
 #include <cstdlib>
 

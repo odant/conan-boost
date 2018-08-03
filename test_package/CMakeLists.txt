@@ -1,5 +1,5 @@
 # Boost test for Conan package
-# Dmitriy Vetutnev, Odant, 2018
+# Dmitriy Vetutnev, ODANT, 2018
 
 
 project(PackageTest CXX)
@@ -14,6 +14,7 @@ find_package(Boost REQUIRED
     atomic
     chrono
     date_time
+    filesystem
     iostreams
     locale
     regex
@@ -73,6 +74,23 @@ add_test(
 )
 if(UNIX)
     set_property(TEST test_boost_date_time PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
+
+
+add_executable(test_boost_filesystem test_boost_filesystem.cpp)
+target_link_libraries(test_boost_filesystem Boost::filesystem)
+set_target_properties(test_boost_filesystem
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_filesystem
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_filesystem
+)
+if(UNIX)
+    set_property(TEST test_boost_filesystem PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
 endif()
 
 
