@@ -238,16 +238,19 @@ class BoostConan(ConanFile):
             ])
         if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
-            flags.append("/D_CRT_SECURE_NO_WARNINGS")
-            flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
+        if self.settings.os == "Windows":
             toolset = str(self.settings.compiler.get_safe("toolset"))
             if toolset.endswith("_xp"):
                 _win32_winnt = "0x0502" if self.settings.arch == "x86_64" else "0x0501"
                 flags.append("/D_WIN32_WINNT=%s" % _win32_winnt)
+            else:
+                flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
+            if self.settings.compiler == "Visual Studio":
+                flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
+                flags.append("/D_CRT_SECURE_NO_WARNINGS")
+                flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
         return flags
-        
+
     def package(self):
         self.copy("FindBoost.cmake", dst=".", src=".")
         self.copy("_FindBoost.cmake", dst=".", src=".")
@@ -259,17 +262,20 @@ class BoostConan(ConanFile):
         self.cpp_info.libs = tools.collect_libs(self)
         self.cpp_info.defines = [
             "BOOST_USE_STATIC_LIBS",
-            "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE",
             "BOOST_NO_AUTO_PTR"
         ]
+        if self.settings.os == "Windows":
+            self.cpp_info.defines.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
         # Enable char16_t and char32_t
-        if self.settings.compiler == "Visual Studio":
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             pass
         else:
             self.cpp_info.defines.extend([
                 "BOOST_LOCALE_ENABLE_CHAR16_T",
                 "BOOST_LOCALE_ENABLE_CHAR32_T"
             ])
-        # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            self.cpp_info.defines.append("BOOST_ALL_NO_LIB")
+            self.cpp_info.defines.extend([
+                "BOOST_ALL_NO_LIB", # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
+                "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE"
+            ])
