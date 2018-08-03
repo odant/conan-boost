@@ -17,6 +17,7 @@ find_package(Boost REQUIRED
     filesystem
     iostreams
     locale
+    random
     regex
     system
     thread
@@ -150,6 +151,23 @@ add_test(
 )
 if(UNIX)
     set_property(TEST test_boost_locale_utf_to_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
+
+
+add_executable(test_boost_random test_boost_random.cpp)
+target_link_libraries(test_boost_random Boost::random)
+set_target_properties(test_boost_random
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_random
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_random
+)
+if(UNIX)
+    set_property(TEST test_boost_random PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
 endif()
 
 
