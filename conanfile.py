@@ -4,7 +4,7 @@
 
 from conans import ConanFile, tools
 from conans.errors import ConanException
-import os, glob
+import os
 
 
 def get_safe(options, name):
