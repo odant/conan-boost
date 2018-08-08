@@ -133,6 +133,27 @@ if(UNIX)
 endif()
 
 
+add_executable(test_boost_locale_numbers test_boost_locale_numbers.cpp)
+target_link_libraries(test_boost_locale_numbers
+    Boost::locale
+    Boost::system
+    Boost::thread
+)
+set_target_properties(test_boost_locale_numbers
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_locale_numbers
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_locale_numbers
+)
+if(UNIX)
+    set_property(TEST test_boost_locale_numbers PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
+
+
 add_executable(test_boost_locale_utf_to_utf test_boost_locale_utf_to_utf.cpp)
 target_link_libraries(test_boost_locale_utf_to_utf
     Boost::locale
