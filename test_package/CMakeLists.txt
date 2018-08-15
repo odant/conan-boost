@@ -174,7 +174,7 @@ if(UNIX)
     set_property(TEST test_boost_locale_utf_to_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
 endif()
 
-if(NOT DEFINED $ENV{APPVEYOR})
+if(NOT DEFINED ENV{APPVEYOR})
 add_executable(test_boost_locale_to_utf_from_utf test_boost_locale_to_utf_from_utf.cpp)
 target_link_libraries(test_boost_locale_to_utf_from_utf
     Boost::locale
@@ -194,7 +194,7 @@ add_test(
 if(UNIX)
     set_property(TEST test_boost_locale_to_utf_from_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
 endif()
-endif()
+endif() # Not Appveyor
 
 add_executable(test_boost_random test_boost_random.cpp)
 target_link_libraries(test_boost_random Boost::random)
