@@ -175,6 +175,27 @@ if(UNIX)
 endif()
 
 
+add_executable(test_boost_locale_to_utf_from_utf test_boost_locale_to_utf_from_utf.cpp)
+target_link_libraries(test_boost_locale_to_utf_from_utf
+    Boost::locale
+    Boost::system
+    Boost::thread
+)
+set_target_properties(test_boost_locale_to_utf_from_utf
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_locale_to_utf_from_utf
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_locale_to_utf_from_utf
+)
+if(UNIX)
+    set_property(TEST test_boost_locale_to_utf_from_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
+
+
 add_executable(test_boost_random test_boost_random.cpp)
 target_link_libraries(test_boost_random Boost::random)
 set_target_properties(test_boost_random
