@@ -18,6 +18,7 @@ find_package(Boost REQUIRED
     filesystem
     iostreams
     locale
+    log
     random
     regex
     system
@@ -213,6 +214,24 @@ if(UNIX)
     set_property(TEST test_boost_locale_to_utf_from_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
 endif()
 endif() # Not Appveyor
+
+
+add_executable(test_boost_log test_boost_log.cpp)
+target_link_libraries(test_boost_log Boost::log)
+set_target_properties(test_boost_log
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_log
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_log
+)
+if(UNIX)
+    set_property(TEST test_boost_log PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
+
 
 add_executable(test_boost_random test_boost_random.cpp)
 target_link_libraries(test_boost_random Boost::random)
