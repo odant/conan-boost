@@ -181,6 +181,7 @@ class BoostConan(ConanFile):
         libs = [
             "--with-atomic",
             "--with-chrono",
+            "--with-container",
             "--with-context",
             "--with-coroutine",
             "--with-date_time",

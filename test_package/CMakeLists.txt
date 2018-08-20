@@ -13,6 +13,7 @@ find_package(Threads REQUIRED)
 find_package(Boost REQUIRED
     atomic
     chrono
+    container
     date_time
     filesystem
     iostreams
@@ -58,6 +59,23 @@ add_test(
 )
 if(UNIX)
     set_property(TEST test_boost_chrono PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
+
+
+add_executable(test_boost_container test_boost_container.cpp)
+target_link_libraries(test_boost_container Boost::container)
+set_target_properties(test_boost_container
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_boost_container
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_boost_container
+)
+if(UNIX)
+    set_property(TEST test_boost_container PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
 endif()
 
 
