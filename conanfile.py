@@ -16,7 +16,7 @@ def get_safe(options, name):
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.67.0"
+    version = "1.68.0"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -32,12 +32,12 @@ class BoostConan(ConanFile):
     default_options = "fPIC=True"
     #
     _boost_name = "boost_%s" % version.replace(".", "_")
-    _boost_archive = _boost_name + ".tar.gz"
     exports_sources = (
-        _boost_archive,
+        _boost_name + "/*",
         "FindBoost.cmake",
         "_FindBoost.cmake",
-        "boost.patch",
+        "multiprecision.patch",
+        "weak_ptr.patch",
         "system_error_category_english_win.patch"
     )
     #
@@ -66,12 +66,8 @@ class BoostConan(ConanFile):
             self.build_requires("find_sdk_winxp/[>=1.0]@%s/stable" % self.user)
 
     def source(self):
-        self.output.info("-------------- Unzip sources --------------------")
-        self.output.info("Current directory => %s" % os.getcwd())
-        tools.rmdir(self._boost_name)
-        tools.unzip(self._boost_archive)
-        os.remove(self._boost_archive)
-        tools.patch(patch_file="boost.patch")
+        tools.patch(patch_file="weak_ptr.patch")
+        tools.patch(patch_file="multiprecision.patch")
         tools.patch(patch_file="system_error_category_english_win.patch")
 
     def build(self):
@@ -183,6 +179,7 @@ class BoostConan(ConanFile):
             "--with-chrono",
             "--with-container",
             "--with-context",
+            "--with-contract",
             "--with-coroutine",
             "--with-date_time",
             "--with-exception",

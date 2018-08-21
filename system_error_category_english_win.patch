@@ -1,6 +1,6 @@
---- a/boost_1_67_0/boost/system/detail/error_code.ipp
-+++ b/boost_1_67_0/boost/system/detail/error_code.ipp
-@@ -393,8 +393,8 @@
+--- a/boost_1_68_0/boost/system/detail/error_code.ipp
++++ b/boost_1_68_0/boost/system/detail/error_code.ipp
+@@ -365,8 +365,8 @@
              boost::winapi::FORMAT_MESSAGE_IGNORE_INSERTS_,
              NULL,
              ev,
@@ -11,7 +11,7 @@
              &buf[0],
              static_cast<boost::winapi::DWORD_>(buf.size()),
              NULL
-@@ -440,8 +440,8 @@
+@@ -412,8 +412,8 @@
          boost::winapi::FORMAT_MESSAGE_IGNORE_INSERTS_,
          NULL,
          ev,
@@ -22,27 +22,27 @@
          (boost::winapi::LPSTR_) &lpMsgBuf,
          0,
          NULL
---- a/boost_1_67_0/boost/winapi/error_handling.hpp
-+++ b/boost_1_67_0/boost/winapi/error_handling.hpp
+--- a/boost_1_68_0/boost/winapi/error_handling.hpp
++++ b/boost_1_68_0/boost/winapi/error_handling.hpp
 @@ -67,8 +67,10 @@
  
- const WORD_ LANG_NEUTRAL_=                  LANG_NEUTRAL;
- const WORD_ LANG_INVARIANT_=                LANG_INVARIANT;
-+const WORD_ LANG_ENGLISH_=                  LANG_ENGLISH;
+ BOOST_CONSTEXPR_OR_CONST WORD_ LANG_NEUTRAL_=                  LANG_NEUTRAL;
+ BOOST_CONSTEXPR_OR_CONST WORD_ LANG_INVARIANT_=                LANG_INVARIANT;
++BOOST_CONSTEXPR_OR_CONST WORD_ LANG_ENGLISH_=                  LANG_ENGLISH;
  
- const WORD_ SUBLANG_DEFAULT_=               SUBLANG_DEFAULT;    // user default
-+const WORD_ SUBLANG_ENGLISH_US_=            SUBLANG_ENGLISH_US;
+ BOOST_CONSTEXPR_OR_CONST WORD_ SUBLANG_DEFAULT_=               SUBLANG_DEFAULT;    // user default
++BOOST_CONSTEXPR_OR_CONST WORD_ SUBLANG_ENGLISH_US_=            SUBLANG_ENGLISH_US;
  
  BOOST_FORCEINLINE BOOST_CONSTEXPR WORD_ MAKELANGID_(WORD_ p, WORD_ s) BOOST_NOEXCEPT
  {
 @@ -96,8 +98,10 @@
  
- const WORD_ LANG_NEUTRAL_=                  0x00;
- const WORD_ LANG_INVARIANT_=                0x7f;
-+const WORD_ LANG_ENGLISH_=                  0x09;
+ BOOST_CONSTEXPR_OR_CONST WORD_ LANG_NEUTRAL_=                  0x00;
+ BOOST_CONSTEXPR_OR_CONST WORD_ LANG_INVARIANT_=                0x7f;
++BOOST_CONSTEXPR_OR_CONST WORD_ LANG_ENGLISH_=                  0x09;
  
- const WORD_ SUBLANG_DEFAULT_=               0x01;    // user default
-+const WORD_ SUBLANG_ENGLISH_US_=            0x01;
+ BOOST_CONSTEXPR_OR_CONST WORD_ SUBLANG_DEFAULT_=               0x01;    // user default
++BOOST_CONSTEXPR_OR_CONST WORD_ SUBLANG_ENGLISH_US_=            0x01;
  
  BOOST_FORCEINLINE BOOST_CONSTEXPR WORD_ MAKELANGID_(WORD_ p, WORD_ s) BOOST_NOEXCEPT
  {
