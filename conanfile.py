@@ -69,6 +69,8 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="weak_ptr.patch")
         tools.patch(patch_file="multiprecision.patch")
         tools.patch(patch_file="system_error_category_english_win.patch")
+        if not tools.os_info.is_windows:
+            self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
 
     def build(self):
         source_folder = os.path.join(self.source_folder, self._boost_name)
