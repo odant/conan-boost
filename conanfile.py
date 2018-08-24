@@ -34,11 +34,9 @@ class BoostConan(ConanFile):
     _boost_name = "boost_%s" % version.replace(".", "_")
     exports_sources = (
         _boost_name + "/*",
-        "FindBoost.cmake",
-        "_FindBoost.cmake",
-        "multiprecision.patch",
-        "weak_ptr.patch",
-        "system_error_category_english_win.patch"
+        "!" + _boost_name + "/more*", "!*/doc/*", "!*/test/*", # Exclude documentation and tests
+        "FindBoost.cmake", "_FindBoost.cmake",
+        "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch"
     )
     #
     no_copy_source = True
