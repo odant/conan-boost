@@ -10,9 +10,10 @@ set(Boost_USE_STATIC_LIBS ON)
 set(Boost_NO_SYSTEM_PATHS ON)
 set(Boost_NO_BOOST_CMAKE ON)
 
-set(Boost_ADDITIONAL_VERSIONS "1.68.0" "1.68")
+#set(Boost_DEBUG ON)
+set(Boost_DETAILED_FAILURE_MSG ON)
 
-# For old CMake version
+# For CMake version < 3.12
 if(WIN32 AND NOT MSVC_TOOLSET_VERSION)
 
     if(NOT MSVC_VERSION VERSION_LESS 1400 AND MSVC_VERSION VERSION_LESS 1500)
@@ -34,9 +35,6 @@ if(WIN32 AND NOT MSVC_TOOLSET_VERSION)
     endif()
 
 endif()
-
-#set(Boost_DEBUG ON)
-set(Boost_DETAILED_FAILURE_MSG ON)
 
 
 include(${CMAKE_CURRENT_LIST_DIR}/_FindBoost.cmake)
