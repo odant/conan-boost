@@ -16,7 +16,7 @@ def get_safe(options, name):
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.68.0"
+    version = "1.68.0+1"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -31,7 +31,7 @@ class BoostConan(ConanFile):
     }
     default_options = "fPIC=True"
     #
-    _boost_name = "boost_%s" % version.replace(".", "_")
+    _boost_name = "boost_%s" % version.replace(".", "_").split("+")[0]
     exports_sources = (
         _boost_name + "/*",
         "!" + _boost_name + "/more*", "!*/doc/*", "!*/test/*", # Exclude documentation and tests
@@ -167,7 +167,7 @@ class BoostConan(ConanFile):
     def get_build_environment(self):
         env = {}
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            env = tools.vcvars_dict(self.settings, filter_known_paths=True, force=True)
+            env = tools.vcvars_dict(self.settings, filter_known_paths=False, force=True)
             toolset = str(self.settings.compiler.get_safe("toolset"))
             if toolset.endswith("_xp"):
                 import find_sdk_winxp
