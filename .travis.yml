@@ -26,7 +26,7 @@ matrix:
     - <<: *linux_build
       env:
        CONAN_GCC_VERSIONS: 6
-       CONAN_DOCKER_IMAGE: conanop/gcc6
+       CONAN_DOCKER_IMAGE: conanio/gcc6
        CONAN_ARCHS: x86_64
 
     - <<: *linux_build
