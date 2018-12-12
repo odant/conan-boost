@@ -1,7 +1,7 @@
 skip_tags: true
 
 environment:
-  PYTHON: C:\\Python27-x64
+  PYTHON: C:\\Python37-x64
 
   CONAN_PRINT_RUN_COMMANDS: 1
   CONAN_LOG_RUN_TO_OUTPUT: 1
@@ -26,14 +26,6 @@ environment:
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       CONAN_VISUAL_VERSIONS: 15
-      CONAN_ARCHS: x86
-
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      CONAN_VISUAL_VERSIONS: 14
-      CONAN_ARCHS: x86_64
-
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      CONAN_VISUAL_VERSIONS: 14
       CONAN_ARCHS: x86
 
 install:
