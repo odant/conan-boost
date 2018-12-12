@@ -123,6 +123,9 @@ class BoostConan(ConanFile):
             "variant=%s" % str(self.settings.build_type).lower(),
             "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32"}.get(str(self.settings.arch))
         ])
+		# add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+            flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
         # locale use ICU
         icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
         icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
@@ -265,6 +268,9 @@ class BoostConan(ConanFile):
         ]
         if self.settings.os == "Windows":
             self.cpp_info.defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
+		# add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+            self.cpp_info.defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
         # Enable char16_t and char32_t
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             pass
