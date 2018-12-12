@@ -1,6 +1,6 @@
---- a/boost_1_68_0/boost/multiprecision/detail/default_ops.hpp
-+++ b/boost_1_68_0/boost/multiprecision/detail/default_ops.hpp
-@@ -381,7 +381,7 @@
+--- a/boost_1_69_0/boost/multiprecision/detail/default_ops.hpp
++++ b/boost_1_69_0/boost/multiprecision/detail/default_ops.hpp
+@@ -384,7 +384,7 @@ inline void eval_multiply_default(T& t, const T& u, const T& v)
        eval_multiply(t, v);
     }
  }
@@ -9,7 +9,7 @@
  template <class T, class U>
  inline typename enable_if_c<is_convertible<U, number<T, et_on> >::value && !is_convertible<U, T>::value>::type eval_multiply_default(T& t, const T& u, const U& v)
  {
-@@ -500,7 +500,7 @@
+@@ -503,7 +503,7 @@ inline void eval_divide_default(T& t, const T& u, const T& v)
        eval_divide(t, v);
     }
  }

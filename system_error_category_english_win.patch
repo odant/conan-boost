@@ -1,29 +1,25 @@
---- a/boost_1_68_0/boost/system/detail/error_code.ipp
-+++ b/boost_1_68_0/boost/system/detail/error_code.ipp
-@@ -365,8 +365,8 @@
-             boost::winapi::FORMAT_MESSAGE_IGNORE_INSERTS_,
-             NULL,
-             ev,
--            boost::winapi::MAKELANGID_(boost::winapi::LANG_NEUTRAL_,
--            boost::winapi::SUBLANG_DEFAULT_), // Default language
-+            boost::winapi::MAKELANGID_(boost::winapi::LANG_ENGLISH_,
-+            boost::winapi::SUBLANG_ENGLISH_US_), // Force english language
-             &buf[0],
-             static_cast<boost::winapi::DWORD_>(buf.size()),
-             NULL
-@@ -412,8 +412,8 @@
-         boost::winapi::FORMAT_MESSAGE_IGNORE_INSERTS_,
+--- a/boost_1_69_0/boost/system/detail/system_category_win32.hpp
++++ b/boost_1_69_0/boost/system/detail/system_category_win32.hpp
+@@ -97,7 +97,7 @@ inline char const * system_category_message_win32( int ev, char * buffer, std::s
+         FORMAT_MESSAGE_FROM_SYSTEM_ | FORMAT_MESSAGE_IGNORE_INSERTS_,
          NULL,
          ev,
--        boost::winapi::MAKELANGID_(boost::winapi::LANG_NEUTRAL_,
--        boost::winapi::SUBLANG_DEFAULT_), // Default language
-+        boost::winapi::MAKELANGID_(boost::winapi::LANG_ENGLISH_,
-+        boost::winapi::SUBLANG_ENGLISH_US_), // Force english language
-         (boost::winapi::LPSTR_) &lpMsgBuf,
+-        MAKELANGID_( LANG_NEUTRAL_, SUBLANG_DEFAULT_ ), // Default language
++        MAKELANGID_( LANG_ENGLISH_, SUBLANG_ENGLISH_US_ ), // Default language
+         wbuffer,
+         static_cast<DWORD_>( len ),
+         NULL
+@@ -158,7 +158,7 @@ inline std::string system_category_message_win32( int ev )
+         FORMAT_MESSAGE_ALLOCATE_BUFFER_ | FORMAT_MESSAGE_FROM_SYSTEM_ | FORMAT_MESSAGE_IGNORE_INSERTS_,
+         NULL,
+         ev,
+-        MAKELANGID_( LANG_NEUTRAL_, SUBLANG_DEFAULT_ ), // Default language
++        MAKELANGID_( LANG_ENGLISH_, SUBLANG_ENGLISH_US_ ), // Default language
+         (LPWSTR_) &lpMsgBuf,
          0,
          NULL
---- a/boost_1_68_0/boost/winapi/error_handling.hpp
-+++ b/boost_1_68_0/boost/winapi/error_handling.hpp
+--- a/boost_1_69_0/boost/winapi/error_handling.hpp
++++ b/boost_1_69_0/boost/winapi/error_handling.hpp
 @@ -67,8 +67,10 @@
  
  BOOST_CONSTEXPR_OR_CONST WORD_ LANG_NEUTRAL_=                  LANG_NEUTRAL;
