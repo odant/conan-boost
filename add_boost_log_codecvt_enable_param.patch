@@ -1,0 +1,11 @@
+--- a/boost_1_69_0/boost/log/detail/config.hpp
++++ b/boost_1_69_0/boost/log/detail/config.hpp
+@@ -104,7 +104,7 @@
+ #   define BOOST_LOG_BROKEN_CONSTANT_EXPRESSIONS
+ #endif
+ 
+-#if defined(BOOST_NO_CXX11_HDR_CODECVT)
++#if defined(BOOST_NO_CXX11_HDR_CODECVT) && !defined(BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE)
+     // The compiler does not support std::codecvt<char16_t> and std::codecvt<char32_t> specializations.
+     // The BOOST_NO_CXX11_HDR_CODECVT means there's no usable <codecvt>, which is slightly different from this macro.
+     // But in order for <codecvt> to be implemented the std::codecvt specializations have to be implemented as well.

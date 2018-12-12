@@ -36,7 +36,7 @@ class BoostConan(ConanFile):
         _boost_name + "/*",
         "!" + _boost_name + "/more*", "!*/doc/*", "!*/test/*", # Exclude documentation and tests
         "FindBoost.cmake", "_FindBoost.cmake",
-        "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch"
+        "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch", "add_boost_log_codecvt_enable_param.patch"
     )
     #
     no_copy_source = True
@@ -67,6 +67,7 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="weak_ptr.patch")
         tools.patch(patch_file="multiprecision.patch")
         tools.patch(patch_file="system_error_category_english_win.patch")
+        tools.patch(patch_file="add_boost_log_codecvt_enable_param.patch")
         if not tools.os_info.is_windows:
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
