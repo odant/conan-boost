@@ -1,5 +1,5 @@
---- a/boost_1_69_0/boost/multiprecision/detail/default_ops.hpp
-+++ b/boost_1_69_0/boost/multiprecision/detail/default_ops.hpp
+--- a/boost_1_70_0/boost/multiprecision/detail/default_ops.hpp
++++ b/boost_1_70_0/boost/multiprecision/detail/default_ops.hpp
 @@ -384,7 +384,7 @@ inline void eval_multiply_default(T& t, const T& u, const T& v)
        eval_multiply(t, v);
     }

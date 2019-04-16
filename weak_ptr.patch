@@ -1,5 +1,5 @@
---- a/boost_1_69_0/boost/smart_ptr/weak_ptr.hpp
-+++ b/boost_1_69_0/boost/smart_ptr/weak_ptr.hpp
+--- a/boost_1_70_0/boost/smart_ptr/weak_ptr.hpp
++++ b/boost_1_70_0/boost/smart_ptr/weak_ptr.hpp
 @@ -231,6 +231,8 @@
  
      template<class Y> friend class weak_ptr;
