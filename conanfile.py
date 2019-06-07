@@ -16,7 +16,7 @@ def get_safe(options, name):
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.70.0+0"
+    version = "1.70.0+1"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -116,10 +116,14 @@ class BoostConan(ConanFile):
         ])
         flags += self.get_libraries_list()
         toolset, _, _ = self.get_toolset()
+        runtime_link = "shared"
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+            if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
+                runtime_link = "static"
         flags.extend([
             "toolset=%s" % toolset,
             "link=static",
-            "runtime-link=shared",
+            "runtime-link=%s" % runtime_link,
             "variant=%s" % str(self.settings.build_type).lower(),
             "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32"}.get(str(self.settings.arch))
         ])
@@ -284,3 +288,5 @@ class BoostConan(ConanFile):
                 "BOOST_ALL_NO_LIB", # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
                 "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE"
             ])
+            if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
+                self.user_info.USE_STATIC_RUNTIME = True
