@@ -58,11 +58,6 @@ class BoostConan(ConanFile):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
         self.requires("icu/%s@%s/stable" % (self._icu_version, self.user))
 
-    def build_requirements(self):
-        toolset = str(self.settings.compiler.get_safe("toolset"))
-        if toolset.endswith("_xp"):
-            self.build_requires("find_sdk_winxp/[>=1.0]@%s/stable" % self.user)
-
     def source(self):
         tools.patch(patch_file="weak_ptr.patch")
         tools.patch(patch_file="multiprecision.patch")
@@ -178,10 +173,6 @@ class BoostConan(ConanFile):
         env = {}
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             env = tools.vcvars_dict(self.settings, filter_known_paths=False, force=True)
-            toolset = str(self.settings.compiler.get_safe("toolset"))
-            if toolset.endswith("_xp"):
-                import find_sdk_winxp
-                env = find_sdk_winxp.dict_append(self.settings.arch, env=env)
         return env
 
     def get_libraries_list(self):
@@ -216,10 +207,6 @@ class BoostConan(ConanFile):
             "--with-type_erasure",
             "--with-wave"
         ]
-        # No build Boost.Fiber for WinXP
-        toolset = str(self.settings.compiler.get_safe("toolset"))
-        if toolset.endswith("_xp"):
-            libs.remove("--with-fiber")
         return libs
 
     def get_toolset(self):
@@ -246,12 +233,7 @@ class BoostConan(ConanFile):
         if get_safe(self.options, "fPIC"):
             flags.append("-fPIC")
         if self.settings.os == "Windows":
-            toolset = str(self.settings.compiler.get_safe("toolset"))
-            if toolset.endswith("_xp"):
-                _win32_winnt = "0x0502" if self.settings.arch == "x86_64" else "0x0501"
-                flags.append("/D_WIN32_WINNT=%s" % _win32_winnt)
-            else:
-                flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
+            flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
             if self.settings.compiler == "Visual Studio":
                 flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
                 flags.append("/D_CRT_SECURE_NO_WARNINGS")
