@@ -149,6 +149,8 @@ class BoostConan(ConanFile):
             "-sICU_PATH=%s" % icu_path,
             "-sICU_LINK=\"%s\"" % " ".join(icu_libs)
         ])
+        for d in self.deps_cpp_info["icu"].defines:
+            flags.append("define=%s" % d)
         return flags
 
     def generate_user_config_jam(self, build_folder):
@@ -231,8 +233,7 @@ class BoostConan(ConanFile):
     # List compiler flags
     def get_compiler_flags(self):
         flags = [
-            "-DBOOST_NO_AUTO_PTR",
-            "-DU_DISABLE_RENAMING=1"
+            "-DBOOST_NO_AUTO_PTR"
         ]
         # Enable char16_t and char32_t
         if self.settings.compiler == "Visual Studio":
