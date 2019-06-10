@@ -129,24 +129,22 @@ class BoostConan(ConanFile):
             flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
         # locale use ICU
         icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
-        icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
-        prefix = "" if self.settings.os == "Windows" else "lib"
-        ext = ".lib" if self.settings.os == "Windows" else ".so"
-        icu_libs = []
-        for lib in self.deps_cpp_info["icu"].libs:
-            lib = "%s%s%s" % (prefix, lib, ext)
-            lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
-            icu_libs.append(lib)
         flags.extend([
             "boost.locale.icu=on",
             "boost.locale.iconv=off",
             "boost.locale.winapi=off",
             "boost.locale.std=off",
             "boost.locale.posix=off",
-            "-sICU_PATH=%s" % icu_path,
-            "-sICU_LINK=\"%s\"" % " ".join(icu_libs)
+            "-sICU_PATH=%s" % icu_path
         ])
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+            icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
+            icu_libs = []
+            for lib in self.deps_cpp_info["icu"].libs:
+                lib = "%s.lib" % lib
+                lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
+                icu_libs.append(lib)
+            flags.append("-sICU_LINK=\"%s\"" % " ".join(icu_libs))
             if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
                 flags.append("-sICU_STATIC_RUNTIME=True")
         for d in self.deps_cpp_info["icu"].defines:
