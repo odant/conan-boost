@@ -36,7 +36,8 @@ class BoostConan(ConanFile):
         _boost_name + "/*",
         "!" + _boost_name + "/more*", "!*/doc/*", "!*/test/*", # Exclude documentation and tests
         "FindBoost.cmake", "_FindBoost.cmake",
-        "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch", "add_boost_log_codecvt_enable_param.patch"
+        "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch", "add_boost_log_codecvt_enable_param.patch",
+        "icu_static_runtime.patch"
     )
     #
     no_copy_source = True
@@ -63,6 +64,7 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="multiprecision.patch")
         tools.patch(patch_file="system_error_category_english_win.patch")
         tools.patch(patch_file="add_boost_log_codecvt_enable_param.patch")
+        tools.patch(patch_file="icu_static_runtime.patch")
         if not tools.os_info.is_windows:
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
@@ -144,6 +146,9 @@ class BoostConan(ConanFile):
             "-sICU_PATH=%s" % icu_path,
             "-sICU_LINK=\"%s\"" % " ".join(icu_libs)
         ])
+        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+            if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
+                flags.append("-sICU_STATIC_RUNTIME=True")
         for d in self.deps_cpp_info["icu"].defines:
             flags.append("define=%s" % d)
         return flags

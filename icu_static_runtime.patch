@@ -1,0 +1,27 @@
+diff --git a/boost_1_70_0/libs/locale/build/Jamfile.v2 b/boost_1_70_0/libs/locale/build/Jamfile.v2
+index 578e722ee..4d8d72210 100644
+--- a/boost_1_70_0/libs/locale/build/Jamfile.v2
++++ b/boost_1_70_0/libs/locale/build/Jamfile.v2
+@@ -62,11 +62,20 @@ explicit has_xlocale ;
+ 
+ ICU_PATH =  [ modules.peek : ICU_PATH ] ;
+ ICU_LINK =  [ modules.peek : ICU_LINK ] ;
++ICU_STATIC_RUNTIME =  [ modules.peek : ICU_STATIC_RUNTIME ] ;
+ 
+ if $(ICU_LINK)
+ {
+-    ICU_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin <runtime-link>shared ;
+-    ICU64_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin64 <runtime-link>shared ;
++    if $(ICU_STATIC_RUNTIME)
++    {
++        ICU_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin <runtime-link>static ;
++        ICU64_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin64 <runtime-link>static ;
++    }
++    else
++    {
++        ICU_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin <runtime-link>shared ;
++        ICU64_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin64 <runtime-link>shared ;
++    }
+ }
+ else
+ {
