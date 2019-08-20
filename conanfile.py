@@ -35,7 +35,7 @@ class BoostConan(ConanFile):
     exports_sources = (
         _boost_name + "/*",
         "!" + _boost_name + "/more*", "!*/doc/*", "!*/test/*", # Exclude documentation and tests
-        "FindBoost.cmake", "_FindBoost.cmake",
+        "FindBoost.cmake", "_FindBoost.cmake", "FindPackageHandleStandardArgs.cmake", "FindPackageMessage.cmake",
         "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch", "add_boost_log_codecvt_enable_param.patch",
         "icu_static_runtime.patch"
     )
@@ -251,6 +251,8 @@ class BoostConan(ConanFile):
     def package(self):
         self.copy("FindBoost.cmake", dst=".", src=".")
         self.copy("_FindBoost.cmake", dst=".", src=".")
+        self.copy("FindPackageHandleStandardArgs.cmake", dst=".", src=".")
+        self.copy("FindPackageMessage.cmake", dst=".", src=".")
         self.copy(pattern="*", src="%s/boost" % self._boost_name, dst="include/boost")
         self.copy("*.lib", src="stage", dst="lib", keep_path=False)
         self.copy("*.a", src="stage", dst="lib", keep_path=False)
