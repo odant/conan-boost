@@ -1,7 +1,5 @@
-diff --git a/boost_1_70_0/libs/locale/build/Jamfile.v2 b/boost_1_70_0/libs/locale/build/Jamfile.v2
-index 578e722ee..4d8d72210 100644
---- a/boost_1_70_0/libs/locale/build/Jamfile.v2
-+++ b/boost_1_70_0/libs/locale/build/Jamfile.v2
+--- a/boost_1_71_0/libs/locale/build/Jamfile.v2
++++ b/boost_1_71_0/libs/locale/build/Jamfile.v2
 @@ -62,11 +62,20 @@ explicit has_xlocale ;
  
  ICU_PATH =  [ modules.peek : ICU_PATH ] ;

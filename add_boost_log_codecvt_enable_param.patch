@@ -1,5 +1,5 @@
---- a/boost_1_70_0/boost/log/detail/config.hpp
-+++ b/boost_1_70_0/boost/log/detail/config.hpp
+--- a/boost_1_71_0/boost/log/detail/config.hpp
++++ b/boost_1_71_0/boost/log/detail/config.hpp
 @@ -104,7 +104,7 @@
  #   define BOOST_LOG_BROKEN_CONSTANT_EXPRESSIONS
  #endif
