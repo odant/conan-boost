@@ -5,7 +5,7 @@
     }
  }
 -#if !BOOST_WORKAROUND(BOOST_MSVC, < 1900)
-+#if !BOOST_WORKAROUND(BOOST_MSVC, < 2500)
++#if false
  template <class T, class U>
  inline typename enable_if_c<is_convertible<U, number<T, et_on> >::value && !is_convertible<U, T>::value>::type eval_multiply_default(T& t, const T& u, const U& v)
  {
@@ -14,7 +14,7 @@
     }
  }
 -#if !BOOST_WORKAROUND(BOOST_MSVC, < 1900)
-+#if !BOOST_WORKAROUND(BOOST_MSVC, < 2500)
++#if false
  template <class T, class U>
  inline typename enable_if_c<is_convertible<U, number<T, et_on> >::value && !is_convertible<U, T>::value>::type eval_divide_default(T& t, const T& u, const U& v)
  {
