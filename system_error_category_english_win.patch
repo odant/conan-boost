@@ -5,7 +5,7 @@
              NULL,
              ev,
 -            MAKELANGID_( LANG_NEUTRAL_, SUBLANG_DEFAULT_ ), // Default language
-+            MAKELANGID_( LANG_NEUTRAL_, SUBLANG_ENGLISH_US_ ), // Default language
++            MAKELANGID_( LANG_ENGLISH_, SUBLANG_ENGLISH_US_ ), // Default language
              buffer,
              static_cast<DWORD_>( len ),
              NULL
@@ -14,7 +14,7 @@
              NULL,
              ev,
 -            MAKELANGID_( LANG_NEUTRAL_, SUBLANG_DEFAULT_ ), // Default language
-+            MAKELANGID_( LANG_NEUTRAL_, SUBLANG_ENGLISH_US_ ), // Default language
++            MAKELANGID_( LANG_ENGLISH_, SUBLANG_ENGLISH_US_ ), // Default language
              (LPWSTR_) &lpMsgBuf,
              0,
              NULL
@@ -23,7 +23,7 @@
          NULL,
          ev,
 -        MAKELANGID_( LANG_NEUTRAL_, SUBLANG_DEFAULT_ ), // Default language
-+        MAKELANGID_( LANG_NEUTRAL_, SUBLANG_ENGLISH_US_ ), // Default language
++        MAKELANGID_( LANG_ENGLISH_, SUBLANG_ENGLISH_US_ ), // Default language
          (LPWSTR_) &lpMsgBuf,
          0,
          NULL
