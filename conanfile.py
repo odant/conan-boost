@@ -24,7 +24,7 @@ class BoostConan(ConanFile):
         "os": ["Windows", "Linux"],
         "compiler": ["Visual Studio", "gcc"],
         "build_type": ["Debug", "Release"],
-        "arch": ["x86_64", "x86", "mips"]
+        "arch": ["x86_64", "x86", "mips", "armv7"]
     }
     options = {
         "fPIC": [True, False]
@@ -122,7 +122,7 @@ class BoostConan(ConanFile):
             "link=static",
             "runtime-link=%s" % runtime_link,
             "variant=%s" % str(self.settings.build_type).lower(),
-            "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32"}.get(str(self.settings.arch))
+            "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32", "armv7": "32"}.get(str(self.settings.arch))
         ])
         # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
