@@ -223,6 +223,12 @@ set_target_properties(test_boost_log
     INSTALL_RPATH "$ORIGIN"
     BUILD_WITH_INSTALL_RPATH True
 )
+message(STATUS "CONAN_LINK_RUNTIME: ${CONAN_LINK_RUNTIME}")
+if(MSVC AND ("${CONAN_LINK_RUNTIME}" STREQUAL "/MD" OR "${CONAN_LINK_RUNTIME}" STREQUAL "/MDd"))
+    message(STATUS "Build facets Id")
+    add_library(facets_id SHARED facets_id.cpp)
+    target_link_libraries(test_boost_log facets_id)
+endif()
 add_test(
     NAME test_boost_log
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
