@@ -15,7 +15,7 @@ class PackageTestConan(ConanFile):
         self.copy("*.so*", dst="bin", src="lib")
 
     def build(self):
-        cmake = CMake(self)
+        cmake = CMake(self, msbuild_verbosity='normal')
         cmake.verbose = True
         cmake.configure()
         cmake.build()
