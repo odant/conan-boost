@@ -30,8 +30,21 @@ int main(int, char**) {
     }
 
 #ifdef _WIN32
-    std::error_code ec{static_cast<int>(ERROR_FILE_NOT_FOUND), boost::system::system_category()};
-    std::cout << "ec.message(): " << ec.message() << std::endl;
+
+    std::error_code ec_3{static_cast<int>(ERROR_FILE_NOT_FOUND), boost::system::system_category()};
+    std::cout << "ERROR_FILE_NOT_FOUND ec_3.message(): " << ec_3.message() << std::endl;
+    if (ec_3.message().empty()) {
+        std::cout << "Error: ec_3.message().empty() == true" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::error_code ec_4{static_cast<int>(ERROR_SUCCESS), boost::system::system_category()};
+    std::cout << "ERROR_SUCCESS ec_4.message(): " << ec_4.message() << std::endl;
+    if (ec_4.message().empty()) {
+        std::cout << "Error: ec_4.message().empty() == true" << std::endl;
+        return EXIT_FAILURE;
+    }
+
 #endif
 
     return EXIT_SUCCESS;
