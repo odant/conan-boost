@@ -238,6 +238,23 @@ if(UNIX)
     set_property(TEST test_boost_log PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
 endif()
 
+if(UNIX)
+    add_executable(test_boost_process_leak_child test_boost_process_leak_child.cpp)
+    target_link_libraries(test_boost_process_leak_child
+        Boost::filesystem
+        Threads::Threads
+    )
+    set_target_properties(test_boost_process_leak_child
+        PROPERTIES
+        INSTALL_RPATH "$ORIGIN"
+        BUILD_WITH_INSTALL_RPATH True
+    )
+    add_test(
+        NAME test_boost_process_leak_child
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+        COMMAND test_boost_process_leak_child
+    )
+endif()
 
 add_executable(test_boost_random test_boost_random.cpp)
 target_link_libraries(test_boost_random Boost::random)
