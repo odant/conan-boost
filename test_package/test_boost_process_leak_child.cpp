@@ -9,6 +9,7 @@
 
 
 #include <boost/process.hpp>
+#include <boost/filesystem.hpp>
 
 #include <string>
 #include <iostream>
@@ -17,16 +18,20 @@
 
 
 int main(int, char**) {
+    const boost::filesystem::path not_exists = boost::filesystem::current_path() / "not_exists";
+    if (boost::filesystem::exists(not_exists)) {
+        boost::filesystem::remove(not_exists);
+    }
 
     try {
-        boost::process::child cp{"not_exists"};
+        boost::process::child cp{not_exists};
     }
     catch (const boost::process::process_error& ex) {
         std::cout << "Wthout ec, ex.what(): " << ex.what() << std::endl;
     }
     try {
         std::error_code ec;
-        boost::process::child cp{"not_exists", ec};
+        boost::process::child cp{not_exists, ec};
         std::cout << "cp.pid() " << cp.id() << std::endl;
     }
     catch (const boost::process::process_error& ex) {
@@ -40,7 +45,7 @@ int main(int, char**) {
 
     boost::process::ipstream out;
 
-    boost::process::child cp{p, "-P", pid,
+    boost::process::child cp{p, "--parent", pid,
                             boost::process::std_out > out};
     cp.join();
 
