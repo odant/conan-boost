@@ -254,6 +254,7 @@ if(UNIX)
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
         COMMAND test_boost_process_leak_child
     )
+    set_property(TEST test_boost_process_leak_child PROPERTY ENVIRONMENT LC_ALL=C)
 endif()
 
 add_executable(test_boost_random test_boost_random.cpp)

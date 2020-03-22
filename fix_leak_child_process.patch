@@ -1,0 +1,29 @@
+diff --git a/boost_1_72_0/boost/process/detail/posix/executor.hpp b/boost_1_72_0/boost/process/detail/posix/executor.hpp
+index c031689b9..22d6f0d53 100644
+--- a/boost_1_72_0/boost/process/detail/posix/executor.hpp
++++ b/boost_1_72_0/boost/process/detail/posix/executor.hpp
+@@ -175,7 +175,11 @@ class executor
+         if (this->pid == 0)
+             write_error(ec, msg);
+         else
++        {
++            int exit_code;
++            wait(child_handle{this->pid}, exit_code);
+             throw process_error(ec, msg);
++        }
+     }
+ 
+ 
+@@ -434,6 +438,12 @@ child executor<Sequence>::invoke(boost::mpl::false_, boost::mpl::false_)
+     }
+     if (_ec)
+     {
++        int exit_code;
++        std::error_code ec;
++        wait(child_handle{this->pid}, exit_code, ec);
++        if (ec) {
++            _ec = ec;
++        }
+         boost::fusion::for_each(seq, call_on_error(*this, _ec));
+         return child();
+     }

@@ -16,7 +16,7 @@ def get_safe(options, name):
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.72.0+1"
+    version = "1.72.0+2"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -37,7 +37,7 @@ class BoostConan(ConanFile):
         "!" + _boost_name + "/more*", "!*/doc/*", "!*/test/*", # Exclude documentation and tests
         "FindBoost.cmake", "_FindBoost.cmake",
         "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch", "add_boost_log_codecvt_enable_param.patch",
-        "icu_static_runtime.patch", "use_old_jamfile_for_regex.patch"
+        "icu_static_runtime.patch", "use_old_jamfile_for_regex.patch", "fix_leak_child_process.patch"
     )
     #
     no_copy_source = True
@@ -66,6 +66,7 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="add_boost_log_codecvt_enable_param.patch")
         tools.patch(patch_file="icu_static_runtime.patch")
         tools.patch(patch_file="use_old_jamfile_for_regex.patch")
+        tools.patch(patch_file="fix_leak_child_process.patch")
         if not tools.os_info.is_windows:
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
