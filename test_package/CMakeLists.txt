@@ -1,5 +1,5 @@
 # Boost test for Conan package
-# Dmitriy Vetutnev, ODANT, 2018
+# Dmitriy Vetutnev, ODANT, 2018-2020
 
 
 project(PackageTest CXX)
@@ -41,9 +41,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_atomic
 )
-if(UNIX)
-    set_property(TEST test_boost_atomic PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_chrono test_boost_chrono.cpp)
@@ -58,9 +55,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_chrono
 )
-if(UNIX)
-    set_property(TEST test_boost_chrono PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_container test_boost_container.cpp)
@@ -75,9 +69,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_container
 )
-if(UNIX)
-    set_property(TEST test_boost_container PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_date_time test_boost_date_time.cpp)
@@ -92,9 +83,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_date_time
 )
-if(UNIX)
-    set_property(TEST test_boost_date_time PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_filesystem test_boost_filesystem.cpp)
@@ -109,9 +97,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_filesystem
 )
-if(UNIX)
-    set_property(TEST test_boost_filesystem PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_iostreams test_boost_iostreams.cpp)
@@ -126,9 +111,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_iostreams
 )
-if(UNIX)
-    set_property(TEST test_boost_iostreams PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_locale_case_conv test_boost_locale_case_conv.cpp)
@@ -147,9 +129,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_case_conv
 )
-if(UNIX)
-    set_property(TEST test_boost_locale_case_conv PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_locale_numbers test_boost_locale_numbers.cpp)
@@ -168,9 +147,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_numbers
 )
-if(UNIX)
-    set_property(TEST test_boost_locale_numbers PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_locale_utf_to_utf test_boost_locale_utf_to_utf.cpp)
@@ -189,9 +165,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_utf_to_utf
 )
-if(UNIX)
-    set_property(TEST test_boost_locale_utf_to_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 if(NOT DEFINED ENV{APPVEYOR})
 add_executable(test_boost_locale_to_utf_from_utf test_boost_locale_to_utf_from_utf.cpp)
@@ -210,9 +183,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_to_utf_from_utf
 )
-if(UNIX)
-    set_property(TEST test_boost_locale_to_utf_from_utf PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 endif() # Not Appveyor
 
 
@@ -269,9 +239,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_random
 )
-if(UNIX)
-    set_property(TEST test_boost_random PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_regex test_boost_regex.cpp)
@@ -286,9 +253,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_regex
 )
-if(UNIX)
-    set_property(TEST test_boost_regex PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 
 add_executable(test_boost_system test_boost_system.cpp)
@@ -303,7 +267,4 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_system
 )
-if(UNIX)
-    set_property(TEST test_boost_system PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
