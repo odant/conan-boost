@@ -30,7 +30,10 @@ enable_testing()
 
 
 add_executable(test_boost_atomic test_boost_atomic.cpp)
-target_link_libraries(test_boost_atomic Boost::atomic Threads::Threads)
+target_link_libraries(test_boost_atomic
+        Boost::atomic
+        Threads::Threads
+)
 set_target_properties(test_boost_atomic
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"
@@ -129,6 +132,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_case_conv
 )
+if(UNIX)
+    set_property(TEST test_boost_locale_case_conv PROPERTY ENVIRONMENT LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_locale_numbers test_boost_locale_numbers.cpp)
@@ -147,6 +153,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_numbers
 )
+if(UNIX)
+    set_property(TEST test_boost_locale_numbers PROPERTY ENVIRONMENT LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 
 add_executable(test_boost_locale_utf_to_utf test_boost_locale_utf_to_utf.cpp)
@@ -165,6 +174,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_utf_to_utf
 )
+if(UNIX)
+    set_property(TEST test_boost_locale_utf_to_utf PROPERTY ENVIRONMENT LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 
 if(NOT DEFINED ENV{APPVEYOR})
 add_executable(test_boost_locale_to_utf_from_utf test_boost_locale_to_utf_from_utf.cpp)
@@ -183,6 +195,9 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_locale_to_utf_from_utf
 )
+if(UNIX)
+    set_property(TEST test_boost_locale_to_utf_from_utf PROPERTY ENVIRONMENT LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
+endif()
 endif() # Not Appveyor
 
 
@@ -204,9 +219,6 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     COMMAND test_boost_log
 )
-if(UNIX)
-    set_property(TEST test_boost_log PROPERTY ENVIRONMENT LD_DEBUG=libs LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/bin)
-endif()
 
 if(UNIX)
     add_executable(test_boost_process_leak_child test_boost_process_leak_child.cpp)
