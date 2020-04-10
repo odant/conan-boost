@@ -3,15 +3,7 @@
 
 
 from conans import ConanFile, tools
-from conans.errors import ConanException
 import os
-
-
-def get_safe(options, name):
-    try:
-        return getattr(options, name, None)
-    except ConanException:
-        return None
 
 
 class BoostConan(ConanFile):
@@ -240,7 +232,7 @@ class BoostConan(ConanFile):
                 "-DBOOST_LOCALE_ENABLE_CHAR16_T",
                 "-DBOOST_LOCALE_ENABLE_CHAR32_T"
             ])
-        if get_safe(self.options, "fPIC"):
+        if self.options.get_safe("fPIC"):
             flags.append("-fPIC")
         if self.settings.os == "Windows":
             flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
