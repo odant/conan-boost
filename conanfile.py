@@ -1,5 +1,5 @@
 # Boost Conan package
-# Dmitriy Vetutnev, ODANT 2018
+# Dmitriy Vetutnev, ODANT 2018-2020
 
 
 from conans import ConanFile, tools
@@ -16,7 +16,7 @@ def get_safe(options, name):
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.72.0+2"
+    version = "1.72.0+3"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
