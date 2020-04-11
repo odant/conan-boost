@@ -14,7 +14,7 @@ env:
     CONAN_LOGIN_USERNAME: travis
     CONAN_STABLE_BRANCH_PATTERN: release/*
 
-    CONAN_OPTIONS: boost:with_unit_tests=True,icu:dll_sign=False,icu:zlib:dll_sign=False
+    CONAN_OPTIONS: boost:with_unit_tests=True,icu:dll_sign=False,zlib:dll_sign=False
 
 linux: &linux_build
   os: linux
