@@ -14,7 +14,7 @@ env:
     CONAN_LOGIN_USERNAME: travis
     CONAN_STABLE_BRANCH_PATTERN: release/*
 
-    CONAN_BUILD_ALL_OPTIONS_VALUES: boost:with_unit_tests=True,*:dll_sign=False
+    CONAN_BUILD_ALL_OPTIONS_VALUES: "boost:with_unit_tests=True,*:dll_sign=False"
     WITH_UNIT_TESTS: 1
 
 linux: &linux_build
