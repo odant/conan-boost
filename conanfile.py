@@ -91,10 +91,14 @@ class BoostConan(ConanFile):
             self.run("%s -j%s %s stage" % (b2, tools.cpu_count(), " ".join(flags)))
         #
         if self.options.with_unit_tests:
-            exclude = "geometry"
+            exclude = [
+                "geometry",
+                "math"
+            ]
             self.output.info("-------------- Runnig tests ---------------------")
             with tools.chdir(os.path.join(source_folder, "status")), tools.environment_append(build_env):
-                self.run("%s -q --exclude-tests=%s" % (b2, exclude))
+                _exclude = '|'.join(exclude)
+                self.run("%s -q --exclude-tests=%s" % (b2, _exclude))
 
     def bootstrap(self, source_folder):
         env = self.get_build_environment()
@@ -197,7 +201,7 @@ class BoostConan(ConanFile):
             "--with-iostreams",
             "--with-locale",
             "--with-log",
-            "--with-math",
+            #"--with-math",
             "--with-mpi",
             "--with-program_options",
             #"--with-python",
