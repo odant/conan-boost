@@ -78,7 +78,6 @@ class BoostConan(ConanFile):
         self.output.info("-------------- user-config.jam ------------------")
         self.generate_user_config_jam(build_folder)
         self.output.info("-------------- Build libraries ------------------")
-        self.output.info("-------------- Runnig tests ---------------------")
         flags = self.get_build_flags(build_folder, stage_folder)
         build_env = self.get_build_environment()
         # location user-config.jam
