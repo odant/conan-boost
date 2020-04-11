@@ -1,3 +1,7 @@
+# OpenSSL Conan package
+# Dmitriy Vetutnev, ODANT, 2018-2020
+
+
 import platform, os
 from copy import deepcopy
 from conan.packager import ConanMultiPackager
@@ -9,6 +13,13 @@ username = "odant" if "CONAN_USERNAME" not in os.environ else None
 visual_versions = ["15", "16"] if "CONAN_VISUAL_VERSIONS" not in os.environ else None
 visual_runtimes = ["MD", "MDd"] if "CONAN_VISUAL_RUNTIMES" not in os.environ else None
 dll_sign = False if "CONAN_DISABLE_DLL_SIGN" in os.environ else True
+with_unit_tests = True if "WITH_UNIT_TESTS" in os.environ else False
+
+
+options = [
+    "boost:with_unit_tests=%s" % with_unit_tests,
+    "*:dll_sign=%s" % dll_sign
+]
 
 
 def filter_libcxx(builds):
@@ -19,15 +30,6 @@ def filter_libcxx(builds):
     return result
 
 
-def add_dll_sign(builds):
-    result = []
-    for settings, options, env_vars, build_requires, reference in builds:
-        options = deepcopy(options)
-        options["zlib:dll_sign"] = dll_sign
-        options["icu:dll_sign"] = dll_sign
-        result.append([settings, options, env_vars, build_requires, reference])
-    return result
-
 if __name__ == "__main__":
     builder = ConanMultiPackager(
         username=username,
@@ -35,11 +37,9 @@ if __name__ == "__main__":
         visual_runtimes=visual_runtimes,
         exclude_vcvars_precommand=True
     )
-    builder.add_common_builds(pure_c=False)
+    builder.add_common_builds(pure_c=False, build_all_options_values=options)
     # Adjusting build configurations
     builds = builder.items
-    if platform.system() == "Windows":
-        builds = add_dll_sign(builds)
     if platform.system() == "Linux":
         builds = filter_libcxx(builds)
     # Replace build configurations

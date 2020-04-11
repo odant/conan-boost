@@ -17,6 +17,8 @@ environment:
   CONAN_LOGIN_USERNAME: appveyor
   CONAN_STABLE_BRANCH_PATTERN: release/*
 
+  WITH_UNIT_TESTS: 1
+
   matrix:
 
 # Visual Studio 2017

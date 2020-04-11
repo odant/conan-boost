@@ -19,14 +19,15 @@ class BoostConan(ConanFile):
         "arch": ["x86_64", "x86", "mips", "armv7"]
     }
     options = {
-        "fPIC": [True, False]
+        "fPIC": [True, False],
+        "with_unit_tests": [True, False]
     }
-    default_options = "fPIC=True"
+    default_options = "fPIC=True", "with_unit_tests=False"
     #
     _boost_name = "boost_%s" % version.replace(".", "_").split("+")[0]
     exports_sources = (
         _boost_name + "/*",
-        "!" + _boost_name + "/more*", "!*/doc/*", "!*/test/*", # Exclude documentation and tests
+        "!" + _boost_name + "/more*", "!*/doc/*" # Exclude documentation
         "FindBoost.cmake", "_FindBoost.cmake",
         "multiprecision.patch", "weak_ptr.patch", "system_error_category_english_win.patch", "add_boost_log_codecvt_enable_param.patch",
         "icu_static_runtime.patch", "use_old_jamfile_for_regex.patch", "fix_leak_child_process.patch"
@@ -77,6 +78,7 @@ class BoostConan(ConanFile):
         self.output.info("-------------- user-config.jam ------------------")
         self.generate_user_config_jam(build_folder)
         self.output.info("-------------- Build libraries ------------------")
+        self.output.info("-------------- Runnig tests ---------------------")
         flags = self.get_build_flags(build_folder, stage_folder)
         build_env = self.get_build_environment()
         # location user-config.jam
@@ -88,6 +90,12 @@ class BoostConan(ConanFile):
                 self.output.info("-------------------------------------------------")
             self.output.info("Current directory => %s" % os.getcwd())
             self.run("%s -j%s %s stage" % (b2, tools.cpu_count(), " ".join(flags)))
+        #
+        if self.options.with_unit_tests:
+            exclude = "geometry"
+            self.output.info("-------------- Runnig tests ---------------------")
+            with tools.chdir(os.path.join(source_folder, "status")), tools.environment_append(build_env):
+                self.run("%s --exclude-tests=%s" % (b2, exclude))
 
     def bootstrap(self, source_folder):
         env = self.get_build_environment()
@@ -158,10 +166,11 @@ class BoostConan(ConanFile):
             compiler_options = "%s <setup>\"%s\"" % (compiler_options, fake_env)
         content += "using %s : %s : %s : %s ;\n" % (compiler, compiler_version, compiler_exe, compiler_options)
         # zlib
+        zlib_version = self.deps_cpp_info["zlib"].version.split("+")[0]
         zlib_include = self.deps_cpp_info["zlib"].include_paths[0].replace("\\", "/")
         zlib_libpath = self.deps_cpp_info["zlib"].lib_paths[0].replace("\\", "/")
         zlib_lib = self.deps_cpp_info["zlib"].libs[0]
-        content += "using zlib : %s : <include>%s <search>%s <name>%s ;\n" % (self._zlib_version, zlib_include, zlib_libpath, zlib_lib)
+        content += "using zlib : %s : <include>%s <search>%s <name>%s ;\n" % (zlib_version, zlib_include, zlib_libpath, zlib_lib)
         # write file
         self.output.info("Using current user-config.jam:\n%s" % content)
         tools.save(os.path.join(build_folder, "user-config.jam"), content)
@@ -249,6 +258,9 @@ class BoostConan(ConanFile):
         self.copy("*.lib", src="stage", dst="lib", keep_path=False)
         self.copy("*.a", src="stage", dst="lib", keep_path=False)
 
+    def package_id(self):
+        self.info.options.with_unit_tests = "any"
+
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
         self.cpp_info.defines = [
@@ -275,3 +287,4 @@ class BoostConan(ConanFile):
             ])
             if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
                 self.user_info.USE_STATIC_RUNTIME = True
+
