@@ -21,6 +21,6 @@ if __name__ == "__main__":
         exclude_vcvars_precommand=True
     )
     builder.add_common_builds(pure_c=False)
-    builder.remove_build_if(lambda build: build.settings["compiler.libcxx"] == "libstdc++")
+    builder.remove_build_if(lambda build: build.settings.get("compiler.libcxx") == "libstdc++")
     builder.run()
 
