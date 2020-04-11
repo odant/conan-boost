@@ -16,12 +16,6 @@ dll_sign = False if "CONAN_DISABLE_DLL_SIGN" in os.environ else True
 with_unit_tests = True if "WITH_UNIT_TESTS" in os.environ else False
 
 
-options = [
-    "boost:with_unit_tests=%s" % with_unit_tests,
-    "*:dll_sign=%s" % dll_sign
-]
-
-
 def filter_libcxx(builds):
     result = []
     for settings, options, env_vars, build_requires, reference in builds:
@@ -37,7 +31,7 @@ if __name__ == "__main__":
         visual_runtimes=visual_runtimes,
         exclude_vcvars_precommand=True
     )
-    builder.add_common_builds(pure_c=False, build_all_options_values=options)
+    builder.add_common_builds(pure_c=False)
     # Adjusting build configurations
     builds = builder.items
     if platform.system() == "Linux":
