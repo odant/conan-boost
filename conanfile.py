@@ -95,7 +95,7 @@ class BoostConan(ConanFile):
             exclude = "geometry"
             self.output.info("-------------- Runnig tests ---------------------")
             with tools.chdir(os.path.join(source_folder, "status")), tools.environment_append(build_env):
-                self.run("%s --exclude-tests=%s" % (b2, exclude))
+                self.run("%s -q --exclude-tests=%s" % (b2, exclude))
 
     def bootstrap(self, source_folder):
         env = self.get_build_environment()
