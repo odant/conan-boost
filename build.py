@@ -1,9 +1,8 @@
-# OpenSSL Conan package
+# Boost Conan package
 # Dmitriy Vetutnev, ODANT, 2018-2020
 
 
-import platform, os
-from copy import deepcopy
+import os
 from conan.packager import ConanMultiPackager
 
 
@@ -14,14 +13,6 @@ visual_versions = ["15", "16"] if "CONAN_VISUAL_VERSIONS" not in os.environ else
 visual_runtimes = ["MD", "MDd"] if "CONAN_VISUAL_RUNTIMES" not in os.environ else None
 
 
-def filter_libcxx(builds):
-    result = []
-    for settings, options, env_vars, build_requires, reference in builds:
-        if settings["compiler.libcxx"] == "libstdc++11":
-            result.append([settings, options, env_vars, build_requires, reference])
-    return result
-
-
 if __name__ == "__main__":
     builder = ConanMultiPackager(
         username=username,
@@ -30,17 +21,6 @@ if __name__ == "__main__":
         exclude_vcvars_precommand=True
     )
     builder.add_common_builds(pure_c=False)
-    # Adjusting build configurations
-    builds = builder.items
-    if platform.system() == "Linux":
-        builds = filter_libcxx(builds)
-    # Replace build configurations
-    builder.items = []
-    for settings, options, env_vars, build_requires, _ in builds:
-        builder.add(
-            settings=settings,
-            options=options,
-            env_vars=env_vars,
-            build_requires=build_requires
-        )
+    builder.remove_build_if(lambda build: build.settings["compiler.libcxx"] == "libstdc++")
     builder.run()
+
