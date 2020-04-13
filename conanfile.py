@@ -100,11 +100,20 @@ class BoostConan(ConanFile):
         if self.options.with_unit_tests:
             exclude = [
                 "geometry",
-                "math"
+                "math",
+                "hana",
+                "histogram",
+                "hof",
+                "iterator.compile-fail",
+                "compile-fail-iostreams",
+                #"iostreams",
+                #"iterator",
+                #"lexical_cast",
+                "local_funtions"
             ]
             self.output.info("-------------- Runnig tests ---------------------")
             with tools.chdir(os.path.join(source_folder, "status")), tools.environment_append(build_env):
-                _exclude =  "\"%s\"" % '|'.join(exclude)
+                _exclude =  "\"%s\"" % ','.join(exclude)
                 self.run("%s -q --exclude-tests=%s" % (b2, _exclude))
 
     def bootstrap(self, source_folder):
