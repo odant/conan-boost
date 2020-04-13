@@ -19,12 +19,12 @@ class BoostConan(ConanFile):
         "arch": ["x86_64", "x86", "mips", "armv7"]
     }
     options = {
-        "fPIC": [True, False],
         "with_unit_tests": [True, False]
     }
-    default_options = "fPIC=True", "with_unit_tests=False"
+    default_options = "with_unit_tests=False"
     #
     _boost_name = "boost_%s" % version.replace(".", "_").split("+")[0]
+    #
     exports_sources = (
         _boost_name + "/*",
         "!" + _boost_name + "/more*",
@@ -50,9 +50,6 @@ class BoostConan(ConanFile):
         # Only C++11
         if self.settings.compiler.get_safe("libcxx") == "libstdc++":
             raise ConanException("This package is only compatible with libstdc++11")
-        # Position independent code
-        if self.settings.os == "Windows":
-            del self.options.fPIC
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
@@ -242,6 +239,8 @@ class BoostConan(ConanFile):
         flags = [
             "-DBOOST_NO_AUTO_PTR"
         ]
+        if self.settings.os != "Windows":
+            flags.append("-fPIC")
         # Enable char16_t and char32_t
         if self.settings.compiler == "Visual Studio":
             pass
@@ -250,8 +249,6 @@ class BoostConan(ConanFile):
                 "-DBOOST_LOCALE_ENABLE_CHAR16_T",
                 "-DBOOST_LOCALE_ENABLE_CHAR32_T"
             ])
-        if self.options.get_safe("fPIC"):
-            flags.append("-fPIC")
         if self.settings.os == "Windows":
             flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
             if self.settings.compiler == "Visual Studio":
