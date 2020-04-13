@@ -27,7 +27,7 @@ class BoostConan(ConanFile):
     _boost_name = "boost_%s" % version.replace(".", "_").split("+")[0]
     exports_sources = (
         _boost_name + "/*",
-        "!" + _boost_name + "/more*", "!*/doc/*" # Exclude documentation
+        "!" + _boost_name + "/more*",
         "FindBoost.cmake", "_FindBoost.cmake",
         "multiprecision.patch",
         "weak_ptr.patch",
@@ -99,22 +99,12 @@ class BoostConan(ConanFile):
         #
         if self.options.with_unit_tests:
             exclude = [
-                "geometry",
-                "math",
-                "hana",
-                "histogram",
-                "hof",
-                "iterator.compile-fail",
-                "compile-fail-iostreams",
-                #"iostreams",
-                #"iterator",
-                #"lexical_cast",
-                "local_funtions"
+                "disjoint_sets"
             ]
             self.output.info("-------------- Runnig tests ---------------------")
             with tools.chdir(os.path.join(source_folder, "status")), tools.environment_append(build_env):
-                _exclude =  "\"%s\"" % ','.join(exclude)
-                self.run("%s -q --exclude-tests=%s" % (b2, _exclude))
+                _exclude =  ','.join(exclude)
+                self.run("%s -j%s -q --check-libs-only, --exclude-tests=%s" % (b2, tools.cpu_count(), _exclude))
 
     def bootstrap(self, source_folder):
         env = self.get_build_environment()
