@@ -19,9 +19,10 @@ class BoostConan(ConanFile):
         "arch": ["x86_64", "x86", "mips", "armv7"]
     }
     options = {
-        "with_unit_tests": [True, False]
+        "with_unit_tests": [True, False],
+        "with_icu": [True, False]
     }
-    default_options = "with_unit_tests=False"
+    default_options = "with_unit_tests=False", "with_icu=True"
     #
     _boost_name = "boost_%s" % version.replace(".", "_").split("+")[0]
     #
@@ -53,7 +54,8 @@ class BoostConan(ConanFile):
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
-        self.requires("icu/%s@%s/stable" % (self._icu_version, self.user))
+        if self.options.with_icu:
+            self.requires("icu/%s@%s/stable" % (self._icu_version, self.user))
 
     def source(self):
         tools.patch(patch_file="weak_ptr.patch")
@@ -136,27 +138,28 @@ class BoostConan(ConanFile):
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
         # locale use ICU
-        icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
-        flags.extend([
-            "boost.locale.icu=on",
-            "boost.locale.iconv=off",
-            "boost.locale.winapi=off",
-            "boost.locale.std=off",
-            "boost.locale.posix=off",
-            "-sICU_PATH=%s" % icu_path
-        ])
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
-            icu_libs = []
-            for lib in self.deps_cpp_info["icu"].libs:
-                lib = "%s.lib" % lib
-                lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
-                icu_libs.append(lib)
-            flags.append("-sICU_LINK=\"%s\"" % " ".join(icu_libs))
-            if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
-                flags.append("-sICU_STATIC_RUNTIME=True")
-        for d in self.deps_cpp_info["icu"].defines:
-            flags.append("define=%s" % d)
+        if self.options.with_icu:
+            icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
+            flags.extend([
+                "boost.locale.icu=on",
+                "boost.locale.iconv=off",
+                "boost.locale.winapi=off",
+                "boost.locale.std=off",
+                "boost.locale.posix=off",
+                "-sICU_PATH=%s" % icu_path
+            ])
+            if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+                icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
+                icu_libs = []
+                for lib in self.deps_cpp_info["icu"].libs:
+                    lib = "%s.lib" % lib
+                    lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
+                    icu_libs.append(lib)
+                flags.append("-sICU_LINK=\"%s\"" % " ".join(icu_libs))
+                if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
+                    flags.append("-sICU_STATIC_RUNTIME=True")
+            for d in self.deps_cpp_info["icu"].defines:
+                flags.append("define=%s" % d)
         return flags
 
     def generate_user_config_jam(self, build_folder):
@@ -241,20 +244,23 @@ class BoostConan(ConanFile):
         ]
         if self.settings.os != "Windows":
             flags.append("-fPIC")
-        # Enable char16_t and char32_t
-        if self.settings.compiler == "Visual Studio":
-            pass
-        else:
-            flags.extend([
-                "-DBOOST_LOCALE_ENABLE_CHAR16_T",
-                "-DBOOST_LOCALE_ENABLE_CHAR32_T"
-            ])
         if self.settings.os == "Windows":
             flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
             if self.settings.compiler == "Visual Studio":
                 flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
                 flags.append("/D_CRT_SECURE_NO_WARNINGS")
                 flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
+        #
+        if self.options.with_icu:
+            # Enable char16_t and char32_t
+            if self.settings.compiler == "Visual Studio":
+                pass
+            else:
+                flags.extend([
+                    "-DBOOST_LOCALE_ENABLE_CHAR16_T",
+                    "-DBOOST_LOCALE_ENABLE_CHAR32_T"
+                ])
+        #
         return flags
 
     def package(self):
@@ -275,17 +281,6 @@ class BoostConan(ConanFile):
         ]
         if self.settings.os == "Windows":
             self.cpp_info.defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
-        # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            self.cpp_info.defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
-        # Enable char16_t and char32_t
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            pass
-        else:
-            self.cpp_info.defines.extend([
-                "BOOST_LOCALE_ENABLE_CHAR16_T",
-                "BOOST_LOCALE_ENABLE_CHAR32_T"
-            ])
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             self.cpp_info.defines.extend([
                 "BOOST_ALL_NO_LIB", # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
@@ -293,4 +288,17 @@ class BoostConan(ConanFile):
             ])
             if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
                 self.user_info.USE_STATIC_RUNTIME = True
+        if self.options.with_icu:
+            self.user_info.WITH_ICU = True
+            # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
+            if self.settings.compiler == "Visual Studio":
+                self.cpp_info.defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
+            # Enable char16_t and char32_t
+            if self.settings.compiler == "Visual Studio":
+                pass
+            else:
+                self.cpp_info.defines.extend([
+                    "BOOST_LOCALE_ENABLE_CHAR16_T",
+                    "BOOST_LOCALE_ENABLE_CHAR32_T"
+                ])
 

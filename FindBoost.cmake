@@ -77,7 +77,7 @@ if(TARGET Boost::iostreams)
 endif()
 
 # Add ICU depends
-if(TARGET Boost::locale)
+if(CONAN_USER_BOOST_WITH_ICU AND TARGET Boost::locale)
 
     find_dependency(ICU)
 

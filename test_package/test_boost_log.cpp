@@ -28,7 +28,9 @@ int main(int, char**) {
     boost::log::sources::logger lg;
 
     BOOST_LOG(lg) << "Probe Boost::log (char)";
+#ifdef BOOST_LOCALE_ENABLE_CHAR16_T
     BOOST_LOG(lg) << u"Probe Boost::log (char16_t)";
+#endif
 
     return EXIT_SUCCESS;
 }
