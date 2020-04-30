@@ -15,6 +15,8 @@ env:
     CONAN_STABLE_BRANCH_PATTERN: release/*
 
     CONAN_OPTIONS: boost:with_unit_tests=True
+    CONAN_SHARED_OPTION_NAME: False
+    CONAN_PURE_C: False
 
 linux: &linux_build
   os: linux
