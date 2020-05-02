@@ -1,5 +1,5 @@
---- a/boost_1_72_0/boost/system/detail/system_category_win32.hpp
-+++ b/boost_1_72_0/boost/system/detail/system_category_win32.hpp
+--- a/boost_1_73_0/boost/system/detail/system_category_win32.hpp
++++ b/boost_1_73_0/boost/system/detail/system_category_win32.hpp
 @@ -95,7 +95,7 @@
              FORMAT_MESSAGE_FROM_SYSTEM_ | FORMAT_MESSAGE_IGNORE_INSERTS_,
              NULL,
@@ -27,8 +27,8 @@
          (LPWSTR_) &lpMsgBuf,
          0,
          NULL
---- a/boost_1_72_0/boost/winapi/error_handling.hpp
-+++ b/boost_1_72_0/boost/winapi/error_handling.hpp
+--- a/boost_1_73_0/boost/winapi/error_handling.hpp
++++ b/boost_1_73_0/boost/winapi/error_handling.hpp
 @@ -67,8 +67,10 @@
  
  BOOST_CONSTEXPR_OR_CONST WORD_ LANG_NEUTRAL_=                  LANG_NEUTRAL;

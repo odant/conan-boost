@@ -36,8 +36,7 @@ class BoostConan(ConanFile):
         "add_boost_log_codecvt_enable_param.patch",
         "icu_static_runtime.patch",
         "use_old_jamfile_for_regex.patch",
-        "fix_leak_child_process.patch",
-        "fix_coroutines_7779116598972c5cecdf053d265df2412658e3ea.patch"
+        "fix_leak_child_process.patch"
     )
     #
     no_copy_source = True
@@ -65,7 +64,6 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="icu_static_runtime.patch")
         tools.patch(patch_file="use_old_jamfile_for_regex.patch")
         tools.patch(patch_file="fix_leak_child_process.patch")
-        tools.patch(patch_file="fix_coroutines_7779116598972c5cecdf053d265df2412658e3ea.patch")
         if not tools.os_info.is_windows:
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))

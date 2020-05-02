@@ -1,6 +1,8 @@
---- a/boost_1_72_0/boost/smart_ptr/weak_ptr.hpp
-+++ b/boost_1_72_0/boost/smart_ptr/weak_ptr.hpp
-@@ -246,6 +246,8 @@
+diff --git a/boost_1_73_0/boost/smart_ptr/weak_ptr.hpp b/boost_1_73_0/boost/smart_ptr/weak_ptr.hpp
+index 07ba189f4..469905904 100644
+--- a/boost_1_73_0/boost/smart_ptr/weak_ptr.hpp
++++ b/boost_1_73_0/boost/smart_ptr/weak_ptr.hpp
+@@ -246,6 +246,8 @@ private:
  
      template<class Y> friend class weak_ptr;
      template<class Y> friend class shared_ptr;
@@ -9,7 +11,7 @@
  
  #endif
  
-@@ -264,6 +266,20 @@
+@@ -264,6 +266,20 @@ template<class T> void swap(weak_ptr<T> & a, weak_ptr<T> & b) BOOST_SP_NOEXCEPT
      a.swap(b);
  }
  
@@ -27,6 +29,6 @@
 +    return a.pn == b.pn;
 +}
 +
- } // namespace boost
+ #if defined(__cpp_deduction_guides)
  
- #endif  // #ifndef BOOST_SMART_PTR_WEAK_PTR_HPP_INCLUDED
+ template<class T> weak_ptr( shared_ptr<T> ) -> weak_ptr<T>;
