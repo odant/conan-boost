@@ -45,11 +45,6 @@ class BoostConan(ConanFile):
     _zlib_version = "[>=1.2.3]"
     _icu_version = "[>=61.1]"
 
-    def configure(self):
-        # Only C++11
-        if self.settings.compiler.get_safe("libcxx") == "libstdc++":
-            raise ConanException("This package is only compatible with libstdc++11")
-
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
         if self.options.with_icu:
