@@ -19,8 +19,8 @@ int main(int, char**) {
     {
         std::cout << "-- to_lower char(UTF-8) --" << std::endl;
 
-        const std::string upper = u8"\u042f" "Z" "\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
-        const std::string lower = u8"\u044f" "z" "\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
+        const std::string upper = {(char)0xd0, (char)0xaf, 'Z', (char)0xd0, (char)0x90}; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
+        const std::string lower = {(char)0xd1, (char)0x8f, 'z', (char)0xd0, (char)0xb0}; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
         std::cout << "upper: " << upper << " , lower: " << lower << std::endl;
 
         const std::string toLower = boost::locale::to_lower(upper);
@@ -36,8 +36,8 @@ int main(int, char**) {
     {
         std::cout << "-- to_upper char(UTF-8) --" << std::endl;
 
-        const std::string upper = u8"\u042f" "Z" "\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
-        const std::string lower = u8"\u044f" "z" "\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
+        const std::string upper = {(char)0xd0, (char)0xaf, 'Z', (char)0xd0, (char)0x90}; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
+        const std::string lower = {(char)0xd1, (char)0x8f, 'z', (char)0xd0, (char)0xb0}; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
         std::cout << "upper: " << upper << " , lower: " << lower << std::endl;
 
         const std::string toUpper = boost::locale::to_upper(lower);
@@ -53,8 +53,8 @@ int main(int, char**) {
     {
         std::cout << "-- to_lower wchar_t --" << std::endl;
 
-        const std::wstring upper = L"\u042f" "Z" "\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
-        const std::wstring lower = L"\u044f" "z" "\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
+        const std::wstring upper = L"\u042f" L"Z" L"\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
+        const std::wstring lower = L"\u044f" L"z" L"\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
         std::wcout << L"upper: " << upper << L" , lower: " << lower << std::endl;
 
         const std::wstring toLower = boost::locale::to_lower(upper);
@@ -70,8 +70,8 @@ int main(int, char**) {
     {
         std::cout << "-- to_upper wchar_t --" << std::endl;
 
-        const std::wstring upper = L"\u042f" "Z" "\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
-        const std::wstring lower = L"\u044f" "z" "\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
+        const std::wstring upper = L"\u042f" L"Z" L"\u0410"; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in UTF-8)
+        const std::wstring lower = L"\u044f" L"z" L"\u0430"; // Cyrillic small letter ya, z, cyrillic small letter a (яzа in UTF-8)
         std::wcout << L"upper: " << upper << L" , lower: " << lower << std::endl;
 
         const std::wstring toUpper = boost::locale::to_upper(lower);
