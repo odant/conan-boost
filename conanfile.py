@@ -32,7 +32,6 @@ class BoostConan(ConanFile):
         "FindBoost.cmake", "_FindBoost.cmake",
         "multiprecision.patch",
         "weak_ptr.patch",
-        "system_error_category_english_win.patch",
         "add_boost_log_codecvt_enable_param.patch",
         "icu_static_runtime.patch",
         "use_old_jamfile_for_regex.patch",
@@ -59,7 +58,6 @@ class BoostConan(ConanFile):
     def source(self):
         tools.patch(patch_file="weak_ptr.patch")
         tools.patch(patch_file="multiprecision.patch")
-        tools.patch(patch_file="system_error_category_english_win.patch")
         tools.patch(patch_file="add_boost_log_codecvt_enable_param.patch")
         tools.patch(patch_file="icu_static_runtime.patch")
         tools.patch(patch_file="use_old_jamfile_for_regex.patch")
@@ -244,6 +242,7 @@ class BoostConan(ConanFile):
             flags.append("-fPIC")
         if self.settings.os == "Windows":
             flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
+            flags.append("/DBOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
             if self.settings.compiler == "Visual Studio":
                 flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
                 flags.append("/D_CRT_SECURE_NO_WARNINGS")
@@ -279,6 +278,7 @@ class BoostConan(ConanFile):
         ]
         if self.settings.os == "Windows":
             self.cpp_info.defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
+            self.cpp_info.defines.append("BOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
             self.cpp_info.defines.extend([
                 "BOOST_ALL_NO_LIB", # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
