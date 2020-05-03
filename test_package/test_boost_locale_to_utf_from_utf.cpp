@@ -1,5 +1,5 @@
 // Boost::locale (convert utf encoding) test for Conan package
-// Dmitriy Vetutnev, ODANT, 2018
+// Dmitriy Vetutnev, Odant, 2018, 2020
 
 
 #include <boost/locale.hpp>
@@ -22,7 +22,7 @@ int main(int, char**) {
         const std::string in = {(char)0xdf, 'Z', (char)0xc0}; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in cp1251)
         std::cout << "in: " << in << " , in.length(): " << in.length() << std::endl;
 
-        const std::wstring normalOut = L"\u042f" "Z" "\u0410";
+        const std::wstring normalOut = {(wchar_t)0x042f, (wchar_t)'Z', (wchar_t)0x0410};
         std::wcout << L"normalOut: " << normalOut << L" , normalOut.length(): " << normalOut.length() << std::endl;
 
         const std::wstring out = boost::locale::conv::to_utf<wchar_t>(in, std::locale{}); // Use global locale
@@ -35,7 +35,7 @@ int main(int, char**) {
     {
         std::cout << "-- wchar_t to char(cp1251) --" << std::endl;
 
-        const std::wstring in = L"\u042f" "Z" "\u0410";
+        const std::wstring in ={(wchar_t)0x042f, (wchar_t)'Z', (wchar_t)0x0410};
         std::wcout << L"in: " << in << L" , in.length(): " << in.length() << std::endl;
 
         const std::string normalOut = {(char)0xdf, 'Z', (char)0xc0}; // Cyrillic capital letter ya, Z, cyrillic capital letter a (ЯZА in cp1251)
