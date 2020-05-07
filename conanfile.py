@@ -8,7 +8,7 @@ import os
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.73.0+0"
+    version = "1.73.0+1"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -230,9 +230,7 @@ class BoostConan(ConanFile):
 
     # List compiler flags
     def get_compiler_flags(self):
-        flags = [
-            "-DBOOST_NO_AUTO_PTR"
-        ]
+        flags = []
         if self.settings.os != "Windows":
             flags.append("-fPIC")
         if self.settings.os == "Windows":
@@ -268,8 +266,7 @@ class BoostConan(ConanFile):
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
         self.cpp_info.defines = [
-            "BOOST_USE_STATIC_LIBS",
-            "BOOST_NO_AUTO_PTR"
+            "BOOST_USE_STATIC_LIBS"
         ]
         if self.settings.os == "Windows":
             self.cpp_info.defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
