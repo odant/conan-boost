@@ -230,7 +230,9 @@ class BoostConan(ConanFile):
 
     # List compiler flags
     def get_compiler_flags(self):
-        flags = []
+        flags = [
+            "-DBOOST_NO_AUTO_PTR"
+        ]
         if self.settings.os != "Windows":
             flags.append("-fPIC")
         if self.settings.os == "Windows":
@@ -268,6 +270,8 @@ class BoostConan(ConanFile):
         self.cpp_info.defines = [
             "BOOST_USE_STATIC_LIBS"
         ]
+        if self.settings.compiler != "Visual Studio":
+            self.cpp_info.defines.append("BOOST_NO_AUTO_PTR")
         if self.settings.os == "Windows":
             self.cpp_info.defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
             self.cpp_info.defines.append("BOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
