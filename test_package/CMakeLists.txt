@@ -88,6 +88,20 @@ add_test(
 )
 
 
+add_executable(test_date_time_iso_format test_date_time_iso_format.cpp)
+target_link_libraries(test_date_time_iso_format Boost::date_time)
+set_target_properties(test_date_time_iso_format
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_date_time_iso_format
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_date_time_iso_format
+)
+
+
 add_executable(test_boost_filesystem test_boost_filesystem.cpp)
 target_link_libraries(test_boost_filesystem Boost::filesystem)
 set_target_properties(test_boost_filesystem
