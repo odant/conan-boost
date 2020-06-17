@@ -8,7 +8,7 @@ import os
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.73.0+3"
+    version = "1.73.0+4"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -29,6 +29,7 @@ class BoostConan(ConanFile):
     exports_sources = (
         _boost_name + "/*",
         "!" + _boost_name + "/more*",
+        "!" + _boost_name + "/libs/wave*",
         "FindBoost.cmake", "_FindBoost.cmake",
         "multiprecision.patch",
         "weak_ptr.patch",
@@ -213,7 +214,7 @@ class BoostConan(ConanFile):
             "--with-thread",
             "--with-timer",
             "--with-type_erasure",
-            "--with-wave"
+            #"--with-wave"
         ]
         return libs
 
