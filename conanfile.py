@@ -32,7 +32,6 @@ class BoostConan(ConanFile):
         "!" + _boost_name + "/libs/wave*",
         "FindBoost.cmake", "_FindBoost.cmake",
         "multiprecision.patch",
-        "weak_ptr.patch",
         "add_boost_log_codecvt_enable_param.patch",
         "icu_static_runtime.patch",
         "use_old_jamfile_for_regex.patch",
@@ -52,7 +51,6 @@ class BoostConan(ConanFile):
             self.requires("icu/%s@%s/stable" % (self._icu_version, self.user))
 
     def source(self):
-        tools.patch(patch_file="weak_ptr.patch")
         tools.patch(patch_file="multiprecision.patch")
         tools.patch(patch_file="add_boost_log_codecvt_enable_param.patch")
         tools.patch(patch_file="icu_static_runtime.patch")
