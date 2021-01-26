@@ -1,0 +1,86 @@
+diff --git a/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp b/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp
+index f09722556..5cd73083e 100644
+--- a/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp
++++ b/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp
+@@ -190,12 +190,12 @@ public:
+ 
+ template<class T> void cbi_call_constructor_hook(sp_counted_base * pn, T * px, boost::checked_deleter< T > const &)
+ {
+-    boost::sp_scalar_constructor_hook(px, sizeof(T), pn);
++    boost::sp_scalar_constructor_hook(const_cast<void*>(reinterpret_cast<const void*>(px)), sizeof(T), pn);
+ }
+ 
+ template<class T> void cbi_call_constructor_hook(sp_counted_base *, T * px, boost::checked_array_deleter< T > const &)
+ {
+-    boost::sp_array_constructor_hook(px);
++    boost::sp_array_constructor_hook(const_cast<void*>(reinterpret_cast<const void*>(px)));
+ }
+ 
+ template<class P, class D> void cbi_call_constructor_hook(sp_counted_base *, P const &, D const &, long)
+@@ -204,12 +204,12 @@ template<class P, class D> void cbi_call_constructor_hook(sp_counted_base *, P c
+ 
+ template<class T> void cbi_call_destructor_hook(sp_counted_base * pn, T * px, boost::checked_deleter< T > const &)
+ {
+-    boost::sp_scalar_destructor_hook(px, sizeof(T), pn);
++    boost::sp_scalar_destructor_hook(const_cast<void*>(reinterpret_cast<const void*>(px)), sizeof(T), pn);
+ }
+ 
+ template<class T> void cbi_call_destructor_hook(sp_counted_base *, T * px, boost::checked_array_deleter< T > const &)
+ {
+-    boost::sp_array_destructor_hook(px);
++    boost::sp_array_destructor_hook(const_cast<void*>(reinterpret_cast<const void*>(px)));
+ }
+ 
+ template<class P, class D> void cbi_call_destructor_hook(sp_counted_base *, P const &, D const &, long)
+diff --git a/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp b/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp
+index 56b9eface..ac46016e3 100644
+--- a/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp
++++ b/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp
+@@ -77,14 +77,14 @@ public:
+     explicit sp_counted_impl_p( X * px ): px_( px )
+     {
+ #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+-        boost::sp_scalar_constructor_hook( px, sizeof(X), this );
++        boost::sp_scalar_constructor_hook( const_cast<void*>(reinterpret_cast<const void*>(px)), sizeof(X), this );
+ #endif
+     }
+ 
+     void dispose() BOOST_SP_NOEXCEPT BOOST_OVERRIDE
+     {
+ #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+-        boost::sp_scalar_destructor_hook( px_, sizeof(X), this );
++        boost::sp_scalar_destructor_hook( const_cast<void*>(reinterpret_cast<const void*>(px_)), sizeof(X), this );
+ #endif
+         boost::checked_delete( px_ );
+     }
+diff --git a/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp b/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp
+index 9cf9566e0..9d7e2efc0 100644
+--- a/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp
++++ b/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp
+@@ -65,7 +65,7 @@ public:
+     explicit scoped_ptr( T * p = 0 ) BOOST_SP_NOEXCEPT : px( p )
+     {
+ #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+-        boost::sp_scalar_constructor_hook( px );
++        boost::sp_scalar_constructor_hook( const_cast<void*>(reinterpret_cast<const void*>(px)) );
+ #endif
+     }
+ 
+@@ -74,7 +74,7 @@ public:
+     explicit scoped_ptr( std::auto_ptr<T> p ) BOOST_SP_NOEXCEPT : px( p.release() )
+     {
+ #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+-        boost::sp_scalar_constructor_hook( px );
++        boost::sp_scalar_constructor_hook( const_cast<void*>(reinterpret_cast<const void*>(px)) );
+ #endif
+     }
+ 
+@@ -83,7 +83,7 @@ public:
+     ~scoped_ptr() BOOST_SP_NOEXCEPT
+     {
+ #if defined(BOOST_SP_ENABLE_DEBUG_HOOKS)
+-        boost::sp_scalar_destructor_hook( px );
++        boost::sp_scalar_destructor_hook( const_cast<void*>(reinterpret_cast<const void*>(px)) );
+ #endif
+         boost::checked_delete( px );
+     }
