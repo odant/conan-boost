@@ -20,9 +20,14 @@ class BoostConan(ConanFile):
     }
     options = {
         "with_unit_tests": [True, False],
-        "with_icu": [True, False]
+        "with_icu": [True, False],
+        "sp_debug_hooks": [True, False]
     }
-    default_options = "with_unit_tests=False", "with_icu=True"
+    default_options = {
+        "with_unit_tests": False,
+        "with_icu": True,
+        "sp_debug_hooks": False
+    }
     #
     _boost_name = "boost_%s" % version.replace(".", "_").split("+")[0]
     #
@@ -252,6 +257,9 @@ class BoostConan(ConanFile):
                     "-DBOOST_LOCALE_ENABLE_CHAR32_T"
                 ])
         #
+        if self.options.sp_debug_hooks:
+            flags.append("-DBOOST_SP_ENABLE_DEBUG_HOOKS")
+        #
         return flags
 
     def package(self):
@@ -294,4 +302,6 @@ class BoostConan(ConanFile):
                     "BOOST_LOCALE_ENABLE_CHAR16_T",
                     "BOOST_LOCALE_ENABLE_CHAR32_T"
                 ])
+        if self.options.sp_debug_hooks:
+            self.cpp_info.defines.append("BOOST_SP_ENABLE_DEBUG_HOOKS")
 
