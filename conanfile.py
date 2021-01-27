@@ -270,6 +270,7 @@ class BoostConan(ConanFile):
         self.copy(pattern="*", src="%s/boost" % self._boost_name, dst="include/boost")
         self.copy("*.lib", src="stage", dst="lib", keep_path=False)
         self.copy("*.a", src="stage", dst="lib", keep_path=False)
+        self.copy("*.cpp", src="%s/libs/smart_ptr/extras/src" % self._boost_name, dst="include/boost/smart_ptr/extras/src")
 
     def package_id(self):
         self.info.options.with_unit_tests = "any"
