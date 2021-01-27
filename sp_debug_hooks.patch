@@ -85,7 +85,7 @@ index 9cf9566e0..9d7e2efc0 100644
          boost::checked_delete( px );
      }
 diff --git a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
-index 7484139b3..748c656ec 100644
+index 7484139b3..66694f185 100644
 --- a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
 +++ b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
 @@ -21,20 +21,13 @@ int const m = 2; // m * sizeof(int) must be aligned appropriately
@@ -110,6 +110,15 @@ index 7484139b3..748c656ec 100644
  static void * allocate(size_t n, int mark)
  {
      int * pm;
+@@ -60,7 +53,7 @@ static void * allocate(size_t n, int mark)
+     return pm + m;
+ }
+ 
+-void * operator new(size_t n) throw(bad_alloc)
++void * operator new(size_t n)
+ {
+     void * p = allocate(n, allocated_scalar);
+ 
 @@ -75,14 +68,14 @@ void * operator new(size_t n) throw(bad_alloc)
  
  #if !defined(BOOST_BORLANDC) || (BOOST_BORLANDC > 0x551)
