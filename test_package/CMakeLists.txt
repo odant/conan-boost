@@ -307,3 +307,16 @@ add_test(
     COMMAND test_weak_ptr_hash
 )
 
+
+add_executable(test_smart_ptr test_smart_ptr.cpp)
+target_link_libraries(test_smart_ptr Boost::boost)
+set_target_properties(test_smart_ptr
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_smart_ptr
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_smart_ptr
+)

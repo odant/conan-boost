@@ -84,3 +84,21 @@ index 9cf9566e0..9d7e2efc0 100644
  #endif
          boost::checked_delete( px );
      }
+diff --git a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
+index 7484139b3..fa23111de 100644
+--- a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
++++ b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
+@@ -28,13 +28,6 @@ using namespace std; // for compilers where things aren't in std
+ 
+ // operator new
+ 
+-static new_handler get_new_handler()
+-{
+-    new_handler p = set_new_handler(0);
+-    set_new_handler(p);
+-    return p;
+-}
+-
+ static void * allocate(size_t n, int mark)
+ {
+     int * pm;
