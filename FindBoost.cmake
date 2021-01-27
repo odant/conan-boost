@@ -94,6 +94,7 @@ if(CONAN_USER_BOOST_SP_DEBUG_HOOKS)
 
     add_library(boost_sp_debug_hooks STATIC ${CONAN_INCLUDE_DIRS_BOOST}/boost/smart_ptr/extras/src/sp_debug_hooks.cpp)
     target_include_directories(boost_sp_debug_hooks PRIVATE ${CONAN_INCLUDE_DIRS_BOOST})
+    target_compile_definitions(boost_sp_debug_hooks PRIVATE "BOOST_SP_ENABLE_DEBUG_HOOKS")
 
     set_property(TARGET Boost::boost APPEND PROPERTY
         INTERFACE_LINK_LIBRARIES boost_sp_debug_hooks
