@@ -85,10 +85,18 @@ index 9cf9566e0..9d7e2efc0 100644
          boost::checked_delete( px );
      }
 diff --git a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
-index 7484139b3..fa23111de 100644
+index 7484139b3..748c656ec 100644
 --- a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
 +++ b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
-@@ -28,13 +28,6 @@ using namespace std; // for compilers where things aren't in std
+@@ -21,20 +21,13 @@ int const m = 2; // m * sizeof(int) must be aligned appropriately
+ int const allocated_scalar  = 0x1234560C;
+ int const allocated_array   = 0x1234560A;
+ int const adopted_scalar    = 0x0567890C;
+-int const adopted_array     = 0x0567890A;
++//int const adopted_array     = 0x0567890A;
+ int const deleted           = 0x498769DE;
+ 
+ using namespace std; // for compilers where things aren't in std
  
  // operator new
  
@@ -102,3 +110,20 @@ index 7484139b3..fa23111de 100644
  static void * allocate(size_t n, int mark)
  {
      int * pm;
+@@ -75,14 +68,14 @@ void * operator new(size_t n) throw(bad_alloc)
+ 
+ #if !defined(BOOST_BORLANDC) || (BOOST_BORLANDC > 0x551)
+ 
+-void * operator new(size_t n, nothrow_t const &) throw()
++void * operator new(size_t n, nothrow_t const &)
+ {
+     return allocate(n, allocated_scalar);
+ }
+ 
+ #endif
+ 
+-void * operator new[](size_t n) throw(bad_alloc)
++void * operator new[](size_t n)
+ {
+     void * p = allocate(n, allocated_array);
+ 

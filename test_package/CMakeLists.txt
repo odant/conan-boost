@@ -103,7 +103,10 @@ add_test(
 
 
 add_executable(test_boost_filesystem test_boost_filesystem.cpp)
-target_link_libraries(test_boost_filesystem Boost::filesystem)
+target_link_libraries(test_boost_filesystem
+    Boost::filesystem
+    Boost::system
+)
 set_target_properties(test_boost_filesystem
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"
@@ -117,7 +120,10 @@ add_test(
 
 
 add_executable(test_boost_iostreams test_boost_iostreams.cpp)
-target_link_libraries(test_boost_iostreams Boost::iostreams)
+target_link_libraries(test_boost_iostreams
+    Boost::iostreams
+    Boost::system
+)
 set_target_properties(test_boost_iostreams
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"
@@ -215,7 +221,10 @@ endif()
 
 
 add_executable(test_boost_log test_boost_log.cpp)
-target_link_libraries(test_boost_log Boost::log)
+target_link_libraries(test_boost_log
+    Boost::log
+    Boost::system
+)
 set_target_properties(test_boost_log
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"
@@ -237,6 +246,7 @@ if(UNIX)
     add_executable(test_boost_process_leak_child test_boost_process_leak_child.cpp)
     target_link_libraries(test_boost_process_leak_child
         Boost::filesystem
+        Boost::system
         Threads::Threads
     )
     set_target_properties(test_boost_process_leak_child
@@ -267,7 +277,10 @@ add_test(
 
 
 add_executable(test_boost_regex test_boost_regex.cpp)
-target_link_libraries(test_boost_regex Boost::regex)
+target_link_libraries(test_boost_regex
+    Boost::regex
+    Boost::system
+)
 set_target_properties(test_boost_regex
     PROPERTIES
     INSTALL_RPATH "$ORIGIN"

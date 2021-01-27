@@ -86,3 +86,21 @@ if(CONAN_USER_BOOST_WITH_ICU AND TARGET Boost::locale)
     )
 
 endif()
+
+# Add smart-pointer debug hooks
+if(CONAN_USER_BOOST_SP_DEBUG_HOOKS)
+
+    message(STATUS "FindBoost.cmake (wrapper): Enable smart-pointer debug hooks")
+
+    add_library(boost_sp_debug_hooks STATIC ${CONAN_INCLUDE_DIRS_BOOST}/boost/smart_ptr/extras/src/sp_debug_hooks.cpp)
+    target_include_directories(boost_sp_debug_hooks PRIVATE ${CONAN_INCLUDE_DIRS_BOOST})
+
+    set_property(TARGET Boost::boost APPEND PROPERTY
+        INTERFACE_LINK_LIBRARIES boost_sp_debug_hooks
+    )
+    set_property(TARGET Boost::system APPEND PROPERTY
+        INTERFACE_LINK_LIBRARIES boost_sp_debug_hooks
+    )
+
+endif()
+

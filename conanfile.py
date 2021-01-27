@@ -265,6 +265,8 @@ class BoostConan(ConanFile):
         return flags
 
     def package(self):
+        if not self.in_local_cache:
+            self.copy("conanfile.py", dst=".", keep_path=False)
         self.copy("FindBoost.cmake", dst=".", src=".")
         self.copy("_FindBoost.cmake", dst=".", src=".")
         self.copy(pattern="*", src="%s/boost" % self._boost_name, dst="include/boost")
@@ -306,5 +308,6 @@ class BoostConan(ConanFile):
                     "BOOST_LOCALE_ENABLE_CHAR32_T"
                 ])
         if self.options.sp_debug_hooks:
+            self.user_info.SP_DEBUG_HOOKS = True
             self.cpp_info.defines.append("BOOST_SP_ENABLE_DEBUG_HOOKS")
 
