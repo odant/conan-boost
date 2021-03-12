@@ -49,7 +49,7 @@ class BoostConan(ConanFile):
     short_paths = True
     #
     _zlib_version = "[>=1.2.3]"
-    _icu_version = "[>=61.1]"
+    _icu_version = "[>=68.2]"
 
     def requirements(self):
         self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
@@ -91,7 +91,9 @@ class BoostConan(ConanFile):
                 self.output.info("%s=%s" % (k, v))
                 self.output.info("-------------------------------------------------")
             self.output.info("Current directory => %s" % os.getcwd())
-            self.run("%s -j%s %s stage" % (b2, tools.cpu_count(), " ".join(flags)))
+            build_command = "%s -j%s %s stage" % (b2, tools.cpu_count(), " ".join(flags));
+            self.output.info("Build command:\n%s" % build_command)
+            self.run(build_command)
         #
         if self.options.with_unit_tests:
             exclude = [
@@ -224,6 +226,11 @@ class BoostConan(ConanFile):
     def get_toolset(self):
         compiler_version = str(self.settings.compiler.version)
         if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+            vs_toolset = str(self.settings.compiler.toolset).lower()
+            self.output.info("Using toolset: %s" % vs_toolset)
+            if vs_toolset == "clangcl":
+                self.output.info("Using Clang-win")
+                return "clang-win", "11", "clang-cl.exe"
             if compiler_version == "15":
                 compiler_version = "14.1"
             elif compiler_version == "16":
