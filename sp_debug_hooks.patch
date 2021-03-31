@@ -1,7 +1,5 @@
-diff --git a/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp b/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp
-index f09722556..5cd73083e 100644
---- a/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp
-+++ b/boost_1_75_0/boost/serialization/detail/shared_count_132.hpp
+--- a/boost_1_76_0/boost/serialization/detail/shared_count_132.hpp
++++ b/boost_1_76_0/boost/serialization/detail/shared_count_132.hpp
 @@ -190,12 +190,12 @@ public:
  
  template<class T> void cbi_call_constructor_hook(sp_counted_base * pn, T * px, boost::checked_deleter< T > const &)
@@ -32,10 +30,8 @@ index f09722556..5cd73083e 100644
  }
  
  template<class P, class D> void cbi_call_destructor_hook(sp_counted_base *, P const &, D const &, long)
-diff --git a/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp b/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp
-index 56b9eface..ac46016e3 100644
---- a/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp
-+++ b/boost_1_75_0/boost/smart_ptr/detail/sp_counted_impl.hpp
+--- a/boost_1_76_0/boost/smart_ptr/detail/sp_counted_impl.hpp
++++ b/boost_1_76_0/boost/smart_ptr/detail/sp_counted_impl.hpp
 @@ -77,14 +77,14 @@ public:
      explicit sp_counted_impl_p( X * px ): px_( px )
      {
@@ -53,10 +49,8 @@ index 56b9eface..ac46016e3 100644
  #endif
          boost::checked_delete( px_ );
      }
-diff --git a/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp b/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp
-index 9cf9566e0..9d7e2efc0 100644
---- a/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp
-+++ b/boost_1_75_0/boost/smart_ptr/scoped_ptr.hpp
+--- a/boost_1_76_0/boost/smart_ptr/scoped_ptr.hpp
++++ b/boost_1_76_0/boost/smart_ptr/scoped_ptr.hpp
 @@ -65,7 +65,7 @@ public:
      explicit scoped_ptr( T * p = 0 ) BOOST_SP_NOEXCEPT : px( p )
      {
@@ -84,10 +78,8 @@ index 9cf9566e0..9d7e2efc0 100644
  #endif
          boost::checked_delete( px );
      }
-diff --git a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
-index 7484139b3..66694f185 100644
---- a/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
-+++ b/boost_1_75_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
+--- a/boost_1_76_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
++++ b/boost_1_76_0/libs/smart_ptr/extras/src/sp_debug_hooks.cpp
 @@ -21,20 +21,13 @@ int const m = 2; // m * sizeof(int) must be aligned appropriately
  int const allocated_scalar  = 0x1234560C;
  int const allocated_array   = 0x1234560A;

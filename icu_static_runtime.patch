@@ -1,5 +1,5 @@
---- a/boost_1_75_0/libs/locale/build/Jamfile.v2
-+++ b/boost_1_75_0/libs/locale/build/Jamfile.v2
+--- a/boost_1_76_0/libs/locale/build/Jamfile.v2
++++ b/boost_1_76_0/libs/locale/build/Jamfile.v2
 @@ -62,11 +62,20 @@ explicit has_xlocale ;
  
  ICU_PATH =  [ modules.peek : ICU_PATH ] ;
