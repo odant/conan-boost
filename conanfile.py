@@ -8,7 +8,7 @@ import os
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.75.0+2"
+    version = "1.76.0-beta1-rc2+0"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -29,7 +29,7 @@ class BoostConan(ConanFile):
         "sp_debug_hooks": False
     }
     #
-    _boost_name = "boost_%s" % version.replace(".", "_").split("+")[0]
+    _boost_name = "boost_%s" % version.replace(".", "_").split("+", 1)[0].split("-", 1)[0]
     #
     exports_sources = (
         _boost_name + "/*",
