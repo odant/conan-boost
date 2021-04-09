@@ -206,10 +206,12 @@ class BoostConan(ConanFile):
             "--with-graph",
             "--with-graph_parallel",
             "--with-iostreams",
+            "--with-json",
             "--with-locale",
             "--with-log",
             "--with-math",
             "--with-mpi",
+            "--with-nowide",
             "--with-program_options",
             #"--with-python",
             "--with-random",
@@ -221,9 +223,7 @@ class BoostConan(ConanFile):
             "--with-thread",
             "--with-timer",
             "--with-type_erasure",
-            #"--with-wave",
-            "--with-json",
-            "--with-nowide"
+            #"--with-wave"
         ]
         return libs
 
