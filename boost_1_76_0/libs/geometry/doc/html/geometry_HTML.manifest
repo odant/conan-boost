@@ -100,6 +100,9 @@ geometry/reference/algorithms/centroid/return_centroid_1.html
 geometry/reference/algorithms/centroid/return_centroid_2_with_strategy.html
 geometry/reference/algorithms/clear.html
 geometry/reference/algorithms/convert.html
+geometry/reference/algorithms/convex_hull.html
+geometry/reference/algorithms/convex_hull/convex_hull_3_with_strategy.html
+geometry/reference/algorithms/convex_hull/convex_hull_2.html
 geometry/reference/algorithms/correct.html
 geometry/reference/algorithms/correct/correct_1.html
 geometry/reference/algorithms/correct/correct_2_with_strategy.html

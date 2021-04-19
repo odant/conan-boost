@@ -32,12 +32,25 @@
     </h4>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
           Fixes
-          <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+          <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; ">
+<li class="listitem">
                 <code class="computeroutput"><span class="identifier">algorithm</span><span class="special">::</span><span class="identifier">reduce</span></code> with <code class="computeroutput"><span class="identifier">crop</span></code>
                 now does not remove the counts in flow bins anymore if the selected
                 range actually overlaps with the flow bins, making the treatment
                 of flow bins consistent with inner bins
-              </li></ul></div>
+              </li>
+<li class="listitem">
+                <code class="computeroutput"><span class="identifier">accumulators</span><span class="special">::</span><span class="identifier">mean</span></code> and <code class="computeroutput"><span class="identifier">accumulators</span><span class="special">::</span><span class="identifier">weighted_mean</span></code>
+                now compute the correct variance when <code class="computeroutput"><span class="keyword">operator</span><span class="special">+=</span></code> was called, for example, when histograms
+                with accumulators are added; this was wrong before leading to too
+                small variances
+              </li>
+<li class="listitem">
+                detection of weight support in user-defined accumulators was broken
+                at compile-time if accumulator used <code class="computeroutput"><span class="keyword">operator</span><span class="special">+=</span></code> instead of <code class="computeroutput"><span class="keyword">operator</span><span class="special">()</span></code>; tests only accidentally passed
+                for builtin <code class="computeroutput"><span class="identifier">weighted_sum</span></code>
+              </li>
+</ul></div>
         </li></ul></div>
 <h4>
 <a name="histogram.history.h1"></a>

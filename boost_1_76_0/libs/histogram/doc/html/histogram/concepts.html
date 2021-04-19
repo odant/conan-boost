@@ -282,7 +282,7 @@
                   in the reduced axis. If <code class="computeroutput"><span class="identifier">n</span></code>
                   is larger than 1, <code class="computeroutput"><span class="identifier">n</span></code>
                   adjacent bins are merged into one larger cell. If this constructor
-                  is not implemented, <code class="computeroutput"><a class="link" href="../boost/histogram/algorithm/reduce_idm45424597896208.html" title="Function template reduce">boost::histogram::algorithm::reduce</a></code>
+                  is not implemented, <code class="computeroutput"><a class="link" href="../boost/histogram/algorithm/reduce_idm46290190015936.html" title="Function template reduce">boost::histogram::algorithm::reduce</a></code>
                   throws an exception on an attempt to reduce this axis.
                 </p>
               </td>
@@ -1704,6 +1704,7 @@
                 <p>
                   Either a call operator accepting a fixed number of arguments must
                   be implemented, or the pre-increment operator. The call operator
+                  form <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">ts</span><span class="special">...)</span></code>
                   may not be templated and not overloaded, except to support weights
                   as described under optional features.
                 </p>
@@ -1768,16 +1769,11 @@
           </li>
 <li class="listitem">
             <code class="computeroutput"><span class="identifier">w</span></code> is a value of type
-            <code class="computeroutput"><a class="link" href="../boost/histogram/weight_type.html" title="Struct template weight_type">boost::histogram::weight_type</a></code>,
-            where <code class="computeroutput"><span class="identifier">T</span></code> is a number type
+            <code class="computeroutput"><a class="link" href="../boost/histogram/weight_type.html" title="Struct template weight_type">boost::histogram::weight_type</a></code>
           </li>
 <li class="listitem">
             <code class="computeroutput"><span class="identifier">ts</span><span class="special">...</span></code>
             is a pack of values of arbitrary types
-          </li>
-<li class="listitem">
-            <code class="computeroutput"><span class="identifier">v</span></code> is a number value (integral
-            or floating point)
           </li>
 </ul></div>
 <div class="table">
@@ -1810,7 +1806,7 @@
 <td>
                 <p>
                   <code class="computeroutput"><span class="identifier">a</span> <span class="special">+=</span>
-                  <span class="identifier">v</span></code> or <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">w</span><span class="special">,</span> <span class="identifier">ts</span><span class="special">...)</span></code>
+                  <span class="identifier">w</span></code> or <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">w</span><span class="special">,</span> <span class="identifier">ts</span><span class="special">...)</span></code>
                 </p>
               </td>
 <td>
@@ -1823,8 +1819,9 @@
                   or <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">ts</span><span class="special">...)</span></code>,
                   respectively. Only the corresponding matching form may be implemented:
                   <code class="computeroutput"><span class="identifier">a</span> <span class="special">+=</span>
-                  <span class="identifier">v</span></code> for <code class="computeroutput"><span class="special">++</span><span class="identifier">a</span></code>, <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">w</span><span class="special">,</span> <span class="identifier">ts</span><span class="special">...)</span></code> for <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">ts</span><span class="special">...)</span></code>. The implementations may not
-                  be templated and not overloaded.
+                  <span class="identifier">w</span></code> for <code class="computeroutput"><span class="special">++</span><span class="identifier">a</span></code>, <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">w</span><span class="special">,</span> <span class="identifier">ts</span><span class="special">...)</span></code> for <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">ts</span><span class="special">...)</span></code>. The call operator form <code class="computeroutput"><span class="identifier">a</span><span class="special">(</span><span class="identifier">w</span><span class="special">,</span>
+                  <span class="identifier">ts</span><span class="special">...)</span></code>
+                  may not be templated and not overloaded.
                 </p>
               </td>
 </tr>

@@ -48,6 +48,12 @@
           that the instantiated template should be using a specialization of <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">allocator</span></code> internally to allocate dynamic
           memory, so the change has no functional effect. (<a href="https://github.com/boostorg/log/issues/141" target="_top">GH#141</a>)
         </li>
+<li class="listitem">
+          Boost.Log no longer defines <code class="computeroutput"><span class="identifier">__MSVCRT_VERSION__</span></code>
+          macro on MinGW and MinGW-w64. This macro is used to select the target C
+          runtime library. Defining this macro caused incompatibility with UCRT,
+          which is available as an option in recent MinGW-w64. (<a href="https://github.com/boostorg/log/pull/149" target="_top">PR#149</a>)
+        </li>
 </ul></div>
 <h4>
 <a name="log.changelog.h1"></a>

@@ -322,7 +322,7 @@
 <constructor cv="= default"/>
 <constructor cv="noexcept"><template>
           <template-type-parameter name="T"/>
-        </template><parameter name="o"><paramtype>const <classname>mean</classname>&lt; T &gt; &amp;</paramtype></parameter><purpose>Allow implicit conversion from mean&lt;T&gt; </purpose></constructor>
+        </template><parameter name="o"><paramtype>const <classname>mean</classname>&lt; T &gt; &amp;</paramtype></parameter><purpose>Allow implicit conversion from mean&lt;T&gt;. </purpose></constructor>
 <constructor cv="noexcept"><parameter name="n"><paramtype>const_reference</paramtype></parameter><parameter name="mean"><paramtype>const_reference</paramtype></parameter><parameter name="variance"><paramtype>const_reference</paramtype></parameter><purpose>Initialize to external count, mean, and variance. </purpose></constructor>
 </class></namespace>
 
@@ -552,11 +552,11 @@ for (auto&amp;&amp; x : indexed(hist))
 <method name="operator()"><type>void</type><parameter name="x"><paramtype>const_reference</paramtype></parameter><purpose>Insert sample x. </purpose></method>
 <method name="operator()"><type>void</type><parameter name="w"><paramtype>const <classname>weight_type</classname>&lt; value_type &gt; &amp;</paramtype></parameter><parameter name="x"><paramtype>const_reference</paramtype></parameter><purpose>Insert sample x with weight w. </purpose></method>
 <method name="operator+="><type><classname>weighted_mean</classname> &amp;</type><parameter name="rhs"><paramtype>const <classname>weighted_mean</classname> &amp;</paramtype></parameter><purpose>Add another <classname alt="boost::histogram::accumulators::weighted_mean">weighted_mean</classname>. </purpose></method>
-<method name="operator *="><type><classname>weighted_mean</classname> &amp;</type><parameter name="s"><paramtype>const_reference</paramtype></parameter><purpose>Scale by value. </purpose><description><para>This acts as if all samples were scaled by the value. </para></description></method>
+<method name="operator *=" cv="noexcept"><type><classname>weighted_mean</classname> &amp;</type><parameter name="s"><paramtype>const_reference</paramtype></parameter><purpose>Scale by value. </purpose><description><para>This acts as if all samples were scaled by the value. </para></description></method>
 <method name="operator==" cv="const noexcept"><type>bool</type><parameter name="rhs"><paramtype>const <classname>weighted_mean</classname> &amp;</paramtype></parameter></method>
 <method name="operator!=" cv="const noexcept"><type>bool</type><parameter name="rhs"><paramtype>const <classname>weighted_mean</classname> &amp;</paramtype></parameter></method>
 <method name="sum_of_weights" cv="const noexcept"><type>const_reference</type><purpose>Return sum of weights. </purpose></method>
-<method name="sum_of_weights_squared" cv="const noexcept"><type>const_reference</type><purpose>Return sum of weights squared (variance of weight distribution) </purpose></method>
+<method name="sum_of_weights_squared" cv="const noexcept"><type>const_reference</type><purpose>Return sum of weights squared (variance of weight distribution). </purpose></method>
 <method name="value" cv="const noexcept"><type>const_reference</type><purpose>Return mean value of accumulated weighted samples. </purpose><description><para>The result is undefined, if <computeroutput>sum_of_weights() == 0</computeroutput>. </para></description></method>
 <method name="variance" cv="const"><type>value_type</type><purpose>Return variance of accumulated weighted samples. </purpose><description><para>The result is undefined, if <computeroutput>sum_of_weights() == 0</computeroutput> or <computeroutput>sum_of_weights() == sum_of_weights_squared()</computeroutput>. </para></description></method>
 <method name="serialize"><type>void</type><template>
@@ -607,9 +607,7 @@ for (auto&amp;&amp; x : indexed(hist))
 <typedef name="const_reference"><type>const value_type &amp;</type></typedef>
 <method-group name="public member functions">
 <method name="operator++"><type><classname>weighted_sum</classname> &amp;</type><purpose>Increment by one. </purpose></method>
-<method name="operator+="><type><classname>weighted_sum</classname> &amp;</type><template>
-          <template-type-parameter name="T"/>
-        </template><parameter name="w"><paramtype>const <classname>weight_type</classname>&lt; T &gt; &amp;</paramtype></parameter><purpose>Increment by weight. </purpose></method>
+<method name="operator+="><type><classname>weighted_sum</classname> &amp;</type><parameter name="w"><paramtype>const <classname>weight_type</classname>&lt; value_type &gt; &amp;</paramtype></parameter><purpose>Increment by weight. </purpose></method>
 <method name="operator+="><type><classname>weighted_sum</classname> &amp;</type><parameter name="rhs"><paramtype>const <classname>weighted_sum</classname> &amp;</paramtype></parameter><purpose>Added another weighted sum. </purpose></method>
 <method name="operator *="><type><classname>weighted_sum</classname> &amp;</type><parameter name="x"><paramtype>const_reference</paramtype></parameter><purpose>Scale by value. </purpose></method>
 <method name="operator==" cv="const noexcept"><type>bool</type><parameter name="rhs"><paramtype>const <classname>weighted_sum</classname> &amp;</paramtype></parameter></method>

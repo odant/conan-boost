@@ -29,33 +29,33 @@
 
   <span class="keyword">enum</span> <a name="boost.log.fallback_to_throw.@1"></a>@1 <span class="special">{</span> guaranteed_result = = true <span class="special">}</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="fallback_to_throw.html#idm46123050072752-bb">public static functions</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a class="link" href="fallback_to_throw.html#idm46123050072192-bb"><span class="identifier">apply_default</span></a><span class="special">(</span><span class="identifier">FunT</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a class="link" href="fallback_to_throw.html#idm46123050069056-bb"><span class="identifier">apply_default</span></a><span class="special">(</span><span class="identifier">FunT</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">static</span> <span class="keyword">void</span> <a class="link" href="fallback_to_throw.html#idm46123050065920-bb"><span class="identifier">on_invalid_type</span></a><span class="special">(</span><span class="identifier">typeindex</span><span class="special">::</span><span class="identifier">type_index</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">static</span> <span class="keyword">void</span> <a class="link" href="fallback_to_throw.html#idm46123050063584-bb"><span class="identifier">on_missing_value</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="fallback_to_throw.html#idm46572489723104-bb">public static functions</a></span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a class="link" href="fallback_to_throw.html#idm46572489722544-bb"><span class="identifier">apply_default</span></a><span class="special">(</span><span class="identifier">FunT</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a class="link" href="fallback_to_throw.html#idm46572489719408-bb"><span class="identifier">apply_default</span></a><span class="special">(</span><span class="identifier">FunT</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">static</span> <span class="keyword">void</span> <a class="link" href="fallback_to_throw.html#idm46572489716272-bb"><span class="identifier">on_invalid_type</span></a><span class="special">(</span><span class="identifier">typeindex</span><span class="special">::</span><span class="identifier">type_index</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">static</span> <span class="keyword">void</span> <a class="link" href="fallback_to_throw.html#idm46572489713936-bb"><span class="identifier">on_missing_value</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm46408711628800"></a><h2>Description</h2>
+<a name="idm46131674514640"></a><h2>Description</h2>
 <p>The <code class="computeroutput"><a class="link" href="fallback_to_throw.html" title="Struct fallback_to_throw">fallback_to_throw</a></code> policy results in throwing an exception if the attribute value cannot be extracted. </p>
 <div class="refsect2">
-<a name="idm46408711626816"></a><h3>
-<a name="idm46123050072752-bb"></a><code class="computeroutput">fallback_to_throw</code> public static functions</h3>
+<a name="idm46131674512656"></a><h3>
+<a name="idm46572489723104-bb"></a><code class="computeroutput">fallback_to_throw</code> public static functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a name="idm46123050072192-bb"></a><span class="identifier">apply_default</span><span class="special">(</span><span class="identifier">FunT</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a name="idm46572489722544-bb"></a><span class="identifier">apply_default</span><span class="special">(</span><span class="identifier">FunT</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
 <p>The method is called in order to apply a function object to the default value. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a name="idm46123050069056-bb"></a><span class="identifier">apply_default</span><span class="special">(</span><span class="identifier">FunT</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> FunT<span class="special">&gt;</span> <span class="keyword">static</span> <span class="keyword">bool</span> <a name="idm46572489719408-bb"></a><span class="identifier">apply_default</span><span class="special">(</span><span class="identifier">FunT</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre>
 <p>The method is called in order to apply a function object to the default value. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">void</span> <a name="idm46123050065920-bb"></a><span class="identifier">on_invalid_type</span><span class="special">(</span><span class="identifier">typeindex</span><span class="special">::</span><span class="identifier">type_index</span> <span class="keyword">const</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">void</span> <a name="idm46572489716272-bb"></a><span class="identifier">on_invalid_type</span><span class="special">(</span><span class="identifier">typeindex</span><span class="special">::</span><span class="identifier">type_index</span> <span class="keyword">const</span> <span class="special">&amp;</span> t<span class="special">)</span><span class="special">;</span></pre>
 <p>The method is called when value extraction failed because the attribute value has different type than requested. </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">void</span> <a name="idm46123050063584-bb"></a><span class="identifier">on_missing_value</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
+<pre class="literallayout"><span class="keyword">static</span> <span class="keyword">void</span> <a name="idm46572489713936-bb"></a><span class="identifier">on_missing_value</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>
 <p>The method is called when value extraction failed because the attribute value was not found. </p>
 </li>
 </ol></div>

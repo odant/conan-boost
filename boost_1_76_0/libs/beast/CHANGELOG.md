@@ -1,3 +1,26 @@
+Version 313:
+
+* Fix incorrect websocket test ordering.
+* Fix missing check for error code after header is parsed.
+* Fix case where inflated content is larger than the out buffer.
+
+--------------------------------------------------------------------------------
+
+Version 312:
+
+* Enable Github Actions CI.
+
+--------------------------------------------------------------------------------
+
+Version 311:
+
+* Fix warning in http-server-fast.
+* Parenthesise all uses of min() and max().
+* Extend Drone MSVC tests.
+* Fix MSVC build error.
+
+--------------------------------------------------------------------------------
+
 Version 310:
 
 * Update Release Notes.

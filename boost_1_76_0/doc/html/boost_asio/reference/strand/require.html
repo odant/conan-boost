@@ -27,10 +27,25 @@
 <a name="boost_asio.reference.strand.require"></a><a class="link" href="require.html" title="strand::require">strand::require</a>
 </h4></div></div></div>
 <p>
-          <a class="indexterm" name="boost_asio.indexterm.strand.require"></a>
+          <a class="indexterm" name="boost_asio.indexterm.strand.require"></a> 
+Forward a requirement to
+          the underlying executor.
         </p>
-<pre class="programlisting">Property strand&lt; typename decay&lt; typename require_result&lt; const Executor &amp;, Property &gt;::type &gt;::type &gt;::type require(
+<pre class="programlisting">template&lt;
+    typename Property&gt;
+constraint&lt; can_require&lt; const Executor &amp;, Property &gt;::value &amp;&amp;!is_convertible&lt; Property, execution::blocking_t::always_t &gt;::value, strand&lt; typename decay&lt; typename require_result&lt; const Executor &amp;, Property &gt;::type &gt;::type &gt; &gt;::type require(
     const Property &amp; p) const;
+</pre>
+<p>
+          Do not call this function directly. It is intended for use with the <a class="link" href="../require.html" title="require"><code class="computeroutput">require</code></a> customisation
+          point.
+        </p>
+<p>
+          For example:
+        </p>
+<pre class="programlisting">boost::asio::strand&lt;my_executor_type&gt; ex1 = ...;
+auto ex2 = boost::asio::require(ex1,
+    boost::asio::execution::blocking.never);
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>

@@ -34,41 +34,41 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="pow.html" title="Struct pow">pow</a> <span class="special">{</span>
   <span class="comment">// <a class="link" href="pow.html#boost.histogram.axis.transform.powconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <span class="keyword">explicit</span> <a class="link" href="pow.html#idm45424597444656-bb"><span class="identifier">pow</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="pow.html#idm45424597443264-bb"><span class="identifier">pow</span></a><span class="special">(</span><span class="special">)</span> <span class="special">=</span> <span class="keyword">default</span><span class="special">;</span>
+  <span class="keyword">explicit</span> <a class="link" href="pow.html#idm46290189564384-bb"><span class="identifier">pow</span></a><span class="special">(</span><span class="keyword">double</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="pow.html#idm46290189562992-bb"><span class="identifier">pow</span></a><span class="special">(</span><span class="special">)</span> <span class="special">=</span> <span class="keyword">default</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="pow.html#idm45424597455376-bb">public member functions</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a class="link" href="pow.html#idm45424597454816-bb"><span class="identifier">forward</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a class="link" href="pow.html#idm45424597452160-bb"><span class="identifier">inverse</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="pow.html#idm45424597449504-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="pow.html" title="Struct pow">pow</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="pow.html#idm45424597447408-bb"><span class="identifier">serialize</span></a><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="pow.html#idm46290189575104-bb">public member functions</a></span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a class="link" href="pow.html#idm46290189574544-bb"><span class="identifier">forward</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a class="link" href="pow.html#idm46290189571888-bb"><span class="identifier">inverse</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="pow.html#idm46290189569232-bb"><span class="keyword">operator</span><span class="special">==</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="pow.html" title="Struct pow">pow</a> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="pow.html#idm46290189567136-bb"><span class="identifier">serialize</span></a><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">double</span> <span class="identifier">power</span><span class="special">;</span>  <span class="comment">// power index </span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm45421369365504"></a><h2>Description</h2>
+<a name="idm46134587153088"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="idm45421369365088"></a><h3>
+<a name="idm46134587152672"></a><h3>
 <a name="boost.histogram.axis.transform.powconstruct-copy-destruct"></a><code class="computeroutput">pow</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">explicit</span> <a name="idm45424597444656-bb"></a><span class="identifier">pow</span><span class="special">(</span><span class="keyword">double</span> p<span class="special">)</span><span class="special">;</span></pre>Make transform with index p. </li>
-<li class="listitem"><pre class="literallayout"><a name="idm45424597443264-bb"></a><span class="identifier">pow</span><span class="special">(</span><span class="special">)</span> <span class="special">=</span> <span class="keyword">default</span><span class="special">;</span></pre></li>
+<pre class="literallayout"><span class="keyword">explicit</span> <a name="idm46290189564384-bb"></a><span class="identifier">pow</span><span class="special">(</span><span class="keyword">double</span> p<span class="special">)</span><span class="special">;</span></pre>Make transform with index p. </li>
+<li class="listitem"><pre class="literallayout"><a name="idm46290189562992-bb"></a><span class="identifier">pow</span><span class="special">(</span><span class="special">)</span> <span class="special">=</span> <span class="keyword">default</span><span class="special">;</span></pre></li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="idm45421369352560"></a><h3>
-<a name="idm45424597455376-bb"></a><code class="computeroutput">pow</code> public member functions</h3>
+<a name="idm46134587140192"></a><h3>
+<a name="idm46290189575104-bb"></a><code class="computeroutput">pow</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a name="idm45424597454816-bb"></a><span class="identifier">forward</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Returns pow(x, power) of external value x. </li>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a name="idm46290189574544-bb"></a><span class="identifier">forward</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Returns pow(x, power) of external value x. </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a name="idm45424597452160-bb"></a><span class="identifier">inverse</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Returns pow(x, 1/power) of external value x. </li>
-<li class="listitem"><pre class="literallayout"><span class="keyword">bool</span> <a name="idm45424597449504-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="pow.html" title="Struct pow">pow</a> <span class="special">&amp;</span> o<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre></li>
-<li class="listitem"><pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm45424597447408-bb"></a><span class="identifier">serialize</span><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span> ar<span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span></pre></li>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">auto</span> <a name="idm46290189571888-bb"></a><span class="identifier">inverse</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Returns pow(x, 1/power) of external value x. </li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">bool</span> <a name="idm46290189569232-bb"></a><span class="keyword">operator</span><span class="special">==</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="pow.html" title="Struct pow">pow</a> <span class="special">&amp;</span> o<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm46290189567136-bb"></a><span class="identifier">serialize</span><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span> ar<span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span></pre></li>
 </ol></div>
 </div>
 </div>

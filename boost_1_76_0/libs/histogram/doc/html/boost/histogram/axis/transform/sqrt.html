@@ -34,29 +34,29 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="sqrt.html" title="Struct sqrt">sqrt</a> <span class="special">{</span>
 
-  <span class="comment">// <a class="link" href="sqrt.html#idm45424597442144-bb">public static functions</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="sqrt.html#idm45424597441584-bb"><span class="identifier">forward</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="sqrt.html#idm45424597438944-bb"><span class="identifier">inverse</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="sqrt.html#idm46290189561872-bb">public static functions</a></span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="sqrt.html#idm46290189561312-bb"><span class="identifier">forward</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="sqrt.html#idm46290189558672-bb"><span class="identifier">inverse</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="sqrt.html#idm45424597436304-bb">public member functions</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="sqrt.html#idm45424597435744-bb"><span class="identifier">serialize</span></a><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="sqrt.html#idm46290189556032-bb">public member functions</a></span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="sqrt.html#idm46290189555472-bb"><span class="identifier">serialize</span></a><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm45421369282032"></a><h2>Description</h2>
+<a name="idm46134587069552"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="idm45421369281616"></a><h3>
-<a name="idm45424597442144-bb"></a><code class="computeroutput">sqrt</code> public static functions</h3>
+<a name="idm46134587069136"></a><h3>
+<a name="idm46290189561872-bb"></a><code class="computeroutput">sqrt</code> public static functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm45424597441584-bb"></a><span class="identifier">forward</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns sqrt(x) of external value x. </li>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm46290189561312-bb"></a><span class="identifier">forward</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns sqrt(x) of external value x. </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm45424597438944-bb"></a><span class="identifier">inverse</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns x^2 of internal value x. </li>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm46290189558672-bb"></a><span class="identifier">inverse</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns x^2 of internal value x. </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="idm45421369262864"></a><h3>
-<a name="idm45424597436304-bb"></a><code class="computeroutput">sqrt</code> public member functions</h3>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm45424597435744-bb"></a><span class="identifier">serialize</span><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span></pre></li></ol></div>
+<a name="idm46134587050304"></a><h3>
+<a name="idm46290189556032-bb"></a><code class="computeroutput">sqrt</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm46290189555472-bb"></a><span class="identifier">serialize</span><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span></pre></li></ol></div>
 </div>
 </div>
 </div>

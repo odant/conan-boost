@@ -3277,11 +3277,14 @@ boost_asio/reference/ssl__verify_peer.html
 boost_asio/reference/static_thread_pool.html
 boost_asio/reference/steady_timer.html
 boost_asio/reference/strand.html
+boost_asio/reference/strand/context.html
 boost_asio/reference/strand/defer.html
 boost_asio/reference/strand/dispatch.html
 boost_asio/reference/strand/execute.html
 boost_asio/reference/strand/get_inner_executor.html
 boost_asio/reference/strand/inner_executor_type.html
+boost_asio/reference/strand/on_work_finished.html
+boost_asio/reference/strand/on_work_started.html
 boost_asio/reference/strand/operator_not__eq_.html
 boost_asio/reference/strand/operator_eq_.html
 boost_asio/reference/strand/operator_eq_/overload1.html

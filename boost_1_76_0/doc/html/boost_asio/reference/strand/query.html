@@ -33,12 +33,12 @@ Forward a query to the underlying
         </p>
 <pre class="programlisting">template&lt;
     typename Property&gt;
-constraint&lt; can_query&lt; const Executor &amp;, Property &gt;::value, typename query_result&lt; const Executor &amp;, Property &gt;::type &gt;::type query(
+constraint&lt; can_query&lt; const Executor &amp;, Property &gt;::value, typename conditional&lt; is_convertible&lt; Property, execution::blocking_t &gt;::value, execution::blocking_t, typename query_result&lt; const Executor &amp;, Property &gt;::type &gt;::type &gt;::type query(
     const Property &amp; p) const;
 </pre>
 <p>
-          Do not call this function directly. It is intended for use with the <a class="link" href="../execution__execute.html" title="execution::execute"><code class="computeroutput">execution::execute</code></a>
-          customisation point.
+          Do not call this function directly. It is intended for use with the <a class="link" href="../query.html" title="query"><code class="computeroutput">query</code></a> customisation
+          point.
         </p>
 <p>
           For example:

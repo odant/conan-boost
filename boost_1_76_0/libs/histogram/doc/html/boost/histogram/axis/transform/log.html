@@ -34,29 +34,29 @@
 </span>
 <span class="keyword">struct</span> <a class="link" href="log.html" title="Struct log">log</a> <span class="special">{</span>
 
-  <span class="comment">// <a class="link" href="log.html#idm45424597466224-bb">public static functions</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="log.html#idm45424597465664-bb"><span class="identifier">forward</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="log.html#idm45424597463024-bb"><span class="identifier">inverse</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="log.html#idm46290189585952-bb">public static functions</a></span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="log.html#idm46290189585392-bb"><span class="identifier">forward</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a class="link" href="log.html#idm46290189582752-bb"><span class="identifier">inverse</span></a><span class="special">(</span><span class="identifier">T</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="log.html#idm45424597460384-bb">public member functions</a></span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="log.html#idm45424597459824-bb"><span class="identifier">serialize</span></a><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="log.html#idm46290189580112-bb">public member functions</a></span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="log.html#idm46290189579552-bb"><span class="identifier">serialize</span></a><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm45421369449120"></a><h2>Description</h2>
+<a name="idm46134587236816"></a><h2>Description</h2>
 <div class="refsect2">
-<a name="idm45421369448704"></a><h3>
-<a name="idm45424597466224-bb"></a><code class="computeroutput">log</code> public static functions</h3>
+<a name="idm46134587236400"></a><h3>
+<a name="idm46290189585952-bb"></a><code class="computeroutput">log</code> public static functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm45424597465664-bb"></a><span class="identifier">forward</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns log(x) of external value x. </li>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm46290189585392-bb"></a><span class="identifier">forward</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns log(x) of external value x. </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm45424597463024-bb"></a><span class="identifier">inverse</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns exp(x) for internal value x. </li>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> T<span class="special">&gt;</span> <span class="keyword">static</span> <span class="identifier">T</span> <a name="idm46290189582752-bb"></a><span class="identifier">inverse</span><span class="special">(</span><span class="identifier">T</span> x<span class="special">)</span><span class="special">;</span></pre>Returns exp(x) for internal value x. </li>
 </ol></div>
 </div>
 <div class="refsect2">
-<a name="idm45421369429904"></a><h3>
-<a name="idm45424597460384-bb"></a><code class="computeroutput">log</code> public member functions</h3>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm45424597459824-bb"></a><span class="identifier">serialize</span><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span></pre></li></ol></div>
+<a name="idm46134587217664"></a><h3>
+<a name="idm46290189580112-bb"></a><code class="computeroutput">log</code> public member functions</h3>
+<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Archive<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm46290189579552-bb"></a><span class="identifier">serialize</span><span class="special">(</span><span class="identifier">Archive</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">unsigned</span><span class="special">)</span><span class="special">;</span></pre></li></ol></div>
 </div>
 </div>
 </div>
