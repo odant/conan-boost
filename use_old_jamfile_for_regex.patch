@@ -1,5 +1,7 @@
---- a/boost_1_76_0/libs/regex/build/Jamfile.v2
-+++ b/boost_1_76_0/libs/regex/build/Jamfile.v2
+diff --git a/boost_1_77_0/libs/regex/build/Jamfile.v2 b/boost_1_77_0/libs/regex/build/Jamfile.v2
+index 08f981958..e975a09a1 100644
+--- a/boost_1_77_0/libs/regex/build/Jamfile.v2
++++ b/boost_1_77_0/libs/regex/build/Jamfile.v2
 @@ -5,7 +5,6 @@
  
  import modules ;
@@ -8,7 +10,7 @@
  
  project : requirements
     # default to all warnings on:
-@@ -33,31 +32,19 @@ rule path_options ( properties * )
+@@ -33,31 +32,18 @@ rule path_options ( properties * )
  #
  if ! $(disable-icu)
  {
@@ -16,7 +18,7 @@
 -   {    
 -       errors.user-error : "The ICU_LINK option is no longer supported by the Boost.Regex build - please refer to the documentation for equivalent options" ;
 -   }
- 
+-
     if [ modules.peek : ICU_PATH ]
     {    
         ICU_PATH =  [ modules.peek : ICU_PATH ] ;
@@ -39,42 +41,40 @@
 -   if $(ICU_ICUUC_NAME)
 +   if $(ICU_LINK)
     {
--      lib icuuc : : <name>$(ICU_ICUUC_NAME) ;
+-      lib icuuc : : <name>$(ICU_ICUUC_NAME) <conditional>@path_options ;
 +      ICU_OPTS = <include>$(ICU_PATH)/include <linkflags>$(ICU_LINK) <dll-path>$(ICU_PATH)/bin <define>BOOST_HAS_ICU=1 <runtime-link>shared ;
     }
     else
     {
-@@ -68,13 +55,7 @@ if ! $(disable-icu)
+@@ -68,13 +54,6 @@ if ! $(disable-icu)
        lib icuuc : : <toolset>msvc                     <variant>debug <name>sicuucd <runtime-link>static <conditional>@path_options ;
        lib icuuc : : <toolset>intel <target-os>windows <variant>debug <name>sicuucd <runtime-link>static <conditional>@path_options ;
        lib icuuc : : <name>this_is_an_invalid_library_name ;
 -   }
 -   if $(ICU_ICUDT_NAME)
 -   {
--      lib icudt : : <name>$(ICU_ICUDT_NAME) ;
+-      lib icudt : : <name>$(ICU_ICUDT_NAME) <conditional>@path_options ;
 -   }
 -   else
 -   {
-+
        lib icudt : : <name>icudata                                   <runtime-link>shared <conditional>@path_options ;
        lib icudt : : <name>icudt   <toolset>msvc                     <runtime-link>shared <conditional>@path_options ;
        lib icudt : : <name>icudt   <toolset>intel <target-os>windows <runtime-link>shared <conditional>@path_options ;
-@@ -82,13 +63,7 @@ if ! $(disable-icu)
+@@ -82,13 +61,6 @@ if ! $(disable-icu)
        lib icudt : : <name>sicudt   <toolset>msvc                     <runtime-link>static <conditional>@path_options ;
        lib icudt : : <name>sicudt   <toolset>intel <target-os>windows <runtime-link>static <conditional>@path_options ;
        lib icudt : : <name>this_is_an_invalid_library_name ;
 -   }
 -   if $(ICU_ICUIN_NAME)
 -   {
--      lib icuin : : <name>$(ICU_ICUIN_NAME) ;
+-      lib icuin : : <name>$(ICU_ICUIN_NAME) <conditional>@path_options ;
 -   }
 -   else
 -   {
-+
        lib icuin : :                                                    <name>icui18n <runtime-link>shared <conditional>@path_options ;
        lib icuin : : <toolset>msvc                     <variant>debug   <name>icuind  <runtime-link>shared <conditional>@path_options ;
        lib icuin : : <toolset>msvc                                      <name>icuin   <runtime-link>shared <conditional>@path_options ;
-@@ -100,19 +75,19 @@ if ! $(disable-icu)
+@@ -100,20 +72,20 @@ if ! $(disable-icu)
        lib icuin : : <toolset>intel <target-os>windows <variant>debug   <name>sicuind  <runtime-link>static <conditional>@path_options ;
        lib icuin : : <toolset>intel <target-os>windows                  <name>sicuin   <runtime-link>static <conditional>@path_options ;
        lib icuin : : <name>this_is_an_invalid_library_name ;
@@ -88,6 +88,7 @@
 -      <runtime-link>static:<library>icuuc
 -      <runtime-link>static:<library>icudt
 -      <runtime-link>static:<library>icuin
+-      <target-os>windows,<toolset>clang:<linkflags>"advapi32.lib"
 -      <define>BOOST_HAS_ICU=1 
 -      <runtime-link>static:<define>U_STATIC_IMPLEMENTATION=1
 -      ;
@@ -99,10 +100,11 @@
 +         <runtime-link>static:<library>icuuc
 +         <runtime-link>static:<library>icudt
 +         <runtime-link>static:<library>icuin
++         <target-os>windows,<toolset>clang:<linkflags>"advapi32.lib"
 +         <define>BOOST_HAS_ICU=1 
 +         <runtime-link>static:<define>U_STATIC_IMPLEMENTATION=1
 +         ;
 +   }
  
- }
- 
+    if [ modules.peek : ICU_DATA_DIR ]
+    {
