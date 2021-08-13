@@ -150,7 +150,7 @@
     <span class="identifier">sr</span><span class="special">.</span><span class="identifier">reset</span><span class="special">(</span> <span class="special">&amp;</span><span class="identifier">jv</span> <span class="special">);</span>
     <span class="keyword">while</span><span class="special">(</span> <span class="special">!</span> <span class="identifier">sr</span><span class="special">.</span><span class="identifier">done</span><span class="special">()</span> <span class="special">)</span>
     <span class="special">{</span>
-        <span class="keyword">char</span> <span class="identifier">buf</span><span class="special">\[</span> <span class="number">4000</span> <span class="special">\];</span>
+        <span class="keyword">char</span> <span class="identifier">buf</span><span class="special">[</span> <span class="number">4000</span> <span class="special">];</span>
         <span class="identifier">os</span> <span class="special">&lt;&lt;</span> <span class="identifier">sr</span><span class="special">.</span><span class="identifier">read</span><span class="special">(</span> <span class="identifier">buf</span> <span class="special">);</span>
     <span class="special">}</span>
 <span class="special">}</span>

@@ -35,6 +35,23 @@
 constexpr cancellation_state(
     CancellationSlot slot);
 </pre>
+<p>
+            Initialises the cancellation state so that it allows terminal cancellation
+            only. Equivalent to <code class="computeroutput">cancellation_state(slot, enable_terminal_cancellation())</code>.
+          </p>
+<h6>
+<a name="boost_asio.reference.cancellation_state.cancellation_state.overload2.h0"></a>
+            <span class="phrase"><a name="boost_asio.reference.cancellation_state.cancellation_state.overload2.parameters"></a></span><a class="link" href="overload2.html#boost_asio.reference.cancellation_state.cancellation_state.overload2.parameters">Parameters</a>
+          </h6>
+<div class="variablelist">
+<p class="title"><b></b></p>
+<dl class="variablelist">
+<dt><span class="term">slot</span></dt>
+<dd><p>
+                  The parent cancellation slot to which the state will be attached.
+                </p></dd>
+</dl>
+</div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

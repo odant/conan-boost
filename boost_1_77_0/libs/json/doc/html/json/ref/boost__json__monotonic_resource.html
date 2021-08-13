@@ -145,11 +145,11 @@
         This parses a JSON into a value which uses a local stack buffer, then prints
         the result.
       </p>
-<pre class="programlisting"><span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">buf</span><span class="special">\[</span> <span class="number">4000</span> <span class="special">\];</span>
+<pre class="programlisting"><span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">buf</span><span class="special">[</span> <span class="number">4000</span> <span class="special">];</span>
 <span class="identifier">monotonic_resource</span> <span class="identifier">mr</span><span class="special">(</span> <span class="identifier">buf</span> <span class="special">);</span>
 
 <span class="comment">// Parse the string, using our memory resource</span>
-<span class="keyword">auto</span> <span class="keyword">const</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">parse</span><span class="special">(</span> <span class="string">"\[1,2,3\]"</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">mr</span> <span class="special">);</span>
+<span class="keyword">auto</span> <span class="keyword">const</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">parse</span><span class="special">(</span> <span class="string">"[1,2,3]"</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">mr</span> <span class="special">);</span>
 
 <span class="comment">// Print the JSON</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">jv</span><span class="special">;</span>

@@ -93,6 +93,27 @@ boost::asio::ip::tcp::acceptor acceptor(my_context);
 ...
 acceptor.async_accept(accept_handler);
 </pre>
+<h6>
+<a name="boost_asio.reference.basic_socket_acceptor.async_accept.overload3.h2"></a>
+            <span class="phrase"><a name="boost_asio.reference.basic_socket_acceptor.async_accept.overload3.per_operation_cancellation"></a></span><a class="link" href="overload3.html#boost_asio.reference.basic_socket_acceptor.async_accept.overload3.per_operation_cancellation">Per-Operation
+            Cancellation</a>
+          </h6>
+<p>
+            On POSIX or Windows operating systems, this asynchronous operation supports
+            cancellation for the following <a class="link" href="../../cancellation_type.html" title="cancellation_type"><code class="computeroutput">cancellation_type</code></a>
+            values:
+          </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::terminal</code>
+              </li>
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::partial</code>
+              </li>
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::total</code>
+              </li>
+</ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

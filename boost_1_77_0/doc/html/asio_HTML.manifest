@@ -11,11 +11,12 @@ boost_asio/overview/core/streams.html
 boost_asio/overview/core/reactor.html
 boost_asio/overview/core/line_based.html
 boost_asio/overview/core/allocation.html
+boost_asio/overview/core/cancellation.html
 boost_asio/overview/core/handler_tracking.html
 boost_asio/overview/core/concurrency_hint.html
 boost_asio/overview/core/coroutine.html
 boost_asio/overview/core/spawn.html
-boost_asio/overview/core/coroutines_ts.html
+boost_asio/overview/core/cpp20_coroutines.html
 boost_asio/overview/networking.html
 boost_asio/overview/networking/protocols.html
 boost_asio/overview/networking/other_protocols.html
@@ -2178,6 +2179,7 @@ boost_asio/reference/experimental__deferred_function.html
 boost_asio/reference/experimental__deferred_function/decltype.html
 boost_asio/reference/experimental__deferred_function/deferred_function.html
 boost_asio/reference/experimental__deferred_function/function_.html
+boost_asio/reference/experimental__deferred_init_tag.html
 boost_asio/reference/experimental__deferred_noop.html
 boost_asio/reference/experimental__deferred_noop/operator_lp__rp_.html
 boost_asio/reference/experimental__deferred_sequence.html

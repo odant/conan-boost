@@ -110,6 +110,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="coroutine2/index.html">Coroutine2</a> - (C++11) Coroutine library, from Oliver Kowalke</li>
     <li><a href="crc/index.html">CRC</a> - The Boost CRC Library provides two implementations of CRC (cyclic redundancy code) computation objects and two implementations of CRC computation functions. The implementations are template-based, from Daryle Walker</li>
     <li><a href="date_time/index.html">Date Time</a> - A set of date-time libraries based on generic programming concepts, from Jeff Garland</li>
+    <li><a href="describe/index.html">Describe</a> - A C++14 reflection library, from Peter Dimov</li>
     <li><a href="dll/index.html">DLL</a> - Library for comfortable work with DLL and DSO, from Antony Polukhin and Renato Tegon Forti</li>
     <li><a href="dynamic_bitset/dynamic_bitset.html">Dynamic Bitset</a> - The dynamic_bitset class represents a set of bits. It provides accesses to the value of individual bits via an operator[] and provides all of the bitwise operators that one can apply to builtin integers, such as operator&amp; and operator&lt;&lt;. The number of bits in the set is specified at runtime via a parameter to the constructor of the dynamic_bitset, from Jeremy Siek and Chuck Allison</li>
     <li><a href="core/doc/html/core/enable_if.html">Enable If</a> - Selective inclusion of function template overloads, from Jaakko J&auml;rvi, Jeremiah Willcock and Andrew Lumsdaine</li>
@@ -130,7 +131,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="geometry/index.html">Geometry</a> - The Boost.Geometry library provides geometric algorithms, primitives and spatial index, from Barend Gehrels, Bruno Lalande, Mateusz Loskot, Adam Wulkiewicz and Menelaos Karavelas</li>
     <li><a href="gil/index.html">GIL</a> - (C++11) Generic Image Library, from Lubomir Bourdev, Hailin Jin and Christian Henning</li>
     <li><a href="graph/index.html">Graph</a> - The BGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek and a University of Notre Dame team.</li>
-    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
+    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
     <li><a href="hana/index.html">Hana</a> - A modern C++ metaprogramming library. It provides high level algorithms to manipulate heterogeneous sequences, allows writing type-level computations with a natural syntax, provides tools to introspect user-defined types and much more, from Louis Dionne</li>
     <li><a href="heap/index.html">Heap</a> - Priority queue data structures, from Tim Blechmann</li>
     <li><a href="histogram/index.html">Histogram</a> - Fast multi-dimensional histogram with convenient interface for C++14, from Hans Dembinski</li>
@@ -147,6 +148,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="iterator/index.html">Iterator</a> - The Boost Iterator Library contains two parts. The first is a system of concepts which extend the C++ standard iterator requirements. The second is a framework of components for building iterators based on these extended concepts and includes several useful iterator adaptors, from Dave Abrahams, Jeremy Siek and Thomas Witt</li>
     <li><a href="json/index.html">JSON</a> - JSON parsing, serialization, and DOM in C++11, from Vinnie Falco and Krystian Stasiowski</li>
     <li><a href="lambda/index.html">Lambda</a> - Define small unnamed function objects at the actual call site, and more, from Jaakko J&auml;rvi and Gary Powell</li>
+    <li><a href="lambda2/index.html">Lambda2</a> - A C++14 lambda library, from Peter Dimov</li>
     <li><a href="leaf/index.html">LEAF</a> - A lightweight error-handling library for C++11, from Emil Dotchevski</li>
     <li><a href="lexical_cast/index.html">Lexical Cast</a> - General literal text conversions, such as an int represented a string, or vice-versa, from Kevlin Henney</li>
     <li><a href="local_function/index.html">Local Function</a> - Program functions locally, within other functions, directly within the scope where they are needed, from Lorenzo Caminiti</li>
@@ -189,6 +191,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="process/index.html">Process</a> - Library to create processes in a portable way, from Merino Vidal, Ilya Sokolov, Felipe Tanus, Jeff Flinn, Thomas Jarosch, Boris Schaeling and Klemens D. Morgenstern</li>
     <li><a href="program_options/index.html">Program Options</a> - The program_options library allows program developers to obtain program options, that is (name, value) pairs from the user, via conventional methods such as command line and config file, from Vladimir Prus</li>
     <li><a href="property_map/index.html">Property Map</a> - Concepts defining interfaces which map key objects to value objects, from Jeremy Siek</li>
+    <li><a href="property_map_parallel/index.html">Property Map (Parallel)</a> - Parallel extensions to Property Map for use with Parallel Graph, from Jeremy Siek</li>
     <li><a href="property_tree/index.html">Property Tree</a> - A tree data structure especially suited to storing configuration data, from Marcin Kalicinski and Sebastian Redl</li>
     <li><a href="proto/index.html">Proto</a> - Expression template library and compiler construction toolkit for domain-specific embedded languages, from Eric Niebler</li>
     <li><a href="python/index.html">Python</a> - The Boost Python Library is a framework for interfacing Python and C++. It allows you to quickly and seamlessly expose C++ classes functions and objects to Python, and vice-versa, using no special tools -- just your C++ compiler, from Dave Abrahams</li>
@@ -256,7 +259,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="geometry/index.html">Geometry</a> - The Boost.Geometry library provides geometric algorithms, primitives and spatial index, from Barend Gehrels, Bruno Lalande, Mateusz Loskot, Adam Wulkiewicz and Menelaos Karavelas</li>
     <li><a href="gil/index.html">GIL</a> - (C++11) Generic Image Library, from Lubomir Bourdev, Hailin Jin and Christian Henning</li>
     <li><a href="graph/index.html">Graph</a> - The BGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek and a University of Notre Dame team.</li>
-    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
+    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
     <li><a href="histogram/index.html">Histogram</a> - Fast multi-dimensional histogram with convenient interface for C++14, from Hans Dembinski</li>
     <li><a href="algorithm/minmax/index.html">Min-Max</a> - Standard library extensions for simultaneous min/max and min/max element computations, from Herv&eacute; Br&ouml;nnimann</li>
     <li><a href="polygon/index.html">Polygon</a> - Voronoi diagram construction and booleans/clipping, resizing/offsetting and more for planar polygons with integral coordinates, from Lucanus Simonson and Andrii Sydorchuk</li>
@@ -301,7 +304,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="dynamic_bitset/dynamic_bitset.html">Dynamic Bitset</a> - The dynamic_bitset class represents a set of bits. It provides accesses to the value of individual bits via an operator[] and provides all of the bitwise operators that one can apply to builtin integers, such as operator&amp; and operator&lt;&lt;. The number of bits in the set is specified at runtime via a parameter to the constructor of the dynamic_bitset, from Jeremy Siek and Chuck Allison</li>
     <li><a href="gil/index.html">GIL</a> - (C++11) Generic Image Library, from Lubomir Bourdev, Hailin Jin and Christian Henning</li>
     <li><a href="graph/index.html">Graph</a> - The BGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek and a University of Notre Dame team.</li>
-    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
+    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
     <li><a href="icl/index.html">ICL</a> - Interval Container Library, interval sets and maps and aggregation of associated values, from Joachim Faulhaber</li>
     <li><a href="intrusive/index.html">Intrusive</a> - Intrusive containers and algorithms, from Ion Gazta&ntilde;aga</li>
     <li><a href="json/index.html">JSON</a> - JSON parsing, serialization, and DOM in C++11, from Vinnie Falco and Krystian Stasiowski</li>
@@ -310,6 +313,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="ptr_container/index.html">Pointer Container</a> - Containers for storing heap-allocated polymorphic objects to ease OO-programming, from Thorsten Ottosen</li>
     <li><a href="poly_collection/index.html">PolyCollection</a> - Fast containers of polymorphic objects, from Joaqu&iacute;n M L&oacute;pez Mu&ntilde;oz</li>
     <li><a href="property_map/index.html">Property Map</a> - Concepts defining interfaces which map key objects to value objects, from Jeremy Siek</li>
+    <li><a href="property_map_parallel/index.html">Property Map (Parallel)</a> - Parallel extensions to Property Map for use with Parallel Graph, from Jeremy Siek</li>
     <li><a href="property_tree/index.html">Property Tree</a> - A tree data structure especially suited to storing configuration data, from Marcin Kalicinski and Sebastian Redl</li>
     <li><a href="utility/doc/html/string_ref.html">String_ref</a> - String view templates, from Marshall Clow</li>
     <li><a href="unordered/index.html">Unordered</a> - Unordered associative containers, from Daniel James</li>
@@ -377,6 +381,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="functional/overloaded_function/index.html">Functional/Overloaded Function</a> - Overload different functions into a single function object, from Lorenzo Caminiti</li>
     <li><a href="hof/index.html">HOF</a> - Higher-order functions for C++, from Paul Fultz II</li>
     <li><a href="lambda/index.html">Lambda</a> - Define small unnamed function objects at the actual call site, and more, from Jaakko J&auml;rvi and Gary Powell</li>
+    <li><a href="lambda2/index.html">Lambda2</a> - A C++14 lambda library, from Peter Dimov</li>
     <li><a href="local_function/index.html">Local Function</a> - Program functions locally, within other functions, directly within the scope where they are needed, from Lorenzo Caminiti</li>
     <li><a href="bind/mem_fn.html">Member Function</a> - Generalized binders for function/object/pointers and member functions, from Peter Dimov</li>
     <li><a href="phoenix/index.html">Phoenix</a> - Define small unnamed function objects at the actual call site, and more, from Joel de Guzman, Dan Marsden, Thomas Heller and John Fletcher</li>
@@ -397,6 +402,7 @@ how to download, build, and install the libraries.</p>
     <li><a href="utility/in_place_factories.html">In Place Factory, Typed In Place Factory</a> - Generic in-place construction of contained objects with a variadic argument-list, from Fernando Cacciola</li>
     <li><a href="utility/operators.htm">Operators</a> - Templates ease arithmetic classes and iterators, from Dave Abrahams and Jeremy Siek</li>
     <li><a href="property_map/index.html">Property Map</a> - Concepts defining interfaces which map key objects to value objects, from Jeremy Siek</li>
+    <li><a href="property_map_parallel/index.html">Property Map (Parallel)</a> - Parallel extensions to Property Map for use with Parallel Graph, from Jeremy Siek</li>
     <li><a href="qvm/index.html">QVM</a> - Generic {CPP} library for working with Quaternions Vectors and Matrices, from Emil Dotchevski</li>
     <li><a href="static_assert/index.html">Static Assert</a> - Static assertions (compile time assertions), from John Maddock</li>
     <li><a href="stl_interfaces/index.html">Stl_interfaces</a> - C++14 and later CRTP templates for defining iterators, views, and containers, from T. Zachary Laine</li>
@@ -437,7 +443,7 @@ how to download, build, and install the libraries.</p>
 <ul>
     <li><a href="gil/index.html">GIL</a> - (C++11) Generic Image Library, from Lubomir Bourdev, Hailin Jin and Christian Henning</li>
     <li><a href="graph/index.html">Graph</a> - The BGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek and a University of Notre Dame team.</li>
-    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
+    <li><a href="graph_parallel/index.html">GraphParallel</a> - The PBGL graph interface and graph components are generic, in the same sense as the Standard Template Library (STL), from Jeremy Siek, Doug Gregor, and a University of Notre Dame team.</li>
     <li><a href="iterator/index.html">Iterator</a> - The Boost Iterator Library contains two parts. The first is a system of concepts which extend the C++ standard iterator requirements. The second is a framework of components for building iterators based on these extended concepts and includes several useful iterator adaptors, from Dave Abrahams, Jeremy Siek and Thomas Witt</li>
     <li><a href="utility/operators.htm">Operators</a> - Templates ease arithmetic classes and iterators, from Dave Abrahams and Jeremy Siek</li>
     <li><a href="tokenizer/index.html">Tokenizer</a> - Break of a string or other character sequence into a series of tokens, from John Bandela</li>
@@ -576,6 +582,7 @@ how to download, build, and install the libraries.</p>
 
 <ul>
     <li><a href="callable_traits/index.html">CallableTraits</a> - A spiritual successor to Boost.FunctionTypes, Boost.CallableTraits is a header-only C++11 library for the compile-time inspection and manipulation of all 'callable' types. Additional support for C++17 features, from Barrett Adair</li>
+    <li><a href="describe/index.html">Describe</a> - A C++14 reflection library, from Peter Dimov</li>
     <li><a href="function_types/index.html">Function Types</a> - Boost.FunctionTypes provides functionality to classify, decompose and synthesize function, function pointer, function reference and pointer to member types, from Tobias Schwinger</li>
     <li><a href="fusion/doc/html/index.html">Fusion</a> - Library for working with tuples, including various containers, algorithms, etc, from Joel de Guzman, Dan Marsden and Tobias Schwinger</li>
     <li><a href="hana/index.html">Hana</a> - A modern C++ metaprogramming library. It provides high level algorithms to manipulate heterogeneous sequences, allows writing type-level computations with a natural syntax, provides tools to introspect user-defined types and much more, from Louis Dionne</li>

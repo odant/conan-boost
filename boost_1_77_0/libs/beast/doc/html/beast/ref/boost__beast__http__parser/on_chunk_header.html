@@ -27,7 +27,7 @@
 <a name="beast.ref.boost__beast__http__parser.on_chunk_header"></a><a class="link" href="on_chunk_header.html" title="http::parser::on_chunk_header">http::parser::on_chunk_header</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm45730157805232"></a>
+          <a class="indexterm" name="idm45805082938384"></a>
         </p>
 <p>
           Set a callback to be invoked on each chunk header.
@@ -60,7 +60,7 @@
           <span class="phrase"><a name="beast.ref.boost__beast__http__parser.on_chunk_header.example"></a></span><a class="link" href="on_chunk_header.html#beast.ref.boost__beast__http__parser.on_chunk_header.example">Example</a>
         </h6>
 <pre class="programlisting"><span class="keyword">auto</span> <span class="identifier">callback</span> <span class="special">=</span>
-    <span class="special">\[\](</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">uint64_t</span> <span class="identifier">size</span><span class="special">,</span> <span class="identifier">string_view</span> <span class="identifier">extensions</span><span class="special">,</span> <span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">)</span>
+    <span class="special">[](</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">uint64_t</span> <span class="identifier">size</span><span class="special">,</span> <span class="identifier">string_view</span> <span class="identifier">extensions</span><span class="special">,</span> <span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">)</span>
     <span class="special">{</span>
         <span class="comment">//...</span>
     <span class="special">};</span>

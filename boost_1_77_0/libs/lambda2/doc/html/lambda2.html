@@ -458,11 +458,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ref_boostlambda2lambda2_hpp">&lt;boost/lambda2/lambda2.hpp&gt;</a>
 <ul class="sectlevel3">
 <li><a href="#ref_synopsis">Synopsis</a></li>
+<li><a href="#ref_placeholders">Placeholders</a></li>
 <li><a href="#ref_common_requirements">Common Requirements</a></li>
 <li><a href="#ref_arithmetic_operators">Arithmetic Operators</a></li>
 <li><a href="#ref_relational_operators">Relational Operators</a></li>
 <li><a href="#ref_logical_operators">Logical Operators</a></li>
 <li><a href="#ref_bitwise_operators">Bitwise Operators</a></li>
+<li><a href="#ref_additional_unary_operators">Additional Unary Operators</a></li>
+<li><a href="#ref_compound_assignment_operators">Compound Assignment Operators</a></li>
 </ul>
 </li>
 </ul>
@@ -480,16 +483,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>This is a simple, but functional, C&#43;&#43;14 lambda library. It takes
 advantage of the fact that the standard <code>&lt;functional&gt;</code> header already
-provides placeholders <code>_1</code>, <code>_2</code>, <code>_3</code>, and so on, for use with
-<code>std::bind</code>, and function objects such as <code>std::plus</code>, <code>std::greater</code>,
-<code>std::logical_not</code>, and <code>std::bit_xor</code>, corresponding to arithmetic,
-relational, logical and bitwise operators.</p>
+provides <code>std::bind</code> customization points (<code>is_placeholder</code>,
+<code>is_bind_expression</code>), and function objects such as <code>std::plus</code>,
+<code>std::greater</code>, <code>std::logical_not</code>, and <code>std::bit_xor</code>, corresponding
+to arithmetic, relational, logical and bitwise operators.</p>
 </div>
 <div class="paragraph">
 <p>This allows the library to provide a minimal implementation that
 still lets expressions such as <code>_1 + 5</code>, <code>_1 % 2 == 0</code>, <code>_1 &gt; _2</code>,
 or <code>_1 == ' ' || _1 == '\t'</code> to be composed and used as function
 objects.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>_1 + 5</code> is implemented as <code>std::bind(std::plus&lt;&gt;, _1, 5)</code>.</p>
 </div>
 <div class="paragraph">
 <p>These "lambda" expressions can also be freely combined with <code>std::bind</code>.
@@ -555,7 +561,7 @@ char const * find_whitespace( char const * first, char const * last )
 </ul>
 </div>
 <div class="paragraph">
-<p>Tested on <a href="https://travis-ci.org/github/pdimov/lambda2">Travis</a> and
+<p>Tested on <a href="https://github.com/boostorg/lambda2/actions">Github Actions</a> and
 <a href="https://ci.appveyor.com/project/pdimov/lambda2">Appveyor</a>.</p>
 </div>
 </div>
@@ -573,12 +579,30 @@ char const * find_whitespace( char const * first, char const * last )
 <pre class="highlight"><code>namespace boost {
 namespace lambda2 {
 
+// placeholders
+
+template&lt;int I&gt; struct lambda2_arg;
+
+inline constexpr lambda2_arg&lt;1&gt; _1{};
+inline constexpr lambda2_arg&lt;1&gt; _2{};
+inline constexpr lambda2_arg&lt;1&gt; _3{};
+inline constexpr lambda2_arg&lt;1&gt; _4{};
+inline constexpr lambda2_arg&lt;1&gt; _5{};
+inline constexpr lambda2_arg&lt;1&gt; _6{};
+inline constexpr lambda2_arg&lt;1&gt; _7{};
+inline constexpr lambda2_arg&lt;1&gt; _8{};
+inline constexpr lambda2_arg&lt;1&gt; _9{};
+
+// arithmetic operators
+
 template&lt;class A, class B&gt; auto operator+( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator-( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator*( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator/( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator%( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A&gt; auto operator-( A &amp;&amp; a );
+
+// relational operators
 
 template&lt;class A, class B&gt; auto operator==( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator!=( A &amp;&amp; a, B &amp;&amp; b );
@@ -587,18 +611,112 @@ template&lt;class A, class B&gt; auto operator&lt;( A &amp;&amp; a, B &amp;&amp;
 template&lt;class A, class B&gt; auto operator&gt;=( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator&lt;=( A &amp;&amp; a, B &amp;&amp; b );
 
+// logical operators
+
 template&lt;class A, class B&gt; auto operator&amp;&amp;( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator||( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A&gt; auto operator!( A &amp;&amp; a );
+
+// bitwise operators
 
 template&lt;class A, class B&gt; auto operator&amp;( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator|( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A, class B&gt; auto operator^( A &amp;&amp; a, B &amp;&amp; b );
 template&lt;class A&gt; auto operator~( A &amp;&amp; a );
 
+template&lt;class A, class B&gt; auto operator&lt;&lt;( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator&gt;&gt;( A &amp;&amp; a, B &amp;&amp; b );
+
+// additional unary operators
+
+template&lt;class A&gt; auto operator+( A &amp;&amp; a );
+template&lt;class A&gt; auto operator*( A &amp;&amp; a );
+template&lt;class A&gt; auto operator++( A &amp;&amp; a );
+template&lt;class A&gt; auto operator--( A &amp;&amp; a );
+template&lt;class A&gt; auto operator++( A &amp;&amp; a, int );
+template&lt;class A&gt; auto operator--( A &amp;&amp; a, int );
+
+// compound assignment operators
+
+template&lt;class A, class B&gt; auto operator+=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator-=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator*=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator/=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator%=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator&amp;=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator|=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator^=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator&lt;&lt;=( A &amp;&amp; a, B &amp;&amp; b );
+template&lt;class A, class B&gt; auto operator&gt;&gt;=( A &amp;&amp; a, B &amp;&amp; b );
+
 } // namespace lambda2
 } // namespace boost</code></pre>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ref_placeholders">Placeholders</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;int I&gt; struct lambda2_arg
+{
+    template&lt;class... A&gt; decltype(auto) operator()( A&amp;&amp;... a ) const noexcept;
+    template&lt;class T&gt; auto operator[]( T&amp;&amp; t ) const;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>lambda2_arg&lt;I&gt;</code> is the type of the library-provided placeholders <code>_I</code>. The
+standard customization point <code>std::is_placeholder</code> is specialized for it,
+enabling the use of Lambda2&#8217;s placeholders with <code>std::bind</code>.</p>
+</div>
+<div class="paragraph">
+<p>The placeholders define <code>operator()</code>, which permits their direct use as
+function objects. E.g. <code>_1(x, y)</code> returns <code>x</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>operator[]</code> is also defined to allow expressions like <code>_1[x]</code> or <code>_1[_2]</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class... A&gt; decltype(auto) operator()( A&amp;&amp;... a ) const noexcept;</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::get&lt;std::size_t{I-1}&gt;( std::tuple&lt;A&amp;&amp;&#8230;&#8203;&gt;( std::forward&lt;A&gt;(a)&#8230;&#8203; ) );</code></p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class T&gt; auto operator[]( T&amp;&amp; t ) const;</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, *this, std::forward&lt;T&gt;(t) );</code>, where <code>fn</code> is
+a function object such that <code>fn(x, y)</code> returns <code>x[y]</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -1002,6 +1120,201 @@ is <code>true</code>.</p>
 </li>
 </ul>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A, class B&gt; auto operator&lt;&lt;( A &amp;&amp; a, B &amp;&amp; b );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a), std::forward&lt;B&gt;(b) );</code>,
+where <code>fn</code> is a function object such that <code>fn(x, y)</code> returns <code>x &lt;&lt; y</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A, class B&gt; auto operator&gt;&gt;( A &amp;&amp; a, B &amp;&amp; b );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a), std::forward&lt;B&gt;(b) );</code>,
+where <code>fn</code> is a function object such that <code>fn(x, y)</code> returns <code>x &gt;&gt; y</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ref_additional_unary_operators">Additional Unary Operators</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A&gt; auto operator+( A &amp;&amp; a );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a) );</code>, where <code>fn</code> is a function object
+such that <code>fn(x)</code> returns <code>+x</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A&gt; auto operator*( A &amp;&amp; a );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a) );</code>, where <code>fn</code> is a function object
+such that <code>fn(x)</code> returns <code>*x</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A&gt; auto operator++( A &amp;&amp; a );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a) );</code>, where <code>fn</code> is a function object
+such that <code>fn(x)</code> returns <code>++x</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A&gt; auto operator--( A &amp;&amp; a );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a) );</code>, where <code>fn</code> is a function object
+such that <code>fn(x)</code> returns <code>--x</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A&gt; auto operator++( A &amp;&amp; a, int );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a) );</code>, where <code>fn</code> is a function object
+such that <code>fn(x)</code> returns <code>x++</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A&gt; auto operator--( A &amp;&amp; a, int );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a) );</code>, where <code>fn</code> is a function object
+such that <code>fn(x)</code> returns <code>x--</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ref_compound_assignment_operators">Compound Assignment Operators</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>template&lt;class A, class B&gt; auto operator@=( A &amp;&amp; a, B &amp;&amp; b );</code></pre>
+</div>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Returns: </dt>
+<dd>
+<p><code>std::bind( fn, std::forward&lt;A&gt;(a), std::forward&lt;B&gt;(b) );</code>,
+where <code>fn</code> is a function object such that <code>fn(x, y)</code> returns <code>x @= y</code>.</p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1010,7 +1323,7 @@ is <code>true</code>.</p>
 <h2 id="copyright">Copyright and License</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This documentation is copyright 2020 Peter Dimov and is distributed under
+<p>This documentation is copyright 2020, 2021 Peter Dimov and is distributed under
 the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Version 1.0</a>.</p>
 </div>
 </div>
@@ -1018,7 +1331,7 @@ the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Versi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-08 13:05:56 UTC
+Last updated 2021-08-05 09:41:42 UTC
 </div>
 </div>
 <style>

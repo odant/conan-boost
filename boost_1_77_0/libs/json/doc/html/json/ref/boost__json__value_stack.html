@@ -301,11 +301,11 @@
 <pre class="programlisting"><span class="comment">// This example builds a json::value without any dynamic memory allocations:</span>
 
 <span class="comment">// Construct the value stack using a local buffer</span>
-<span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">temp</span><span class="special">\[</span><span class="number">4096</span><span class="special">\];</span>
+<span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">temp</span><span class="special">[</span><span class="number">4096</span><span class="special">];</span>
 <span class="identifier">value_stack</span> <span class="identifier">st</span><span class="special">(</span> <span class="identifier">storage_ptr</span><span class="special">(),</span> <span class="identifier">temp</span><span class="special">,</span> <span class="keyword">sizeof</span><span class="special">(</span><span class="identifier">temp</span><span class="special">)</span> <span class="special">);</span>
 
 <span class="comment">// Create a static resource with a local initial buffer</span>
-<span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">buf</span><span class="special">\[</span><span class="number">4096</span><span class="special">\];</span>
+<span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">buf</span><span class="special">[</span><span class="number">4096</span><span class="special">];</span>
 <span class="identifier">static_resource</span> <span class="identifier">mr</span><span class="special">(</span> <span class="identifier">buf</span><span class="special">,</span> <span class="keyword">sizeof</span><span class="special">(</span><span class="identifier">buf</span><span class="special">)</span> <span class="special">);</span>
 
 <span class="comment">// All values on the stack will use `mr`</span>

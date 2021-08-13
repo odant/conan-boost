@@ -27,9 +27,16 @@
 <p>
       <span class="bold"><strong>Bug fixes:</strong></span>
     </p>
-<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
           Fixed compilation on Linux for riscv32 target. (<a href="https://github.com/boostorg/log/pull/150" target="_top">PR#150</a>)
-        </li></ul></div>
+        </li>
+<li class="listitem">
+          Setting <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">app</span></code> file open mode in <a class="link" href="detailed/sink_backends.html#log.detailed.sink_backends.text_file" title="Text file backend"><code class="computeroutput"><span class="identifier">text_file_backend</span></code></a> now also implies
+          <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">ios_base</span><span class="special">::</span><span class="identifier">ate</span></code>. This fixes incorrect accounting
+          for the initial size of the log file opened for appending. (<a href="https://github.com/boostorg/log/issues/151" target="_top">GH#151</a>)
+        </li>
+</ul></div>
 <h4>
 <a name="log.changelog.h1"></a>
       <span class="phrase"><a name="log.changelog.2_21__boost_1_76"></a></span><a class="link" href="changelog.html#log.changelog.2_21__boost_1_76">2.21,

@@ -2014,7 +2014,7 @@ Access a character.
 [heading Synopsis]
 ```
 constexpr reference
-operator\[\](
+operator[](
     size_type pos);
 ```
 
@@ -2048,7 +2048,7 @@ Access a character.
 [heading Synopsis]
 ```
 constexpr const_reference
-operator\[\](
+operator[](
     size_type pos) const;
 ```
 
@@ -9609,7 +9609,7 @@ template<
 constexpr basic_static_string< N+M, CharT, Traits >
 ``[link static_string.ref.boost__static_strings__operator_plus_.overload4 operator+]``(
     const basic_static_string< N, CharT, Traits >& lhs,
-    const CharT(&) rhs \[M\]);
+    const CharT(&) rhs [M]);
   ``[''''&raquo;''' [link static_string.ref.boost__static_strings__operator_plus_.overload4 `more...`]]``
 
 template<
@@ -9619,7 +9619,7 @@ template<
     [role red error.param neither has a declname nor a 'class ' prefix in the type][role red error.param neither has a declname nor a 'class ' prefix in the type][role red error.param neither has a declname nor a 'class ' prefix in the type][role red error.param neither has a declname nor a 'class ' prefix in the type]>
 constexpr basic_static_string< N+M, CharT, Traits >
 ``[link static_string.ref.boost__static_strings__operator_plus_.overload5 operator+]``(
-    const CharT(&) lhs \[N\],
+    const CharT(&) lhs [N],
     const basic_static_string< M, CharT, Traits >& rhs);
   ``[''''&raquo;''' [link static_string.ref.boost__static_strings__operator_plus_.overload5 `more...`]]``
 ```
@@ -9702,7 +9702,7 @@ template<
 constexpr basic_static_string< N+M, CharT, Traits >
 operator+(
     const basic_static_string< N, CharT, Traits >& lhs,
-    const CharT(&) rhs \[M\]);
+    const CharT(&) rhs [M]);
 ```
 
 [heading Description]
@@ -9723,7 +9723,7 @@ template<
     [role red error.param neither has a declname nor a 'class ' prefix in the type][role red error.param neither has a declname nor a 'class ' prefix in the type][role red error.param neither has a declname nor a 'class ' prefix in the type][role red error.param neither has a declname nor a 'class ' prefix in the type]>
 constexpr basic_static_string< N+M, CharT, Traits >
 operator+(
-    const CharT(&) lhs \[N\],
+    const CharT(&) lhs [N],
     const basic_static_string< M, CharT, Traits >& rhs);
 ```
 

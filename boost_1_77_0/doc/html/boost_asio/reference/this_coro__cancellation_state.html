@@ -35,6 +35,21 @@ Awaitable
 </pre>
 <h5>
 <a name="boost_asio.reference.this_coro__cancellation_state.h0"></a>
+        <span class="phrase"><a name="boost_asio.reference.this_coro__cancellation_state.example"></a></span><a class="link" href="this_coro__cancellation_state.html#boost_asio.reference.this_coro__cancellation_state.example">Example</a>
+      </h5>
+<pre class="programlisting">boost::asio::awaitable&lt;void&gt; my_coroutine()
+{
+  boost::asio::cancellation_state cs
+    = co_await boost::asio::this_coro::cancellation_state;
+
+  // ...
+
+  if (cs.cancelled() != boost::asio::cancellation_type::none)
+    // ...
+}
+</pre>
+<h5>
+<a name="boost_asio.reference.this_coro__cancellation_state.h1"></a>
         <span class="phrase"><a name="boost_asio.reference.this_coro__cancellation_state.requirements"></a></span><a class="link" href="this_coro__cancellation_state.html#boost_asio.reference.this_coro__cancellation_state.requirements">Requirements</a>
       </h5>
 <p>

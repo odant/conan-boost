@@ -28,12 +28,12 @@
 </h2></div></div></div>
 <h4>
 <a name="boost_asio.history.h0"></a>
-      <span class="phrase"><a name="boost_asio.history.asio_1_19_0___boost_1_77_beta"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_19_0___boost_1_77_beta">Asio
-      1.19.0 / Boost 1.77 beta</a>
+      <span class="phrase"><a name="boost_asio.history.asio_1_20_0___boost_1_77"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_20_0___boost_1_77">Asio
+      1.20.0 / Boost 1.77</a>
     </h4>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
-          Added support for cancellation of individual asynchonrous operations. Cancellation
+          Added support for cancellation of individual asynchronous operations. Cancellation
           is implemented by having each completion handler carry an associated <code class="computeroutput">CancellationSlot</code>,
           a lightweight cancellation channel that is specified through the new <code class="computeroutput">associated_cancellation_slot</code>
           associator. A concrete <code class="computeroutput">CancellationSlot</code> implementation is
@@ -480,6 +480,26 @@ int main()
 <li class="listitem">
           Fixed the <code class="computeroutput">any_io_executor</code> equality operators to correctly
           return a result based on the target executor.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">strand&lt;&gt;</code> to avoid using a potentially moved-from
+          executor.
+        </li>
+<li class="listitem">
+          Ensured <code class="literal">gcc</code> tests are not used for <code class="literal">clang</code>
+          when detecting compiler features.
+        </li>
+<li class="listitem">
+          Disabled coroutines support for the <code class="literal">clang</code> shipped with
+          MSVC.
+        </li>
+<li class="listitem">
+          Fixed compatibility with recent LibreSSL when <code class="computeroutput">OPENSSL_NO_SSL_INTERN</code>
+          is defined.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">posix::basic_stream_descriptor</code> move operations to work
+          with non-defaulted executors.
         </li>
 </ul></div>
 <h4>

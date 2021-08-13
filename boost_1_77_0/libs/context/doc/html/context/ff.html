@@ -218,8 +218,7 @@
 <th align="left">Important</th>
 </tr>
 <tr><td align="left" valign="top"><p>
-        Do not jump from inside a catch block and then re-throw the exception in
-        another fiber.
+        Do not jump from inside a catch block.
       </p></td></tr>
 </table></div>
 <a name="ff_ontop"></a><h4>
@@ -230,7 +229,7 @@
 <p>
       Sometimes it is useful to execute a new function on top of a resumed fiber.
       For this purpose <span class="emphasis"><em>continuation::resume_with()</em></span> has to be
-      used. The function passed as argument must accept a rvalue reference to <a class="link" href="ff.html#ff"><span class="emphasis"><em>fiber</em></span></a> and return <code class="computeroutput"><span class="keyword">void</span></code>.
+      used. The function passed as argument must accept a rvalue reference to <a class="link" href="ff.html#ff"><span class="emphasis"><em>fiber</em></span></a> and return <a class="link" href="ff.html#ff"><span class="emphasis"><em>fiber</em></span></a>.
     </p>
 <pre class="programlisting"><span class="keyword">namespace</span> <span class="identifier">ctx</span><span class="special">=</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">context</span><span class="special">;</span>
 <span class="keyword">int</span> <span class="identifier">data</span><span class="special">=</span><span class="number">0</span><span class="special">;</span>

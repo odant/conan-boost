@@ -380,7 +380,7 @@ geometry/reference/spatial_indexes/group__predicates/intersects_geometry_const__
 geometry/reference/spatial_indexes/group__predicates/overlaps_geometry_const___.html
 geometry/reference/spatial_indexes/group__predicates/within_geometry_const___.html
 geometry/reference/spatial_indexes/group__predicates/satisfies_unarypredicate_const___.html
-geometry/reference/spatial_indexes/group__predicates/nearest_geometry_const____unsigned_.html
+geometry/reference/spatial_indexes/group__predicates/nearest_geometry_const____std__size_t_.html
 geometry/reference/srs.html
 geometry/reference/srs/srs_spheroid.html
 geometry/reference/strategies.html

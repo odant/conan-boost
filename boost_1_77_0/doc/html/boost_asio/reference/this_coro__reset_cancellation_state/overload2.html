@@ -36,6 +36,32 @@
 constexpr unspecified reset_cancellation_state(
     Filter &amp;&amp; filter);
 </pre>
+<p>
+          Let <code class="computeroutput">P</code> be the cancellation slot associated with the current
+          coroutine's <code class="computeroutput">co\_spawn</code> completion handler. Assigns a new <a class="link" href="../cancellation_state.html" title="cancellation_state"><code class="computeroutput">cancellation_state</code></a>
+          object <code class="computeroutput">S</code>, constructed as <code class="computeroutput">S(P, std::forward&lt;Filter&gt;(filter))</code>,
+          into the current coroutine's cancellation state object.
+        </p>
+<h6>
+<a name="boost_asio.reference.this_coro__reset_cancellation_state.overload2.h0"></a>
+          <span class="phrase"><a name="boost_asio.reference.this_coro__reset_cancellation_state.overload2.example"></a></span><a class="link" href="overload2.html#boost_asio.reference.this_coro__reset_cancellation_state.overload2.example">Example</a>
+        </h6>
+<pre class="programlisting">boost::asio::awaitable&lt;void&gt; my_coroutine()
+{
+  co_await boost::asio::this_coro::reset_cancellation_state(
+      boost::asio::enable_partial_cancellation());
+
+  // ...
+}
+</pre>
+<h6>
+<a name="boost_asio.reference.this_coro__reset_cancellation_state.overload2.h1"></a>
+          <span class="phrase"><a name="boost_asio.reference.this_coro__reset_cancellation_state.overload2.remarks"></a></span><a class="link" href="overload2.html#boost_asio.reference.this_coro__reset_cancellation_state.overload2.remarks">Remarks</a>
+        </h6>
+<p>
+          The cancellation state is shared by all coroutines in the same "thread
+          of execution" that was created using <a class="link" href="../co_spawn.html" title="co_spawn"><code class="computeroutput">co_spawn</code></a>.
+        </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

@@ -124,6 +124,16 @@ boost::asio::co_spawn(my_executor,
     }
   }, boost::asio::detached);
 </pre>
+<h6>
+<a name="boost_asio.reference.co_spawn.overload5.h2"></a>
+          <span class="phrase"><a name="boost_asio.reference.co_spawn.overload5.per_operation_cancellation"></a></span><a class="link" href="overload5.html#boost_asio.reference.co_spawn.overload5.per_operation_cancellation">Per-Operation
+          Cancellation</a>
+        </h6>
+<p>
+          The new thread of execution is created with a cancellation state that supports
+          <code class="computeroutput">cancellation_type::terminal</code> values only. To change the cancellation
+          state, call <a class="link" href="../this_coro__reset_cancellation_state.html" title="this_coro::reset_cancellation_state"><code class="computeroutput">this_coro::reset_cancellation_state</code></a>.
+        </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

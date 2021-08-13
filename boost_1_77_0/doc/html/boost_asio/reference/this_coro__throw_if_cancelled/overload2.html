@@ -34,6 +34,17 @@
 <pre class="programlisting">constexpr unspecified throw_if_cancelled(
     bool value);
 </pre>
+<h6>
+<a name="boost_asio.reference.this_coro__throw_if_cancelled.overload2.h0"></a>
+          <span class="phrase"><a name="boost_asio.reference.this_coro__throw_if_cancelled.overload2.example"></a></span><a class="link" href="overload2.html#boost_asio.reference.this_coro__throw_if_cancelled.overload2.example">Example</a>
+        </h6>
+<pre class="programlisting">boost::asio::awaitable&lt;void&gt; my_coroutine()
+{
+  co_await boost::asio::this_coro::throw_if_cancelled(false);
+
+  // ...
+}
+</pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

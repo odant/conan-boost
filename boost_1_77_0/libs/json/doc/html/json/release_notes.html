@@ -34,11 +34,17 @@
 <p>
       <span class="bold"><strong>New Features</strong></span>
     </p>
-<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
           <a href="https://github.com/cppalliance/json/issues/538" target="_top">#538</a> <a class="link" href="ref/boost__json__string/operator_std__string_view.html" title="string::operator std::string_view">Implicit
           conversion operator from <code class="computeroutput"><span class="identifier">string</span></code>
           to <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string_view</span></code></a>.
-        </li></ul></div>
+        </li>
+<li class="listitem">
+          <a href="https://github.com/cppalliance/json/issues/521" target="_top">#521</a> <a href="https://en.cppreference.com/w/cpp/utility/hash" target="_top"><code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">hash</span></code></a> specializations for json
+          types.
+        </li>
+</ul></div>
 <p>
       <span class="bold"><strong>Fixes</strong></span>
     </p>
@@ -59,10 +65,17 @@
 <p>
       <span class="bold"><strong>Improvements</strong></span>
     </p>
-<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
           <a class="link" href="ref/boost__json__value_to.html" title="value_to"><code class="computeroutput"><span class="identifier">value_to</span></code></a>
           supports <code class="computeroutput"><span class="identifier">TupleLike</span></code> types.
-        </li></ul></div>
+        </li>
+<li class="listitem">
+          <a class="link" href="ref/boost__json__value_to.html" title="value_to"><code class="computeroutput"><span class="identifier">value_to</span></code></a>
+          and <a class="link" href="ref/boost__json__value_from.html" title="value_from"><code class="computeroutput"><span class="identifier">value_from</span></code></a>
+          support <a href="https://en.cppreference.com/w/cpp/container/array" target="_top"><code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">array</span></code></a> and similar types.
+        </li>
+</ul></div>
 <h4>
 <a name="json.release_notes.h1"></a>
       <span class="phrase"><a name="json.release_notes.boost_1_76_0"></a></span><a class="link" href="release_notes.html#json.release_notes.boost_1_76_0">Boost

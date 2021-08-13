@@ -89,6 +89,27 @@
             The async_send operation can only be used with a connected socket. Use
             the async_send_to function to send data on an unconnected raw socket.
           </p>
+<h6>
+<a name="boost_asio.reference.basic_raw_socket.async_send.overload2.h2"></a>
+            <span class="phrase"><a name="boost_asio.reference.basic_raw_socket.async_send.overload2.per_operation_cancellation"></a></span><a class="link" href="overload2.html#boost_asio.reference.basic_raw_socket.async_send.overload2.per_operation_cancellation">Per-Operation
+            Cancellation</a>
+          </h6>
+<p>
+            On POSIX or Windows operating systems, this asynchronous operation supports
+            cancellation for the following <a class="link" href="../../cancellation_type.html" title="cancellation_type"><code class="computeroutput">cancellation_type</code></a>
+            values:
+          </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::terminal</code>
+              </li>
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::partial</code>
+              </li>
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::total</code>
+              </li>
+</ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

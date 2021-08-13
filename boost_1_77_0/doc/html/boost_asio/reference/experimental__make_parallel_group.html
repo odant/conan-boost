@@ -36,6 +36,42 @@ Create
 parallel_group&lt; Ops...&gt; make_parallel_group(
     Ops... ops);
 </pre>
+<p>
+        For example:
+      </p>
+<pre class="programlisting">boost::asio::experimental::make_parallel_group(
+   [&amp;](auto token)
+   {
+     return in.async_read_some(boost::asio::buffer(data), token);
+   },
+   [&amp;](auto token)
+   {
+     return timer.async_wait(token);
+   }
+ ).async_wait(
+   boost::asio::experimental::wait_for_all(),
+   [](
+       std::array&lt;std::size_t, 2&gt; completion_order,
+       boost::system::error_code ec1, std::size_t n1,
+       boost::system::error_code ec2
+   )
+   {
+     switch (completion_order[0])
+     {
+     case 0:
+       {
+         std::cout &lt;&lt; "descriptor finished: " &lt;&lt; ec1 &lt;&lt; ", " &lt;&lt; n1 &lt;&lt; "\n";
+       }
+       break;
+     case 1:
+       {
+         std::cout &lt;&lt; "timer finished: " &lt;&lt; ec2 &lt;&lt; "\n";
+       }
+       break;
+     }
+   }
+ );
+</pre>
 <h5>
 <a name="boost_asio.reference.experimental__make_parallel_group.h0"></a>
         <span class="phrase"><a name="boost_asio.reference.experimental__make_parallel_group.requirements"></a></span><a class="link" href="experimental__make_parallel_group.html#boost_asio.reference.experimental__make_parallel_group.requirements">Requirements</a>

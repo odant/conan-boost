@@ -38,6 +38,34 @@ constexpr unspecified reset_cancellation_state(
     InFilter &amp;&amp; in_filter,
     OutFilter &amp;&amp; out_filter);
 </pre>
+<p>
+          Let <code class="computeroutput">P</code> be the cancellation slot associated with the current
+          coroutine's <code class="computeroutput">co\_spawn</code> completion handler. Assigns a new <a class="link" href="../cancellation_state.html" title="cancellation_state"><code class="computeroutput">cancellation_state</code></a>
+          object <code class="computeroutput">S</code>, constructed as <code class="computeroutput">S(P, std::forward&lt;InFilter&gt;(in_filter),
+          std::forward&lt;OutFilter&gt;(out_filter))</code>, into the current coroutine's
+          cancellation state object.
+        </p>
+<h6>
+<a name="boost_asio.reference.this_coro__reset_cancellation_state.overload3.h0"></a>
+          <span class="phrase"><a name="boost_asio.reference.this_coro__reset_cancellation_state.overload3.example"></a></span><a class="link" href="overload3.html#boost_asio.reference.this_coro__reset_cancellation_state.overload3.example">Example</a>
+        </h6>
+<pre class="programlisting">boost::asio::awaitable&lt;void&gt; my_coroutine()
+{
+  co_await boost::asio::this_coro::reset_cancellation_state(
+      boost::asio::enable_partial_cancellation(),
+      boost::asio::disable_cancellation());
+
+  // ...
+}
+</pre>
+<h6>
+<a name="boost_asio.reference.this_coro__reset_cancellation_state.overload3.h1"></a>
+          <span class="phrase"><a name="boost_asio.reference.this_coro__reset_cancellation_state.overload3.remarks"></a></span><a class="link" href="overload3.html#boost_asio.reference.this_coro__reset_cancellation_state.overload3.remarks">Remarks</a>
+        </h6>
+<p>
+          The cancellation state is shared by all coroutines in the same "thread
+          of execution" that was created using <a class="link" href="../co_spawn.html" title="co_spawn"><code class="computeroutput">co_spawn</code></a>.
+        </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

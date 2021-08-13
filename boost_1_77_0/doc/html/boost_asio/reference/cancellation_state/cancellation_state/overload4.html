@@ -39,6 +39,62 @@ constexpr cancellation_state(
     InFilter in_filter,
     OutFilter out_filter);
 </pre>
+<h6>
+<a name="boost_asio.reference.cancellation_state.cancellation_state.overload4.h0"></a>
+            <span class="phrase"><a name="boost_asio.reference.cancellation_state.cancellation_state.overload4.parameters"></a></span><a class="link" href="overload4.html#boost_asio.reference.cancellation_state.cancellation_state.overload4.parameters">Parameters</a>
+          </h6>
+<div class="variablelist">
+<p class="title"><b></b></p>
+<dl class="variablelist">
+<dt><span class="term">slot</span></dt>
+<dd><p>
+                  The parent cancellation slot to which the state will be attached.
+                </p></dd>
+<dt><span class="term">in_filter</span></dt>
+<dd>
+<p>
+                  A function object that is used to transform incoming cancellation
+                  signals as they are received from the parent slot. This function
+                  object must have the signature:
+</p>
+<pre class="programlisting">boost::asio::cancellation_type_t in_filter(
+    boost::asio::cancellation_type_t);
+</pre>
+<p>
+                </p>
+</dd>
+<dt><span class="term">out_filter</span></dt>
+<dd>
+<p>
+                  A function object that is used to transform outcoming cancellation
+                  signals as they are relayed to the child slot. This function object
+                  must have the signature:
+</p>
+<pre class="programlisting">boost::asio::cancellation_type_t out_filter(
+    boost::asio::cancellation_type_t);
+</pre>
+<p>
+                </p>
+</dd>
+</dl>
+</div>
+<p>
+            The library provides the following pre-defined cancellation filters:
+          </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+                <a class="link" href="../../disable_cancellation.html" title="disable_cancellation"><code class="computeroutput">disable_cancellation</code></a>
+              </li>
+<li class="listitem">
+                <a class="link" href="../../enable_terminal_cancellation.html" title="enable_terminal_cancellation"><code class="computeroutput">enable_terminal_cancellation</code></a>
+              </li>
+<li class="listitem">
+                <a class="link" href="../../enable_partial_cancellation.html" title="enable_partial_cancellation"><code class="computeroutput">enable_partial_cancellation</code></a>
+              </li>
+<li class="listitem">
+                <a class="link" href="../../enable_total_cancellation.html" title="enable_total_cancellation"><code class="computeroutput">enable_total_cancellation</code></a>
+              </li>
+</ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>

@@ -83,6 +83,27 @@ Start
           function if you need to ensure that all data is written before the asynchronous
           operation completes.
         </p>
+<h6>
+<a name="boost_asio.reference.ssl__stream.async_write_some.h2"></a>
+          <span class="phrase"><a name="boost_asio.reference.ssl__stream.async_write_some.per_operation_cancellation"></a></span><a class="link" href="async_write_some.html#boost_asio.reference.ssl__stream.async_write_some.per_operation_cancellation">Per-Operation
+          Cancellation</a>
+        </h6>
+<p>
+          This asynchronous operation supports cancellation for the following <a class="link" href="../cancellation_type.html" title="cancellation_type"><code class="computeroutput">cancellation_type</code></a>
+          values:
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+              <code class="computeroutput">cancellation_type::terminal</code>
+            </li>
+<li class="listitem">
+              <code class="computeroutput">cancellation_type::partial</code>
+            </li>
+</ul></div>
+<p>
+          if they are also supported by the <code class="computeroutput">Stream</code> type's <code class="computeroutput">async_read_some</code>
+          and <code class="computeroutput">async_write_some</code> operations.
+        </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
