@@ -1,0 +1,68 @@
+diff --git a/boost_1_77_0/bootstrap.bat b/boost_1_77_0/bootstrap.bat
+index 03c98ffcc..876a7638f 100644
+--- a/boost_1_77_0/bootstrap.bat
++++ b/boost_1_77_0/bootstrap.bat
+@@ -44,6 +44,7 @@ IF "%1"=="vc12" SET TOOLSET=msvc : 12.0
+ IF "%1"=="vc14" SET TOOLSET=msvc : 14.0
+ IF "%1"=="vc141" SET TOOLSET=msvc : 14.1
+ IF "%1"=="vc142" SET TOOLSET=msvc : 14.2
++IF "%1"=="vc143" SET TOOLSET=msvc : 14.3
+ 
+ ECHO.
+ ECHO Generating Boost.Build configuration in project-config.jam for %TOOLSET%...
+diff --git a/boost_1_77_0/tools/build/src/engine/config_toolset.bat b/boost_1_77_0/tools/build/src/engine/config_toolset.bat
+index 4a8e2606c..48ccd3aaf 100644
+--- a/boost_1_77_0/tools/build/src/engine/config_toolset.bat
++++ b/boost_1_77_0/tools/build/src/engine/config_toolset.bat
+@@ -11,6 +11,7 @@ if "_%B2_TOOLSET%_" == "_vc12_" call :Config_VC12
+ if "_%B2_TOOLSET%_" == "_vc14_" call :Config_VC14
+ if "_%B2_TOOLSET%_" == "_vc141_" call :Config_VC141
+ if "_%B2_TOOLSET%_" == "_vc142_" call :Config_VC142
++if "_%B2_TOOLSET%_" == "_vc143_" call :Config_VC143
+ if "_%B2_TOOLSET%_" == "_borland_" call :Config_BORLAND
+ if "_%B2_TOOLSET%_" == "_como_" call :Config_COMO
+ if "_%B2_TOOLSET%_" == "_gcc_" call :Config_GCC
+@@ -137,6 +138,28 @@ set "B2_CXX_LINK=/link kernel32.lib advapi32.lib user32.lib"
+ set "_known_=1"
+ goto :eof
+ 
++:Config_VC143
++if not defined CXX ( set "CXX=cl" )
++call vswhere_usability_wrapper.cmd
++REM Reset ERRORLEVEL since from now on it's all based on ENV vars
++ver > nul 2> nul
++if "_%B2_TOOLSET_ROOT%_" == "__" (
++    if NOT "_%VS170COMNTOOLS%_" == "__" (
++        set "B2_TOOLSET_ROOT=%VS170COMNTOOLS%..\..\VC\"
++    ))
++
++if "_%B2_ARCH%_" == "__" set B2_ARCH=%PROCESSOR_ARCHITECTURE%
++set B2_BUILD_ARGS=%B2_BUILD_ARGS% %B2_ARCH%
++
++REM return to current directory as vsdevcmd_end.bat switches to %USERPROFILE%\Source if it exists.
++pushd %CD%
++if "_%VSINSTALLDIR%_" == "__" call :Call_If_Exists "%B2_TOOLSET_ROOT%Auxiliary\Build\vcvarsall.bat" %B2_BUILD_ARGS%
++popd
++set "B2_CXX="%CXX%" /nologo /MP /MT /TP /Feb2 /wd4996 /O2 /GL /EHsc"
++set "B2_CXX_LINK=/link kernel32.lib advapi32.lib user32.lib"
++set "_known_=1"
++goto :eof
++
+ :Config_VCUNK
+ if NOT "_%B2_TOOLSET%_" == "_vcunk_" goto Skip_VCUNK
+ call vswhere_usability_wrapper.cmd
+diff --git a/boost_1_77_0/tools/build/src/engine/guess_toolset.bat b/boost_1_77_0/tools/build/src/engine/guess_toolset.bat
+index 8079818a9..09f7808b0 100644
+--- a/boost_1_77_0/tools/build/src/engine/guess_toolset.bat
++++ b/boost_1_77_0/tools/build/src/engine/guess_toolset.bat
+@@ -33,6 +33,10 @@ REM Let vswhere tell us where msvc is at, if available.
+ call :Clear_Error
+ call vswhere_usability_wrapper.cmd
+ call :Clear_Error
++if NOT "_%VS170COMNTOOLS%_" == "__" (
++    set "B2_TOOLSET=vc143"
++    set "B2_TOOLSET_ROOT=%VS170COMNTOOLS%..\..\VC\"
++    goto :eof)
+ if NOT "_%VS160COMNTOOLS%_" == "__" (
+     set "B2_TOOLSET=vc142"
+     set "B2_TOOLSET_ROOT=%VS160COMNTOOLS%..\..\VC\"

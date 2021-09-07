@@ -41,7 +41,8 @@ class BoostConan(ConanFile):
         "icu_static_runtime.patch",
         "use_old_jamfile_for_regex.patch",
         "fix_leak_child_process.patch",
-        "sp_debug_hooks.patch"
+        "sp_debug_hooks.patch",
+        "vs2022_vc143_support.patch"
     )
     #
     no_copy_source = True
@@ -63,6 +64,8 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="use_old_jamfile_for_regex.patch")
         tools.patch(patch_file="fix_leak_child_process.patch")
         tools.patch(patch_file="sp_debug_hooks.patch")
+        if tools.os_info.is_windows:
+            tools.patch(patch_file="vs2022_vc143_support.patch")
         if not tools.os_info.is_windows:
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
@@ -237,6 +240,8 @@ class BoostConan(ConanFile):
                 compiler_version = "14.1"
             elif compiler_version == "16":
                 compiler_version = "14.2"
+            elif compiler_version == "17":
+                compiler_version = "14.3"
             else:
                 compiler_version = "%s.0" % compiler_version
             return "msvc", compiler_version, "cl.exe"
