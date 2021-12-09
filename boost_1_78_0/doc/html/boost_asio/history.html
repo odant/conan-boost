@@ -28,8 +28,8 @@
 </h2></div></div></div>
 <h4>
 <a name="boost_asio.history.h0"></a>
-      <span class="phrase"><a name="boost_asio.history.asio_1_21_0___boost_1_78_beta"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_21_0___boost_1_78_beta">Asio
-      1.21.0 / Boost 1.78 beta</a>
+      <span class="phrase"><a name="boost_asio.history.asio_1_22_0___boost_1_78"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_22_0___boost_1_78">Asio
+      1.22.0 / Boost 1.78</a>
     </h4>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
@@ -208,7 +208,35 @@ ch.async_receive(
           Fixed compilation on Solaris.
         </li>
 <li class="listitem">
-          Fix defence against Qt-defined macros when building with MSVC.
+          Fixed defence against Qt-defined macros when building with MSVC.
+        </li>
+<li class="listitem">
+          Improved error messages emitted by <code class="computeroutput">ssl</code> facilities.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">bind_executor</code> compatibility with completion tokens.
+        </li>
+<li class="listitem">
+          Fixed build errors when <code class="computeroutput">BOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT</code>
+          is defined.
+        </li>
+<li class="listitem">
+          Added missing move assignment operator to <code class="computeroutput">awaitable&lt;&gt;</code>.
+        </li>
+<li class="listitem">
+          Fixed an access violation when using coroutines with MSVC, due to incorrect
+          alignment of allocated memory.
+        </li>
+<li class="listitem">
+          Fixed a cleanup issue in <code class="computeroutput">experimental::parallel_group</code> that
+          occured when the execution context was shut down with parallel operations
+          still pending.
+        </li>
+<li class="listitem">
+          Added clarifications to the documentation on concurrency hints.
+        </li>
+<li class="listitem">
+          Added documentation on error handling techniques for C++20 coroutines.
         </li>
 <li class="listitem">
           Fixed various warnings.

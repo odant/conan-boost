@@ -76,6 +76,7 @@ boost_asio/examples/cpp03_examples.html
 boost_asio/examples/cpp11_examples.html
 boost_asio/examples/cpp14_examples.html
 boost_asio/examples/cpp17_examples.html
+boost_asio/examples/cpp20_examples.html
 boost_asio/reference.html
 boost_asio/reference/asynchronous_operations.html
 boost_asio/reference/read_write_operations.html
@@ -272,6 +273,7 @@ boost_asio/reference/awaitable/awaitable.html
 boost_asio/reference/awaitable/awaitable/overload1.html
 boost_asio/reference/awaitable/awaitable/overload2.html
 boost_asio/reference/awaitable/executor_type.html
+boost_asio/reference/awaitable/operator_eq_.html
 boost_asio/reference/awaitable/valid.html
 boost_asio/reference/awaitable/value_type.html
 boost_asio/reference/awaitable/_awaitable.html
@@ -2482,6 +2484,7 @@ boost_asio/reference/experimental__basic_channel/traits_type.html
 boost_asio/reference/experimental__basic_channel/try_receive.html
 boost_asio/reference/experimental__basic_channel/try_send.html
 boost_asio/reference/experimental__basic_channel/try_send_n.html
+boost_asio/reference/experimental__basic_channel/_basic_channel.html
 boost_asio/reference/experimental__basic_channel__rebind_executor.html
 boost_asio/reference/experimental__basic_channel__rebind_executor/other.html
 boost_asio/reference/experimental__basic_concurrent_channel.html
@@ -2507,6 +2510,7 @@ boost_asio/reference/experimental__basic_concurrent_channel/traits_type.html
 boost_asio/reference/experimental__basic_concurrent_channel/try_receive.html
 boost_asio/reference/experimental__basic_concurrent_channel/try_send.html
 boost_asio/reference/experimental__basic_concurrent_channel/try_send_n.html
+boost_asio/reference/experimental__basic_concurrent_channel/_basic_concurrent_channel.html
 boost_asio/reference/experimental__basic_concurrent_channel__rebind_executor.html
 boost_asio/reference/experimental__basic_concurrent_channel__rebind_executor/other.html
 boost_asio/reference/experimental__channel_traits.html

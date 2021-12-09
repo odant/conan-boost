@@ -44,6 +44,12 @@ $(function() {
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="changelog"></a>
 Changelog</h1>
+<h2><a class="anchor" id="changelog_next"></a>
+Next release</h2>
+<ul>
+<li>Fix possible double-free when setting a custom buffer (<code>setbuf</code>) after filebuf already allocated an internal buffer</li>
+<li>Handle some warnings (mostly on MSVC)</li>
+</ul>
 <h2><a class="anchor" id="changelog_11_1_3"></a>
 Nowide 11.1.3</h2>
 <ul>

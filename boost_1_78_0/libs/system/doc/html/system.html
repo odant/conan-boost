@@ -663,7 +663,7 @@ pre.rouge {
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#usage">Usage Examples</a>
+<li><a href="#usage">Usage</a>
 <ul class="sectlevel2">
 <li><a href="#usage_returning_errors_from_os_apis_under_posix">Returning Errors from OS APIs under POSIX</a></li>
 <li><a href="#usage_returning_errors_from_os_apis_under_windows">Returning Errors from OS APIs under Windows</a></li>
@@ -674,6 +674,16 @@ pre.rouge {
 <li><a href="#usage_composing_functions_returning_error_codes">Composing Functions Returning Error Codes</a></li>
 <li><a href="#usage_providing_dual_throwing_and_nonthrowing_overloads">Providing Dual (Throwing and Nonthrowing) Overloads</a></li>
 <li><a href="#usage_resultt_as_an_alternative_to_dual_apis">result&lt;T&gt; as an Alternative to Dual APIs</a></li>
+<li><a href="#usage_testing_for_specific_error_conditions">Testing for Specific Error Conditions</a></li>
+<li><a href="#usage_adapting_existing_integer_error_values">Adapting Existing Integer Error Values</a>
+<ul class="sectlevel3">
+<li><a href="#usage_adapting_sqlite_errors">Adapting SQLite Errors</a></li>
+<li><a href="#usage_adapting_zlib_errors">Adapting ZLib Errors</a></li>
+<li><a href="#usage_supporting_comparisons_against_conditions">Supporting Comparisons against Conditions</a></li>
+</ul>
+</li>
+<li><a href="#usage_defining_library_specific_error_codes">Defining Library-Specific Error Codes</a></li>
+<li><a href="#usage_defining_library_specific_error_conditions">Defining Library-Specific Error Conditions</a></li>
 </ul>
 </li>
 <li><a href="#changes">Revision History</a>
@@ -817,55 +827,102 @@ pre.rouge {
 <h2 id="introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Error conditions originating from the operating system or other low-level
-application program interfaces (API&#8217;s) are typically reported via an integer
-representing an error code. When these low-level API calls are wrapped in
-portable code, such as in a portable library, some users want to deal with the
-error codes in portable ways. Other users need to get at the system specific
-error codes, so they can deal with system specific needs. The Boost System
-library provides simple, light-weight <code>error_code</code> objects that encapsulate
-system-specific error code values, yet also provide access to more abstract
-and portable error conditions via <code>error_condition</code> objects.</p>
+<p>Errors originating from the operating system or other low-level application
+program interfaces (APIs) are typically reported via an integer representing
+an error code, either by returning the code directly from the function (e.g.
+<code>pthread_mutex_init</code>) or by using a side channel such as the <code>errno</code>
+pseudo-variable under POSIX or <code>GetLastError()</code> under Windows.</p>
 </div>
 <div class="paragraph">
-<p>Because <code>error_code</code> objects can represent errors from sources other than the
-operating system, including user-defined sources, each <code>error_code</code> and
-<code>error_condition</code> has an associated <code>error_category</code>.</p>
+<p>However, these integer error values can only be interpreted when their source
+is known. The value 5 under Windows means <code>ERROR_ACCESS_DENIED</code> when returned
+by <code>GetLastError()</code>, but <code>EIO</code> when retrieved from <code>errno</code>. And conversely,
+the same error condition "access denied" is represented by the value 5 when
+returned by <code>GetLastError()</code> and 13 (<code>EACCES</code>) when retrieved from <code>errno</code>.</p>
 </div>
 <div class="paragraph">
-<p>An exception class, <code>system_error</code>, is provided. Derived from
-<code>std::runtime_error</code>, it captures the underlying <code>error_code</code> for the problem
-causing the exception so that this important information is not lost.</p>
+<p>This means that in order for code to be able to handle errors from both
+sources (to retrieve a text message describing the error, or to check whether
+the error means "access denied"), it needs to know where the integer error
+value originated. For this to be possible, the integer error value needs to
+be accompanied by a piece of information identifying the source.</p>
 </div>
 <div class="paragraph">
-<p>While exceptions are the preferred C&#43;&#43; default error code reporting
-mechanism, users of libraries dependent on low-level API&#8217;s often need overloads
-reporting error conditions via error code arguments and/or return values rather
-than via throwing exceptions. Otherwise, when errors are not exceptional
-occurrences and must be dealt with as they arise, programs become littered with
-try/catch blocks, unreadable, and inefficient. The Boost System library
-supports both error reporting by exception and by error code.</p>
+<p>Boost.System provides a framework in which this is possible. Errors are
+represented by a class <code>error_code</code> which contains both the error value and
+a pointer to their source (called "category"), represented as a class derived
+from <code>error_category</code>.</p>
 </div>
 <div class="paragraph">
-<p>In addition to portable errors codes and conditions supported by the
-<code>error_code.hpp</code> header, system-specific headers support the Cygwin, Linux,
-and Windows platforms. These headers are effectively no-ops if included for
-platforms other than their intended target.</p>
+<p>The category provides member functions such as <code>message</code>, which returns a text
+message for a specific error value, and <code>equivalent</code>, which can be used to test
+whether a specific error value correspond to an error condition such as "access
+denied". <code>error_code</code> uses these category-provided functions in the
+implementation of its <code>message</code> and <code>operator==</code> member functions.</p>
 </div>
 <div class="paragraph">
-<p>Boost.System is part of the C&#43;&#43;11 Standard Library.
-A number of changes, particularly to names, were made by the C++ committee
-during standardization. The Boost implementation has been tracking those changes.
-See <a href="#ref_deprecated_names">Deprecated Names</a> for synonyms provided to prevent
-breakage of existing user code.</p>
+<p>Boost.System contains two predefined category classes, the generic category
+(a reference to which is returned by <code>generic_category()</code>) and the system
+category (<code>system_category()</code>). The generic category represents the error
+values of the portable subset of <code>errno</code> values defined by the POSIX standard,
+whereas the system category is OS dependent. Under POSIX, the system category
+represents the <code>errno</code> values returned by the OS APIs (a superset of those in
+the generic category), whereas under Windows, the system category represents
+the error values returned by <code>GetLastError()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The framework is extensible. Users can define their own categories by
+deriving a class from <code>error_category</code> and implementing a function that
+returns a reference to an instance of it. This capability is useful both for
+describing library-defined error values, and for adapting existing C API
+libraries that return integer error values.</p>
+</div>
+<div class="paragraph">
+<p>For those who prefer error reporting via exceptions, Boost.System provides
+a standard exception class <code>system_error</code> that stores an <code>error_code</code>.</p>
+</div>
+<div class="paragraph">
+<p>Boost.System was standardized in C&#43;&#43;11 as <code>&lt;system_error&gt;</code>. For a while,
+the two were equivalent, but Boost.System has evolved since then and now
+contains a number of extensions over its standard sibling:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A non-allocating overload of <code>message</code>;</p>
+</li>
+<li>
+<p>Support for nonzero error codes meaning success, via the <code>failed</code> member
+functions;</p>
+</li>
+<li>
+<p>Support for 64 bit category identifiers, as a solution to the problem
+that sometimes it&#8217;s not possible to ensure that only one instance of a
+category exists in the program;</p>
+</li>
+<li>
+<p>Support for attaching source locations (file/line/function) to error codes;</p>
+</li>
+<li>
+<p>A class <code>result&lt;T&gt;</code> that can be used to return either a value or an error
+code from a function;</p>
+</li>
+<li>
+<p>Various other minor improvements.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>boost::system::error_code</code> can be converted to, and constructed from,
+<code>std::error_code</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="usage">Usage Examples</h2>
+<h2 id="usage">Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>All of the following examples assume that these lines</p>
+<p>All of the following code snippets assume that these lines</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1094,7 +1151,7 @@ value under POSIX; however, using the generic category for values belonging
 to the portable <code>errno</code> subset is slightly preferrable.</p>
 </div>
 <div class="paragraph">
-<p>Our implementation of <code>file::write</code> needs to uindergo a similar treatment.
+<p>Our implementation of <code>file::write</code> needs to undergo a similar treatment.
 There, however, we&#8217;ll apply another change. When there&#8217;s no space left on
 the disk, <code>::write</code> returns a number of bytes written that is lower than
 what we requested with <code>size</code>, but our function signals no error. We&#8217;ll make
@@ -1200,7 +1257,7 @@ category are entirely different from those in the generic category.</p>
 <h3 id="usage_attaching_a_source_location_to_error_codes">Attaching a Source Location to Error Codes</h3>
 <div class="paragraph">
 <p>Unlike the standard <code>&lt;system_error&gt;</code>, Boost.System allows source locations
-(file:line:function) to be stored in <code>error_code</code>, so that functions handling
+(file/line/function) to be stored in <code>error_code</code>, so that functions handling
 the error can display or log the source code location where the error occurred.
 To take advantage of this functionality, our POSIX <code>file::read</code> function needs
 to be augmented as follows:</p>
@@ -1454,8 +1511,8 @@ exceptions on failure.</p>
 it signals failure in <code>ec</code>, throw a <code>system_error</code> exception.</p>
 </div>
 <div class="paragraph">
-<p>We use our function name <code>__func__</code> (<code>file_copy</code>) as the prefix, although
-that&#8217;s a matter of taste.</p>
+<p>We use our function name <code>__func__</code> (<code>"file_copy"</code>) as the prefix,
+although that&#8217;s a matter of taste.</p>
 </div>
 <div class="paragraph">
 <p>Note that typically under this style the overloads taking <code>error_code&amp; ec</code>
@@ -1561,6 +1618,917 @@ returned <code>result&lt;size_t&gt;</code>:</p>
     <span class="p">}</span>
 <span class="p">}</span></code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="usage_testing_for_specific_error_conditions">Testing for Specific Error Conditions</h3>
+<div class="paragraph">
+<p>Let&#8217;s suppose that we have called a function that signals failure
+using <code>error_code</code>, we have passed it an <code>error_code</code> variable <code>ec</code>,
+and now for some reason want to check whether the function has
+failed with an error code of <code>EINVAL</code>, "invalid argument".</p>
+</div>
+<div class="paragraph">
+<p>Since <code>error_code</code> can be compared for equality, our first instict
+might be <code>if( ec == error_code( EINVAL, generic_category() )</code>.</p>
+</div>
+<div class="paragraph">
+<p>This is wrong, and we should never do it.</p>
+</div>
+<div class="paragraph">
+<p>First, under POSIX, the function might have returned <code>EINVAL</code> from
+the system category (because the error might have been returned by
+an OS API, and not by the function itself, as was the case in our
+<code>read</code> and <code>write</code> implementations.)</p>
+</div>
+<div class="paragraph">
+<p>Since <code>error_code</code> comparisons are exact, <code>EINVAL</code> from the generic
+category does not compare equal to <code>EINVAL</code> from the system category.</p>
+</div>
+<div class="paragraph">
+<p>(And before you start thinking about just comparing <code>ec.value()</code> to
+<code>EINVAL</code>, read on.)</p>
+</div>
+<div class="paragraph">
+<p>Second, under Windows, the function might have returned <code>error_code(
+ERROR_INVALID_PARAMETER, system_category() )</code>. As we have already
+mentioned, the integer error values in the system category under
+Windows are completely unrelated to the integer <code>errno</code> values.</p>
+</div>
+<div class="paragraph">
+<p>The correct approach is to compare <code>ec</code> not to specific error codes,
+but to <code>error_condition( EINVAL, generic_category() )</code>. Error
+conditions are a platform-independent way to represent the meaning
+of the concrete error codes. In our case, all error codes, under
+both POSIX and Windows, that represent <code>EINVAL</code> will compare equal
+to <code>error_condition( EINVAL, generic_category() )</code>.</p>
+</div>
+<div class="paragraph">
+<p>In short, you should never compare error codes to error codes, and
+should compare them to error conditions instead. This is the purpose
+of the <code>error_condition</code> class, which is very frequently misunderstood.</p>
+</div>
+<div class="paragraph">
+<p>Since</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">if</span><span class="p">(</span> <span class="n">ec</span> <span class="o">==</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span><span class="p">(</span> <span class="n">EINVAL</span><span class="p">,</span> <span class="n">sys</span><span class="o">::</span><span class="n">generic_category</span><span class="p">()</span> <span class="p">)</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// handle EINVAL</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is a bit verbose, Boost.System provides enumerator values for the
+<code>errno</code> values against which an error code can be compared directly.</p>
+</div>
+<div class="paragraph">
+<p>These enumerators are defined in <a href="#ref_errc"><code>&lt;boost/system/errc.hpp&gt;</code></a>,
+and enable the above test to be written</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">if</span><span class="p">(</span> <span class="n">ec</span> <span class="o">==</span> <span class="n">sys</span><span class="o">::</span><span class="n">errc</span><span class="o">::</span><span class="n">invalid_argument</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// handle EINVAL</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which is what one should generally use for testing for a specific error
+condition, as a best practice.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="usage_adapting_existing_integer_error_values">Adapting Existing Integer Error Values</h3>
+<div class="paragraph">
+<p>Libraries with C (or <code>extern "C"</code>) APIs often signal failure by returning
+a library-specific integer error code (with zero typically being reserved
+for "no error".) When writing portable C&#43;&#43; wrappers, we need to decide
+how to expose these error codes, and using <code>error_code</code> is a good way to
+do it.</p>
+</div>
+<div class="paragraph">
+<p>Because the integer error codes are library specific, and in general match
+neither <code>errno</code> values or system category values, we need to define a
+library-specific error category.</p>
+</div>
+<div class="sect3">
+<h4 id="usage_adapting_sqlite_errors">Adapting SQLite Errors</h4>
+<div class="paragraph">
+<p>We&#8217;ll take SQLite as an example. The general outline of a custom error
+category is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">class</span> <span class="nc">sqlite3_category_impl</span><span class="o">:</span> <span class="k">public</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_category</span>
+<span class="p">{</span>
+    <span class="c1">// TODO add whatever's needed here</span>
+<span class="p">};</span>
+
+<span class="n">sys</span><span class="o">::</span><span class="n">error_category</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">sqlite3_category</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="n">sqlite3_category_impl</span> <span class="n">instance</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which can then be used similarly to the predefined generic and system
+categories:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">some_sqlite3_function</span><span class="p">(</span> <span class="p">...</span> <span class="p">);</span>
+<span class="n">ec</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span> <span class="n">r</span><span class="p">,</span> <span class="n">sqlite3_category</span><span class="p">()</span> <span class="p">);</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we try to compile the above category definition as-is, it will complain
+about our not implementing two pure virtual member functions, <code>name</code> and
+<code>message</code>, so at minimum, we&#8217;ll need to add these. In addition, we&#8217;ll also
+implement the non-allocating overload of <code>message</code>. It&#8217;s not pure virtual,
+but its default implementation calls the <code>std::string</code>-returning overload,
+and that&#8217;s almost never what one wants. (This default implementation is only
+provided for backward compatibility, in order to not break existing
+user-defined categories that were written before this overload was added.)</p>
+</div>
+<div class="paragraph">
+<p>So, the minimum we need to implement is this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">class</span> <span class="nc">sqlite3_category_impl</span><span class="o">:</span> <span class="k">public</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_category</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>name</code> is easy, it just returns the category name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">sqlite3_category_impl</span><span class="o">::</span><span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">"sqlite3"</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>message</code> is used to obtain an error message given an integer error code.
+SQLite provides the function <code>sqlite3_errstr</code> for this, so we don&#8217;t need
+to do any work:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sqlite3_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqlite3_errstr</span><span class="p">(</span> <span class="n">ev</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">sqlite3_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">snprintf</span><span class="p">(</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="s">"%s"</span><span class="p">,</span> <span class="n">sqlite3_errstr</span><span class="p">(</span> <span class="n">ev</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="k">return</span> <span class="n">buffer</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and we&#8217;re done. <code>sqlite3_category()</code> can now be used like the predefined
+categories, and we can put an SQLite error code <code>int r</code> into a Boost.System
+<code>error_code ec</code> by means of <code>ec.assign( r, sqlite3_category() )</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="usage_adapting_zlib_errors">Adapting ZLib Errors</h4>
+<div class="paragraph">
+<p>Another widely used C library is ZLib, and the portion of <code>zlib.h</code> that
+defines its error codes is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="cp">#define Z_OK            0
+#define Z_STREAM_END    1
+#define Z_NEED_DICT     2
+#define Z_ERRNO        (-1)
+#define Z_STREAM_ERROR (-2)
+#define Z_DATA_ERROR   (-3)
+#define Z_MEM_ERROR    (-4)
+#define Z_BUF_ERROR    (-5)
+#define Z_VERSION_ERROR (-6)
+</span><span class="cm">/* Return codes for the compression/decompression functions. Negative values
+ * are errors, positive values are used for special but normal events.
+ */</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are three relevant differences with the previous case of SQLite:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>While for SQLite all non-zero values were errors, as is the typical case,
+here negative values are errors, but positive values are "special but normal",
+that is, they represent success, not failure;</p>
+</li>
+<li>
+<p>ZLib does not provide a function that returns the error message corresponding
+to a specific error code;</p>
+</li>
+<li>
+<p>When <code>Z_ERRNO</code> is returned, the error code should be retrieved from <code>errno</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Our category implementation will look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">class</span> <span class="nc">zlib_category_impl</span><span class="o">:</span> <span class="k">public</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_category</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">failed</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">sys</span><span class="o">::</span><span class="n">error_category</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">zlib_category</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="n">zlib_category_impl</span> <span class="n">instance</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As usual, the implementation of <code>name</code> is trivial:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">zlib_category_impl</span><span class="o">::</span><span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">"zlib"</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll need to work a bit harder to implement <code>message</code> this time, as there&#8217;s
+no preexisting function to lean on:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">zlib_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span> <span class="n">ev</span> <span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Z_OK</span><span class="p">:</span>            <span class="k">return</span> <span class="s">"No error"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_STREAM_END</span><span class="p">:</span>    <span class="k">return</span> <span class="s">"End of stream"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_NEED_DICT</span><span class="p">:</span>     <span class="k">return</span> <span class="s">"A dictionary is needed"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_ERRNO</span><span class="p">:</span>         <span class="k">return</span> <span class="s">"OS API error"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_STREAM_ERROR</span><span class="p">:</span>  <span class="k">return</span> <span class="s">"Inconsistent stream state or invalid argument"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_DATA_ERROR</span><span class="p">:</span>    <span class="k">return</span> <span class="s">"Data error"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_MEM_ERROR</span><span class="p">:</span>     <span class="k">return</span> <span class="s">"Out of memory"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_BUF_ERROR</span><span class="p">:</span>     <span class="k">return</span> <span class="s">"Insufficient buffer space"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_VERSION_ERROR</span><span class="p">:</span> <span class="k">return</span> <span class="s">"Library version mismatch"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">snprintf</span><span class="p">(</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="s">"Unknown zlib error %d"</span><span class="p">,</span> <span class="n">ev</span> <span class="p">);</span>
+    <span class="k">return</span> <span class="n">buffer</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a typical implementation of the non-throwing <code>message</code> overload. Note
+that <code>message</code> is allowed to return something different from <code>buffer</code>, which
+means that we can return character literals directly, without copying them
+into the supplied buffer first. This allows our function to return the correct
+message text even when the buffer is too small.</p>
+</div>
+<div class="paragraph">
+<p>The <code>std::string</code> overload of <code>message</code> is now trivial:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">zlib_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span> <span class="mi">64</span> <span class="p">];</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">(</span> <span class="n">ev</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="n">buffer</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, we need to implement <code>failed</code>, in order to override its default
+behavior of returning <code>true</code> for all nonzero values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">bool</span> <span class="n">zlib_category_impl</span><span class="o">::</span><span class="n">failed</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">ev</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This completes the implementation of <code>zlib_category()</code> and takes care of the
+first two bullets above, but we still haven&#8217;t addressed the third one; namely,
+that we need to retrieve the error from <code>errno</code> in the <code>Z_ERRNO</code> case.</p>
+</div>
+<div class="paragraph">
+<p>To do that, we&#8217;ll define a helper function that would be used to assign a ZLib
+error code to an <code>error_code</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">void</span> <span class="nf">assign_zlib_error</span><span class="p">(</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_code</span> <span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">r</span> <span class="o">!=</span> <span class="n">Z_ERRNO</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ec</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span> <span class="n">r</span><span class="p">,</span> <span class="n">zlib_category</span><span class="p">()</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">ec</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span> <span class="n">errno</span><span class="p">,</span> <span class="n">sys</span><span class="o">::</span><span class="n">generic_category</span><span class="p">()</span> <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>so that, instead of using <code>ec.assign( r, zlib_category() )</code> directly, code
+would do</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">some_zlib_function</span><span class="p">(</span> <span class="p">...</span> <span class="p">);</span>
+<span class="n">assign_zlib_error</span><span class="p">(</span> <span class="n">ec</span><span class="p">,</span> <span class="n">r</span> <span class="p">);</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can stop here, as this covers everything we set out to do, but we can take
+an extra step and enable source locations for our error codes. For that, we&#8217;ll
+need to change <code>assign_zlib_error</code> to take a <code>source_location</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">void</span> <span class="nf">assign_zlib_error</span><span class="p">(</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_code</span> <span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="n">boost</span><span class="o">::</span><span class="n">source_location</span> <span class="k">const</span><span class="o">*</span> <span class="n">loc</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">r</span> <span class="o">!=</span> <span class="n">Z_ERRNO</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ec</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span> <span class="n">r</span><span class="p">,</span> <span class="n">zlib_category</span><span class="p">(),</span> <span class="n">loc</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">ec</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span> <span class="n">errno</span><span class="p">,</span> <span class="n">sys</span><span class="o">::</span><span class="n">generic_category</span><span class="p">(),</span> <span class="n">loc</span> <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Define a helper macro to avoid the boilerplate of defining the <code>static
+constexpr</code> source location object each time:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="cp">#define ASSIGN_ZLIB_ERROR(ec, r) { \
+    BOOST_STATIC_CONSTEXPR boost::source_location loc = BOOST_CURRENT_LOCATION; \
+    assign_zlib_error( ec, r, &amp;loc ); }</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And then use the macro instead of the function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">some_zlib_function</span><span class="p">(</span> <span class="p">...</span> <span class="p">);</span>
+<span class="n">ASSIGN_ZLIB_ERROR</span><span class="p">(</span> <span class="n">ec</span><span class="p">,</span> <span class="n">r</span> <span class="p">);</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="usage_supporting_comparisons_against_conditions">Supporting Comparisons against Conditions</h4>
+<div class="paragraph">
+<p>We notice that some of the ZLib error codes correspond to portable <code>errno</code>
+conditions. <code>Z_STREAM_ERROR</code>, for instance, is returned in cases where
+POSIX functions would have returned <code>EINVAL</code>; <code>Z_MEM_ERROR</code> is <code>ENOMEM</code>;
+and <code>Z_BUF_ERROR</code>, insufficient space in the output buffer to store the
+result, roughly corresponds to <code>ERANGE</code>, result out of range.</p>
+</div>
+<div class="paragraph">
+<p>To encode this relationship, we need to implement either
+<code>default_error_condition</code> or <code>equivalent</code> in our category. Since we have
+a simple one to one mapping, the former will suffice:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">class</span> <span class="nc">zlib_category_impl</span><span class="o">:</span> <span class="k">public</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_category</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="n">failed</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span> <span class="n">default_error_condition</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The implementation is straightforward:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span> <span class="n">zlib_category_impl</span><span class="o">::</span><span class="n">default_error_condition</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span> <span class="n">ev</span> <span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Z_OK</span><span class="p">:</span>            <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span><span class="p">();</span>
+    <span class="k">case</span> <span class="n">Z_STREAM_ERROR</span><span class="p">:</span>  <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">errc</span><span class="o">::</span><span class="n">invalid_argument</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_MEM_ERROR</span><span class="p">:</span>     <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">errc</span><span class="o">::</span><span class="n">not_enough_memory</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">Z_BUF_ERROR</span><span class="p">:</span>     <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">errc</span><span class="o">::</span><span class="n">result_out_of_range</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span><span class="p">(</span> <span class="n">ev</span><span class="p">,</span> <span class="o">*</span><span class="k">this</span> <span class="p">);</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once this is added, we will be able to compare a ZLib <code>error_code ec</code> against
+<code>errc</code> enumerators:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">if</span><span class="p">(</span> <span class="n">ec</span> <span class="o">==</span> <span class="n">sys</span><span class="o">::</span><span class="n">errc</span><span class="o">::</span><span class="n">not_enough_memory</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Z_MEM_ERROR, or ENOMEM</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="usage_defining_library_specific_error_codes">Defining Library-Specific Error Codes</h3>
+<div class="paragraph">
+<p>Let&#8217;s suppose that we are writing a library <code>libmyimg</code> for reading some
+hypothetical image format, and that we have defined the following API
+function for that:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="k">struct</span> <span class="nc">image</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">load_image</span><span class="p">(</span> <span class="n">file</span><span class="o">&amp;</span> <span class="n">f</span><span class="p">,</span> <span class="n">image</span><span class="o">&amp;</span> <span class="n">im</span><span class="p">,</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span> <span class="p">);</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(using our portable <code>file</code> class from the preceding examples.)</p>
+</div>
+<div class="paragraph">
+<p>Our hypothetical image format is simple, consisting of a fixed header,
+followed by the image data, so an implementation of <code>load_image</code> might
+have the following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="k">struct</span> <span class="nc">image_header</span>
+<span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">signature</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">width</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">height</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">bits_per_pixel</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">channels</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="n">load_image_header</span><span class="p">(</span> <span class="n">file</span><span class="o">&amp;</span> <span class="n">f</span><span class="p">,</span> <span class="n">image_header</span><span class="o">&amp;</span> <span class="n">im</span><span class="p">,</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span> <span class="p">);</span>
+
+<span class="k">struct</span> <span class="nc">image</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">load_image</span><span class="p">(</span> <span class="n">file</span><span class="o">&amp;</span> <span class="n">f</span><span class="p">,</span> <span class="n">image</span><span class="o">&amp;</span> <span class="n">im</span><span class="p">,</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">image_header</span> <span class="n">ih</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="n">load_image_header</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">ih</span><span class="p">,</span> <span class="n">ec</span> <span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ec</span><span class="p">.</span><span class="n">failed</span><span class="p">()</span> <span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">signature</span> <span class="o">!=</span> <span class="mh">0xFF0AD71A</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// return an "invalid signature" error</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">width</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// return an "invalid width" error</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">height</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// return an "invalid height" error</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">bits_per_pixel</span> <span class="o">!=</span> <span class="mi">8</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// return an "unsupported bit depth" error</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">channels</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">ih</span><span class="p">.</span><span class="n">channels</span> <span class="o">!=</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">ih</span><span class="p">.</span><span class="n">channels</span> <span class="o">!=</span> <span class="mi">4</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// return an "unsupported channel count" error</span>
+    <span class="p">}</span>
+
+    <span class="c1">// initialize `im` and read image data</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can see that we need to define five error codes of our own. (Our function
+can also return other kinds of failures in <code>ec</code>&#8201;&#8212;&#8201;those will come from
+<code>file::read</code> which <code>load_image_header</code> will use to read the header.)</p>
+</div>
+<div class="paragraph">
+<p>To define these errors, we&#8217;ll use a scoped enumeration type. (This example
+will take advantage of C&#43;&#43;11 features.)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">error</span>
+<span class="p">{</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+
+    <span class="n">invalid_signature</span><span class="p">,</span>
+    <span class="n">invalid_width</span><span class="p">,</span>
+    <span class="n">invalid_height</span><span class="p">,</span>
+    <span class="n">unsupported_bit_depth</span><span class="p">,</span>
+    <span class="n">unsupported_channel_count</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Boost.System supports being told that an enumeration type represents an error
+code, which enables implicit conversions between the enumeration type and
+<code>error_code</code>. It&#8217;s done by specializing the <code>is_error_code_enum</code> type trait,
+which resides in <code>namespace boost::system</code> like the rest of the library:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">boost</span>
+<span class="p">{</span>
+<span class="k">namespace</span> <span class="n">system</span>
+<span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="p">&gt;</span> <span class="k">struct</span> <span class="nc">is_error_code_enum</span><span class="o">&lt;</span> <span class="o">::</span><span class="n">libmyimg</span><span class="o">::</span><span class="n">error</span> <span class="o">&gt;:</span> <span class="n">std</span><span class="o">::</span><span class="n">true_type</span>
+<span class="p">{</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace system</span>
+<span class="p">}</span> <span class="c1">// namespace boost</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once this is in place, we can now assign values of <code>libmyimg::error</code> to
+<code>sys::error_code</code>, which enables the implementation of <code>load_image</code> to be
+written as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="kt">void</span> <span class="nf">load_image</span><span class="p">(</span> <span class="n">file</span><span class="o">&amp;</span> <span class="n">f</span><span class="p">,</span> <span class="n">image</span><span class="o">&amp;</span> <span class="n">im</span><span class="p">,</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">image_header</span> <span class="n">ih</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="n">load_image_header</span><span class="p">(</span> <span class="n">f</span><span class="p">,</span> <span class="n">ih</span><span class="p">,</span> <span class="n">ec</span> <span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ec</span><span class="p">.</span><span class="n">failed</span><span class="p">()</span> <span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">signature</span> <span class="o">!=</span> <span class="mh">0xFF0AD71A</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_signature</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">width</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_width</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">height</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_height</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">bits_per_pixel</span> <span class="o">!=</span> <span class="mi">8</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="n">error</span><span class="o">::</span><span class="n">unsupported_bit_depth</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">ih</span><span class="p">.</span><span class="n">channels</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">ih</span><span class="p">.</span><span class="n">channels</span> <span class="o">!=</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">ih</span><span class="p">.</span><span class="n">channels</span> <span class="o">!=</span> <span class="mi">4</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="n">error</span><span class="o">::</span><span class="n">unsupported_channel_count</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// initialize `image` and read image data</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is however not enough; we still need to define the error category
+for our enumerators, and associate them with it.</p>
+</div>
+<div class="paragraph">
+<p>The first step follows our previous two examples very closely:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="k">class</span> <span class="nc">myimg_category_impl</span><span class="o">:</span> <span class="k">public</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_category</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">myimg_category_impl</span><span class="o">::</span><span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">"libmyimg"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myimg_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span> <span class="mi">64</span> <span class="p">];</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">(</span> <span class="n">ev</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="n">buffer</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">myimg_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">error</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">ev</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">success</span><span class="p">:</span>                   <span class="k">return</span> <span class="s">"No error"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_signature</span><span class="p">:</span>         <span class="k">return</span> <span class="s">"Invalid image signature"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_width</span><span class="p">:</span>             <span class="k">return</span> <span class="s">"Invalid image width"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_height</span><span class="p">:</span>            <span class="k">return</span> <span class="s">"Invalid image height"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">unsupported_bit_depth</span><span class="p">:</span>     <span class="k">return</span> <span class="s">"Unsupported bit depth"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">unsupported_channel_count</span><span class="p">:</span> <span class="k">return</span> <span class="s">"Unsupported number of channels"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">snprintf</span><span class="p">(</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="s">"Unknown libmyimg error %d"</span><span class="p">,</span> <span class="n">ev</span> <span class="p">);</span>
+    <span class="k">return</span> <span class="n">buffer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">sys</span><span class="o">::</span><span class="n">error_category</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">myimg_category</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="n">myimg_category_impl</span> <span class="n">instance</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The second step involves implementing a function <code>make_error_code</code> in
+the namespace of our enumeration type <code>error</code> that takes <code>error</code> and
+returns <code>boost::system::error_code</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="n">sys</span><span class="o">::</span><span class="n">error_code</span> <span class="n">make_error_code</span><span class="p">(</span> <span class="n">error</span> <span class="n">e</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_code</span><span class="p">(</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">e</span> <span class="p">),</span> <span class="n">myimg_category</span><span class="p">()</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now <code>load_image</code> will compile, and we just need to fill the rest of its
+implementation with code that uses <code>file::read</code> to read the image data.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s one additional embellishment we can make. As we know, Boost.System
+was proposed for, and accepted into, the C&#43;&#43;11 standard, and now there&#8217;s
+a standard implementation of it in <code>&lt;system_error&gt;</code>. We can make our
+error enumeration type compatible with <code>std::error_code</code> as well, by
+specializing the standard type trait <code>std::is_error_code_enum</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">std</span>
+<span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="p">&gt;</span> <span class="k">struct</span> <span class="nc">is_error_code_enum</span><span class="o">&lt;</span> <span class="o">::</span><span class="n">libmyimg</span><span class="o">::</span><span class="n">error</span> <span class="o">&gt;:</span> <span class="n">std</span><span class="o">::</span><span class="n">true_type</span>
+<span class="p">{</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace std</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This makes our enumerators convertible to <code>std::error_code</code>.</p>
+</div>
+<div class="paragraph">
+<p>(The reason this works is that <code>boost::system::error_code</code> is convertible
+to <code>std::error_code</code>, so the return value of our <code>make_error_code</code> overload
+can be used to initialize a <code>std::error_code</code>.)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="usage_defining_library_specific_error_conditions">Defining Library-Specific Error Conditions</h3>
+<div class="paragraph">
+<p>All of the <code>libmyimg::error</code> error codes we have so far represent the same
+error condition - invalid or unsupported image format. It might make sense to
+enable testing for this condition without the need to enumerate all five
+specific codes. To do this, we can define an error condition enumeration type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">condition</span>
+<span class="p">{</span>
+    <span class="n">invalid_format</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which we can tag as representing an error condition by specializing
+<code>is_error_condition_enum</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">boost</span>
+<span class="p">{</span>
+<span class="k">namespace</span> <span class="n">system</span>
+<span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="p">&gt;</span> <span class="k">struct</span> <span class="nc">is_error_condition_enum</span><span class="o">&lt;</span> <span class="o">::</span><span class="n">libmyimg</span><span class="o">::</span><span class="n">condition</span> <span class="o">&gt;:</span> <span class="n">std</span><span class="o">::</span><span class="n">true_type</span>
+<span class="p">{</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace system</span>
+<span class="p">}</span> <span class="c1">// namespace boost</span>
+
+<span class="k">namespace</span> <span class="n">std</span>
+<span class="p">{</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="p">&gt;</span> <span class="k">struct</span> <span class="nc">is_error_condition_enum</span><span class="o">&lt;</span> <span class="o">::</span><span class="n">libmyimg</span><span class="o">::</span><span class="n">condition</span> <span class="o">&gt;:</span> <span class="n">std</span><span class="o">::</span><span class="n">true_type</span>
+<span class="p">{</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace std</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly to the error code enumeration type, which needed a <code>make_error_code</code>
+overload, this one will need to have a <code>make_error_condition</code> overload, and a
+category.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s in principle possible to reuse the category we already defined for our
+error codes, by making the condition values start from, say, 10000 instead of
+1. This saves some typing, but a better practice is to use a separate category
+for the error conditions. So that&#8217;s what we&#8217;ll do:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="k">class</span> <span class="nc">myimg_condition_category_impl</span><span class="o">:</span> <span class="k">public</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_category</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">myimg_condition_category_impl</span><span class="o">::</span><span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">"libmyimg_condition"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myimg_condition_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span> <span class="mi">64</span> <span class="p">];</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">(</span> <span class="n">ev</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="n">buffer</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">myimg_condition_category_impl</span><span class="o">::</span><span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">ev</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="n">condition</span><span class="o">::</span><span class="n">invalid_format</span><span class="p">:</span> <span class="k">return</span> <span class="s">"Invalid or unsupported image format"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">snprintf</span><span class="p">(</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="s">"Unknown libmyimg condition %d"</span><span class="p">,</span> <span class="n">ev</span> <span class="p">);</span>
+    <span class="k">return</span> <span class="n">buffer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">sys</span><span class="o">::</span><span class="n">error_category</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">myimg_condition_category</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="n">myimg_condition_category_impl</span> <span class="n">instance</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span> <span class="n">make_error_condition</span><span class="p">(</span> <span class="n">condition</span> <span class="n">e</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span><span class="p">(</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">e</span> <span class="p">),</span> <span class="n">myimg_condition_category</span><span class="p">()</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We have our condition, but it doesn&#8217;t do anything yet. To enable
+<code>libmyimg::condition::invalid_format</code> to compare equal to our error codes,
+we need to implement <code>default_error_condition</code> in the error code category:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">namespace</span> <span class="n">libmyimg</span>
+<span class="p">{</span>
+
+<span class="k">class</span> <span class="nc">myimg_category_impl</span><span class="o">:</span> <span class="k">public</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_category</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="n">message</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">len</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span> <span class="n">default_error_condition</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span> <span class="n">myimg_category_impl</span><span class="o">::</span><span class="n">default_error_condition</span><span class="p">(</span> <span class="kt">int</span> <span class="n">ev</span> <span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">error</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">ev</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="p">{</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">success</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="p">{};</span>
+
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_signature</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_width</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">invalid_height</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">unsupported_bit_depth</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">error</span><span class="o">::</span><span class="n">unsupported_channel_count</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">condition</span><span class="o">::</span><span class="n">invalid_format</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">sys</span><span class="o">::</span><span class="n">error_condition</span><span class="p">(</span> <span class="n">ev</span><span class="p">,</span> <span class="o">*</span><span class="k">this</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">}</span> <span class="c1">// namespace libmyimg</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s it; now <code>ec == libmyimg::condition::invalid_format</code> can be used to test
+whether <code>ec</code> contains one of our error codes corresponding to the "invalid
+image format" condition.</p>
 </div>
 </div>
 </div>
@@ -2003,7 +2971,7 @@ should be provided in the same namespace as the enumeration type.</p>
     <span class="n">too_many_files_open_in_system</span><span class="p">,</span>  <span class="c1">//ENFILE</span>
     <span class="n">too_many_files_open</span><span class="p">,</span>            <span class="c1">//EMFILE</span>
     <span class="n">too_many_links</span><span class="p">,</span>                 <span class="c1">//EMLINK</span>
-    <span class="n">too_many_synbolic_link_levels</span><span class="p">,</span>  <span class="c1">//ELOOP</span>
+    <span class="n">too_many_symbolic_link_levels</span><span class="p">,</span>  <span class="c1">//ELOOP</span>
     <span class="n">value_too_large</span><span class="p">,</span>                <span class="c1">//EOVERFLOW</span>
     <span class="n">wrong_protocol_type</span>             <span class="c1">//EPROTOTYPE</span>
   <span class="p">};</span>
@@ -5507,7 +6475,7 @@ paper. Johan Nilsson&#8217;s comments led to several of the refinements in N2066
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-04 01:02:53 UTC
+Last updated 2021-12-02 06:48:01 UTC
 </div>
 </div>
 <style>
