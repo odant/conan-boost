@@ -1,6 +1,8 @@
---- a/boost_1_78_0/boost/multiprecision/detail/default_ops.hpp
-+++ b/boost_1_78_0/boost/multiprecision/detail/default_ops.hpp
-@@ -401,7 +401,7 @@ inline BOOST_MP_CXX14_CONSTEXPR void eval_multiply_default(T& t, const T& u, con
+diff --git a/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp b/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp
+index fbf8dc9c58..f422de2a20 100644
+--- a/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp
++++ b/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp
+@@ -430,7 +430,7 @@ inline BOOST_MP_CXX14_CONSTEXPR void eval_multiply_default(T& t, const T& u, con
        eval_multiply(t, v);
     }
  }
@@ -9,7 +11,7 @@
  template <class T, class U>
  inline BOOST_MP_CXX14_CONSTEXPR typename std::enable_if<std::is_convertible<U, number<T, et_on> >::value && !std::is_convertible<U, T>::value>::type eval_multiply_default(T& t, const T& u, const U& v)
  {
-@@ -528,7 +528,7 @@ inline BOOST_MP_CXX14_CONSTEXPR void eval_divide_default(T& t, const T& u, const
+@@ -557,7 +557,7 @@ inline BOOST_MP_CXX14_CONSTEXPR void eval_divide_default(T& t, const T& u, const
        eval_divide(t, v);
     }
  }

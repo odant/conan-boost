@@ -1,7 +1,7 @@
 diff --git a/boost_1_77_0/bootstrap.bat b/boost_1_77_0/bootstrap.bat
 index 03c98ffcc..876a7638f 100644
---- a/boost_1_77_0/bootstrap.bat
-+++ b/boost_1_77_0/bootstrap.bat
+--- a/boost_1_79_0/bootstrap.bat
++++ b/boost_1_79_0/bootstrap.bat
 @@ -44,6 +44,7 @@ IF "%1"=="vc12" SET TOOLSET=msvc : 12.0
  IF "%1"=="vc14" SET TOOLSET=msvc : 14.0
  IF "%1"=="vc141" SET TOOLSET=msvc : 14.1
@@ -12,8 +12,8 @@ index 03c98ffcc..876a7638f 100644
  ECHO Generating Boost.Build configuration in project-config.jam for %TOOLSET%...
 diff --git a/boost_1_77_0/tools/build/src/engine/config_toolset.bat b/boost_1_77_0/tools/build/src/engine/config_toolset.bat
 index 4a8e2606c..48ccd3aaf 100644
---- a/boost_1_77_0/tools/build/src/engine/config_toolset.bat
-+++ b/boost_1_77_0/tools/build/src/engine/config_toolset.bat
+--- a/boost_1_79_0/tools/build/src/engine/config_toolset.bat
++++ b/boost_1_79_0/tools/build/src/engine/config_toolset.bat
 @@ -11,6 +11,7 @@ if "_%B2_TOOLSET%_" == "_vc12_" call :Config_VC12
  if "_%B2_TOOLSET%_" == "_vc14_" call :Config_VC14
  if "_%B2_TOOLSET%_" == "_vc141_" call :Config_VC141
@@ -53,8 +53,8 @@ index 4a8e2606c..48ccd3aaf 100644
  call vswhere_usability_wrapper.cmd
 diff --git a/boost_1_77_0/tools/build/src/engine/guess_toolset.bat b/boost_1_77_0/tools/build/src/engine/guess_toolset.bat
 index 8079818a9..09f7808b0 100644
---- a/boost_1_77_0/tools/build/src/engine/guess_toolset.bat
-+++ b/boost_1_77_0/tools/build/src/engine/guess_toolset.bat
+--- a/boost_1_79_0/tools/build/src/engine/guess_toolset.bat
++++ b/boost_1_79_0/tools/build/src/engine/guess_toolset.bat
 @@ -33,6 +33,10 @@ REM Let vswhere tell us where msvc is at, if available.
  call :Clear_Error
  call vswhere_usability_wrapper.cmd
