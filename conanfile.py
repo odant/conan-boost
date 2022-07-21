@@ -8,7 +8,7 @@ import os
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.79.0+1"
+    version = "1.80.0-beta1+0"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -41,8 +41,7 @@ class BoostConan(ConanFile):
         "icu_static_runtime.patch",
         "use_old_jamfile_for_regex.patch",
         "fix_leak_child_process.patch",
-        "sp_debug_hooks.patch",
-        "0001-json-array-erase-relocate.patch"
+        "sp_debug_hooks.patch"
     )
     #
     no_copy_source = True
@@ -64,7 +63,6 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="use_old_jamfile_for_regex.patch")
         tools.patch(patch_file="fix_leak_child_process.patch")
         tools.patch(patch_file="sp_debug_hooks.patch")
-        tools.patch(patch_file="0001-json-array-erase-relocate.patch")
         if not tools.os_info.is_windows:
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
