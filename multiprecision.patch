@@ -1,7 +1,7 @@
-diff --git a/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp b/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp
+diff --git a/boost_1_80_0/boost/multiprecision/detail/default_ops.hpp b/boost_1_80_0/boost/multiprecision/detail/default_ops.hpp
 index fbf8dc9c58..f422de2a20 100644
---- a/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp
-+++ b/boost_1_79_0/boost/multiprecision/detail/default_ops.hpp
+--- a/boost_1_80_0/boost/multiprecision/detail/default_ops.hpp
++++ b/boost_1_80_0/boost/multiprecision/detail/default_ops.hpp
 @@ -430,7 +430,7 @@ inline BOOST_MP_CXX14_CONSTEXPR void eval_multiply_default(T& t, const T& u, con
        eval_multiply(t, v);
     }
