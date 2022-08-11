@@ -28,8 +28,8 @@
 </h2></div></div></div>
 <h4>
 <a name="boost_asio.history.h0"></a>
-      <span class="phrase"><a name="boost_asio.history.asio_1_23_0___boost_1_80_beta"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_23_0___boost_1_80_beta">Asio
-      1.23.0 / Boost 1.80 beta</a>
+      <span class="phrase"><a name="boost_asio.history.asio_1_24_0___boost_1_80"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_24_0___boost_1_80">Asio
+      1.24.0 / Boost 1.80</a>
     </h4>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
@@ -245,6 +245,22 @@
 <li class="listitem">
           Changed to avoid using the soon-to-be-deprecated <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">aligned_storage</span></code>
           on newer compilers.
+        </li>
+<li class="listitem">
+          Fixed detection of <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">aligned_alloc</span></code>
+          for older Apple platforms.
+        </li>
+<li class="listitem">
+          Removed faulty assertions from <code class="computeroutput"><span class="identifier">experimental</span><span class="special">::</span><span class="identifier">coro</span></code>
+          implementation.
+        </li>
+<li class="listitem">
+          Added defence against Qt-defined macros when building with Intel C++.
+        </li>
+<li class="listitem">
+          Changed the implementation of the <code class="computeroutput"><span class="identifier">select_reactor</span></code>,
+          on Windows, to ensure that any exception resulting from failure to recreate
+          its interrupter's sockets will be allowed to propagate out through <code class="computeroutput"><span class="identifier">io_context</span><span class="special">::</span><span class="identifier">run</span><span class="special">()</span></code>.
         </li>
 <li class="listitem">
           Fixed various compiler warnings.
