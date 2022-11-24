@@ -8,7 +8,7 @@ import os
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.80.0+0"
+    version = "1.81.0-beta1+0"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
