@@ -325,8 +325,8 @@
         associated executor is an object of type <code class="computeroutput"><span class="identifier">system_executor</span></code>.
       </p>
 <p>
-        All asynchronous operations in this library have an associated executor object
-        that is determined as follows:
+        All asynchronous operations in this library have an associated I/O executor
+        object that is determined as follows:
       </p>
 <p>
         — If the initiating function is a member function, the associated executor
@@ -451,17 +451,20 @@
         that invokes <code class="computeroutput"><span class="identifier">completion_handler</span></code>
         as if by <code class="literal">completion_handler(forward&lt;T[sub <span class="emphasis"><em>0</em></span>]&gt;(t[sub
         <span class="emphasis"><em>0</em></span>]), ..., forward&lt;T[sub <span class="emphasis"><em>N-1</em></span>]&gt;(t[sub
-        <span class="emphasis"><em>N-1</em></span>]))</code>.
+        <span class="emphasis"><em>N-1</em></span>]))</code>. Let <code class="computeroutput"><span class="identifier">g</span></code>
+        be a function object, callable as <code class="computeroutput"><span class="identifier">g</span><span class="special">()</span></code>, that contains a copy of <code class="computeroutput"><span class="identifier">work2</span></code> and when invoked performs <code class="computeroutput"><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">ex2</span><span class="special">,</span> <span class="identifier">bind_allocator</span><span class="special">(</span><span class="identifier">alloc2</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">f</span><span class="special">)))</span></code>.
       </p>
 <p>
         If an asynchonous operation completes immediately (that is, within the thread
         of execution calling the initiating function, and before the initiating function
         returns), the completion handler shall be submitted for execution as if by
-        performing <code class="computeroutput"><span class="identifier">post</span><span class="special">(</span><span class="identifier">ex2</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">f</span><span class="special">),</span>
-        <span class="identifier">alloc2</span><span class="special">)</span></code>.
-        Otherwise, the completion handler shall be submitted for execution as if
-        by performing <code class="computeroutput"><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">ex2</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">f</span><span class="special">),</span>
-        <span class="identifier">alloc2</span><span class="special">)</span></code>.
+        performing <code class="computeroutput"><span class="identifier">post</span><span class="special">(</span><span class="identifier">ex1</span><span class="special">,</span> <span class="identifier">bind_allocator</span><span class="special">(</span><span class="identifier">alloc2</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">g</span><span class="special">)))</span></code>. As an optimisation, the operation may
+        submit the completion handler for execution by performing expression <code class="computeroutput"><span class="identifier">post</span><span class="special">(</span><span class="identifier">ex2</span><span class="special">,</span> <span class="identifier">bind_allocator</span><span class="special">(</span><span class="identifier">alloc2</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">f</span><span class="special">)))</span></code>, if that expression is well-formed.
+      </p>
+<p>
+        Otherwise, when the operation completes, the completion handler shall be
+        submitted for execution as if by performing <code class="computeroutput"><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">ex2</span><span class="special">,</span>
+        <span class="identifier">bind_allocator</span><span class="special">(</span><span class="identifier">alloc2</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">f</span><span class="special">)))</span></code>.
       </p>
 <h5>
 <a name="boost_asio.reference.asynchronous_operations.h11"></a>

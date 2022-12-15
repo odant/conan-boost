@@ -28,8 +28,64 @@
 </h2></div></div></div>
 <h4>
 <a name="boost_asio.history.h0"></a>
-      <span class="phrase"><a name="boost_asio.history.asio_1_25_0___boost_1_81__beta_"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_25_0___boost_1_81__beta_">Asio
-      1.25.0 / Boost 1.81 (Beta)</a>
+      <span class="phrase"><a name="boost_asio.history.asio_1_26_0___boost_1_81"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_26_0___boost_1_81">Asio
+      1.26.0 / Boost 1.81</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+          Fixed <code class="computeroutput"><span class="identifier">spawn</span></code> and <code class="computeroutput"><span class="identifier">co_spawn</span></code> implementations to dispatch
+          cancellation handlers on the correct executor. When a completion handler
+          uses a specified (i.e. non-default) associated executor, cancellation handlers
+          are dispatched to the executor that was passed to <code class="computeroutput"><span class="identifier">spawn</span><span class="special">()</span></code> or <code class="computeroutput"><span class="identifier">co_spawn</span><span class="special">()</span></code>.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput"><span class="identifier">spawn</span></code> to ensure the
+          completion handler is dispatched through the correct executor.
+        </li>
+<li class="listitem">
+          Changed to use <code class="computeroutput"><span class="identifier">snprintf</span></code>
+          rather than <code class="computeroutput"><span class="identifier">sprintf</span></code> on
+          latest Xcode, to address deprecation warnings.
+        </li>
+<li class="listitem">
+          Fixed compatibility between <code class="computeroutput"><span class="identifier">co_spawn</span></code>
+          and <code class="computeroutput"><span class="identifier">any_completion_handler</span></code>.
+        </li>
+<li class="listitem">
+          Fixed the arguments passed to <code class="computeroutput"><span class="identifier">select_reactor</span><span class="special">::</span><span class="identifier">run</span></code>
+          when it is run on an internal thread.
+        </li>
+<li class="listitem">
+          Fixed compilation errors when <code class="computeroutput"><span class="identifier">BOOST_ASIO_DISABLE_SMALL_BLOCK_RECYCLING</span></code>
+          is defined.
+        </li>
+<li class="listitem">
+          Updated detection of C++20 coroutine support on clang 14 and later. This
+          includes the ability to use coroutines with libstdc++.
+        </li>
+<li class="listitem">
+          Changed standard library feature detection to always enable <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">invoke_result</span></code> when targeting C++17 or
+          later.
+        </li>
+<li class="listitem">
+          Fixed detection of return type deduction with MSVC.
+        </li>
+<li class="listitem">
+          Added a missing include in <code class="computeroutput"><span class="identifier">experimental</span><span class="special">::</span><span class="identifier">coro</span></code>
+          implementation.
+        </li>
+<li class="listitem">
+          Updated the asynchronous operation requirements to relax the requirements
+          on the associated executor.
+        </li>
+<li class="listitem">
+          Added <code class="literal">io_uring</code> to the implementation notes.
+        </li>
+</ul></div>
+<h4>
+<a name="boost_asio.history.h1"></a>
+      <span class="phrase"><a name="boost_asio.history.asio_1_25_0"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_25_0">Asio
+      1.25.0</a>
     </h4>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
@@ -281,7 +337,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h1"></a>
+<a name="boost_asio.history.h2"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_24_0___boost_1_80"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_24_0___boost_1_80">Asio
       1.24.0 / Boost 1.80</a>
     </h4>
@@ -529,7 +585,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h2"></a>
+<a name="boost_asio.history.h3"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_22_2___boost_1_79"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_22_2___boost_1_79">Asio
       1.22.2 / Boost 1.79</a>
     </h4>
@@ -584,7 +640,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h3"></a>
+<a name="boost_asio.history.h4"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_22_1"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_22_1">Asio
       1.22.1</a>
     </h4>
@@ -774,7 +830,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h4"></a>
+<a name="boost_asio.history.h5"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_22_0___boost_1_78"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_22_0___boost_1_78">Asio
       1.22.0 / Boost 1.78</a>
     </h4>
@@ -1017,7 +1073,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h5"></a>
+<a name="boost_asio.history.h6"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_20_0___boost_1_77"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_20_0___boost_1_77">Asio
       1.20.0 / Boost 1.77</a>
     </h4>
@@ -1571,7 +1627,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h6"></a>
+<a name="boost_asio.history.h7"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_18_2___boost_1_76"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_18_2___boost_1_76">Asio
       1.18.2 / Boost 1.76</a>
     </h4>
@@ -1640,7 +1696,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h7"></a>
+<a name="boost_asio.history.h8"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_18_1___boost_1_75"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_18_1___boost_1_75">Asio
       1.18.1 / Boost 1.75</a>
     </h4>
@@ -1770,7 +1826,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h8"></a>
+<a name="boost_asio.history.h9"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_18_0___boost_1_74"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_18_0___boost_1_74">Asio
       1.18.0 / Boost 1.74</a>
     </h4>
@@ -2043,7 +2099,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h9"></a>
+<a name="boost_asio.history.h10"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_16_1___boost_1_73"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_16_1___boost_1_73">Asio
       1.16.1 / Boost 1.73</a>
     </h4>
@@ -2136,7 +2192,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h10"></a>
+<a name="boost_asio.history.h11"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_16_0___boost_1_72"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_16_0___boost_1_72">Asio
       1.16.0 / Boost 1.72</a>
     </h4>
@@ -2308,7 +2364,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h11"></a>
+<a name="boost_asio.history.h12"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_14_1___boost_1_71"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_14_1___boost_1_71">Asio
       1.14.1 / Boost 1.71</a>
     </h4>
@@ -2361,7 +2417,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h12"></a>
+<a name="boost_asio.history.h13"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_14_0___boost_1_70"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_14_0___boost_1_70">Asio
       1.14.0 / Boost 1.70</a>
     </h4>
@@ -2684,7 +2740,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h13"></a>
+<a name="boost_asio.history.h14"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_12_2___boost_1_69"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_12_2___boost_1_69">Asio
       1.12.2 / Boost 1.69</a>
     </h4>
@@ -2757,7 +2813,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h14"></a>
+<a name="boost_asio.history.h15"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_12_1___boost_1_67"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_12_1___boost_1_67">Asio
       1.12.1 / Boost 1.67</a>
     </h4>
@@ -2887,7 +2943,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h15"></a>
+<a name="boost_asio.history.h16"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_12_0___boost_1_66"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_12_0___boost_1_66">Asio
       1.12.0 / Boost 1.66</a>
     </h4>
@@ -2930,7 +2986,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h16"></a>
+<a name="boost_asio.history.h17"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_10___boost_1_65"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_10___boost_1_65">Asio
       1.10.10 / Boost 1.65</a>
     </h4>
@@ -2968,7 +3024,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h17"></a>
+<a name="boost_asio.history.h18"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_9___boost_1_64"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_9___boost_1_64">Asio
       1.10.9 / Boost 1.64</a>
     </h4>
@@ -3021,7 +3077,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h18"></a>
+<a name="boost_asio.history.h19"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_8___boost_1_62"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_8___boost_1_62">Asio
       1.10.8 / Boost 1.62</a>
     </h4>
@@ -3058,7 +3114,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h19"></a>
+<a name="boost_asio.history.h20"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_7___boost_1_60"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_7___boost_1_60">Asio
       1.10.7 / Boost 1.60</a>
     </h4>
@@ -3096,7 +3152,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h20"></a>
+<a name="boost_asio.history.h21"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_6___boost_1_58"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_6___boost_1_58">Asio
       1.10.6 / Boost 1.58</a>
     </h4>
@@ -3177,7 +3233,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h21"></a>
+<a name="boost_asio.history.h22"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_5___boost_1_57"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_5___boost_1_57">Asio
       1.10.5 / Boost 1.57</a>
     </h4>
@@ -3223,7 +3279,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h22"></a>
+<a name="boost_asio.history.h23"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_4___boost_1_56"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_4___boost_1_56">Asio
       1.10.4 / Boost 1.56</a>
     </h4>
@@ -3245,7 +3301,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h23"></a>
+<a name="boost_asio.history.h24"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_3"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_3">Asio
       1.10.3</a>
     </h4>
@@ -3280,7 +3336,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h24"></a>
+<a name="boost_asio.history.h25"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_2"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_2">Asio
       1.10.2</a>
     </h4>
@@ -3355,7 +3411,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h25"></a>
+<a name="boost_asio.history.h26"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_1___boost_1_55"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_1___boost_1_55">Asio
       1.10.1 / Boost 1.55</a>
     </h4>
@@ -3473,7 +3529,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h26"></a>
+<a name="boost_asio.history.h27"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_10_0___boost_1_54"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_10_0___boost_1_54">Asio
       1.10.0 / Boost 1.54</a>
     </h4>
@@ -3625,7 +3681,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h27"></a>
+<a name="boost_asio.history.h28"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_8_3___boost_1_53"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_8_3___boost_1_53">Asio
       1.8.3 / Boost 1.53</a>
     </h4>
@@ -3669,7 +3725,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h28"></a>
+<a name="boost_asio.history.h29"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_8_2___boost_1_51"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_8_2___boost_1_51">Asio
       1.8.2 / Boost 1.51</a>
     </h4>
@@ -3713,7 +3769,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h29"></a>
+<a name="boost_asio.history.h30"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_8_1___boost_1_50"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_8_1___boost_1_50">Asio
       1.8.1 / Boost 1.50</a>
     </h4>
@@ -3752,7 +3808,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h30"></a>
+<a name="boost_asio.history.h31"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_8_0___boost_1_49"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_8_0___boost_1_49">Asio
       1.8.0 / Boost 1.49</a>
     </h4>
@@ -3801,7 +3857,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h31"></a>
+<a name="boost_asio.history.h32"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_6_1___boost_1_48"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_6_1___boost_1_48">Asio
       1.6.1 / Boost 1.48</a>
     </h4>
@@ -3895,7 +3951,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h32"></a>
+<a name="boost_asio.history.h33"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_6_0___boost_1_47"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_6_0___boost_1_47">Asio
       1.6.0 / Boost 1.47</a>
     </h4>
@@ -4126,7 +4182,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h33"></a>
+<a name="boost_asio.history.h34"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_9___boost_1_46_1"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_9___boost_1_46_1">Asio
       1.4.9 / Boost 1.46.1</a>
     </h4>
@@ -4158,7 +4214,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h34"></a>
+<a name="boost_asio.history.h35"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_8___boost_1_46"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_8___boost_1_46">Asio
       1.4.8 / Boost 1.46</a>
     </h4>
@@ -4173,7 +4229,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h35"></a>
+<a name="boost_asio.history.h36"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_7___boost_1_45"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_7___boost_1_45">Asio
       1.4.7 / Boost 1.45</a>
     </h4>
@@ -4255,7 +4311,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h36"></a>
+<a name="boost_asio.history.h37"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_6___boost_1_44"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_6___boost_1_44">Asio
       1.4.6 / Boost 1.44</a>
     </h4>
@@ -4331,7 +4387,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h37"></a>
+<a name="boost_asio.history.h38"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_5___boost_1_43"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_5___boost_1_43">Asio
       1.4.5 / Boost 1.43</a>
     </h4>
@@ -4398,7 +4454,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h38"></a>
+<a name="boost_asio.history.h39"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_4___boost_1_42"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_4___boost_1_42">Asio
       1.4.4 / Boost 1.42</a>
     </h4>
@@ -4463,7 +4519,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h39"></a>
+<a name="boost_asio.history.h40"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_3___boost_1_40"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_3___boost_1_40">Asio
       1.4.3 / Boost 1.40</a>
     </h4>
@@ -4520,7 +4576,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h40"></a>
+<a name="boost_asio.history.h41"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_2___boost_1_39"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_2___boost_1_39">Asio
       1.4.2 / Boost 1.39</a>
     </h4>
@@ -4572,7 +4628,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h41"></a>
+<a name="boost_asio.history.h42"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_1___boost_1_38"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_1___boost_1_38">Asio
       1.4.1 / Boost 1.38</a>
     </h4>
@@ -4604,7 +4660,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h42"></a>
+<a name="boost_asio.history.h43"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_4_0___boost_1_37"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_4_0___boost_1_37">Asio
       1.4.0 / Boost 1.37</a>
     </h4>
@@ -4639,7 +4695,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h43"></a>
+<a name="boost_asio.history.h44"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_2_0___boost_1_36"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_2_0___boost_1_36">Asio
       1.2.0 / Boost 1.36</a>
     </h4>
@@ -4692,7 +4748,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="boost_asio.history.h44"></a>
+<a name="boost_asio.history.h45"></a>
       <span class="phrase"><a name="boost_asio.history.asio_1_0_0___boost_1_35"></a></span><a class="link" href="history.html#boost_asio.history.asio_1_0_0___boost_1_35">Asio
       1.0.0 / Boost 1.35</a>
     </h4>
