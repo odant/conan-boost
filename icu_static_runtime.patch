@@ -363,7 +363,7 @@ index c4130a1786..180251501a 100644
  boost-lib locale
      :
        encoding/codepage.cpp
-@@ -417,13 +433,13 @@ boost-lib locale
+@@ -417,14 +433,14 @@ boost-lib locale
        util/info.cpp
        util/locale_data.cpp
      :
@@ -373,6 +373,7 @@ index c4130a1786..180251501a 100644
        <include>$(TOP)/src
        <threading>multi
        <target-os>windows:<define>_CRT_SECURE_NO_WARNINGS
+       <target-os>windows:<define>_SCL_SECURE_NO_WARNINGS
 +      <toolset>gcc:<cxxflags>"-Wno-long-long -Wno-deprecated-declarations"
 +      <toolset>clang:<cxxflags>"-Wno-long-long -Wno-deprecated-declarations"
        # Meanwhile remove this
