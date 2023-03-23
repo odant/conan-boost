@@ -1,0 +1,13 @@
+diff --git a/boost_1_81_0/boost/static_string/static_string.hpp b/boost_1_81_0/boost/static_string/static_string.hpp
+index d1f4943680..4e7712dfa0 100644
+--- a/boost_1_81_0/boost/static_string/static_string.hpp
++++ b/boost_1_81_0/boost/static_string/static_string.hpp
+@@ -54,7 +54,7 @@ template<std::size_t N>
+ using static_u32string =
+   basic_static_string<N, char32_t, std::char_traits<char32_t>>;
+ 
+-#ifdef BOOST_STATIC_STRING_CPP20
++#if defined(BOOST_STATIC_STRING_CPP20) && defined(__cpp_char8_t)
+ template<std::size_t N>
+ using static_u8string =
+   basic_static_string<N, char8_t, std::char_traits<char8_t>>;
