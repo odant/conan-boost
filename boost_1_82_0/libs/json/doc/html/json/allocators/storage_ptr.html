@@ -200,10 +200,11 @@
         Memory Resource</a>
       </h5>
 <p>
-        The <span class="emphasis"><em>default memory resource</em></span> wraps calls to the global
-        heap allocation functions. This resource is not reference counted and has
-        a non-trivial deallocate function. All default-constructed <a class="link" href="../ref/boost__json__storage_ptr.html" title="storage_ptr"><code class="computeroutput"><span class="identifier">storage_ptr</span></code></a> reference the same default
-        memory resource:
+        The <span class="emphasis"><em>default memory resource</em></span> uses the global <code class="computeroutput"><span class="keyword">operator</span> <span class="keyword">new</span></code>
+        and <code class="computeroutput"><span class="keyword">operator</span> <span class="keyword">delete</span></code>
+        to allocate memory. This resource is not reference counted and has a non-trivial
+        deallocate function. All default-constructed <a class="link" href="../ref/boost__json__storage_ptr.html" title="storage_ptr"><code class="computeroutput"><span class="identifier">storage_ptr</span></code></a> objects reference the
+        same memory resource:
       </p>
 <pre class="programlisting"><span class="identifier">storage_ptr</span> <span class="identifier">sp1</span><span class="special">;</span>
 <span class="identifier">storage_ptr</span> <span class="identifier">sp2</span><span class="special">;</span>
@@ -229,6 +230,17 @@
         performance for parsing, and conservative memory usage for modification of
         the contents of containers.
       </p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+          This memory resource is not guaranteed to be the same as the result of
+          <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">pmr</span><span class="special">::</span><span class="identifier">get_default_resource</span></code>. It also cannot
+          be changed with <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">pmr</span><span class="special">::</span><span class="identifier">set_default_resource</span></code>.
+        </p></td></tr>
+</table></div>
 <h5>
 <a name="json.allocators.storage_ptr.h1"></a>
         <span class="phrase"><a name="json.allocators.storage_ptr.monotonic_resource"></a></span><a class="link" href="storage_ptr.html#json.allocators.storage_ptr.monotonic_resource">Monotonic

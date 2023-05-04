@@ -36,6 +36,8 @@ boost_asio/overview/composition/promises.html
 boost_asio/overview/composition/parallel_group.html
 boost_asio/overview/composition/compose.html
 boost_asio/overview/composition/token_adapters.html
+boost_asio/overview/composition/type_erasure.html
+boost_asio/overview/composition/immediate_completion.html
 boost_asio/overview/networking.html
 boost_asio/overview/networking/protocols.html
 boost_asio/overview/networking/other_protocols.html

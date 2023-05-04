@@ -53,7 +53,8 @@
           This function reads data from an input stream and parses it to produce
           a complete JSON entity, returned as a <a class="link" href="../boost__json__value.html" title="value"><code class="computeroutput"><span class="identifier">value</span></code></a>. If the stream does not
           contain a complete serialized JSON, or contains extra non-whitespace data,
-          an error occurs. In this case the returned value will be <code class="computeroutput"><span class="identifier">null</span></code>, using the default memory resource.
+          an error occurs. In this case the returned value will be <code class="computeroutput"><span class="identifier">null</span></code>, using the <a href="../../allocators/storage_ptr.html#json.allocators.storage_ptr.default_memory_resource" target="_top">default
+          memory resource</a>.
         </p>
 <h6>
 <a name="json.ref.boost__json__parse.overload3.h2"></a>
@@ -134,8 +135,8 @@
 <td>
                   <p>
                     The memory resource that the new value and all of its elements
-                    will use. If this parameter is omitted, the default memory resource
-                    is used.
+                    will use. If this parameter is omitted, the <a href="../../allocators/storage_ptr.html#json.allocators.storage_ptr.default_memory_resource" target="_top">default
+                    memory resource</a> is used.
                   </p>
                 </td>
 </tr>

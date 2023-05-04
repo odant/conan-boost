@@ -116,6 +116,26 @@ namespace json {
 
 namespace {
 
+//[snippet_strings_5
+string greeting( string_view first_name, string_view last_name )
+{
+    const char hello[] = "Hello, ";
+    const std::size_t sz = first_name.size() + last_name.size() + sizeof(hello) + 1;
+
+    string js;
+    js.reserve(sz);
+
+    char* p = std::copy( hello, hello + sizeof(hello) - 1, js.data() );
+    p = std::copy( first_name.begin(), first_name.end(), p );
+    *p++ = ' ';
+    p = std::copy( last_name.begin(), last_name.end(), p );
+    *p++ = '!';
+
+    js.grow( sz );
+    return js;
+}
+//]
+
 void
 usingStrings()
 {
@@ -177,6 +197,12 @@ usingStrings()
         str.compare("Boost");
 
         //]
+    }
+
+    {
+        auto str = greeting( "John", "Smith" );
+        (void)str;
+        assert( str == "Hello, John Smith!");
     }
 }
 
@@ -313,7 +339,7 @@ usingInitLists()
 
         assert( jv.as_array().size() == 4 );
 
-        assert( serialize(jv) == "[true,2,\"hello\",null]" );
+        assert( serialize(jv) == R"([true,2,"hello",null])" );
 
         //]
     }
@@ -327,7 +353,7 @@ usingInitLists()
 
         assert( jv.as_array().back().is_array() );
 
-        assert( serialize(jv) == "[true,2,\"hello\",[\"bye\",null,false]]" );
+        assert( serialize(jv) == R"([true,2,"hello",["bye",null,false]])" );
 
         //]
     }
@@ -390,11 +416,11 @@ usingInitLists()
 
         assert( jv.is_object() );
 
-        assert( serialize(jv) == "{\"mercury\":36,\"venus\":67,\"earth\":93}" );
+        assert( serialize(jv) == R"({"mercury":36,"venus":67,"earth":93})" );
 
         array ja = { { "mercury", 36 }, { "venus", 67 }, { "earth", 93 } };
 
-        assert( serialize(ja) == "[[\"mercury\",36],[\"venus\",67],[\"earth\",93]]" );
+        assert( serialize(ja) == R"([["mercury",36],["venus",67],["earth",93]])" );
 
         //]
 

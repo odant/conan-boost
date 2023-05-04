@@ -7475,6 +7475,10 @@ void some_function()
 <constructor specifiers="explicit"><template>
           <template-type-parameter name="AllocFwd"/>
         </template><parameter name=""><paramtype>initial_capacity_t</paramtype></parameter><parameter name="capacity"><paramtype>std::size_t</paramtype></parameter><parameter name="a"><paramtype>AllocFwd &amp;&amp;</paramtype></parameter></constructor>
+<constructor specifiers="explicit"><parameter name=""><paramtype>maybe_initial_capacity_t</paramtype></parameter><parameter name="initial_capacity"><paramtype>std::size_t</paramtype></parameter><parameter name="initial_size"><paramtype>std::size_t</paramtype></parameter></constructor>
+<constructor specifiers="explicit"><template>
+          <template-type-parameter name="AllocFwd"/>
+        </template><parameter name=""><paramtype>maybe_initial_capacity_t</paramtype></parameter><parameter name="initial_capacity"><paramtype>std::size_t</paramtype></parameter><parameter name="initial_size"><paramtype>std::size_t</paramtype></parameter><parameter name="a"><paramtype>AllocFwd &amp;&amp;</paramtype></parameter></constructor>
 <method-group name="public member functions">
 <method name="swap"><type>void</type><parameter name="other"><paramtype><classname>small_vector_base</classname> &amp;</paramtype></parameter></method>
 </method-group>

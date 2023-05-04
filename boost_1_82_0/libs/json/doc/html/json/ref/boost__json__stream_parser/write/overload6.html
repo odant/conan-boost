@@ -29,7 +29,7 @@
           (6 of 6 overloads)</a>
 </h6></div></div></div>
 <p>
-            Parse a buffer containing all or part of a complete JSON.
+            Parse a buffer containing all or part of a complete JSON text.
           </p>
 <h6>
 <a name="json.ref.boost__json__stream_parser.write.overload6.h0"></a>
@@ -44,10 +44,10 @@
             <span class="phrase"><a name="json.ref.boost__json__stream_parser.write.overload6.description"></a></span><a class="link" href="overload6.html#json.ref.boost__json__stream_parser.write.overload6.description">Description</a>
           </h6>
 <p>
-            This function parses a all or part of a JSON contained in the specified
+            This function parses a all or part of a JSON text contained in the specified
             character buffer. The entire buffer must be consumed; if there are additional
-            characters past the end of the complete JSON, the parse fails and an
-            error is returned.
+            characters past the end of the complete JSON text, the parse fails and
+            an error is returned.
           </p>
 <h6>
 <a name="json.ref.boost__json__stream_parser.write.overload6.h2"></a>
@@ -55,9 +55,9 @@
           </h6>
 <pre class="programlisting"><span class="identifier">stream_parser</span> <span class="identifier">p</span><span class="special">;</span>                                <span class="comment">// construct a parser</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span><span class="special">;</span>                                  <span class="comment">// number of characters used</span>
-<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"[1,2"</span> <span class="special">);</span>                          <span class="comment">// parse some of the JSON</span>
+<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"[1,2"</span> <span class="special">);</span>                          <span class="comment">// parse some of the JSON text</span>
 <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">n</span> <span class="special">==</span> <span class="number">4</span> <span class="special">);</span>                               <span class="comment">// all characters consumed</span>
-<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"3,4]"</span> <span class="special">);</span>                          <span class="comment">// parse the rest of the JSON</span>
+<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"3,4]"</span> <span class="special">);</span>                          <span class="comment">// parse the rest of the JSON text</span>
 <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">n</span> <span class="special">==</span> <span class="number">4</span> <span class="special">);</span>                               <span class="comment">// all characters consumed</span>
 <span class="identifier">value</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">release</span><span class="special">();</span>                         <span class="comment">// take ownership of the value</span>
 </pre>
@@ -85,7 +85,7 @@
             Basic guarantee. Calls to <code class="computeroutput"><span class="identifier">memory_resource</span><span class="special">::</span><span class="identifier">allocate</span></code>
             may throw. Upon error or exception, subsequent calls will fail until
             <a class="link" href="../reset.html" title="stream_parser::reset"><code class="computeroutput"><span class="identifier">reset</span></code></a> is called to parse a new
-            JSON.
+            JSON text.
           </p>
 <h6>
 <a name="json.ref.boost__json__stream_parser.write.overload6.h6"></a>

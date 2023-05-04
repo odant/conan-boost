@@ -356,7 +356,7 @@
                 </p></div>
 <div id="ftn.stacktrace.configuration_and_build.f1" class="footnote"><p><a href="#stacktrace.configuration_and_build.f1" class="para"><sup class="para">[b] </sup></a>
                   This will provide readable function names in backtrace for functions
-                  that are exported by the binary. Compiling with <code class="computeroutput"><span class="special">-</span><span class="identifier">rdynamic</span></code> flag, without <code class="computeroutput"><span class="special">-</span><span class="identifier">fisibility</span><span class="special">=</span><span class="identifier">hidden</span></code>
+                  that are exported by the binary. Compiling with <code class="computeroutput"><span class="special">-</span><span class="identifier">rdynamic</span></code> flag, without <code class="computeroutput"><span class="special">-</span><span class="identifier">fvisibility</span><span class="special">=</span><span class="identifier">hidden</span></code>
                   or marking functions as exported produce a better stacktraces.
                 </p></div>
 <div id="ftn.stacktrace.configuration_and_build.f2" class="footnote"><p><a href="#stacktrace.configuration_and_build.f2" class="para"><sup class="para">[c] </sup></a>
@@ -364,7 +364,7 @@
                   if there's a concurrent work with the same <code class="computeroutput"><span class="identifier">backtrace_state</span></code>
                   instance. To avoid that issue the Boost.Stacktrace library uses
                   <code class="computeroutput"><span class="keyword">thread_local</span></code> states,
-                  unfortuantely this may consume a lot of memory if you often create
+                  unfortunately this may consume a lot of memory if you often create
                   and destroy execution threads in your application. Define <span class="bold"><strong>BOOST_STACKTRACE_BACKTRACE_FORCE_STATIC</strong></span>
                   to force single instance, but make sure that <a href="https://github.com/boostorg/stacktrace/blob/develop/test/thread_safety_checking.cpp" target="_top">thread_safety_checking.cpp</a>
                   works well in your setup.
@@ -482,7 +482,7 @@
 </ul></div>
 </div>
 </div>
-<div class="copyright-footer">Copyright © 2016-2022 Antony Polukhin<p>
+<div class="copyright-footer">Copyright © 2016-2023 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

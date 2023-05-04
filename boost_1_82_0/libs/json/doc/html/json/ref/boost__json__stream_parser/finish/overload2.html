@@ -45,8 +45,8 @@
           </h6>
 <p>
             This function is used to indicate that there are no more character buffers
-            in the current JSON being parsed. If ther resulting JSON is incomplete,
-            the error is set to indicate a parsing failure.
+            in the current JSON text being parsed. If the resulting JSON text is
+            incomplete, the error is set to indicate a parsing failure.
           </p>
 <h6>
 <a name="json.ref.boost__json__stream_parser.finish.overload2.h2"></a>
@@ -80,7 +80,7 @@
             Basic guarantee. Calls to <code class="computeroutput"><span class="identifier">memory_resource</span><span class="special">::</span><span class="identifier">allocate</span></code>
             may throw. Upon error or exception, subsequent calls will fail until
             <a class="link" href="../reset.html" title="stream_parser::reset"><code class="computeroutput"><span class="identifier">reset</span></code></a> is called to parse a new
-            JSON.
+            JSON text.
           </p>
 <h6>
 <a name="json.ref.boost__json__stream_parser.finish.overload2.h5"></a>

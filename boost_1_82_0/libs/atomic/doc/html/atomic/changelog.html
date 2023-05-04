@@ -34,6 +34,11 @@
     </h4>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
+          Due to changes in Boost libraries used in Boost.Atomic, support for C++03
+          is deprecated. C++11 will become the minimum starting with Boost.Atomic
+          1.84.
+        </li>
+<li class="listitem">
           When compiled for x86 targets supporting AVX, vector instructions are now
           used for 128-bit atomic loads and stores.
         </li>

@@ -41,7 +41,9 @@ class value;
     a string are stored contiguously. A pointer to any
     character in a string may be passed to functions
     that expect a pointer to the first element of a
-    null-terminated `char` array.
+    null-terminated `char` array. The type uses small
+    buffer optimisation to avoid allocations for small
+    strings.
 
     String iterators are regular `char` pointers.
 
@@ -168,11 +170,13 @@ public:
     /** Default constructor.
 
         The string will have a zero size and a non-zero,
-        unspecified capacity, using the default memory resource.
+        unspecified capacity, using the [default memory resource].
 
         @par Complexity
 
         Constant.
+
+        [default memory resource]: json/allocators/storage_ptr.html#json.allocators.storage_ptr.default_memory_resource
     */
     string() = default;
 

@@ -28,7 +28,7 @@
 <a name="json.ref.boost__json__stream_parser"></a><a class="link" href="boost__json__stream_parser.html" title="stream_parser">stream_parser</a>
 </h4></div></div></div>
 <p>
-        A DOM parser for JSON contained in multiple buffers.
+        A DOM parser for JSON text contained in multiple buffers.
       </p>
 <h5>
 <a name="json.ref.boost__json__stream_parser.h0"></a>
@@ -69,7 +69,7 @@
               </td>
 <td>
                 <p>
-                  Return true if a complete JSON has been parsed.
+                  Return true if a complete JSON text has been parsed.
                 </p>
               </td>
 </tr>
@@ -117,7 +117,7 @@
               </td>
 <td>
                 <p>
-                  Reset the parser for a new JSON.
+                  Reset the parser for a new JSON text.
                 </p>
               </td>
 </tr>
@@ -141,7 +141,7 @@
               </td>
 <td>
                 <p>
-                  Parse a buffer containing all or part of a complete JSON.
+                  Parse a buffer containing all or part of a complete JSON text.
                 </p>
               </td>
 </tr>
@@ -153,7 +153,7 @@
               </td>
 <td>
                 <p>
-                  Parse a buffer containing all or part of a complete JSON.
+                  Parse a buffer containing all or part of a complete JSON text.
                 </p>
               </td>
 </tr>
@@ -176,8 +176,8 @@
         <span class="phrase"><a name="json.ref.boost__json__stream_parser.description"></a></span><a class="link" href="boost__json__stream_parser.html#json.ref.boost__json__stream_parser.description">Description</a>
       </h5>
 <p>
-        This class is used to parse a JSON contained in a series of one or more character
-        buffers, into a <a class="link" href="boost__json__value.html" title="value"><code class="computeroutput"><span class="identifier">value</span></code></a> container. It implements a
+        This class is used to parse a JSON text contained in a series of one or more
+        character buffers, into a <a class="link" href="boost__json__value.html" title="value"><code class="computeroutput"><span class="identifier">value</span></code></a> container. It implements a
         <a href="https://en.wikipedia.org/wiki/Streaming_algorithm" target="_top"><span class="emphasis"><em>streaming
         algorithm</em></span></a>, allowing these parsing strategies:
       </p>
@@ -186,7 +186,7 @@
             Parse a JSON file a piece at a time.
           </li>
 <li class="listitem">
-            Parse incoming JSON as it arrives, one buffer at a time.
+            Parse incoming JSON text as it arrives, one buffer at a time.
           </li>
 <li class="listitem">
             Parse with bounded resource consumption per cycle.
@@ -200,15 +200,15 @@
         To use the parser first construct it, then optionally call <a class="link" href="boost__json__stream_parser/reset.html" title="stream_parser::reset"><code class="computeroutput"><span class="identifier">reset</span></code></a> to specify a <a class="link" href="boost__json__storage_ptr.html" title="storage_ptr"><code class="computeroutput"><span class="identifier">storage_ptr</span></code></a> to use for the resulting
         <a class="link" href="boost__json__value.html" title="value"><code class="computeroutput"><span class="identifier">value</span></code></a>.
         Then call <a class="link" href="boost__json__stream_parser/write.html" title="stream_parser::write"><code class="computeroutput"><span class="identifier">write</span></code></a> one or more times to parse
-        a single, complete JSON. Call <a class="link" href="boost__json__stream_parser/done.html" title="stream_parser::done"><code class="computeroutput"><span class="identifier">done</span></code></a> to determine if the parse has
+        a single, complete JSON text. Call <a class="link" href="boost__json__stream_parser/done.html" title="stream_parser::done"><code class="computeroutput"><span class="identifier">done</span></code></a> to determine if the parse has
         completed. To indicate there are no more buffers, call <a class="link" href="boost__json__stream_parser/finish.html" title="stream_parser::finish"><code class="computeroutput"><span class="identifier">finish</span></code></a>. If the parse is successful,
         call <a class="link" href="boost__json__stream_parser/release.html" title="stream_parser::release"><code class="computeroutput"><span class="identifier">release</span></code></a> to take ownership of the
         value:
       </p>
 <pre class="programlisting"><span class="identifier">stream_parser</span> <span class="identifier">p</span><span class="special">;</span>                                <span class="comment">// construct a parser</span>
-<span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"[1,2"</span> <span class="special">);</span>                              <span class="comment">// parse some of a JSON</span>
-<span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">",3,4]"</span> <span class="special">);</span>                             <span class="comment">// parse the rest of the JSON</span>
-<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">done</span><span class="special">()</span> <span class="special">);</span>                             <span class="comment">// we have a complete JSON</span>
+<span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"[1,2"</span> <span class="special">);</span>                              <span class="comment">// parse some of a JSON text</span>
+<span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">",3,4]"</span> <span class="special">);</span>                             <span class="comment">// parse the rest of the JSON text</span>
+<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">done</span><span class="special">()</span> <span class="special">);</span>                             <span class="comment">// we have a complete JSON text</span>
 <span class="identifier">value</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">release</span><span class="special">();</span>                         <span class="comment">// take ownership of the value</span>
 </pre>
 <h5>
@@ -218,18 +218,18 @@
       </h5>
 <p>
         When the character buffer provided as input contains additional data that
-        is not part of the complete JSON, an error is returned. The <a class="link" href="boost__json__stream_parser/write_some.html" title="stream_parser::write_some"><code class="computeroutput"><span class="identifier">write_some</span></code></a> function is an alternative
+        is not part of the complete JSON text, an error is returned. The <a class="link" href="boost__json__stream_parser/write_some.html" title="stream_parser::write_some"><code class="computeroutput"><span class="identifier">write_some</span></code></a> function is an alternative
         which allows the parse to finish early, without consuming all the characters
         in the buffer. This allows parsing of a buffer containing multiple individual
-        JSONs or containing different protocol data:
+        JSON texts or containing different protocol data:
       </p>
 <pre class="programlisting"><span class="identifier">stream_parser</span> <span class="identifier">p</span><span class="special">;</span>                                <span class="comment">// construct a parser</span>
 <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span><span class="special">;</span>                                  <span class="comment">// number of characters used</span>
-<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write_some</span><span class="special">(</span> <span class="string">"[1,2"</span> <span class="special">);</span>                     <span class="comment">// parse some of a JSON</span>
+<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write_some</span><span class="special">(</span> <span class="string">"[1,2"</span> <span class="special">);</span>                     <span class="comment">// parse some of a JSON text</span>
 <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">n</span> <span class="special">==</span> <span class="number">4</span> <span class="special">);</span>                               <span class="comment">// all characters consumed</span>
-<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write_some</span><span class="special">(</span> <span class="string">",3,4] null"</span> <span class="special">);</span>               <span class="comment">// parse the remainder of the JSON</span>
+<span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write_some</span><span class="special">(</span> <span class="string">",3,4] null"</span> <span class="special">);</span>               <span class="comment">// parse the remainder of the JSON text</span>
 <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">n</span> <span class="special">==</span> <span class="number">6</span> <span class="special">);</span>                               <span class="comment">// only some characters consumed</span>
-<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">done</span><span class="special">()</span> <span class="special">);</span>                             <span class="comment">// we have a complete JSON</span>
+<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">done</span><span class="special">()</span> <span class="special">);</span>                             <span class="comment">// we have a complete JSON text</span>
 <span class="identifier">value</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">release</span><span class="special">();</span>                         <span class="comment">// take ownership of the value</span>
 </pre>
 <h5>
@@ -239,12 +239,12 @@
       </h5>
 <p>
         The parser may dynamically allocate temporary storage as needed to accommodate
-        the nesting level of the JSON being parsed. Temporary storage is first obtained
-        from an optional, caller-owned buffer specified upon construction. When that
-        is exhausted, the next allocation uses the <a class="link" href="boost__json__memory_resource.html" title="memory_resource"><code class="computeroutput"><span class="identifier">memory_resource</span></code></a> passed to the constructor;
+        the nesting level of the JSON text being parsed. Temporary storage is first
+        obtained from an optional, caller-owned buffer specified upon construction.
+        When that is exhausted, the next allocation uses the <a class="link" href="boost__json__memory_resource.html" title="memory_resource"><code class="computeroutput"><span class="identifier">memory_resource</span></code></a> passed to the constructor;
         if no such argument is specified, the default memory resource is used. Temporary
         storage is freed only when the parser is destroyed; The performance of parsing
-        multiple JSONs may be improved by reusing the same parser instance.
+        multiple JSON texts may be improved by reusing the same parser instance.
       </p>
 <p>
         It is important to note that the <a class="link" href="boost__json__memory_resource.html" title="memory_resource"><code class="computeroutput"><span class="identifier">memory_resource</span></code></a> supplied upon construction

@@ -15,12 +15,12 @@ The header contains implementation of asynchronous sink frontend. </para><namesp
 <method name="operator()" cv="const"><type>result_type</type></method>
 </method-group>
 <constructor specifiers="explicit" cv="noexcept"><parameter name="self"><paramtype><classname>asynchronous_sink</classname> *</paramtype></parameter></constructor>
-</class><class name="scoped_feeding_opereation"><purpose>A scope guard that implements active operation management. </purpose><method-group name="public member functions">
+</class><class name="scoped_feeding_operation"><purpose>A scope guard that implements active operation management. </purpose><method-group name="public member functions">
 </method-group>
 <constructor specifiers="explicit"><parameter name="self"><paramtype><classname>asynchronous_sink</classname> &amp;</paramtype></parameter><purpose>Initializing constructor. </purpose></constructor>
 <destructor><purpose>Destructor. </purpose></destructor>
-<constructor cv="= delete"><parameter name=""><paramtype>scoped_feeding_opereation const &amp;</paramtype></parameter></constructor>
-<copy-assignment cv="= delete"><type>scoped_feeding_opereation &amp;</type><parameter name=""><paramtype>scoped_feeding_opereation const &amp;</paramtype></parameter></copy-assignment>
+<constructor cv="= delete"><parameter name=""><paramtype>scoped_feeding_operation const &amp;</paramtype></parameter></constructor>
+<copy-assignment cv="= delete"><type>scoped_feeding_operation &amp;</type><parameter name=""><paramtype>scoped_feeding_operation const &amp;</paramtype></parameter></copy-assignment>
 </class><class name="scoped_flag"><purpose>A scope guard that resets a flag on destructor. </purpose><method-group name="public member functions">
 </method-group>
 <constructor specifiers="explicit"><parameter name="mut"><paramtype>frontend_mutex_type &amp;</paramtype></parameter><parameter name="cond"><paramtype>condition_variable_any &amp;</paramtype></parameter><parameter name="f"><paramtype>boost::atomic&lt; bool &gt; &amp;</paramtype></parameter></constructor>

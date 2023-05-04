@@ -15,7 +15,7 @@
 
 [template class_sinks_asynchronous_sink_run_func[][classref boost::log::sinks::asynchronous_sink::run_func run_func]]
 
-[template class_sinks_asynchronous_sink_scoped_feeding_opereation[][classref boost::log::sinks::asynchronous_sink::scoped_feeding_opereation scoped_feeding_opereation]]
+[template class_sinks_asynchronous_sink_scoped_feeding_operation[][classref boost::log::sinks::asynchronous_sink::scoped_feeding_operation scoped_feeding_operation]]
 
 [template class_sinks_asynchronous_sink_scoped_flag[][classref boost::log::sinks::asynchronous_sink::scoped_flag scoped_flag]]
 

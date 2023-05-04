@@ -30,19 +30,25 @@
 <p>
         <a class="indexterm" name="boost_asio.indexterm.is_async_operation"></a>
       </p>
+<p>
+        The <a class="link" href="is_async_operation.html" title="is_async_operation"><code class="computeroutput"><span class="identifier">is_async_operation</span></code></a> trait detects
+        whether a type <code class="computeroutput"><span class="identifier">T</span></code> and arguments
+        <code class="computeroutput"><span class="identifier">Args</span></code>... may be used to initiate
+        an asynchronous operation.
+      </p>
 <pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
     <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">,</span>
-    <span class="keyword">typename</span>  <span class="special">=</span> <span class="keyword">void</span><span class="special">&gt;</span>
+    <span class="keyword">typename</span><span class="special">...</span> <span class="identifier">Args</span><span class="special">&gt;</span>
 <span class="keyword">struct</span> <span class="identifier">is_async_operation</span>
 </pre>
+<p>
+        Class template <code class="computeroutput"><span class="identifier">is_async_operation</span></code>
+        is a trait is derived from <code class="computeroutput"><span class="identifier">true_type</span></code>
+        if the expression <code class="computeroutput"><span class="identifier">T</span><span class="special">(</span><span class="identifier">Args</span><span class="special">...,</span> <span class="identifier">token</span><span class="special">)</span></code>
+        initiates an asynchronous operation, where <code class="computeroutput"><span class="identifier">token</span></code>
+        is an unspecified completion token type. Otherwise, <code class="computeroutput"><span class="identifier">is_async_operation</span></code>
+        is derived from <code class="computeroutput"><span class="identifier">false_type</span></code>.
+      </p>
 <h5>
 <a name="boost_asio.reference.is_async_operation.h0"></a>
         <span class="phrase"><a name="boost_asio.reference.is_async_operation.requirements"></a></span><a class="link" href="is_async_operation.html#boost_asio.reference.is_async_operation.requirements">Requirements</a>

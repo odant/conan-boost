@@ -336,7 +336,7 @@ boost/log/sources/swap_idm31903.html
 sinks.html
 boost/log/sinks/asynchronous_sink.html
 boost/log/sinks/asynchronous_sink/run_func.html
-boost/log/sinks/asynchronous_sink/scoped_feeding_opereation.html
+boost/log/sinks/asynchronous_sink/scoped_feeding_operation.html
 boost/log/sinks/asynchronous_sink/scoped_flag.html
 boost/log/sinks/basic_custom_mapping.html
 boost/log/sinks/basic_direct_mapping.html

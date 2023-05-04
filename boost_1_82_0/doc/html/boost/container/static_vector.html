@@ -8,7 +8,7 @@
 <link rel="home" href="../../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
 <link rel="up" href="../../boost_container_header_reference.html#header.boost.container.static_vector_hpp" title="Header &lt;boost/container/static_vector.hpp&gt;">
 <link rel="prev" href="pmr/stable_vector_of.html" title="Struct template stable_vector_of">
-<link rel="next" href="operator___idm27509.html" title="Function template operator==">
+<link rel="next" href="operator___idm27527.html" title="Function template operator==">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -22,7 +22,7 @@
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="pmr/stable_vector_of.html"><img src="../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../boost_container_header_reference.html#header.boost.container.static_vector_hpp"><img src="../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator___idm27509.html"><img src="../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="pmr/stable_vector_of.html"><img src="../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../boost_container_header_reference.html#header.boost.container.static_vector_hpp"><img src="../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator___idm27527.html"><img src="../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 <div class="refentry">
 <a name="boost.container.static_vector"></a><div class="titlepage"></div>
@@ -51,87 +51,87 @@
   <span class="keyword">typedef</span> <span class="identifier">base_t</span><span class="special">::</span><span class="identifier">const_reverse_iterator</span> <a name="boost.container.static_vector.const_reverse_iterator"></a><span class="identifier">const_reverse_iterator</span><span class="special">;</span>  <span class="comment">// The const reverse iterator. </span>
 
   <span class="comment">// <a class="link" href="static_vector.html#boost.container.static_vectorconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <a class="link" href="static_vector.html#idm27051-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="keyword">explicit</span> <a class="link" href="static_vector.html#idm27062-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27086-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27116-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <a class="link" href="static_vector.html#idm27144-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">Iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27181-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27209-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27226-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27232-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">explicit</span> <a class="link" href="static_vector.html#idm27238-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27069-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="keyword">explicit</span> <a class="link" href="static_vector.html#idm27080-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27104-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27134-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <a class="link" href="static_vector.html#idm27162-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">Iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27199-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27227-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27244-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27250-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span><span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">explicit</span> <a class="link" href="static_vector.html#idm27256-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-    <a class="link" href="static_vector.html#idm27241-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27271-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span>
+    <a class="link" href="static_vector.html#idm27259-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27289-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-    <a class="link" href="static_vector.html#idm27297-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27333-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27352-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+    <a class="link" href="static_vector.html#idm27315-bb"><span class="identifier">static_vector</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27351-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="keyword">const</span> <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27370-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-    <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27374-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+    <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27392-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
   <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> 
-  <a class="link" href="static_vector.html#idm27406-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_assignable</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27424-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_assignable</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-    <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27434-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
-  <a class="link" href="static_vector.html#idm27472-bb"><span class="special">~</span><span class="identifier">static_vector</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+    <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a class="link" href="static_vector.html#idm27452-bb"><span class="keyword">operator</span><span class="special">=</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
+  <a class="link" href="static_vector.html#idm27490-bb"><span class="special">~</span><span class="identifier">static_vector</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="static_vector.html#idm25963-bb">public member functions</a></span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm25964-bb"><span class="identifier">swap</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="static_vector.html#idm25991-bb"><span class="identifier">swap</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26028-bb"><span class="identifier">resize</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26052-bb"><span class="identifier">resize</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26082-bb"><span class="identifier">resize</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26110-bb"><span class="identifier">reserve</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26129-bb"><span class="identifier">push_back</span></a><span class="special">(</span><span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26153-bb"><span class="identifier">push_back</span></a><span class="special">(</span><span class="identifier">value_type</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26177-bb"><span class="identifier">pop_back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26191-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26229-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26265-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="static_vector.html#idm25981-bb">public member functions</a></span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm25982-bb"><span class="identifier">swap</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26009-bb"><span class="identifier">swap</span></a><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26046-bb"><span class="identifier">resize</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26070-bb"><span class="identifier">resize</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26100-bb"><span class="identifier">resize</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26128-bb"><span class="identifier">reserve</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26147-bb"><span class="identifier">push_back</span></a><span class="special">(</span><span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26171-bb"><span class="identifier">push_back</span></a><span class="special">(</span><span class="identifier">value_type</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26195-bb"><span class="identifier">pop_back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26209-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26247-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="special">&amp;&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26283-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> 
-    <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26307-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26357-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26394-bb"><span class="identifier">erase</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26414-bb"><span class="identifier">erase</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">const_iterator</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26444-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="identifier">Iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26475-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26500-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26528-bb"><span class="identifier">emplace_back</span></a><span class="special">(</span><span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26558-bb"><span class="identifier">emplace</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span><span class="special">)</span><span class="special">;</span>
-  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26598-bb"><span class="identifier">clear</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26609-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26631-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26653-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26673-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26693-bb"><span class="identifier">nth</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26713-bb"><span class="identifier">nth</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm26733-bb"><span class="identifier">index_of</span></a><span class="special">(</span><span class="identifier">iterator</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm26753-bb"><span class="identifier">index_of</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26773-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26789-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26805-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26821-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="static_vector.html#idm26837-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="static_vector.html#idm26850-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26863-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26876-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26889-bb"><span class="identifier">cbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26902-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26915-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26928-bb"><span class="identifier">cend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">reverse_iterator</span> <a class="link" href="static_vector.html#idm26941-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm26955-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm26969-bb"><span class="identifier">crbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">reverse_iterator</span> <a class="link" href="static_vector.html#idm26983-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm26997-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm27011-bb"><span class="identifier">crend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm27025-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="keyword">bool</span> <a class="link" href="static_vector.html#idm27038-bb"><span class="identifier">empty</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+    <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26325-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26375-bb"><span class="identifier">insert</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26412-bb"><span class="identifier">erase</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26432-bb"><span class="identifier">erase</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">const_iterator</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26462-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="identifier">Iterator</span><span class="special">,</span> <span class="identifier">Iterator</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26493-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26518-bb"><span class="identifier">assign</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26546-bb"><span class="identifier">emplace_back</span></a><span class="special">(</span><span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26576-bb"><span class="identifier">emplace</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">,</span> <span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">void</span> <a class="link" href="static_vector.html#idm26616-bb"><span class="identifier">clear</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26627-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26649-bb"><span class="identifier">at</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26671-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26691-bb"><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26711-bb"><span class="identifier">nth</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26731-bb"><span class="identifier">nth</span></a><span class="special">(</span><span class="identifier">size_type</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm26751-bb"><span class="identifier">index_of</span></a><span class="special">(</span><span class="identifier">iterator</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm26771-bb"><span class="identifier">index_of</span></a><span class="special">(</span><span class="identifier">const_iterator</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26791-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26807-bb"><span class="identifier">front</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">reference</span> <a class="link" href="static_vector.html#idm26823-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_reference</span> <a class="link" href="static_vector.html#idm26839-bb"><span class="identifier">back</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="static_vector.html#idm26855-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a class="link" href="static_vector.html#idm26868-bb"><span class="identifier">data</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26881-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26894-bb"><span class="identifier">begin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26907-bb"><span class="identifier">cbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">iterator</span> <a class="link" href="static_vector.html#idm26920-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26933-bb"><span class="identifier">end</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_iterator</span> <a class="link" href="static_vector.html#idm26946-bb"><span class="identifier">cend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">reverse_iterator</span> <a class="link" href="static_vector.html#idm26959-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm26973-bb"><span class="identifier">rbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm26987-bb"><span class="identifier">crbegin</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">reverse_iterator</span> <a class="link" href="static_vector.html#idm27001-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm27015-bb"><span class="identifier">rend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">const_reverse_iterator</span> <a class="link" href="static_vector.html#idm27029-bb"><span class="identifier">crend</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm27043-bb"><span class="identifier">size</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="keyword">bool</span> <a class="link" href="static_vector.html#idm27056-bb"><span class="identifier">empty</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="static_vector.html#idm27482-bb">public static functions</a></span>
-  <span class="keyword">static</span> <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm27483-bb"><span class="identifier">capacity</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
-  <span class="keyword">static</span> <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm27496-bb"><span class="identifier">max_size</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="static_vector.html#idm27500-bb">public static functions</a></span>
+  <span class="keyword">static</span> <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm27501-bb"><span class="identifier">capacity</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="keyword">static</span> <span class="identifier">size_type</span> <a class="link" href="static_vector.html#idm27514-bb"><span class="identifier">max_size</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
 
   <span class="comment">// public data members</span>
   <span class="keyword">static</span> <span class="keyword">const</span> <span class="identifier">size_type</span> <span class="identifier">static_capacity</span><span class="special">;</span>  <span class="comment">// The capacity/max size of the container. </span>
@@ -169,7 +169,7 @@
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><a name="idm27051-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Constructs an empty <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code>. <p><b>Throws. </b>Nothing.</p>
+<pre class="literallayout"><a name="idm27069-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Constructs an empty <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code>. <p><b>Throws. </b>Nothing.</p>
 <p>
 </p>
 <p><b>Complexity. </b>Constant O(1). </p>
@@ -177,7 +177,7 @@
 </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">explicit</span> <a name="idm27062-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing count value initialized values. <p>
+<pre class="literallayout"><span class="keyword">explicit</span> <a name="idm27080-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing count value initialized values. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -219,7 +219,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="idm27086-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing count default initialized values. <p>
+<pre class="literallayout"><a name="idm27104-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing count default initialized values. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -264,7 +264,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="idm27116-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing count copies of value. <p>
+<pre class="literallayout"><a name="idm27134-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing count copies of value. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -312,7 +312,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <a name="idm27144-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">Iterator</span> first<span class="special">,</span> <span class="identifier">Iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing copy of a range <code class="computeroutput">[first, last)</code>. <p>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <a name="idm27162-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">Iterator</span> first<span class="special">,</span> <span class="identifier">Iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing copy of a range <code class="computeroutput">[first, last)</code>. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -367,7 +367,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="idm27181-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing copy of a range <code class="computeroutput">[il.begin(), il.end())</code>. <p>
+<pre class="literallayout"><a name="idm27199-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Constructs a <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> containing copy of a range <code class="computeroutput">[il.begin(), il.end())</code>. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -413,7 +413,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="idm27209-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Constructs a copy of other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code>. <p>
+<pre class="literallayout"><a name="idm27227-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Constructs a copy of other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code>. <p>
 </p>
 <p><b>Throws. </b>If T's copy constructor throws.</p>
 <p>
@@ -441,12 +441,12 @@
 </tr></tbody>
 </table></div>
 </li>
-<li class="listitem"><pre class="literallayout"><a name="idm27226-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre></li>
-<li class="listitem"><pre class="literallayout"><a name="idm27232-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span> other<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span></pre></li>
-<li class="listitem"><pre class="literallayout"><span class="keyword">explicit</span> <a name="idm27238-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><a name="idm27244-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><a name="idm27250-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span> other<span class="special">,</span> <span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span></pre></li>
+<li class="listitem"><pre class="literallayout"><span class="keyword">explicit</span> <a name="idm27256-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">allocator_type</span> <span class="special">&amp;</span><span class="special">)</span><span class="special">;</span></pre></li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-  <a name="idm27241-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Constructs a copy of other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code>. <p>
+  <a name="idm27259-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Constructs a copy of other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code>. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -488,7 +488,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="idm27271-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span> other<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span></pre>Move constructor. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
+<pre class="literallayout"><a name="idm27289-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span> other<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_constructible</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span></pre>Move constructor. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
 </p>
 <p><b>Throws. </b></p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
@@ -524,7 +524,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-  <a name="idm27297-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Move constructor. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
+  <a name="idm27315-bb"></a><span class="identifier">static_vector</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Move constructor. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -567,7 +567,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27333-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Copy assigns Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
+<pre class="literallayout"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27351-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="keyword">const</span> <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Copy assigns Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
 </p>
 <p><b>Throws. </b>If T's copy constructor or copy assignment throws.</p>
 <p>
@@ -596,7 +596,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27352-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Copy assigns Values stored in std::initializer_list to *this. <p>
+<pre class="literallayout"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27370-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Copy assigns Values stored in std::initializer_list to *this. <p>
 </p>
 <p><b>Throws. </b></p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
@@ -632,7 +632,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27374-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Copy assigns Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
+  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27392-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Copy assigns Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -675,7 +675,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> 
-<a name="idm27406-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span> other<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_assignable</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span></pre>Move assignment. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
+<a name="idm27424-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;&amp;</span> other<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">container</span><span class="special">::</span><span class="identifier">dtl</span><span class="special">::</span><span class="identifier">is_nothrow_move_assignable</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span><span class="special">::</span><span class="identifier">value</span><span class="special">)</span><span class="special">;</span></pre>Move assignment. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
 </p>
 <p><b>Throws. </b></p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
@@ -711,7 +711,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27434-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Move assignment. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
+  <a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> <a name="idm27452-bb"></a><span class="keyword">operator</span><span class="special">=</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Move assignment. Moves Values stored in the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> to this one. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -754,7 +754,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><a name="idm27472-bb"></a><span class="special">~</span><span class="identifier">static_vector</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>Destructor. Destroys Values stored in this container. <p><b>Throws. </b>Nothing</p>
+<pre class="literallayout"><a name="idm27490-bb"></a><span class="special">~</span><span class="identifier">static_vector</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>Destructor. Destroys Values stored in this container. <p><b>Throws. </b>Nothing</p>
 <p>
 </p>
 <p><b>Complexity. </b>Linear O(N). </p>
@@ -765,10 +765,10 @@
 </div>
 <div class="refsect2">
 <a name="id-1.3.9.14.40.3.4.8"></a><h3>
-<a name="idm25963-bb"></a><code class="computeroutput">static_vector</code> public member functions</h3>
+<a name="idm25981-bb"></a><code class="computeroutput">static_vector</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm25964-bb"></a><span class="identifier">swap</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Swaps contents of the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> and this one. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm25982-bb"></a><span class="identifier">swap</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Swaps contents of the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> and this one. <p>
 </p>
 <p><b>Throws. </b></p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
@@ -804,7 +804,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> C<span class="special">,</span> <span class="keyword">typename</span> O<span class="special">&gt;</span> 
-  <span class="keyword">void</span> <a name="idm25991-bb"></a><span class="identifier">swap</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Swaps contents of the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> and this one. <p>
+  <span class="keyword">void</span> <a name="idm26009-bb"></a><span class="identifier">swap</span><span class="special">(</span><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">C</span><span class="special">,</span> <span class="identifier">O</span> <span class="special">&gt;</span> <span class="special">&amp;</span> other<span class="special">)</span><span class="special">;</span></pre>Swaps contents of the other <code class="computeroutput"><a class="link" href="static_vector.html" title="Class template static_vector">static_vector</a></code> and this one. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -847,7 +847,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26028-bb"></a><span class="identifier">resize</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">)</span><span class="special">;</span></pre>Inserts or erases elements at the end such that the size becomes count. New elements are value initialized. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26046-bb"></a><span class="identifier">resize</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">)</span><span class="special">;</span></pre>Inserts or erases elements at the end such that the size becomes count. New elements are value initialized. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -889,7 +889,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26052-bb"></a><span class="identifier">resize</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span></pre>Inserts or erases elements at the end such that the size becomes count. New elements are default initialized. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26070-bb"></a><span class="identifier">resize</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <a class="link" href="default_init_t.html" title="Struct default_init_t">default_init_t</a><span class="special">)</span><span class="special">;</span></pre>Inserts or erases elements at the end such that the size becomes count. New elements are default initialized. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -934,7 +934,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26082-bb"></a><span class="identifier">resize</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts or erases elements at the end such that the size becomes count. New elements are copy constructed from value. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26100-bb"></a><span class="identifier">resize</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts or erases elements at the end such that the size becomes count. New elements are copy constructed from value. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -982,7 +982,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26110-bb"></a><span class="identifier">reserve</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">)</span><span class="special">;</span></pre>This call has no effect because the Capacity of this container is constant. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26128-bb"></a><span class="identifier">reserve</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">)</span><span class="special">;</span></pre>This call has no effect because the Capacity of this container is constant. <p>
 
 </p>
 <p><b>Throws. </b>If <code class="computeroutput">throw_on_overflow&lt;true&gt;</code> option is set and the container runs out of capacity.</p>
@@ -1018,7 +1018,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26129-bb"></a><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Adds a copy of value at the end. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26147-bb"></a><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Adds a copy of value at the end. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1060,7 +1060,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26153-bb"></a><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">value_type</span> <span class="special">&amp;&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Moves value to the end. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26171-bb"></a><span class="identifier">push_back</span><span class="special">(</span><span class="identifier">value_type</span> <span class="special">&amp;&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Moves value to the end. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1102,7 +1102,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26177-bb"></a><span class="identifier">pop_back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Destroys last value and decreases the size. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26195-bb"></a><span class="identifier">pop_back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Destroys last value and decreases the size. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -1122,7 +1122,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26191-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts a copy of element at p. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26209-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts a copy of element at p. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1178,7 +1178,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26229-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">value_type</span> <span class="special">&amp;&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts a move-constructed element at p. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26247-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">value_type</span> <span class="special">&amp;&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts a move-constructed element at p. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1233,7 +1233,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26265-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts a count copies of value at p. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26283-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Inserts a count copies of value at p. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1294,7 +1294,7 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> 
-  <span class="identifier">iterator</span> <a name="idm26307-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">Iterator</span> first<span class="special">,</span> <span class="identifier">Iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Inserts a copy of a range <code class="computeroutput">[first, last)</code> at p. <p>
+  <span class="identifier">iterator</span> <a name="idm26325-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">Iterator</span> first<span class="special">,</span> <span class="identifier">Iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Inserts a copy of a range <code class="computeroutput">[first, last)</code> at p. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1355,7 +1355,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26357-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Inserts a copy of a range <code class="computeroutput">[il.begin(), il.end())</code> at p. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26375-bb"></a><span class="identifier">insert</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Inserts a copy of a range <code class="computeroutput">[il.begin(), il.end())</code> at p. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1410,7 +1410,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26394-bb"></a><span class="identifier">erase</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">)</span><span class="special">;</span></pre>Erases T from p. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26412-bb"></a><span class="identifier">erase</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">)</span><span class="special">;</span></pre>Erases T from p. <p>
 
 </p>
 <p><b>Throws. </b>If T's move assignment throws.</p>
@@ -1446,7 +1446,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26414-bb"></a><span class="identifier">erase</span><span class="special">(</span><span class="identifier">const_iterator</span> first<span class="special">,</span> <span class="identifier">const_iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Erases Values from a range <code class="computeroutput">[first, last)</code>. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26432-bb"></a><span class="identifier">erase</span><span class="special">(</span><span class="identifier">const_iterator</span> first<span class="special">,</span> <span class="identifier">const_iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Erases Values from a range <code class="computeroutput">[first, last)</code>. <p>
 
 </p>
 <p><b>Throws. </b>If T's move assignment throws.</p>
@@ -1495,7 +1495,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm26444-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="identifier">Iterator</span> first<span class="special">,</span> <span class="identifier">Iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Assigns a range <code class="computeroutput">[first, last)</code> of Values to this container. <p>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> Iterator<span class="special">&gt;</span> <span class="keyword">void</span> <a name="idm26462-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="identifier">Iterator</span> first<span class="special">,</span> <span class="identifier">Iterator</span> last<span class="special">)</span><span class="special">;</span></pre>Assigns a range <code class="computeroutput">[first, last)</code> of Values to this container. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1543,7 +1543,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26475-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Assigns a range <code class="computeroutput">[il.begin(), il.end())</code> of Values to this container. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26493-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">initializer_list</span><span class="special">&lt;</span> <span class="identifier">value_type</span> <span class="special">&gt;</span> il<span class="special">)</span><span class="special">;</span></pre>Assigns a range <code class="computeroutput">[il.begin(), il.end())</code> of Values to this container. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1585,7 +1585,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26500-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Assigns a count copies of value to this container. <p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26518-bb"></a><span class="identifier">assign</span><span class="special">(</span><span class="identifier">size_type</span> count<span class="special">,</span> <span class="identifier">value_type</span> <span class="keyword">const</span> <span class="special">&amp;</span> value<span class="special">)</span><span class="special">;</span></pre>Assigns a count copies of value to this container. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1633,7 +1633,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">reference</span> <a name="idm26528-bb"></a><span class="identifier">emplace_back</span><span class="special">(</span><span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span> args<span class="special">)</span><span class="special">;</span></pre>Inserts a T constructed with <code class="computeroutput">std::forward&lt;Args&gt;(args)</code>... in the end of the container. <p>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">reference</span> <a name="idm26546-bb"></a><span class="identifier">emplace_back</span><span class="special">(</span><span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span> args<span class="special">)</span><span class="special">;</span></pre>Inserts a T constructed with <code class="computeroutput">std::forward&lt;Args&gt;(args)</code>... in the end of the container. <p>
 
 
 </p>
@@ -1680,7 +1680,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">iterator</span> <a name="idm26558-bb"></a><span class="identifier">emplace</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span> args<span class="special">)</span><span class="special">;</span></pre>Inserts a T constructed with <code class="computeroutput">std::forward&lt;Args&gt;(args)</code>... before p. <p>
+<pre class="literallayout"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="special">...</span> Args<span class="special">&gt;</span> <span class="identifier">iterator</span> <a name="idm26576-bb"></a><span class="identifier">emplace</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">,</span> <span class="identifier">Args</span> <span class="special">&amp;&amp;</span><span class="special">...</span> args<span class="special">)</span><span class="special">;</span></pre>Inserts a T constructed with <code class="computeroutput">std::forward&lt;Args&gt;(args)</code>... before p. <p>
 
 </p>
 <p><b>Throws. </b></p>
@@ -1735,7 +1735,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">void</span> <a name="idm26598-bb"></a><span class="identifier">clear</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Removes all elements from the container. <p><b>Throws. </b>Nothing.</p>
+<pre class="literallayout"><span class="keyword">void</span> <a name="idm26616-bb"></a><span class="identifier">clear</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Removes all elements from the container. <p><b>Throws. </b>Nothing.</p>
 <p>
 </p>
 <p><b>Complexity. </b>Constant O(1). </p>
@@ -1743,7 +1743,7 @@
 </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26609-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span><span class="special">;</span></pre>Returns reference to the i-th element. <p>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26627-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span><span class="special">;</span></pre>Returns reference to the i-th element. <p>
 
 
 </p>
@@ -1784,7 +1784,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26631-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Returns const reference to the i-th element. <p>
+<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26649-bb"></a><span class="identifier">at</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">const</span><span class="special">;</span></pre>Returns const reference to the i-th element. <p>
 
 
 </p>
@@ -1825,7 +1825,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26653-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reference to the i-th element. <p>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26671-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reference to the i-th element. <p>
 
 
 </p>
@@ -1866,7 +1866,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26673-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reference to the i-th element. <p>
+<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26691-bb"></a><span class="keyword">operator</span><span class="special">[</span><span class="special">]</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reference to the i-th element. <p>
 
 
 </p>
@@ -1907,7 +1907,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26693-bb"></a><span class="identifier">nth</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns a iterator to the i-th element. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26711-bb"></a><span class="identifier">nth</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns a iterator to the i-th element. <p>
 
 
 </p>
@@ -1948,7 +1948,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26713-bb"></a><span class="identifier">nth</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns a const_iterator to the i-th element. <p>
+<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26731-bb"></a><span class="identifier">nth</span><span class="special">(</span><span class="identifier">size_type</span> i<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns a const_iterator to the i-th element. <p>
 
 
 </p>
@@ -1989,7 +1989,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">size_type</span> <a name="idm26733-bb"></a><span class="identifier">index_of</span><span class="special">(</span><span class="identifier">iterator</span> p<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns the index of the element pointed by p. <p>
+<pre class="literallayout"><span class="identifier">size_type</span> <a name="idm26751-bb"></a><span class="identifier">index_of</span><span class="special">(</span><span class="identifier">iterator</span> p<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns the index of the element pointed by p. <p>
 
 
 </p>
@@ -2030,7 +2030,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">size_type</span> <a name="idm26753-bb"></a><span class="identifier">index_of</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns the index of the element pointed by p. <p>
+<pre class="literallayout"><span class="identifier">size_type</span> <a name="idm26771-bb"></a><span class="identifier">index_of</span><span class="special">(</span><span class="identifier">const_iterator</span> p<span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns the index of the element pointed by p. <p>
 
 
 </p>
@@ -2071,7 +2071,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26773-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reference to the first element. <p>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26791-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reference to the first element. <p>
 
 </p>
 <p><b>Throws. </b>Nothing.</p>
@@ -2098,7 +2098,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26789-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reference to the first element. <p>
+<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26807-bb"></a><span class="identifier">front</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reference to the first element. <p>
 
 </p>
 <p><b>Throws. </b>Nothing.</p>
@@ -2125,7 +2125,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26805-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reference to the last element. <p>
+<pre class="literallayout"><span class="identifier">reference</span> <a name="idm26823-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reference to the last element. <p>
 
 </p>
 <p><b>Throws. </b>Nothing.</p>
@@ -2152,7 +2152,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26821-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reference to the first element. <p>
+<pre class="literallayout"><span class="identifier">const_reference</span> <a name="idm26839-bb"></a><span class="identifier">back</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reference to the first element. <p>
 
 </p>
 <p><b>Throws. </b>Nothing.</p>
@@ -2179,7 +2179,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">T</span> <span class="special">*</span> <a name="idm26837-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Pointer such that <code class="computeroutput">[data(), data() + size())</code> is a valid range. For a non-empty vector <code class="computeroutput">data() == &amp;front()</code>. <p><b>Throws. </b>Nothing.</p>
+<pre class="literallayout"><span class="identifier">T</span> <span class="special">*</span> <a name="idm26855-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Pointer such that <code class="computeroutput">[data(), data() + size())</code> is a valid range. For a non-empty vector <code class="computeroutput">data() == &amp;front()</code>. <p><b>Throws. </b>Nothing.</p>
 <p>
 </p>
 <p><b>Complexity. </b>Constant O(1). </p>
@@ -2187,7 +2187,7 @@
 </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a name="idm26850-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Const pointer such that <code class="computeroutput">[data(), data() + size())</code> is a valid range. For a non-empty vector <code class="computeroutput">data() == &amp;front()</code>. <p><b>Throws. </b>Nothing.</p>
+<pre class="literallayout"><span class="keyword">const</span> <span class="identifier">T</span> <span class="special">*</span> <a name="idm26868-bb"></a><span class="identifier">data</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Const pointer such that <code class="computeroutput">[data(), data() + size())</code> is a valid range. For a non-empty vector <code class="computeroutput">data() == &amp;front()</code>. <p><b>Throws. </b>Nothing.</p>
 <p>
 </p>
 <p><b>Complexity. </b>Constant O(1). </p>
@@ -2195,7 +2195,7 @@
 </p>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26863-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns iterator to the first element. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26881-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns iterator to the first element. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2215,7 +2215,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26876-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the first element. <p>
+<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26894-bb"></a><span class="identifier">begin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the first element. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2235,7 +2235,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26889-bb"></a><span class="identifier">cbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the first element. <p>
+<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26907-bb"></a><span class="identifier">cbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the first element. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2255,7 +2255,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26902-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns iterator to the one after the last element. <p>
+<pre class="literallayout"><span class="identifier">iterator</span> <a name="idm26920-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns iterator to the one after the last element. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2275,7 +2275,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26915-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the one after the last element. <p>
+<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26933-bb"></a><span class="identifier">end</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the one after the last element. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2295,7 +2295,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26928-bb"></a><span class="identifier">cend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the one after the last element. <p>
+<pre class="literallayout"><span class="identifier">const_iterator</span> <a name="idm26946-bb"></a><span class="identifier">cend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const iterator to the one after the last element. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2315,7 +2315,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idm26941-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reverse iterator to the first element of the reversed container. <p>
+<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idm26959-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reverse iterator to the first element of the reversed container. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2335,7 +2335,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm26955-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the first element of the reversed container. <p>
+<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm26973-bb"></a><span class="identifier">rbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the first element of the reversed container. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2355,7 +2355,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm26969-bb"></a><span class="identifier">crbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the first element of the reversed container. <p>
+<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm26987-bb"></a><span class="identifier">crbegin</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the first element of the reversed container. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2375,7 +2375,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idm26983-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reverse iterator to the one after the last element of the reversed container. <p>
+<pre class="literallayout"><span class="identifier">reverse_iterator</span> <a name="idm27001-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns reverse iterator to the one after the last element of the reversed container. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2395,7 +2395,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm26997-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the one after the last element of the reversed container. <p>
+<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm27015-bb"></a><span class="identifier">rend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the one after the last element of the reversed container. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2415,7 +2415,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm27011-bb"></a><span class="identifier">crend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the one after the last element of the reversed container. <p>
+<pre class="literallayout"><span class="identifier">const_reverse_iterator</span> <a name="idm27029-bb"></a><span class="identifier">crend</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns const reverse iterator to the one after the last element of the reversed container. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2435,7 +2435,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="identifier">size_type</span> <a name="idm27025-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns the number of stored elements. <p>
+<pre class="literallayout"><span class="identifier">size_type</span> <a name="idm27043-bb"></a><span class="identifier">size</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns the number of stored elements. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2455,7 +2455,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">bool</span> <a name="idm27038-bb"></a><span class="identifier">empty</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Queries if the container contains elements. <p>
+<pre class="literallayout"><span class="keyword">bool</span> <a name="idm27056-bb"></a><span class="identifier">empty</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Queries if the container contains elements. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2478,10 +2478,10 @@
 </div>
 <div class="refsect2">
 <a name="id-1.3.9.14.40.3.4.9"></a><h3>
-<a name="idm27482-bb"></a><code class="computeroutput">static_vector</code> public static functions</h3>
+<a name="idm27500-bb"></a><code class="computeroutput">static_vector</code> public static functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1">
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="identifier">size_type</span> <a name="idm27483-bb"></a><span class="identifier">capacity</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns container's capacity. <p>
+<pre class="literallayout"><span class="keyword">static</span> <span class="identifier">size_type</span> <a name="idm27501-bb"></a><span class="identifier">capacity</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns container's capacity. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2501,7 +2501,7 @@
 </table></div>
 </li>
 <li class="listitem">
-<pre class="literallayout"><span class="keyword">static</span> <span class="identifier">size_type</span> <a name="idm27496-bb"></a><span class="identifier">max_size</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns container's capacity. <p>
+<pre class="literallayout"><span class="keyword">static</span> <span class="identifier">size_type</span> <a name="idm27514-bb"></a><span class="identifier">max_size</span><span class="special">(</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Returns container's capacity. <p>
 </p>
 <p><b>Throws. </b>Nothing.</p>
 <p>
@@ -2531,7 +2531,7 @@
 </div>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="pmr/stable_vector_of.html"><img src="../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../boost_container_header_reference.html#header.boost.container.static_vector_hpp"><img src="../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator___idm27509.html"><img src="../../../../doc/src/images/next.png" alt="Next"></a>
+<a accesskey="p" href="pmr/stable_vector_of.html"><img src="../../../../doc/src/images/prev.png" alt="Prev"></a><a accesskey="u" href="../../boost_container_header_reference.html#header.boost.container.static_vector_hpp"><img src="../../../../doc/src/images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../../../doc/src/images/home.png" alt="Home"></a><a accesskey="n" href="operator___idm27527.html"><img src="../../../../doc/src/images/next.png" alt="Next"></a>
 </div>
 </body>
 </html>

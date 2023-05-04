@@ -29,7 +29,7 @@
           (5 of 6 overloads)</a>
 </h6></div></div></div>
 <p>
-            Parse a buffer containing a complete JSON.
+            Parse a buffer containing a complete JSON text.
           </p>
 <h6>
 <a name="json.ref.boost__json__parser.write.overload5.h0"></a>
@@ -45,16 +45,17 @@
             <span class="phrase"><a name="json.ref.boost__json__parser.write.overload5.description"></a></span><a class="link" href="overload5.html#json.ref.boost__json__parser.write.overload5.description">Description</a>
           </h6>
 <p>
-            This function parses a complete JSON contained in the specified character
-            buffer. The entire buffer must be consumed; if there are additional characters
-            past the end of the complete JSON, the parse fails and an error is returned.
+            This function parses a complete JSON text contained in the specified
+            character buffer. The entire buffer must be consumed; if there are additional
+            characters past the end of the complete JSON text, the parse fails and
+            an error is returned.
           </p>
 <h6>
 <a name="json.ref.boost__json__parser.write.overload5.h2"></a>
             <span class="phrase"><a name="json.ref.boost__json__parser.write.overload5.example"></a></span><a class="link" href="overload5.html#json.ref.boost__json__parser.write.overload5.example">Example</a>
           </h6>
 <pre class="programlisting"><span class="identifier">parser</span> <span class="identifier">p</span><span class="special">;</span>                                       <span class="comment">// construct a parser</span>
-<span class="identifier">size_t</span> <span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"[1,2,3]"</span> <span class="special">);</span>                <span class="comment">// parse a complete JSON</span>
+<span class="identifier">size_t</span> <span class="identifier">n</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">write</span><span class="special">(</span> <span class="string">"[1,2,3]"</span> <span class="special">);</span>                <span class="comment">// parse a complete JSON text</span>
 <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">n</span> <span class="special">==</span> <span class="number">7</span> <span class="special">);</span>                               <span class="comment">// all characters consumed</span>
 <span class="identifier">value</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">p</span><span class="special">.</span><span class="identifier">release</span><span class="special">();</span>                         <span class="comment">// take ownership of the value</span>
 </pre>
@@ -74,7 +75,7 @@
             Basic guarantee. Calls to <code class="computeroutput"><span class="identifier">memory_resource</span><span class="special">::</span><span class="identifier">allocate</span></code>
             may throw. Upon error or exception, subsequent calls will fail until
             <a class="link" href="../reset.html" title="parser::reset"><code class="computeroutput"><span class="identifier">reset</span></code></a>
-            is called to parse a new JSON.
+            is called to parse a new JSON text.
           </p>
 <h6>
 <a name="json.ref.boost__json__parser.write.overload5.h5"></a>

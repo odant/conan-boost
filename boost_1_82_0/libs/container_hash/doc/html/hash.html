@@ -663,6 +663,7 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#recent_boost_1_82_0">Boost 1.82.0</a></li>
 <li><a href="#recent_boost_1_81_0">Boost 1.81.0</a></li>
+<li><a href="#recent_boost_1_78_0">Boost 1.78.0</a></li>
 </ul>
 </li>
 <li><a href="#tutorial">Tutorial</a></li>
@@ -712,6 +713,7 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#notes_quality_of_the_hash_function">Quality of the Hash Function</a></li>
 <li><a href="#notes_the_hash_value_customization_point">The hash_value Customization Point</a></li>
+<li><a href="#notes_hash_value_stability">Hash Value Stability</a></li>
 <li><a href="#notes_hash_combine">hash_combine</a></li>
 <li><a href="#notes_hash_range">hash_range</a></li>
 </ul>
@@ -845,8 +847,10 @@ tuple-like types.</p>
 </li>
 <li>
 <p>Changed string hashing to use
-<a href="https://github.com/pdimov/mulxp_hash"><code>mulxp1_hash</code></a>. This
-improves both quality and speed.</p>
+<a href="https://github.com/pdimov/mulxp_hash"><code>mulxp1_hash</code></a>,
+improving both quality and speed. This changes the hash values
+for string-like types (ranges of <code>char</code>, <code>signed char</code>,
+<code>unsigned char</code>, <code>std::byte</code>, <code>char8_t</code>).</p>
 </li>
 </ul>
 </div>
@@ -881,7 +885,9 @@ of the box.</p>
 supported out of the box.</p>
 </li>
 <li>
-<p><code>hash_combine</code> has been improved.</p>
+<p><code>hash_combine</code> has been improved. This changes the hash values
+of composite (container and tuple) types and of scalar types
+bigger than <code>size_t</code>.</p>
 </li>
 <li>
 <p>The performance (and quality, as a result of the above change)
@@ -891,6 +897,19 @@ now passes SMHasher in 64 bit mode.</p>
 <li>
 <p>The documentation has been substantially revised to reflect
 the changes.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recent_boost_1_78_0"><a class="link" href="#recent_boost_1_78_0">Boost 1.78.0</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fixed <code>hash_combine</code> so that its behavior no longer depends
+on whether <code>size_t</code> is the exact same type as <code>boost::uint64_t</code>
+(which wasn&#8217;t the case on macOS). This changes the hash values
+of composite (container and tuple) types on macOS.</p>
 </li>
 </ul>
 </div>
@@ -2252,6 +2271,25 @@ which caused them to hash to 0 or 1, rarely what one expects or wants.</p>
 to be templates constrained on e.g. <code>std::is_integral</code> or its moral
 equivalent. This causes types convertible to an integral to no longer
 match, avoiding the problem.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notes_hash_value_stability"><a class="link" href="#notes_hash_value_stability">Hash Value Stability</a></h3>
+<div class="paragraph">
+<p>In general, the library does not promise that the hash values will stay
+the same from release to release (otherwise improvements would be
+impossible). However, historically values have been quite stable. Before
+release 1.81, the previous changes have been in 1.56 (a better
+<code>hash_combine</code>) and 1.78 (macOS-specific change to <code>hash_combine</code>.)</p>
+</div>
+<div class="paragraph">
+<p>Code should generally not depend on specific hash values, but for those
+willing to take the risk of occasional breaks due to hash value changes,
+the library now has a test that checks hash values for a number of types
+against reference values (<code>test/hash_reference_values.cpp</code>),
+whose <a href="https://github.com/boostorg/container_hash/commits/develop/test/hash_reference_values.cpp">version history</a>
+can be used as a rough guide to when hash values have changed, and for what
+types.</p>
 </div>
 </div>
 <div class="sect2">
