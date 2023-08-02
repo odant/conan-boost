@@ -1,7 +1,7 @@
-diff --git a/boost_1_82_0/libs/locale/build/Jamfile.v2 b/boost_1_81_0/libs/locale/build/Jamfile.v2
+diff --git a/boost_1_83_0/libs/locale/build/Jamfile.v2 b/boost_1_81_0/libs/locale/build/Jamfile.v2
 index c4130a1786..180251501a 100644
---- a/boost_1_82_0/libs/locale/build/Jamfile.v2
-+++ b/boost_1_82_0/libs/locale/build/Jamfile.v2
+--- a/boost_1_83_0/libs/locale/build/Jamfile.v2
++++ b/boost_1_83_0/libs/locale/build/Jamfile.v2
 @@ -5,9 +5,7 @@
  # Distributed under the Boost Software License, Version 1.0.
  # https://www.boost.org/LICENSE_1_0.txt.
@@ -339,7 +339,7 @@ index c4130a1786..180251501a 100644
              ICU_SOURCES =
                  boundary
                  codecvt
-@@ -384,23 +417,6 @@ rule configure-flags ( properties * )
+@@ -384,24 +417,6 @@ rule configure-flags ( properties * )
  
  alias build_flags : : : : <conditional>@configure-flags ;
  
@@ -358,12 +358,13 @@ index c4130a1786..180251501a 100644
 -      cxx11_scoped_enums
 -      cxx11_smart_ptr
 -      cxx11_static_assert
+-      cxx11_variadic_templates
 -    ] ;
 -
  boost-lib locale
      :
        encoding/codepage.cpp
-@@ -419,14 +435,14 @@ boost-lib locale
+@@ -420,14 +435,14 @@ boost-lib locale
        util/info.cpp
        util/locale_data.cpp
      :
