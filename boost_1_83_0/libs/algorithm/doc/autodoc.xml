@@ -5672,10 +5672,10 @@ Suggested by olafvdspek in <ulink url="https://svn.boost.org/trac/boost/ticket/3
           <template-type-parameter name="BidirectionalIterator"/>
           <template-type-parameter name="Pred"/>
         </template><parameter name="first"><paramtype>BidirectionalIterator</paramtype></parameter><parameter name="last"><paramtype>BidirectionalIterator</paramtype></parameter><parameter name="pivot"><paramtype>BidirectionalIterator</paramtype></parameter><parameter name="pred"><paramtype>Pred</paramtype></parameter><purpose>iterator-based gather implementation </purpose></function>
-<function name="gather"><type>std::pair&lt; typename boost::range_iterator&lt; const BidirectionalRange &gt;::type, typename boost::range_iterator&lt; const BidirectionalRange &gt;::type &gt;</type><template>
+<function name="gather"><type>std::pair&lt; typename boost::range_iterator&lt; BidirectionalRange &gt;::type, typename boost::range_iterator&lt; BidirectionalRange &gt;::type &gt;</type><template>
           <template-type-parameter name="BidirectionalRange"/>
           <template-type-parameter name="Pred"/>
-        </template><parameter name="range"><paramtype>const BidirectionalRange &amp;</paramtype></parameter><parameter name="pivot"><paramtype>typename boost::range_iterator&lt; const BidirectionalRange &gt;::type</paramtype></parameter><parameter name="pred"><paramtype>Pred</paramtype></parameter><purpose>range-based gather implementation </purpose></function>
+        </template><parameter name="range"><paramtype>BidirectionalRange &amp;</paramtype></parameter><parameter name="pivot"><paramtype>typename boost::range_iterator&lt; BidirectionalRange &gt;::type</paramtype></parameter><parameter name="pred"><paramtype>Pred</paramtype></parameter><purpose>range-based gather implementation </purpose></function>
 
 
 

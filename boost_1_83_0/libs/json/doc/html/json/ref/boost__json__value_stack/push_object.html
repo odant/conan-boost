@@ -28,7 +28,7 @@
 <a name="json.ref.boost__json__value_stack.push_object"></a><a class="link" href="push_object.html" title="value_stack::push_object">value_stack::push_object</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm65893"></a>
+          <a class="indexterm" name="idm64322"></a>
         </p>
 <p>
           Push an object formed by popping <code class="computeroutput"><span class="identifier">n</span></code>
@@ -69,7 +69,7 @@
           The following code creates an object on the stack with a single element,
           where key is "x" and value is true:
         </p>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__json__value_stack</span><span class="special">.</span><span class="identifier">value_stack</span> <span class="error">`</span><span class="identifier">value_stack</span><span class="error">`</span><span class="special">]</span> <span class="identifier">st</span><span class="special">;</span>
+<pre class="programlisting"><span class="identifier">value_stack</span> <span class="identifier">st</span><span class="special">;</span>
 
 <span class="comment">// reset must be called first or else the behavior is undefined</span>
 <span class="identifier">st</span><span class="special">.</span><span class="identifier">reset</span><span class="special">();</span>
@@ -84,7 +84,7 @@
 <span class="comment">// Pop the object from the stack and take ownership.</span>
 <span class="identifier">value</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">st</span><span class="special">.</span><span class="identifier">release</span><span class="special">();</span>
 
-<span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__json__serialize</span> <span class="error">`</span><span class="identifier">serialize</span><span class="error">`</span><span class="special">](</span><span class="identifier">jv</span><span class="special">)</span> <span class="special">==</span> <span class="string">"{\"x\",true}"</span> <span class="special">);</span>
+<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">serialize</span><span class="special">(</span><span class="identifier">jv</span><span class="special">)</span> <span class="special">==</span> <span class="string">"{\"x\",true}"</span> <span class="special">);</span>
 
 <span class="comment">// At this point, reset must be called again to use the stack</span>
 </pre>

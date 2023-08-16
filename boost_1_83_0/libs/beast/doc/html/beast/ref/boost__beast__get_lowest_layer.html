@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__get_lowest_layer"></a><a class="link" href="boost__beast__get_lowest_layer.html" title="get_lowest_layer">get_lowest_layer</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm70827"></a>
+        <a class="indexterm" name="idm68745"></a>
       </p>
 <p>
         Return the lowest layer in a stack of stream layers.
@@ -83,11 +83,11 @@
 <span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">Stream</span><span class="special">&gt;</span>
 <span class="keyword">void</span> <span class="identifier">set_non_blocking</span> <span class="special">(</span><span class="identifier">Stream</span><span class="special">&amp;</span> <span class="identifier">stream</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]</span> <span class="identifier">ec</span><span class="special">;</span>
+    <span class="identifier">error_code</span> <span class="identifier">ec</span><span class="special">;</span>
     <span class="comment">// A compile error here means your lowest layer is not the right type!</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__get_lowest_layer</span> <span class="error">`</span><span class="identifier">get_lowest_layer</span><span class="error">`</span><span class="special">](</span><span class="identifier">stream</span><span class="special">).</span><span class="identifier">non_blocking</span><span class="special">(</span> <span class="keyword">true</span> <span class="special">,</span> <span class="identifier">ec</span><span class="special">);</span>
+    <span class="identifier">get_lowest_layer</span><span class="special">(</span><span class="identifier">stream</span><span class="special">).</span><span class="identifier">non_blocking</span><span class="special">(</span> <span class="keyword">true</span> <span class="special">,</span> <span class="identifier">ec</span><span class="special">);</span>
     <span class="keyword">if</span> <span class="special">(</span><span class="identifier">ec</span><span class="special">)</span>
-        <span class="keyword">throw</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__system_error</span> <span class="error">`</span><span class="identifier">system_error</span><span class="error">`</span><span class="special">]{</span><span class="identifier">ec</span><span class="special">};</span>
+        <span class="keyword">throw</span> <span class="identifier">system_error</span><span class="special">{</span><span class="identifier">ec</span><span class="special">};</span>
 <span class="special">}</span>
 </pre>
 <h5>

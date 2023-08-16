@@ -290,21 +290,21 @@
     <span class="comment">//</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">bytes_transferred</span> <span class="special">=</span>
         <span class="identifier">net</span><span class="special">::</span><span class="identifier">read_until</span><span class="special">(</span>
-            <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__test__stream</span> <span class="error">`</span><span class="identifier">stream</span><span class="error">`</span><span class="special">].</span><span class="identifier">next_layer</span><span class="special">(),</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__test__stream</span> <span class="error">`</span><span class="identifier">stream</span><span class="error">`</span><span class="special">].</span><span class="identifier">buffer</span><span class="special">(),</span> <span class="string">"\r\n\r\n"</span> <span class="special">);</span>
+            <span class="identifier">stream</span><span class="special">.</span><span class="identifier">next_layer</span><span class="special">(),</span> <span class="identifier">stream</span><span class="special">.</span><span class="identifier">buffer</span><span class="special">(),</span> <span class="string">"\r\n\r\n"</span> <span class="special">);</span>
 
     <span class="comment">// Use buffers_prefix() to limit the input</span>
     <span class="comment">// sequence to only the data up to and including</span>
     <span class="comment">// the trailing "\r\n\r\n".</span>
     <span class="comment">//</span>
-    <span class="keyword">auto</span> <span class="identifier">header_buffers</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers_prefix</span> <span class="error">`</span><span class="identifier">buffers_prefix</span><span class="error">`</span><span class="special">](</span>
-        <span class="identifier">bytes_transferred</span><span class="special">,</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__test__stream</span> <span class="error">`</span><span class="identifier">stream</span><span class="error">`</span><span class="special">].</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">data</span><span class="special">());</span>
+    <span class="keyword">auto</span> <span class="identifier">header_buffers</span> <span class="special">=</span> <span class="identifier">buffers_prefix</span><span class="special">(</span>
+        <span class="identifier">bytes_transferred</span><span class="special">,</span> <span class="identifier">stream</span><span class="special">.</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">data</span><span class="special">());</span>
 
     <span class="special">...</span>
 
     <span class="comment">// Discard the portion of the input corresponding</span>
     <span class="comment">// to the HTTP headers.</span>
     <span class="comment">//</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__test__stream</span> <span class="error">`</span><span class="identifier">stream</span><span class="error">`</span><span class="special">].</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">consume</span><span class="special">(</span><span class="identifier">bytes_transferred</span><span class="special">);</span>
+    <span class="identifier">stream</span><span class="special">.</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">consume</span><span class="special">(</span><span class="identifier">bytes_transferred</span><span class="special">);</span>
 
     <span class="comment">// Everything we read from the stream</span>
     <span class="comment">// is part of the content-body.</span>

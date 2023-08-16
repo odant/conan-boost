@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__bind_handler"></a><a class="link" href="boost__beast__bind_handler.html" title="bind_handler">bind_handler</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm73428"></a>
+        <a class="indexterm" name="idm71131"></a>
       </p>
 <p>
         Bind parameters to a completion handler, creating a new handler.
@@ -75,7 +75,7 @@
 <span class="special">{</span>
     <span class="identifier">net</span><span class="special">::</span><span class="identifier">post</span><span class="special">(</span>
         <span class="identifier">stream</span><span class="special">.</span><span class="identifier">get_executor</span><span class="special">(),</span>
-        <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__bind_handler</span> <span class="error">`</span><span class="identifier">bind_handler</span><span class="error">`</span><span class="special">]</span> <span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">forward</span> <span class="special">&lt;</span><span class="identifier">ReadHandler</span><span class="special">&gt;</span> <span class="special">(</span><span class="identifier">handler</span><span class="special">),</span>
+        <span class="identifier">bind_handler</span> <span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">forward</span> <span class="special">&lt;</span><span class="identifier">ReadHandler</span><span class="special">&gt;</span> <span class="special">(</span><span class="identifier">handler</span><span class="special">),</span>
             <span class="identifier">net</span><span class="special">::</span><span class="identifier">error</span><span class="special">::</span><span class="identifier">operation_aborted</span><span class="special">,</span> <span class="number">0</span><span class="special">));</span>
 <span class="special">}</span>
 </pre>

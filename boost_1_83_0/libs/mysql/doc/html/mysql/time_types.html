@@ -182,7 +182,9 @@
 <pre class="programlisting"><span class="comment">// This change has session scope. All operations after this query</span>
 <span class="comment">// will now use UTC for TIMESTAMPs. Other sessions will not see the change.</span>
 <span class="comment">// If you need to reconnect the connection, you need to run this again.</span>
-<span class="identifier">conn</span><span class="special">.</span><span class="identifier">execute</span><span class="special">(</span><span class="string">"SET @time_zone = 'UTC'"</span><span class="special">,</span> <span class="identifier">result</span><span class="special">);</span>
+<span class="comment">// If your MySQL server supports named time zones, you can also use</span>
+<span class="comment">// "SET time_zone = 'UTC'"</span>
+<span class="identifier">conn</span><span class="special">.</span><span class="identifier">execute</span><span class="special">(</span><span class="string">"SET time_zone = '+00:00'"</span><span class="special">,</span> <span class="identifier">result</span><span class="special">);</span>
 </pre>
 <p>
       With this, the insertion code can look like:
@@ -191,7 +193,7 @@
 <span class="comment">// For the sake of example, we will use the current timestamp</span>
 <span class="identifier">datetime</span> <span class="identifier">event_timestamp</span> <span class="special">=</span> <span class="identifier">datetime</span><span class="special">::</span><span class="identifier">now</span><span class="special">();</span>
 
-<span class="comment">// event_timestamp will be interpreted as UTC if you have run SET @time_zone</span>
+<span class="comment">// event_timestamp will be interpreted as UTC if you have run SET time_zone</span>
 <span class="identifier">conn</span><span class="special">.</span><span class="identifier">execute</span><span class="special">(</span><span class="identifier">insert_stmt</span><span class="special">.</span><span class="identifier">bind</span><span class="special">(</span><span class="identifier">event_timestamp</span><span class="special">,</span> <span class="string">"Something happened"</span><span class="special">),</span> <span class="identifier">result</span><span class="special">);</span>
 </pre>
 <p>

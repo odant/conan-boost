@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__params_encoded_ref.clear"></a><a class="link" href="clear.html" title="params_encoded_ref::clear">params_encoded_ref::clear</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm37796"></a>
+          <a class="indexterm" name="idm33923"></a>
         </p>
 <p>
           Clear the contents of the container.
@@ -51,13 +51,13 @@
 <a name="url.ref.boost__urls__params_encoded_ref.clear.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__params_encoded_ref.clear.effects"></a></span><a class="link" href="clear.html#url.ref.boost__urls__params_encoded_ref.clear.effects">Effects</a>
         </h6>
-<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__params_encoded_ref</span><span class="special">.</span><span class="identifier">url</span> <span class="error">`</span><span class="identifier">url</span><span class="error">`</span><span class="special">]().[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url_base</span><span class="special">.</span><span class="identifier">remove_query</span> <span class="error">`</span><span class="identifier">remove_query</span><span class="error">`</span><span class="special">]();</span>
+<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">url</span><span class="special">().</span><span class="identifier">remove_query</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__params_encoded_ref.clear.h3"></a>
           <span class="phrase"><a name="url.ref.boost__urls__params_encoded_ref.clear.postconditions"></a></span><a class="link" href="clear.html#url.ref.boost__urls__params_encoded_ref.clear.postconditions">Postconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__params_encoded_ref</span><span class="special">.</span><span class="identifier">empty</span> <span class="error">`</span><span class="identifier">empty</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="keyword">true</span> <span class="special">&amp;&amp;</span> <span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__params_encoded_ref</span><span class="special">.</span><span class="identifier">url</span> <span class="error">`</span><span class="identifier">url</span><span class="error">`</span><span class="special">]().[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">has_query</span> <span class="error">`</span><span class="identifier">has_query</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="keyword">false</span>
+<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">empty</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">true</span> <span class="special">&amp;&amp;</span> <span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">url</span><span class="special">().</span><span class="identifier">has_query</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">false</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__params_encoded_ref.clear.h4"></a>

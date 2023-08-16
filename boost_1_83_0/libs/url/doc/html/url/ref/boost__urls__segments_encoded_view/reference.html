@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__segments_encoded_view.reference"></a><a class="link" href="reference.html" title="segments_encoded_view::reference">segments_encoded_view::reference</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm70179"></a>
+          <a class="indexterm" name="idm61837"></a>
         </p>
 <p>
           (Inherited from <a class="link" href="../boost__urls__segments_encoded_base.html" title="segments_encoded_base"><code class="computeroutput"><span class="identifier">segments_encoded_base</span></code></a>)
@@ -536,7 +536,7 @@
 <tr>
 <td>
                   <p>
-                    <span class="bold"><strong><a class="link" href="../boost__urls__pct_string_view/operator_star_.html" title="pct_string_view::operator*">operator*</a></strong></span>
+                    <span class="bold"><strong><a class="link" href="../boost__urls__pct_string_view/operator__star_.html" title="pct_string_view::operator*">operator*</a></strong></span>
                   </p>
                 </td>
 <td>
@@ -548,7 +548,7 @@
 <tr>
 <td>
                   <p>
-                    <span class="bold"><strong><a class="link" href="../boost__urls__pct_string_view/operator_lb__rb_.html" title="pct_string_view::operator[]">operator[]</a></strong></span>
+                    <span class="bold"><strong><a class="link" href="../boost__urls__pct_string_view/operator__lb__rb_.html" title="pct_string_view::operator[]">operator[]</a></strong></span>
                   </p>
                 </td>
 <td>
@@ -834,11 +834,11 @@
 </tr></tbody>
 </table></div>
 <p>
-          Objects of this type behave like a core::string_view and have the same
-          interface, but offer an additional invariant: they can only be constructed
-          from strings containing valid percent-escapes. Attempting construction
-          from a string containing invalid or malformed percent escapes results in
-          an exception.
+          Objects of this type behave like a <code class="computeroutput"><span class="identifier">core</span><span class="special">::</span><span class="identifier">string_view</span></code>
+          and have the same interface, but offer an additional invariant: they can
+          only be constructed from strings containing valid percent-escapes. Attempting
+          construction from a string containing invalid or malformed percent escapes
+          results in an exception.
         </p>
 <h6>
 <a name="url.ref.boost__urls__segments_encoded_view.reference.h7"></a>
@@ -846,14 +846,14 @@
         </h6>
 <p>
           The following operators are supported between <a class="link" href="../boost__urls__pct_string_view.html" title="pct_string_view"><code class="computeroutput"><span class="identifier">pct_string_view</span></code></a> and any object
-          that is convertible to core::string_view
+          that is convertible to <code class="computeroutput"><span class="identifier">core</span><span class="special">::</span><span class="identifier">string_view</span></code>
         </p>
-<pre class="programlisting"><span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">==(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">],</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
-<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">!=(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">],</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
-<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&lt;=(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">],</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
-<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&lt;</span> <span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">],</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
-<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&gt;</span> <span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">],</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
-<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&gt;=(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">],</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">pct_string_view</span> <span class="error">`</span><span class="identifier">pct_string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
+<pre class="programlisting"><span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">==(</span> <span class="identifier">pct_string_view</span><span class="special">,</span> <span class="identifier">pct_string_view</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
+<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">!=(</span> <span class="identifier">pct_string_view</span><span class="special">,</span> <span class="identifier">pct_string_view</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
+<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&lt;=(</span> <span class="identifier">pct_string_view</span><span class="special">,</span> <span class="identifier">pct_string_view</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
+<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&lt;</span> <span class="special">(</span> <span class="identifier">pct_string_view</span><span class="special">,</span> <span class="identifier">pct_string_view</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
+<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&gt;</span> <span class="special">(</span> <span class="identifier">pct_string_view</span><span class="special">,</span> <span class="identifier">pct_string_view</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
+<span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">&gt;=(</span> <span class="identifier">pct_string_view</span><span class="special">,</span> <span class="identifier">pct_string_view</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_encoded_view.reference.h8"></a>

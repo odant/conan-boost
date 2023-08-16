@@ -362,8 +362,7 @@
                 </p>
               </th>
 </tr></thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>
                 <p>
                   <span class="bold"><strong><a class="link" href="boost__urls__segments_encoded_view/parse_path.html" title="segments_encoded_view::parse_path">parse_path</a></strong></span>
@@ -374,26 +373,7 @@
                   Parse a string and return an encoded segment view.
                 </p>
               </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <span class="bold"><strong><a class="link" href="../../">segments_encoded_ref</a></strong></span>
-                </p>
-              </td>
-<td>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <span class="bold"><strong><a class="link" href="../../">url_view_base</a></strong></span>
-                </p>
-              </td>
-<td>
-              </td>
-</tr>
-</tbody>
+</tr></tbody>
 </table></div>
 <h5>
 <a name="url.ref.boost__urls__segments_encoded_view.h5"></a>
@@ -412,7 +392,7 @@
       </h5>
 <pre class="programlisting"><span class="identifier">url_view</span> <span class="identifier">u</span><span class="special">(</span> <span class="string">"/path/to/file.txt"</span> <span class="special">);</span>
 
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_encoded_view</span><span class="special">.</span><span class="identifier">segments_encoded_view</span> <span class="error">`</span><span class="identifier">segments_encoded_view</span><span class="error">`</span><span class="special">]</span> <span class="identifier">ps</span> <span class="special">=</span> <span class="identifier">u</span><span class="special">.</span><span class="identifier">encoded_segments</span><span class="special">();</span>
+<span class="identifier">segments_encoded_view</span> <span class="identifier">ps</span> <span class="special">=</span> <span class="identifier">u</span><span class="special">.</span><span class="identifier">encoded_segments</span><span class="special">();</span>
 
 <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">ps</span><span class="special">.</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">data</span><span class="special">()</span> <span class="special">==</span> <span class="identifier">u</span><span class="special">.</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">data</span><span class="special">()</span> <span class="special">);</span>
 </pre>

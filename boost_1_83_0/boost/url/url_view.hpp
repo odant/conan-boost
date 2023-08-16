@@ -24,7 +24,7 @@ namespace urls {
     strings constructed from a parsed, external
     character buffer whose storage is managed
     by the caller. That is, it acts like a
-    @ref core::string_view in terms of ownership.
+    `core::string_view` in terms of ownership.
     The caller is responsible for ensuring
     that the lifetime of the underlying
     character buffer extends until it is no
@@ -204,7 +204,12 @@ public:
             std::is_convertible<
                 String,
                 core::string_view
-                    >::value>::type
+                    >::value &&
+            !std::is_convertible<
+                String*,
+                url_view_base*
+                    >::value
+            >::type
 #endif
     >
     url_view(

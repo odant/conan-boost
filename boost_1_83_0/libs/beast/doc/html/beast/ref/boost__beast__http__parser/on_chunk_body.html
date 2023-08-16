@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__http__parser.on_chunk_body"></a><a class="link" href="on_chunk_body.html" title="http::parser::on_chunk_body">http::parser::on_chunk_body</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm46419"></a>
+          <a class="indexterm" name="idm45200"></a>
         </p>
 <p>
           Set a callback to be invoked on chunk body data.
@@ -62,11 +62,11 @@
           <span class="phrase"><a name="beast.ref.boost__beast__http__parser.on_chunk_body.example"></a></span><a class="link" href="on_chunk_body.html#beast.ref.boost__beast__http__parser.on_chunk_body.example">Example</a>
         </h6>
 <pre class="programlisting"><span class="keyword">auto</span> <span class="identifier">callback</span> <span class="special">=</span>
-    <span class="special">[](</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">uint64_t</span> <span class="identifier">remain</span><span class="special">,</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__string_view</span> <span class="error">`</span><span class="identifier">string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__field</span> <span class="error">`</span><span class="identifier">body</span><span class="error">`</span><span class="special">],</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]&amp;</span> <span class="identifier">ec</span><span class="special">)</span>
+    <span class="special">[](</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">uint64_t</span> <span class="identifier">remain</span><span class="special">,</span> <span class="identifier">string_view</span> <span class="identifier">body</span><span class="special">,</span> <span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">)</span>
     <span class="special">{</span>
         <span class="comment">//...</span>
     <span class="special">};</span>
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__parser</span><span class="special">.</span><span class="identifier">parser</span> <span class="error">`</span><span class="identifier">parser</span><span class="error">`</span><span class="special">].</span><span class="identifier">on_chunk_body</span><span class="special">(</span><span class="identifier">callback</span><span class="special">);</span>
+<span class="identifier">parser</span><span class="special">.</span><span class="identifier">on_chunk_body</span><span class="special">(</span><span class="identifier">callback</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="beast.ref.boost__beast__http__parser.on_chunk_body.h3"></a>
@@ -101,10 +101,10 @@
                     signature:
                   </p>
 <pre class="table-programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span>
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__parser</span><span class="special">.</span><span class="identifier">on_chunk_header</span> <span class="error">`</span><span class="identifier">on_chunk_header</span><span class="error">`</span><span class="special">](</span>
+<span class="identifier">on_chunk_header</span><span class="special">(</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">uint64_t</span> <span class="identifier">remain</span><span class="special">,</span>       <span class="comment">// Octets remaining in this chunk, includes `body`</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__string_view</span> <span class="error">`</span><span class="identifier">string_view</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__field</span> <span class="error">`</span><span class="identifier">body</span><span class="error">`</span><span class="special">],</span>           <span class="comment">// A buffer holding some or all of the remainder of the chunk body</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]&amp;</span> <span class="identifier">ec</span><span class="special">);</span>            <span class="comment">// May be set by the callback to indicate an error</span>
+    <span class="identifier">string_view</span> <span class="identifier">body</span><span class="special">,</span>           <span class="comment">// A buffer holding some or all of the remainder of the chunk body</span>
+    <span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">);</span>            <span class="comment">// May be set by the callback to indicate an error</span>
 </pre>
                 </td>
 </tr></tbody>

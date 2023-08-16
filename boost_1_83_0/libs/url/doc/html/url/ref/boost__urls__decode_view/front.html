@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__decode_view.front"></a><a class="link" href="front.html" title="decode_view::front">decode_view::front</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm24998"></a>
+          <a class="indexterm" name="idm23315"></a>
         </p>
 <p>
           Return the first character.
@@ -44,13 +44,13 @@
 <a name="url.ref.boost__urls__decode_view.front.h1"></a>
           <span class="phrase"><a name="url.ref.boost__urls__decode_view.front.example"></a></span><a class="link" href="front.html#url.ref.boost__urls__decode_view.front.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">decode_view</span> <span class="error">`</span><span class="identifier">decode_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"Program%20Files"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">front</span> <span class="error">`</span><span class="identifier">front</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="char">'P'</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">decode_view</span><span class="special">(</span> <span class="string">"Program%20Files"</span> <span class="special">).</span><span class="identifier">front</span><span class="special">()</span> <span class="special">==</span> <span class="char">'P'</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__decode_view.front.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__decode_view.front.preconditions"></a></span><a class="link" href="front.html#url.ref.boost__urls__decode_view.front.preconditions">Preconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">not</span> <span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">empty</span> <span class="error">`</span><span class="identifier">empty</span><span class="error">`</span><span class="special">]()</span>
+<pre class="programlisting"><span class="keyword">not</span> <span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">empty</span><span class="special">()</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__decode_view.front.h3"></a>

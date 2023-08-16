@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__http__async_write_some"></a><a class="link" href="boost__beast__http__async_write_some.html" title="http::async_write_some">http::async_write_some</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm81926"></a>
+        <a class="indexterm" name="idm79481"></a>
       </p>
 <p>
         Write part of a message to a stream asynchronously using a serializer.
@@ -147,7 +147,7 @@
                   must be:
                 </p>
 <pre class="table-programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__error</span> <span class="error">`</span><span class="identifier">error</span><span class="error">`</span><span class="special">],</span>        <span class="comment">// result of operation</span>
+    <span class="identifier">error_code</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">error</span><span class="special">,</span>        <span class="comment">// result of operation</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">bytes_transferred</span>   <span class="comment">// the number of bytes written to the stream</span>
 <span class="special">);</span>
 </pre>

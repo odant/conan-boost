@@ -29,7 +29,7 @@
         segments_view</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm69448"></a>
+          <a class="indexterm" name="idm61269"></a>
         </p>
 <p>
           Conversion.
@@ -55,13 +55,13 @@
 <a name="url.ref.boost__urls__segments_encoded_view.operator_segments_view.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_encoded_view.operator_segments_view.example"></a></span><a class="link" href="operator_segments_view.html#url.ref.boost__urls__segments_encoded_view.operator_segments_view.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">segments_view</span> <span class="identifier">ps</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_encoded_view</span><span class="special">.</span><span class="identifier">parse_path</span> <span class="error">`</span><span class="identifier">parse_path</span><span class="error">`</span><span class="special">](</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">value</span><span class="special">();</span>
+<pre class="programlisting"><span class="identifier">segments_view</span> <span class="identifier">ps</span> <span class="special">=</span> <span class="identifier">parse_path</span><span class="special">(</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">value</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_encoded_view.operator_segments_view.h3"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_encoded_view.operator_segments_view.postconditions"></a></span><a class="link" href="operator_segments_view.html#url.ref.boost__urls__segments_encoded_view.operator_segments_view.postconditions">Postconditions</a>
         </h6>
-<pre class="programlisting"><span class="identifier">segments_view</span><span class="special">(</span> <span class="special">*</span><span class="keyword">this</span> <span class="special">).</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">data</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_encoded_view</span><span class="special">.</span><span class="identifier">buffer</span> <span class="error">`</span><span class="identifier">buffer</span><span class="error">`</span><span class="special">]().[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_string_view</span><span class="special">.</span><span class="identifier">data</span> <span class="error">`</span><span class="identifier">data</span><span class="error">`</span><span class="special">]()</span>
+<pre class="programlisting"><span class="identifier">segments_view</span><span class="special">(</span> <span class="special">*</span><span class="keyword">this</span> <span class="special">).</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">data</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">buffer</span><span class="special">().</span><span class="identifier">data</span><span class="special">()</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_encoded_view.operator_segments_view.h4"></a>

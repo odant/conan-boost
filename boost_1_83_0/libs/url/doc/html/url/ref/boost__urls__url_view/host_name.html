@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__url_view.host_name"></a><a class="link" href="host_name.html" title="url_view::host_name">url_view::host_name</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm179108"></a>
+          <a class="indexterm" name="idm135766"></a>
         </p>
 <p>
           Return the host name.
@@ -56,7 +56,7 @@
 <a name="url.ref.boost__urls__url_view.host_name.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_view.host_name.example"></a></span><a class="link" href="host_name.html#url.ref.boost__urls__url_view.host_name.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"https://www%2droot.example.com/"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">host_name</span> <span class="error">`</span><span class="identifier">host_name</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"www-root.example.com"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"https://www%2droot.example.com/"</span> <span class="special">).</span><span class="identifier">host_name</span><span class="special">()</span> <span class="special">==</span> <span class="string">"www-root.example.com"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_view.host_name.h3"></a>
@@ -77,11 +77,11 @@
 <a name="url.ref.boost__urls__url_view.host_name.h5"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_view.host_name.bnf"></a></span><a class="link" href="host_name.html#url.ref.boost__urls__url_view.host_name.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">host</span> <span class="error">`</span><span class="identifier">host</span><span class="error">`</span><span class="special">]</span>        <span class="special">=</span> <span class="identifier">IP</span><span class="special">-</span><span class="identifier">literal</span> <span class="special">/</span> <span class="identifier">IPv4address</span> <span class="special">/</span> <span class="identifier">reg</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__host_type</span> <span class="error">`</span><span class="identifier">name</span><span class="error">`</span><span class="special">]</span>
+<pre class="programlisting"><span class="identifier">host</span>        <span class="special">=</span> <span class="identifier">IP</span><span class="special">-</span><span class="identifier">literal</span> <span class="special">/</span> <span class="identifier">IPv4address</span> <span class="special">/</span> <span class="identifier">reg</span><span class="special">-</span><span class="identifier">name</span>
 
 <span class="identifier">IP</span><span class="special">-</span><span class="identifier">literal</span>  <span class="special">=</span> <span class="string">"["</span> <span class="special">(</span> <span class="identifier">IPv6address</span> <span class="special">/</span> <span class="identifier">IPvFuture</span>  <span class="special">)</span> <span class="string">"]"</span>
 
-<span class="identifier">reg</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__host_type</span> <span class="error">`</span><span class="identifier">name</span><span class="error">`</span><span class="special">]</span>    <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="string">"-"</span> <span class="special">/</span> <span class="string">"."</span> <span class="special">)</span>
+<span class="identifier">reg</span><span class="special">-</span><span class="identifier">name</span>    <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="string">"-"</span> <span class="special">/</span> <span class="string">"."</span> <span class="special">)</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_view.host_name.h6"></a>

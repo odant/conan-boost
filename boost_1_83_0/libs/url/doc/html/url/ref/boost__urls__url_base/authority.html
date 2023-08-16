@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__url_base.authority"></a><a class="link" href="authority.html" title="url_base::authority">url_base::authority</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm165908"></a>
+          <a class="indexterm" name="idm127052"></a>
         </p>
 <p>
           (Inherited from <a class="link" href="../boost__urls__url_view_base.html" title="url_view_base"><code class="computeroutput"><span class="identifier">url_view_base</span></code></a>)
@@ -54,7 +54,7 @@
 <a name="url.ref.boost__urls__url_base.authority.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_base.authority.example"></a></span><a class="link" href="authority.html#url.ref.boost__urls__url_base.authority.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">authority_view</span> <span class="identifier">a</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"https://www.example.com:8080/index.htm"</span> <span class="special">).</span><span class="identifier">authority</span><span class="special">();</span>
+<pre class="programlisting"><span class="identifier">authority_view</span> <span class="identifier">a</span> <span class="special">=</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"https://www.example.com:8080/index.htm"</span> <span class="special">).</span><span class="identifier">authority</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_base.authority.h3"></a>
@@ -75,7 +75,7 @@
 <a name="url.ref.boost__urls__url_base.authority.h5"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_base.authority.bnf"></a></span><a class="link" href="authority.html#url.ref.boost__urls__url_base.authority.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_base</span><span class="special">.</span><span class="identifier">authority</span> <span class="error">`</span><span class="identifier">authority</span><span class="error">`</span><span class="special">]</span>   <span class="special">=</span> <span class="special">[</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_base</span><span class="special">.</span><span class="identifier">userinfo</span> <span class="error">`</span><span class="identifier">userinfo</span><span class="error">`</span><span class="special">]</span> <span class="string">"@"</span> <span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_base</span><span class="special">.</span><span class="identifier">host</span> <span class="error">`</span><span class="identifier">host</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span> <span class="string">":"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_base</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<pre class="programlisting"><span class="identifier">authority</span>   <span class="special">=</span> <span class="special">[</span> <span class="identifier">userinfo</span> <span class="string">"@"</span> <span class="special">]</span> <span class="identifier">host</span> <span class="special">[</span> <span class="string">":"</span> <span class="identifier">port</span> <span class="special">]</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_base.authority.h6"></a>

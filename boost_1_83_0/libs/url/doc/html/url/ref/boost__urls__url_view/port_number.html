@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__url_view.port_number"></a><a class="link" href="port_number.html" title="url_view::port_number">url_view::port_number</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm179695"></a>
+          <a class="indexterm" name="idm136357"></a>
         </p>
 <p>
           Return the port.
@@ -52,7 +52,7 @@
 <a name="url.ref.boost__urls__url_view.port_number.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_view.port_number.example"></a></span><a class="link" href="port_number.html#url.ref.boost__urls__url_view.port_number.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"http://localhost.com:8080"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">port_number</span> <span class="error">`</span><span class="identifier">port_number</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="number">8080</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"http://localhost.com:8080"</span> <span class="special">).</span><span class="identifier">port_number</span><span class="special">()</span> <span class="special">==</span> <span class="number">8080</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_view.port_number.h3"></a>
@@ -73,7 +73,7 @@
 <a name="url.ref.boost__urls__url_view.port_number.h5"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_view.port_number.bnf"></a></span><a class="link" href="port_number.html#url.ref.boost__urls__url_view.port_number.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span>        <span class="special">=</span> <span class="special">*</span><span class="identifier">DIGIT</span>
+<pre class="programlisting"><span class="identifier">port</span>        <span class="special">=</span> <span class="special">*</span><span class="identifier">DIGIT</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_view.port_number.h6"></a>

@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__grammar__not_empty_rule"></a><a class="link" href="boost__urls__grammar__not_empty_rule.html" title="grammar::not_empty_rule">grammar::not_empty_rule</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm206345"></a>
+        <a class="indexterm" name="idm156066"></a>
       </p>
 <p>
         Match another rule, if the result is not empty.
@@ -67,8 +67,8 @@
 <p>
         Rules are used with the function <a class="link" href="boost__urls__grammar__parse.html" title="grammar::parse"><code class="computeroutput"><span class="identifier">parse</span></code></a>.
       </p>
-<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">decode_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__parse</span> <span class="error">`</span><span class="identifier">parse</span><span class="error">`</span><span class="special">](</span> <span class="string">"Program%20Files"</span> <span class="special">,</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__not_empty_rule</span> <span class="error">`</span><span class="identifier">not_empty_rule</span><span class="error">`</span><span class="special">](</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__pct_encoded_rule</span> <span class="error">`</span><span class="identifier">pct_encoded_rule</span><span class="error">`</span><span class="special">](</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__unreserved_chars</span> <span class="error">`</span><span class="identifier">unreserved_chars</span><span class="error">`</span><span class="special">]</span> <span class="special">)</span> <span class="special">)</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">decode_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="identifier">parse</span><span class="special">(</span> <span class="string">"Program%20Files"</span> <span class="special">,</span>
+    <span class="identifier">not_empty_rule</span><span class="special">(</span> <span class="identifier">pct_encoded_rule</span><span class="special">(</span> <span class="identifier">unreserved_chars</span> <span class="special">)</span> <span class="special">)</span> <span class="special">);</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__grammar__not_empty_rule.h4"></a>

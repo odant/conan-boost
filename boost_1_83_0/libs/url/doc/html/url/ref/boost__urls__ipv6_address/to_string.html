@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__ipv6_address.to_string"></a><a class="link" href="to_string.html" title="ipv6_address::to_string">ipv6_address::to_string</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm28135"></a>
+          <a class="indexterm" name="idm26211"></a>
         </p>
 <p>
           Return the address as a string.
@@ -57,12 +57,12 @@
 <a name="url.ref.boost__urls__ipv6_address.to_string.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__ipv6_address.to_string.example"></a></span><a class="link" href="to_string.html#url.ref.boost__urls__ipv6_address.to_string.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__ipv6_address</span><span class="special">.</span><span class="identifier">bytes_type</span> <span class="error">`</span><span class="identifier">ipv6_address</span><span class="special">::</span><span class="identifier">bytes_type</span><span class="error">`</span><span class="special">]</span> <span class="identifier">b</span> <span class="special">=</span> <span class="special">{{</span>
+<pre class="programlisting"><span class="identifier">ipv6_address</span><span class="special">::</span><span class="identifier">bytes_type</span> <span class="identifier">b</span> <span class="special">=</span> <span class="special">{{</span>
         <span class="number">0</span><span class="special">,</span> <span class="number">1</span><span class="special">,</span> <span class="number">0</span><span class="special">,</span> <span class="number">2</span><span class="special">,</span> <span class="number">0</span><span class="special">,</span> <span class="number">3</span><span class="special">,</span> <span class="number">0</span><span class="special">,</span> <span class="number">4</span><span class="special">,</span>
         <span class="number">0</span><span class="special">,</span> <span class="number">5</span><span class="special">,</span> <span class="number">0</span><span class="special">,</span> <span class="number">6</span><span class="special">,</span> <span class="number">0</span><span class="special">,</span> <span class="number">7</span><span class="special">,</span> <span class="number">0</span><span class="special">,</span> <span class="number">8</span> <span class="special">}};</span>
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__ipv6_address</span><span class="special">.</span><span class="identifier">ipv6_address</span> <span class="error">`</span><span class="identifier">ipv6_address</span><span class="error">`</span><span class="special">]</span> <span class="identifier">a</span><span class="special">(</span><span class="identifier">b</span><span class="special">);</span>
+<span class="identifier">ipv6_address</span> <span class="identifier">a</span><span class="special">(</span><span class="identifier">b</span><span class="special">);</span>
 <span class="identifier">assert</span><span class="special">(</span><span class="identifier">a</span><span class="special">.</span><span class="identifier">to_string</span><span class="special">()</span> <span class="special">==</span> <span class="string">"1:2:3:4:5:6:7:8"</span> <span class="special">);</span>
-<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">ipv4_address</span><span class="special">(</span><span class="number">0x01020304</span><span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__ipv6_address</span><span class="special">.</span><span class="identifier">to_string</span> <span class="error">`</span><span class="identifier">to_string</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"1.2.3.4"</span> <span class="special">);</span>
+<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">ipv4_address</span><span class="special">(</span><span class="number">0x01020304</span><span class="special">).</span><span class="identifier">to_string</span><span class="special">()</span> <span class="special">==</span> <span class="string">"1.2.3.4"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__ipv6_address.to_string.h3"></a>

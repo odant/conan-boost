@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__buffers_range"></a><a class="link" href="boost__beast__buffers_range.html" title="buffers_range">buffers_range</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm72095"></a>
+        <a class="indexterm" name="idm69871"></a>
       </p>
 <p>
         Returns an iterable range representing a buffer sequence.
@@ -66,10 +66,10 @@
         of the range object:
       </p>
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">BufferSequence</span><span class="special">&gt;</span>
-<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">buffer_sequence_size</span> <span class="special">(</span><span class="identifier">BufferSequence</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers</span> <span class="error">`</span><span class="identifier">buffers</span><span class="error">`</span><span class="special">])</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">buffer_sequence_size</span> <span class="special">(</span><span class="identifier">BufferSequence</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">buffers</span><span class="special">)</span>
 <span class="special">{</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">size</span> <span class="special">=</span> <span class="number">0</span><span class="special">;</span>
-    <span class="keyword">for</span> <span class="special">(</span> <span class="keyword">auto</span> <span class="keyword">const</span> <span class="identifier">buffer</span> <span class="special">:</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers_range</span> <span class="error">`</span><span class="identifier">buffers_range</span><span class="error">`</span><span class="special">]</span> <span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers</span> <span class="error">`</span><span class="identifier">buffers</span><span class="error">`</span><span class="special">]))</span>
+    <span class="keyword">for</span> <span class="special">(</span> <span class="keyword">auto</span> <span class="keyword">const</span> <span class="identifier">buffer</span> <span class="special">:</span> <span class="identifier">buffers_range</span> <span class="special">(</span><span class="identifier">buffers</span><span class="special">))</span>
         <span class="identifier">size</span> <span class="special">+=</span> <span class="identifier">buffer</span><span class="special">.</span><span class="identifier">size</span><span class="special">();</span>
     <span class="keyword">return</span> <span class="identifier">size</span><span class="special">;</span>
 <span class="special">}</span>

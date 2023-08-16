@@ -462,7 +462,7 @@
 <tr>
 <td>
                 <p>
-                  <span class="bold"><strong><a class="link" href="boost__urls__authority_view/operator_not__eq_.html" title="authority_view::operator!=">operator!=</a></strong></span>
+                  <span class="bold"><strong><a class="link" href="boost__urls__authority_view/operator__not__eq_.html" title="authority_view::operator!=">operator!=</a></strong></span>
                 </p>
               </td>
 <td>
@@ -501,7 +501,7 @@
 <tr>
 <td>
                 <p>
-                  <span class="bold"><strong><a class="link" href="boost__urls__authority_view/operator_gt_.html" title="authority_view::operator&gt;">operator&gt;</a></strong></span>
+                  <span class="bold"><strong><a class="link" href="boost__urls__authority_view/operator__gt_.html" title="authority_view::operator&gt;">operator&gt;</a></strong></span>
                 </p>
               </td>
 <td>
@@ -514,7 +514,7 @@
 <tr>
 <td>
                 <p>
-                  <span class="bold"><strong><a class="link" href="boost__urls__authority_view/operator_gt__eq_.html" title="authority_view::operator&gt;=">operator&gt;=</a></strong></span>
+                  <span class="bold"><strong><a class="link" href="boost__urls__authority_view/operator__gt__eq_.html" title="authority_view::operator&gt;=">operator&gt;=</a></strong></span>
                 </p>
               </td>
 <td>
@@ -545,9 +545,9 @@
 <p>
         Objects of this type represent valid authority strings constructed from a
         parsed, external character buffer whose storage is managed by the caller.
-        That is, it acts like a core::string_view in terms of ownership. The caller
-        is responsible for ensuring that the lifetime of the underlying character
-        buffer extends until it is no longer referenced.
+        That is, it acts like a <code class="computeroutput"><span class="identifier">core</span><span class="special">::</span><span class="identifier">string_view</span></code>
+        in terms of ownership. The caller is responsible for ensuring that the lifetime
+        of the underlying character buffer extends until it is no longer referenced.
       </p>
 <h5>
 <a name="url.ref.boost__urls__authority_view.h4"></a>
@@ -559,7 +559,7 @@
         and throws an exception on error. Upon success, the constructed object points
         to the passed character buffer; ownership is not transferred.
       </p>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">authority_view</span> <span class="error">`</span><span class="identifier">authority_view</span><span class="error">`</span><span class="special">]</span> <span class="identifier">a</span><span class="special">(</span> <span class="string">"user:pass@www.example.com:8080"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">authority_view</span> <span class="identifier">a</span><span class="special">(</span> <span class="string">"user:pass@www.example.com:8080"</span> <span class="special">);</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__authority_view.h5"></a>
@@ -572,22 +572,22 @@
         it contain an error. The error can be converted to an exception by the caller
         if desired:
       </p>
-<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">authority_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__parse_authority</span> <span class="error">`</span><span class="identifier">parse_authority</span><span class="error">`</span><span class="special">](</span> <span class="string">"user:pass@www.example.com:8080"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">authority_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="identifier">parse_authority</span><span class="special">(</span> <span class="string">"user:pass@www.example.com:8080"</span> <span class="special">);</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__authority_view.h6"></a>
         <span class="phrase"><a name="url.ref.boost__urls__authority_view.bnf"></a></span><a class="link" href="boost__urls__authority_view.html#url.ref.boost__urls__authority_view.bnf">BNF</a>
       </h5>
-<pre class="programlisting"><span class="identifier">authority</span>     <span class="special">=</span> <span class="special">[</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">userinfo</span> <span class="error">`</span><span class="identifier">userinfo</span><span class="error">`</span><span class="special">]</span> <span class="string">"@"</span> <span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">host</span> <span class="error">`</span><span class="identifier">host</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span> <span class="string">":"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<pre class="programlisting"><span class="identifier">authority</span>     <span class="special">=</span> <span class="special">[</span> <span class="identifier">userinfo</span> <span class="string">"@"</span> <span class="special">]</span> <span class="identifier">host</span> <span class="special">[</span> <span class="string">":"</span> <span class="identifier">port</span> <span class="special">]</span>
 
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">userinfo</span> <span class="error">`</span><span class="identifier">userinfo</span><span class="error">`</span><span class="special">]</span>      <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">user</span> <span class="error">`</span><span class="identifier">user</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span> <span class="string">":"</span> <span class="special">[</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">password</span> <span class="error">`</span><span class="identifier">password</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span> <span class="special">]</span>
+<span class="identifier">userinfo</span>      <span class="special">=</span> <span class="identifier">user</span> <span class="special">[</span> <span class="string">":"</span> <span class="special">[</span> <span class="identifier">password</span> <span class="special">]</span> <span class="special">]</span>
 
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">user</span> <span class="error">`</span><span class="identifier">user</span><span class="error">`</span><span class="special">]</span>          <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="identifier">sub</span><span class="special">-</span><span class="identifier">delims</span> <span class="special">)</span>
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">password</span> <span class="error">`</span><span class="identifier">password</span><span class="error">`</span><span class="special">]</span>      <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="identifier">sub</span><span class="special">-</span><span class="identifier">delims</span> <span class="special">/</span> <span class="string">":"</span> <span class="special">)</span>
+<span class="identifier">user</span>          <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="identifier">sub</span><span class="special">-</span><span class="identifier">delims</span> <span class="special">)</span>
+<span class="identifier">password</span>      <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="identifier">sub</span><span class="special">-</span><span class="identifier">delims</span> <span class="special">/</span> <span class="string">":"</span> <span class="special">)</span>
 
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">host</span> <span class="error">`</span><span class="identifier">host</span><span class="error">`</span><span class="special">]</span>          <span class="special">=</span> <span class="identifier">IP</span><span class="special">-</span><span class="identifier">literal</span> <span class="special">/</span> <span class="identifier">IPv4address</span> <span class="special">/</span> <span class="identifier">reg</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__host_type</span> <span class="error">`</span><span class="identifier">name</span><span class="error">`</span><span class="special">]</span>
+<span class="identifier">host</span>          <span class="special">=</span> <span class="identifier">IP</span><span class="special">-</span><span class="identifier">literal</span> <span class="special">/</span> <span class="identifier">IPv4address</span> <span class="special">/</span> <span class="identifier">reg</span><span class="special">-</span><span class="identifier">name</span>
 
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span>          <span class="special">=</span> <span class="special">*</span><span class="identifier">DIGIT</span>
+<span class="identifier">port</span>          <span class="special">=</span> <span class="special">*</span><span class="identifier">DIGIT</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__authority_view.h7"></a>

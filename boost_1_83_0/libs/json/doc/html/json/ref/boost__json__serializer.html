@@ -35,7 +35,7 @@
         <span class="phrase"><a name="json.ref.boost__json__serializer.synopsis"></a></span><a class="link" href="boost__json__serializer.html#json.ref.boost__json__serializer.synopsis">Synopsis</a>
       </h5>
 <p>
-        Defined in header <code class="literal">&lt;<a href="https://github.com/cppalliance/json/blob/master/include/boost/json/serializer.hpp" target="_top">boost/json/serializer.hpp</a>&gt;</code>
+        Defined in header <code class="literal">&lt;<a href="https://github.com/boostorg/json/blob/master/include/boost/json/serializer.hpp" target="_top">boost/json/serializer.hpp</a>&gt;</code>
       </p>
 <pre class="programlisting"><span class="keyword">class</span> <span class="identifier">serializer</span>
 </pre>
@@ -146,7 +146,7 @@
       </p>
 <pre class="programlisting"><span class="keyword">void</span> <span class="identifier">print</span><span class="special">(</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream</span><span class="special">&amp;</span> <span class="identifier">os</span><span class="special">,</span> <span class="identifier">value</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">jv</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__json__serializer</span><span class="special">.</span><span class="identifier">serializer</span> <span class="error">`</span><span class="identifier">serializer</span><span class="error">`</span><span class="special">]</span> <span class="identifier">sr</span><span class="special">;</span>
+    <span class="identifier">serializer</span> <span class="identifier">sr</span><span class="special">;</span>
     <span class="identifier">sr</span><span class="special">.</span><span class="identifier">reset</span><span class="special">(</span> <span class="special">&amp;</span><span class="identifier">jv</span> <span class="special">);</span>
     <span class="keyword">while</span> <span class="special">(</span> <span class="special">!</span> <span class="identifier">sr</span><span class="special">.</span><span class="identifier">done</span><span class="special">()</span> <span class="special">)</span>
     <span class="special">{</span>
@@ -164,7 +164,7 @@
         The same instance may not be accessed concurrently.
       </p>
 <p>
-        Convenience header <code class="literal">&lt;<a href="https://github.com/cppalliance/json/blob/master/include/boost/json.hpp" target="_top">boost/json.hpp</a>&gt;</code>
+        Convenience header <code class="literal">&lt;<a href="https://github.com/boostorg/json/blob/master/include/boost/json.hpp" target="_top">boost/json.hpp</a>&gt;</code>
       </p>
 </div>
 <div class="copyright-footer">Copyright © 2019, 2020 Vinnie Falco<br>Copyright © 2020 Krystian Stasiowski<br>Copyright © 2022 Dmitry Arkhipov<p>

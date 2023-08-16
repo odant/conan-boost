@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__static_url_base.set_fragment"></a><a class="link" href="set_fragment.html" title="static_url_base::set_fragment">static_url_base::set_fragment</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm112660"></a>
+          <a class="indexterm" name="idm91067"></a>
         </p>
 <p>
           (Inherited from <a class="link" href="../boost__urls__url_base.html" title="url_base"><code class="computeroutput"><span class="identifier">url_base</span></code></a>)
@@ -57,13 +57,13 @@
 <a name="url.ref.boost__urls__static_url_base.set_fragment.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url_base.set_fragment.example"></a></span><a class="link" href="set_fragment.html#url.ref.boost__urls__static_url_base.set_fragment.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_base</span><span class="special">.</span><span class="identifier">url</span> <span class="error">`</span><span class="identifier">url</span><span class="error">`</span><span class="special">](</span> <span class="string">"?first=john&amp;last=doe"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url_base</span><span class="special">.</span><span class="identifier">set_encoded_fragment</span> <span class="error">`</span><span class="identifier">set_encoded_fragment</span><span class="error">`</span><span class="special">](</span> <span class="string">"john doe"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url_base</span><span class="special">.</span><span class="identifier">encoded_fragment</span> <span class="error">`</span><span class="identifier">encoded_fragment</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"john%20doe"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url</span><span class="special">(</span> <span class="string">"?first=john&amp;last=doe"</span> <span class="special">).</span><span class="identifier">set_encoded_fragment</span><span class="special">(</span> <span class="string">"john doe"</span> <span class="special">).</span><span class="identifier">encoded_fragment</span><span class="special">()</span> <span class="special">==</span> <span class="string">"john%20doe"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url_base.set_fragment.h3"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url_base.set_fragment.postconditions"></a></span><a class="link" href="set_fragment.html#url.ref.boost__urls__static_url_base.set_fragment.postconditions">Postconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url_base</span><span class="special">.</span><span class="identifier">has_fragment</span> <span class="error">`</span><span class="identifier">has_fragment</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="keyword">true</span> <span class="special">&amp;&amp;</span> <span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url_base</span><span class="special">.</span><span class="identifier">fragment</span> <span class="error">`</span><span class="identifier">fragment</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="identifier">s</span>
+<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">has_fragment</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">true</span> <span class="special">&amp;&amp;</span> <span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">fragment</span><span class="special">()</span> <span class="special">==</span> <span class="identifier">s</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url_base.set_fragment.h4"></a>
@@ -118,7 +118,7 @@
 <a name="url.ref.boost__urls__static_url_base.set_fragment.h7"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url_base.set_fragment.bnf"></a></span><a class="link" href="set_fragment.html#url.ref.boost__urls__static_url_base.set_fragment.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url_base</span><span class="special">.</span><span class="identifier">fragment</span> <span class="error">`</span><span class="identifier">fragment</span><span class="error">`</span><span class="special">]</span>    <span class="special">=</span> <span class="special">*(</span> <span class="identifier">pchar</span> <span class="special">/</span> <span class="string">"/"</span> <span class="special">/</span> <span class="string">"?"</span> <span class="special">)</span>
+<pre class="programlisting"><span class="identifier">fragment</span>    <span class="special">=</span> <span class="special">*(</span> <span class="identifier">pchar</span> <span class="special">/</span> <span class="string">"/"</span> <span class="special">/</span> <span class="string">"?"</span> <span class="special">)</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url_base.set_fragment.h8"></a>

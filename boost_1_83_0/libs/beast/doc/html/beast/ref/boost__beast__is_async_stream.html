@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__is_async_stream"></a><a class="link" href="boost__beast__is_async_stream.html" title="is_async_stream">is_async_stream</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm69314"></a>
+        <a class="indexterm" name="idm67307"></a>
       </p>
 <p>
         Determine if <code class="computeroutput"><span class="identifier">T</span></code> meets the
@@ -64,7 +64,7 @@
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">AsyncStream</span><span class="special">&gt;</span>
 <span class="keyword">void</span> <span class="identifier">f</span><span class="special">(</span><span class="identifier">AsyncStream</span><span class="special">&amp;</span> <span class="identifier">stream</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="keyword">static_assert</span> <span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__is_async_stream</span> <span class="error">`</span><span class="identifier">is_async_stream</span><span class="special">&lt;</span><span class="identifier">AsyncStream</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="error">`</span><span class="special">],</span>
+    <span class="keyword">static_assert</span> <span class="special">(</span><span class="identifier">is_async_stream</span><span class="special">&lt;</span><span class="identifier">AsyncStream</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span>
         <span class="string">"AsyncStream type requirements not met"</span> <span class="special">);</span>
 <span class="special">...</span>
 </pre>

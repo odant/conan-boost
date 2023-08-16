@@ -36,7 +36,7 @@
         <span class="phrase"><a name="json.ref.boost__json__value_stack.synopsis"></a></span><a class="link" href="boost__json__value_stack.html#json.ref.boost__json__value_stack.synopsis">Synopsis</a>
       </h5>
 <p>
-        Defined in header <code class="literal">&lt;<a href="https://github.com/cppalliance/json/blob/master/include/boost/json/value_stack.hpp" target="_top">boost/json/value_stack.hpp</a>&gt;</code>
+        Defined in header <code class="literal">&lt;<a href="https://github.com/boostorg/json/blob/master/include/boost/json/value_stack.hpp" target="_top">boost/json/value_stack.hpp</a>&gt;</code>
       </p>
 <pre class="programlisting"><span class="keyword">class</span> <span class="identifier">value_stack</span>
 </pre>
@@ -302,7 +302,7 @@
 
 <span class="comment">// Construct the value stack using a local buffer</span>
 <span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">temp</span><span class="special">[</span><span class="number">4096</span><span class="special">];</span>
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__json__value_stack</span><span class="special">.</span><span class="identifier">value_stack</span> <span class="error">`</span><span class="identifier">value_stack</span><span class="error">`</span><span class="special">]</span> <span class="identifier">st</span><span class="special">(</span> <span class="identifier">storage_ptr</span><span class="special">(),</span> <span class="identifier">temp</span><span class="special">,</span> <span class="keyword">sizeof</span> <span class="special">(</span><span class="identifier">temp</span><span class="special">)</span> <span class="special">);</span>
+<span class="identifier">value_stack</span> <span class="identifier">st</span><span class="special">(</span> <span class="identifier">storage_ptr</span><span class="special">(),</span> <span class="identifier">temp</span><span class="special">,</span> <span class="keyword">sizeof</span> <span class="special">(</span><span class="identifier">temp</span><span class="special">)</span> <span class="special">);</span>
 
 <span class="comment">// Create a static resource with a local initial buffer</span>
 <span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="identifier">buf</span><span class="special">[</span><span class="number">4096</span><span class="special">];</span>
@@ -329,7 +329,7 @@
 <span class="comment">// Pop the object from the stack and take ownership.</span>
 <span class="identifier">value</span> <span class="identifier">jv</span> <span class="special">=</span> <span class="identifier">st</span><span class="special">.</span><span class="identifier">release</span><span class="special">();</span>
 
-<span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__json__serialize</span> <span class="error">`</span><span class="identifier">serialize</span><span class="error">`</span><span class="special">](</span><span class="identifier">jv</span><span class="special">)</span> <span class="special">==</span> <span class="string">"{\"a\":1,\"b\":null,\"c\":\"hello\"}"</span> <span class="special">);</span>
+<span class="identifier">assert</span><span class="special">(</span> <span class="identifier">serialize</span><span class="special">(</span><span class="identifier">jv</span><span class="special">)</span> <span class="special">==</span> <span class="string">"{\"a\":1,\"b\":null,\"c\":\"hello\"}"</span> <span class="special">);</span>
 
 <span class="comment">// At this point we could re-use the stack by calling reset</span>
 </pre>
@@ -344,7 +344,7 @@
         functions of that instance.
       </p>
 <p>
-        Convenience header <code class="literal">&lt;<a href="https://github.com/cppalliance/json/blob/master/include/boost/json.hpp" target="_top">boost/json.hpp</a>&gt;</code>
+        Convenience header <code class="literal">&lt;<a href="https://github.com/boostorg/json/blob/master/include/boost/json.hpp" target="_top">boost/json.hpp</a>&gt;</code>
       </p>
 </div>
 <div class="copyright-footer">Copyright © 2019, 2020 Vinnie Falco<br>Copyright © 2020 Krystian Stasiowski<br>Copyright © 2022 Dmitry Arkhipov<p>

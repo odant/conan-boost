@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__http__message.prepare_payload"></a><a class="link" href="prepare_payload.html" title="http::message::prepare_payload">http::message::prepare_payload</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm40575"></a>
+          <a class="indexterm" name="idm39563"></a>
         </p>
 <p>
           Prepare the message payload fields for the body.
@@ -52,8 +52,8 @@
 <a name="beast.ref.boost__beast__http__message.prepare_payload.h2"></a>
           <span class="phrase"><a name="beast.ref.boost__beast__http__message.prepare_payload.example"></a></span><a class="link" href="prepare_payload.html#beast.ref.boost__beast__http__message.prepare_payload.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">request</span><span class="special">&lt;</span><span class="identifier">string_body</span><span class="special">&gt;</span> <span class="identifier">req</span><span class="special">{[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__verb</span> <span class="error">`</span><span class="identifier">verb</span><span class="special">::</span><span class="identifier">post</span><span class="error">`</span><span class="special">],</span> <span class="string">"/"</span> <span class="special">};</span>
-<span class="identifier">req</span><span class="special">.</span><span class="identifier">set</span><span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__field</span> <span class="error">`</span><span class="identifier">field</span><span class="special">::</span><span class="identifier">user_agent</span><span class="error">`</span><span class="special">],</span> <span class="string">"Beast"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">request</span><span class="special">&lt;</span><span class="identifier">string_body</span><span class="special">&gt;</span> <span class="identifier">req</span><span class="special">{</span><span class="identifier">verb</span><span class="special">::</span><span class="identifier">post</span><span class="special">,</span> <span class="string">"/"</span> <span class="special">};</span>
+<span class="identifier">req</span><span class="special">.</span><span class="identifier">set</span><span class="special">(</span><span class="identifier">field</span><span class="special">::</span><span class="identifier">user_agent</span><span class="special">,</span> <span class="string">"Beast"</span> <span class="special">);</span>
 <span class="identifier">req</span><span class="special">.</span><span class="identifier">body</span><span class="special">()</span> <span class="special">=</span> <span class="string">"Hello, world!"</span> <span class="special">;</span>
 <span class="identifier">req</span><span class="special">.</span><span class="identifier">prepare_payload</span><span class="special">();</span>
 </pre>

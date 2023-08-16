@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__http__is_body_reader"></a><a class="link" href="boost__beast__http__is_body_reader.html" title="http::is_body_reader">http::is_body_reader</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm77227"></a>
+        <a class="indexterm" name="idm74876"></a>
       </p>
 <p>
         Determine if a type has a nested <span class="emphasis"><em>BodyReader</em></span>.
@@ -102,9 +102,9 @@
         <span class="phrase"><a name="beast.ref.boost__beast__http__is_body_reader.example"></a></span><a class="link" href="boost__beast__http__is_body_reader.html#beast.ref.boost__beast__http__is_body_reader.example">Example</a>
       </h5>
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">bool</span> <span class="identifier">isRequest</span><span class="special">,</span> <span class="keyword">class</span> <span class="identifier">Body</span><span class="special">,</span> <span class="keyword">class</span> <span class="identifier">Fields</span><span class="special">&gt;</span>
-<span class="keyword">void</span> <span class="identifier">check_can_parse</span><span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__message</span> <span class="error">`</span><span class="identifier">message</span><span class="special">&lt;</span><span class="identifier">isRequest</span><span class="special">,</span> <span class="identifier">Body</span><span class="special">,</span> <span class="identifier">Fields</span><span class="special">&gt;</span><span class="error">`</span><span class="special">]&amp;)</span>
+<span class="keyword">void</span> <span class="identifier">check_can_parse</span><span class="special">(</span><span class="identifier">message</span><span class="special">&lt;</span><span class="identifier">isRequest</span><span class="special">,</span> <span class="identifier">Body</span><span class="special">,</span> <span class="identifier">Fields</span><span class="special">&gt;&amp;)</span>
 <span class="special">{</span>
-    <span class="keyword">static_assert</span> <span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__is_body_reader</span> <span class="error">`</span><span class="identifier">is_body_reader</span><span class="special">&lt;</span><span class="identifier">Body</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="error">`</span><span class="special">],</span>
+    <span class="keyword">static_assert</span> <span class="special">(</span><span class="identifier">is_body_reader</span><span class="special">&lt;</span><span class="identifier">Body</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span>
         <span class="string">"Cannot parse Body, no reader"</span> <span class="special">);</span>
 <span class="special">}</span>
 </pre>

@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__parse_uri"></a><a class="link" href="boost__urls__parse_uri.html" title="parse_uri">parse_uri</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm200080"></a>
+        <a class="indexterm" name="idm150806"></a>
       </p>
 <p>
         Return a reference to a parsed URL string.
@@ -59,13 +59,13 @@
 <a name="url.ref.boost__urls__parse_uri.h2"></a>
         <span class="phrase"><a name="url.ref.boost__urls__parse_uri.example"></a></span><a class="link" href="boost__urls__parse_uri.html#url.ref.boost__urls__parse_uri.example">Example</a>
       </h5>
-<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__parse_uri</span> <span class="error">`</span><span class="identifier">parse_uri</span><span class="error">`</span><span class="special">](</span> <span class="string">"https://www.example.com/index.htm?id=guest#s1"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="special">=</span> <span class="identifier">parse_uri</span><span class="special">(</span> <span class="string">"https://www.example.com/index.htm?id=guest#s1"</span> <span class="special">);</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__parse_uri.h3"></a>
         <span class="phrase"><a name="url.ref.boost__urls__parse_uri.bnf"></a></span><a class="link" href="boost__urls__parse_uri.html#url.ref.boost__urls__parse_uri.bnf">BNF</a>
       </h5>
-<pre class="programlisting"><span class="identifier">URI</span>           <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__scheme</span> <span class="error">`</span><span class="identifier">scheme</span><span class="error">`</span><span class="special">]</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="identifier">query</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="identifier">fragment</span> <span class="special">]</span>
+<pre class="programlisting"><span class="identifier">URI</span>           <span class="special">=</span> <span class="identifier">scheme</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="identifier">query</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="identifier">fragment</span> <span class="special">]</span>
 
 <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span>     <span class="special">=</span> <span class="string">"//"</span> <span class="identifier">authority</span> <span class="identifier">path</span><span class="special">-</span><span class="identifier">abempty</span>
               <span class="special">/</span> <span class="identifier">path</span><span class="special">-</span><span class="identifier">absolute</span>

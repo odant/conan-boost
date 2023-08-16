@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__static_url.set_scheme_id"></a><a class="link" href="set_scheme_id.html" title="static_url::set_scheme_id">static_url::set_scheme_id</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm78286"></a>
+          <a class="indexterm" name="idm68792"></a>
         </p>
 <p>
           Set the scheme.
@@ -54,7 +54,7 @@
 <a name="url.ref.boost__urls__static_url.set_scheme_id.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url.set_scheme_id.example"></a></span><a class="link" href="set_scheme_id.html#url.ref.boost__urls__static_url.set_scheme_id.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url</span><span class="special">(</span> <span class="string">"http://example.com/echo.cgi"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">set_scheme_id</span> <span class="error">`</span><span class="identifier">set_scheme_id</span><span class="error">`</span><span class="special">](</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__scheme</span> <span class="error">`</span><span class="identifier">scheme</span><span class="special">::</span><span class="identifier">wss</span><span class="error">`</span><span class="special">]</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">buffer</span> <span class="error">`</span><span class="identifier">buffer</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"wss://example.com/echo.cgi"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url</span><span class="special">(</span> <span class="string">"http://example.com/echo.cgi"</span> <span class="special">).</span><span class="identifier">set_scheme_id</span><span class="special">(</span> <span class="identifier">scheme</span><span class="special">::</span><span class="identifier">wss</span> <span class="special">).</span><span class="identifier">buffer</span><span class="special">()</span> <span class="special">==</span> <span class="string">"wss://example.com/echo.cgi"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url.set_scheme_id.h3"></a>

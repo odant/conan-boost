@@ -76,6 +76,19 @@
 </div>
 <h5>
 <a name="boost_asio.reference.async_compose.h1"></a>
+        <span class="phrase"><a name="boost_asio.reference.async_compose.per_operation_cancellation"></a></span><a class="link" href="async_compose.html#boost_asio.reference.async_compose.per_operation_cancellation">Per-Operation
+        Cancellation</a>
+      </h5>
+<p>
+        By default, terminal per-operation cancellation is enabled for composed operations
+        that are implemented using <code class="computeroutput"><span class="identifier">async_compose</span></code>.
+        To disable cancellation for the composed operation, or to alter its supported
+        cancellation types, call the <code class="computeroutput"><span class="identifier">self</span></code>
+        object's <code class="computeroutput"><span class="identifier">reset_cancellation_state</span></code>
+        function.
+      </p>
+<h5>
+<a name="boost_asio.reference.async_compose.h2"></a>
         <span class="phrase"><a name="boost_asio.reference.async_compose.example_"></a></span><a class="link" href="async_compose.html#boost_asio.reference.async_compose.example_">Example:</a>
       </h5>
 <pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">async_echo_implementation</span>
@@ -134,7 +147,7 @@
 <span class="special">}</span>
 </pre>
 <h5>
-<a name="boost_asio.reference.async_compose.h2"></a>
+<a name="boost_asio.reference.async_compose.h3"></a>
         <span class="phrase"><a name="boost_asio.reference.async_compose.requirements"></a></span><a class="link" href="async_compose.html#boost_asio.reference.async_compose.requirements">Requirements</a>
       </h5>
 <p>

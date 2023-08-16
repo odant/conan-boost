@@ -140,7 +140,7 @@
                       must be:
                     </p>
 <pre class="table-programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">ec</span>    <span class="comment">// Result of operation</span>
+    <span class="identifier">error_code</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">ec</span>    <span class="comment">// Result of operation</span>
 <span class="special">);</span>
 </pre>
                     <p>
@@ -158,7 +158,7 @@
             <span class="phrase"><a name="beast.ref.boost__beast__websocket__stream.async_handshake.overload1.example"></a></span><a class="link" href="overload1.html#beast.ref.boost__beast__websocket__stream.async_handshake.overload1.example">Example</a>
           </h6>
 <pre class="programlisting"><span class="identifier">ws</span><span class="special">.</span><span class="identifier">async_handshake</span><span class="special">(</span> <span class="string">"localhost"</span> <span class="special">,</span> <span class="string">"/"</span> <span class="special">,</span>
-    <span class="special">[]([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]</span> <span class="identifier">ec</span><span class="special">)</span>
+    <span class="special">[](</span><span class="identifier">error_code</span> <span class="identifier">ec</span><span class="special">)</span>
     <span class="special">{</span>
         <span class="keyword">if</span> <span class="special">(</span><span class="identifier">ec</span><span class="special">)</span>
             <span class="identifier">std</span><span class="special">::</span><span class="identifier">cerr</span> <span class="special">&lt;&lt;</span> <span class="string">"Error: "</span> <span class="special">&lt;&lt;</span> <span class="identifier">ec</span><span class="special">.</span><span class="identifier">message</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="string">"\n"</span> <span class="special">;</span>

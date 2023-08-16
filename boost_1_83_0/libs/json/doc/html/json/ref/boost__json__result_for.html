@@ -35,7 +35,7 @@
         <span class="phrase"><a name="json.ref.boost__json__result_for.synopsis"></a></span><a class="link" href="boost__json__result_for.html#json.ref.boost__json__result_for.synopsis">Synopsis</a>
       </h5>
 <p>
-        Defined in header <code class="literal">&lt;<a href="https://github.com/cppalliance/json/blob/master/include/boost/json/system_error.hpp" target="_top">boost/json/system_error.hpp</a>&gt;</code>
+        Defined in header <code class="literal">&lt;<a href="https://github.com/boostorg/json/blob/master/include/boost/json/system_error.hpp" target="_top">boost/json/system_error.hpp</a>&gt;</code>
       </p>
 <pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
     <span class="keyword">class</span> <span class="identifier">T1</span><span class="special">,</span>
@@ -53,7 +53,7 @@
         for their types without creating a physical dependency on Boost.Json. For
         example:
       </p>
-<pre class="programlisting"><span class="keyword">namespace</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost</span> <span class="error">`</span><span class="identifier">boost</span><span class="error">`</span><span class="special">]</span>
+<pre class="programlisting"><span class="keyword">namespace</span> <span class="identifier">boost</span>
 <span class="special">{</span>
 <span class="keyword">namespace</span> <span class="identifier">json</span>
 <span class="special">{</span>
@@ -71,8 +71,8 @@
     <span class="keyword">class</span> <span class="identifier">my_class</span><span class="special">;</span>
     <span class="special">...</span>
     <span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">JsonValue</span><span class="special">&gt;</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__json__result_for</span> <span class="error">`</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">json</span><span class="special">::</span><span class="identifier">result_for</span><span class="special">&lt;</span><span class="identifier">my_class</span><span class="special">,</span> <span class="identifier">JsonValue</span><span class="special">&gt;</span><span class="error">`</span><span class="special">]</span>
-    <span class="identifier">tag_invoke</span><span class="special">([</span><span class="identifier">link</span> <span class="identifier">json</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__json__try_value_to_tag</span> <span class="error">`</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">json</span><span class="special">::</span><span class="identifier">try_value_to_tag</span><span class="special">&lt;</span><span class="identifier">my_class</span><span class="special">&gt;</span><span class="error">`</span><span class="special">],</span> <span class="keyword">const</span> <span class="identifier">JsonValue</span><span class="special">&amp;</span> <span class="identifier">jv</span><span class="special">)</span>
+    <span class="identifier">boost</span><span class="special">::</span><span class="identifier">json</span><span class="special">::</span><span class="identifier">result_for</span><span class="special">&lt;</span><span class="identifier">my_class</span><span class="special">,</span> <span class="identifier">JsonValue</span><span class="special">&gt;</span>
+    <span class="identifier">tag_invoke</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">json</span><span class="special">::</span><span class="identifier">try_value_to_tag</span><span class="special">&lt;</span><span class="identifier">my_class</span><span class="special">&gt;,</span> <span class="keyword">const</span> <span class="identifier">JsonValue</span><span class="special">&amp;</span> <span class="identifier">jv</span><span class="special">)</span>
     <span class="special">{</span> <span class="special">...</span> <span class="special">}</span>
 <span class="special">}</span>
 </pre>
@@ -86,7 +86,7 @@
         <a class="link" href="boost__json__try_value_to_tag.html" title="try_value_to_tag"><code class="computeroutput"><span class="identifier">try_value_to_tag</span></code></a>
       </p>
 <p>
-        Convenience header <code class="literal">&lt;<a href="https://github.com/cppalliance/json/blob/master/include/boost/json.hpp" target="_top">boost/json.hpp</a>&gt;</code>
+        Convenience header <code class="literal">&lt;<a href="https://github.com/boostorg/json/blob/master/include/boost/json.hpp" target="_top">boost/json.hpp</a>&gt;</code>
       </p>
 </div>
 <div class="copyright-footer">Copyright © 2019, 2020 Vinnie Falco<br>Copyright © 2020 Krystian Stasiowski<br>Copyright © 2022 Dmitry Arkhipov<p>

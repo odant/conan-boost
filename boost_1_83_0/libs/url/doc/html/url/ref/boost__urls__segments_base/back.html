@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__segments_base.back"></a><a class="link" href="back.html" title="segments_base::back">segments_base::back</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm61548"></a>
+          <a class="indexterm" name="idm54573"></a>
         </p>
 <p>
           Return the last segment.
@@ -44,25 +44,25 @@
 <a name="url.ref.boost__urls__segments_base.back.h1"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_base.back.preconditions"></a></span><a class="link" href="back.html#url.ref.boost__urls__segments_base.back.preconditions">Preconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_base</span><span class="special">.</span><span class="identifier">empty</span> <span class="error">`</span><span class="identifier">empty</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="keyword">false</span>
+<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">empty</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">false</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_base.back.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_base.back.example"></a></span><a class="link" href="back.html#url.ref.boost__urls__segments_base.back.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">segments</span><span class="special">().[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_base</span><span class="special">.</span><span class="identifier">back</span> <span class="error">`</span><span class="identifier">back</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"file.txt"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">segments</span><span class="special">().</span><span class="identifier">back</span><span class="special">()</span> <span class="special">==</span> <span class="string">"file.txt"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_base.back.h3"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_base.back.preconditions0"></a></span><a class="link" href="back.html#url.ref.boost__urls__segments_base.back.preconditions0">Preconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_base</span><span class="special">.</span><span class="identifier">empty</span> <span class="error">`</span><span class="identifier">empty</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="keyword">false</span>
+<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">empty</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">false</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_base.back.h4"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_base.back.effects"></a></span><a class="link" href="back.html#url.ref.boost__urls__segments_base.back.effects">Effects</a>
         </h6>
-<pre class="programlisting"><span class="keyword">return</span> <span class="special">*--[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_base</span><span class="special">.</span><span class="identifier">end</span> <span class="error">`</span><span class="identifier">end</span><span class="error">`</span><span class="special">]();</span>
+<pre class="programlisting"><span class="keyword">return</span> <span class="special">*--</span><span class="identifier">end</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_base.back.h5"></a>

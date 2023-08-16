@@ -48,8 +48,8 @@
 <p>
             This holds both the major and minor version numbers, using these formulas:
           </p>
-<pre class="programlisting"><span class="keyword">unsigned</span> <span class="identifier">major</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__message</span><span class="special">.</span><span class="identifier">version</span> <span class="error">`</span><span class="identifier">version</span><span class="error">`</span><span class="special">]</span> <span class="special">/</span> <span class="number">10</span><span class="special">;</span>
-<span class="keyword">unsigned</span> <span class="identifier">minor</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__message</span><span class="special">.</span><span class="identifier">version</span> <span class="error">`</span><span class="identifier">version</span><span class="error">`</span><span class="special">]</span> <span class="special">%</span> <span class="number">10</span><span class="special">;</span>
+<pre class="programlisting"><span class="keyword">unsigned</span> <span class="identifier">major</span> <span class="special">=</span> <span class="identifier">version</span> <span class="special">/</span> <span class="number">10</span><span class="special">;</span>
+<span class="keyword">unsigned</span> <span class="identifier">minor</span> <span class="special">=</span> <span class="identifier">version</span> <span class="special">%</span> <span class="number">10</span><span class="special">;</span>
 </pre>
 <p>
             Newly constructed headers will use HTTP/1.1 by default.

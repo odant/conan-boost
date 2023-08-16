@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__url.encoded_authority"></a><a class="link" href="encoded_authority.html" title="url::encoded_authority">url::encoded_authority</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm143446"></a>
+          <a class="indexterm" name="idm112440"></a>
         </p>
 <p>
           Return the authority.
@@ -53,7 +53,7 @@
 <a name="url.ref.boost__urls__url.encoded_authority.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url.encoded_authority.example"></a></span><a class="link" href="encoded_authority.html#url.ref.boost__urls__url.encoded_authority.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"file://Network%20Drive/My%2DFiles"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">encoded_authority</span> <span class="error">`</span><span class="identifier">encoded_authority</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"Network%20Drive"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"file://Network%20Drive/My%2DFiles"</span> <span class="special">).</span><span class="identifier">encoded_authority</span><span class="special">()</span> <span class="special">==</span> <span class="string">"Network%20Drive"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url.encoded_authority.h3"></a>
@@ -74,7 +74,7 @@
 <a name="url.ref.boost__urls__url.encoded_authority.h5"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url.encoded_authority.bnf"></a></span><a class="link" href="encoded_authority.html#url.ref.boost__urls__url.encoded_authority.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">authority</span> <span class="error">`</span><span class="identifier">authority</span><span class="error">`</span><span class="special">]</span>   <span class="special">=</span> <span class="special">[</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">userinfo</span> <span class="error">`</span><span class="identifier">userinfo</span><span class="error">`</span><span class="special">]</span> <span class="string">"@"</span> <span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">host</span> <span class="error">`</span><span class="identifier">host</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span> <span class="string">":"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<pre class="programlisting"><span class="identifier">authority</span>   <span class="special">=</span> <span class="special">[</span> <span class="identifier">userinfo</span> <span class="string">"@"</span> <span class="special">]</span> <span class="identifier">host</span> <span class="special">[</span> <span class="string">":"</span> <span class="identifier">port</span> <span class="special">]</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url.encoded_authority.h6"></a>

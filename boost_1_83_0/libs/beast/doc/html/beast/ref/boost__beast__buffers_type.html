@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__buffers_type"></a><a class="link" href="boost__beast__buffers_type.html" title="buffers_type">buffers_type</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm70257"></a>
+        <a class="indexterm" name="idm68230"></a>
       </p>
 <p>
         Type alias for the underlying buffer type of a list of buffer sequence types.
@@ -73,13 +73,13 @@
       </p>
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">BufferSequence</span><span class="special">&gt;</span>
 <span class="identifier">buffers_type</span> <span class="special">&lt;</span><span class="identifier">BufferSequence</span><span class="special">&gt;</span>
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers_front</span> <span class="error">`</span><span class="identifier">buffers_front</span><span class="error">`</span><span class="special">]</span> <span class="special">(</span><span class="identifier">BufferSequence</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers</span> <span class="error">`</span><span class="identifier">buffers</span><span class="error">`</span><span class="special">])</span>
+<span class="identifier">buffers_front</span> <span class="special">(</span><span class="identifier">BufferSequence</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">buffers</span><span class="special">)</span>
 <span class="special">{</span>
     <span class="keyword">static_assert</span> <span class="special">(</span>
         <span class="identifier">net</span><span class="special">::</span><span class="identifier">is_const_buffer_sequence</span><span class="special">&lt;</span><span class="identifier">BufferSequence</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span>
         <span class="string">"BufferSequence type requirements not met"</span> <span class="special">);</span>
-    <span class="keyword">auto</span> <span class="keyword">const</span> <span class="identifier">first</span> <span class="special">=</span> <span class="identifier">net</span><span class="special">::</span><span class="identifier">buffer_sequence_begin</span> <span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers</span> <span class="error">`</span><span class="identifier">buffers</span><span class="error">`</span><span class="special">]);</span>
-    <span class="keyword">if</span> <span class="special">(</span><span class="identifier">first</span> <span class="special">==</span> <span class="identifier">net</span><span class="special">::</span><span class="identifier">buffer_sequence_end</span> <span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers</span> <span class="error">`</span><span class="identifier">buffers</span><span class="error">`</span><span class="special">]))</span>
+    <span class="keyword">auto</span> <span class="keyword">const</span> <span class="identifier">first</span> <span class="special">=</span> <span class="identifier">net</span><span class="special">::</span><span class="identifier">buffer_sequence_begin</span> <span class="special">(</span><span class="identifier">buffers</span><span class="special">);</span>
+    <span class="keyword">if</span> <span class="special">(</span><span class="identifier">first</span> <span class="special">==</span> <span class="identifier">net</span><span class="special">::</span><span class="identifier">buffer_sequence_end</span> <span class="special">(</span><span class="identifier">buffers</span><span class="special">))</span>
         <span class="keyword">return</span> <span class="special">{};</span>
     <span class="keyword">return</span> <span class="special">*</span><span class="identifier">first</span><span class="special">;</span>
 <span class="special">}</span>

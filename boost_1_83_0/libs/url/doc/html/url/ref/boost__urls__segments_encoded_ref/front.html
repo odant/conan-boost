@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__segments_encoded_ref.front"></a><a class="link" href="front.html" title="segments_encoded_ref::front">segments_encoded_ref::front</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm66820"></a>
+          <a class="indexterm" name="idm59123"></a>
         </p>
 <p>
           (Inherited from <a class="link" href="../boost__urls__segments_encoded_base.html" title="segments_encoded_base"><code class="computeroutput"><span class="identifier">segments_encoded_base</span></code></a>)
@@ -56,19 +56,19 @@
 <a name="url.ref.boost__urls__segments_encoded_ref.front.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_encoded_ref.front.preconditions"></a></span><a class="link" href="front.html#url.ref.boost__urls__segments_encoded_ref.front.preconditions">Preconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_encoded_ref</span><span class="special">.</span><span class="identifier">empty</span> <span class="error">`</span><span class="identifier">empty</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="keyword">false</span>
+<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">empty</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">false</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_encoded_ref.front.h3"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_encoded_ref.front.effects"></a></span><a class="link" href="front.html#url.ref.boost__urls__segments_encoded_ref.front.effects">Effects</a>
         </h6>
-<pre class="programlisting"><span class="keyword">return</span> <span class="special">*[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_encoded_ref</span><span class="special">.</span><span class="identifier">begin</span> <span class="error">`</span><span class="identifier">begin</span><span class="error">`</span><span class="special">]();</span>
+<pre class="programlisting"><span class="keyword">return</span> <span class="special">*</span><span class="identifier">begin</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_encoded_ref.front.h4"></a>
           <span class="phrase"><a name="url.ref.boost__urls__segments_encoded_ref.front.example"></a></span><a class="link" href="front.html#url.ref.boost__urls__segments_encoded_ref.front.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">encoded_segments</span><span class="special">().[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__segments_encoded_ref</span><span class="special">.</span><span class="identifier">front</span> <span class="error">`</span><span class="identifier">front</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"path"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">encoded_segments</span><span class="special">().</span><span class="identifier">front</span><span class="special">()</span> <span class="special">==</span> <span class="string">"path"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__segments_encoded_ref.front.h5"></a>

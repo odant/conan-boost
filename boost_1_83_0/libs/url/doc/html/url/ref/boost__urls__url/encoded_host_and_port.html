@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__url.encoded_host_and_port"></a><a class="link" href="encoded_host_and_port.html" title="url::encoded_host_and_port">url::encoded_host_and_port</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm149449"></a>
+          <a class="indexterm" name="idm116353"></a>
         </p>
 <p>
           Return the host and port.
@@ -53,7 +53,7 @@
 <a name="url.ref.boost__urls__url.encoded_host_and_port.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url.encoded_host_and_port.example"></a></span><a class="link" href="encoded_host_and_port.html#url.ref.boost__urls__url.encoded_host_and_port.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"http://www.example.com:8080/index.htm"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">encoded_host_and_port</span> <span class="error">`</span><span class="identifier">encoded_host_and_port</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"www.example.com:8080"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"http://www.example.com:8080/index.htm"</span> <span class="special">).</span><span class="identifier">encoded_host_and_port</span><span class="special">()</span> <span class="special">==</span> <span class="string">"www.example.com:8080"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url.encoded_host_and_port.h3"></a>
@@ -74,7 +74,7 @@
 <a name="url.ref.boost__urls__url.encoded_host_and_port.h5"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url.encoded_host_and_port.bnf"></a></span><a class="link" href="encoded_host_and_port.html#url.ref.boost__urls__url.encoded_host_and_port.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">authority</span> <span class="error">`</span><span class="identifier">authority</span><span class="error">`</span><span class="special">]</span>   <span class="special">=</span> <span class="special">[</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">userinfo</span> <span class="error">`</span><span class="identifier">userinfo</span><span class="error">`</span><span class="special">]</span> <span class="string">"@"</span> <span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">host</span> <span class="error">`</span><span class="identifier">host</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span> <span class="string">":"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<pre class="programlisting"><span class="identifier">authority</span>   <span class="special">=</span> <span class="special">[</span> <span class="identifier">userinfo</span> <span class="string">"@"</span> <span class="special">]</span> <span class="identifier">host</span> <span class="special">[</span> <span class="string">":"</span> <span class="identifier">port</span> <span class="special">]</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url.encoded_host_and_port.h6"></a>

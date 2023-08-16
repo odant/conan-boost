@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__static_url.set_host_address"></a><a class="link" href="set_host_address.html" title="static_url::set_host_address">static_url::set_host_address</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm81702"></a>
+          <a class="indexterm" name="idm70937"></a>
         </p>
 <p>
           Set the host to an address.
@@ -75,13 +75,13 @@
 <a name="url.ref.boost__urls__static_url.set_host_address.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url.set_host_address.example"></a></span><a class="link" href="set_host_address.html#url.ref.boost__urls__static_url.set_host_address.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url</span><span class="special">(</span> <span class="string">"http://www.example.com"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">set_host_address</span> <span class="error">`</span><span class="identifier">set_host_address</span><span class="error">`</span><span class="special">](</span> <span class="string">"127.0.0.1"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">buffer</span> <span class="error">`</span><span class="identifier">buffer</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="string">"http://127.0.0.1"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url</span><span class="special">(</span> <span class="string">"http://www.example.com"</span> <span class="special">).</span><span class="identifier">set_host_address</span><span class="special">(</span> <span class="string">"127.0.0.1"</span> <span class="special">).</span><span class="identifier">buffer</span><span class="special">()</span> <span class="special">==</span> <span class="string">"http://127.0.0.1"</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url.set_host_address.h3"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url.set_host_address.postconditions"></a></span><a class="link" href="set_host_address.html#url.ref.boost__urls__static_url.set_host_address.postconditions">Postconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">has_authority</span> <span class="error">`</span><span class="identifier">has_authority</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="keyword">true</span>
+<pre class="programlisting"><span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">has_authority</span><span class="special">()</span> <span class="special">==</span> <span class="keyword">true</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url.set_host_address.h4"></a>
@@ -162,7 +162,7 @@
 
 <span class="identifier">IPvFuture</span>     <span class="special">=</span> <span class="string">"v"</span> <span class="number">1</span><span class="special">*</span><span class="identifier">HEXDIG</span> <span class="string">"."</span> <span class="number">1</span><span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">sub</span><span class="special">-</span><span class="identifier">delims</span> <span class="special">/</span> <span class="string">":"</span> <span class="special">)</span>
 
-<span class="identifier">reg</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__host_type</span> <span class="error">`</span><span class="identifier">name</span><span class="error">`</span><span class="special">]</span>    <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="string">"-"</span> <span class="special">/</span> <span class="string">"."</span> <span class="special">)</span>
+<span class="identifier">reg</span><span class="special">-</span><span class="identifier">name</span>    <span class="special">=</span> <span class="special">*(</span> <span class="identifier">unreserved</span> <span class="special">/</span> <span class="identifier">pct</span><span class="special">-</span><span class="identifier">encoded</span> <span class="special">/</span> <span class="string">"-"</span> <span class="special">/</span> <span class="string">"."</span> <span class="special">)</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url.set_host_address.h8"></a>

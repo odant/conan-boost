@@ -15,8 +15,9 @@ This as usual will cause minor breakage due to LEWG renaming of things.
 
 - Outcome previously took addresses of things not using `std::addressof()`, and until now
 nobody complained because custom `operator&` which doesn't return an address is an
-abomination not used in much modern C++. But finally someone did complain, so it is fixed
-for both normal Outcome and Experimental.Outcome.
+abomination not used in much modern C++. But finally someone did complain, so
+for both normal Outcome and Experimental.Outcome, if you set `BOOST_OUTCOME_USE_STD_ADDRESSOF = 1`,
+Outcome will use `std::addressof()`
 
 ### Bug fixes:
 
@@ -331,7 +332,7 @@ use cases.
 Precompiled headers are automatically enabled on new enough cmake's for standalone Outcome
 : If on cmake 3.16 or later, its new precompiled headers build support is used
 to tell consumers of the `outcome::hl` cmake target to precompile Outcome, **if
-and only if** `PROJECT_IS_DEPENDENCY` is false. `PROJECT_IS_DEPENDENCY` is set
+and only if** `outcome_IS_DEPENDENCY` is false. `outcome_IS_DEPENDENCY` is set
 by Outcome's CMakeLists.txt if it detects that it was included using
 `add_subdirectory()`, so for the vast majority of Outcome end users, the use
 of precompiled headers will NOT be enabled.

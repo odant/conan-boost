@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__buffers_to_string"></a><a class="link" href="boost__beast__buffers_to_string.html" title="buffers_to_string">buffers_to_string</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm71979"></a>
+        <a class="indexterm" name="idm69781"></a>
       </p>
 <p>
         Return a string representing the contents of a buffer sequence.
@@ -97,9 +97,9 @@
         This function writes a buffer sequence converted to a string to <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span></code>.
       </p>
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">ConstBufferSequence</span><span class="special">&gt;</span>
-<span class="keyword">void</span> <span class="identifier">print</span><span class="special">(</span><span class="identifier">ConstBufferSequence</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers</span> <span class="error">`</span><span class="identifier">buffers</span><span class="error">`</span><span class="special">])</span>
+<span class="keyword">void</span> <span class="identifier">print</span><span class="special">(</span><span class="identifier">ConstBufferSequence</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">buffers</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers_to_string</span> <span class="error">`</span><span class="identifier">buffers_to_string</span><span class="error">`</span><span class="special">]([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__buffers</span> <span class="error">`</span><span class="identifier">buffers</span><span class="error">`</span><span class="special">])</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">buffers_to_string</span><span class="special">(</span><span class="identifier">buffers</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
 <span class="special">}</span>
 </pre>
 </div>

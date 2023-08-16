@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__result"></a><a class="link" href="boost__urls__result.html" title="result">result</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm195435"></a>
+        <a class="indexterm" name="idm146789"></a>
       </p>
 <p>
         The type of result returned by library functions.
@@ -54,7 +54,7 @@
       </h5>
 <p>
         This alias is no longer supported and should not be used in new code. Please
-        use <code class="computeroutput"><span class="identifier">core</span><span class="special">::</span><span class="identifier">string_view</span></code> instead. This alias is included
+        use <code class="computeroutput"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span></code> instead. This alias is included
         for backwards compatibility with earlier versions of the library. However,
         it will be removed in future releases, and using it in new code is not recommended.
         Please use the updated version instead to ensure compatibility with future
@@ -67,7 +67,7 @@
         <span class="phrase"><a name="url.ref.boost__urls__result.declaration"></a></span><a class="link" href="boost__urls__result.html#url.ref.boost__urls__result.declaration">Declaration</a>
       </h5>
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">T</span> <span class="special">&gt;</span>
-<span class="keyword">class</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__result</span> <span class="error">`</span><span class="identifier">result</span><span class="error">`</span><span class="special">]</span>
+<span class="keyword">class</span> <span class="identifier">result</span>
 <span class="special">{</span>
 <span class="keyword">public</span> <span class="special">:</span>
     <span class="comment">//</span>
@@ -78,7 +78,7 @@
     <span class="comment">//</span>
     <span class="comment">// Return the error</span>
     <span class="comment">//</span>
-    <span class="keyword">constexpr</span> <span class="identifier">system</span><span class="special">::[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__error</span> <span class="error">`</span><span class="identifier">error</span><span class="error">`</span><span class="special">]()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+    <span class="keyword">constexpr</span> <span class="identifier">system</span><span class="special">::</span><span class="identifier">error_code</span> <span class="identifier">error</span><span class="special">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
 
     <span class="comment">//</span>
     <span class="comment">// Return true if the result contains a value</span>
@@ -109,19 +109,19 @@
 <p>
         Given the function <a class="link" href="boost__urls__parse_uri.html" title="parse_uri"><code class="computeroutput"><span class="identifier">parse_uri</span></code></a> with this signature:
       </p>
-<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__parse_uri</span> <span class="error">`</span><span class="identifier">parse_uri</span><span class="error">`</span><span class="special">](</span> <span class="identifier">core</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">s</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
+<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="identifier">parse_uri</span><span class="special">(</span> <span class="identifier">core</span><span class="special">::</span><span class="identifier">string_view</span> <span class="identifier">s</span> <span class="special">)</span> <span class="keyword">noexcept</span> <span class="special">;</span>
 </pre>
 <p>
         The following statement captures the value in a variable upon success, otherwise
         throws:
       </p>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">]</span> <span class="identifier">u</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__parse_uri</span> <span class="error">`</span><span class="identifier">parse_uri</span><span class="error">`</span><span class="special">](</span> <span class="string">"http://example.com/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">value</span><span class="special">();</span>
+<pre class="programlisting"><span class="identifier">url_view</span> <span class="identifier">u</span> <span class="special">=</span> <span class="identifier">parse_uri</span><span class="special">(</span> <span class="string">"http://example.com/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">value</span><span class="special">();</span>
 </pre>
 <p>
         This statement captures the result in a local variable and inspects the error
         condition:
       </p>
-<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__parse_uri</span> <span class="error">`</span><span class="identifier">parse_uri</span><span class="error">`</span><span class="special">](</span> <span class="string">"http://example.com/path/to/file.txt"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="identifier">parse_uri</span><span class="special">(</span> <span class="string">"http://example.com/path/to/file.txt"</span> <span class="special">);</span>
 
 <span class="keyword">if</span> <span class="special">(!</span> <span class="identifier">rv</span> <span class="special">)</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="identifier">rv</span><span class="special">.</span><span class="identifier">error</span><span class="special">();</span>

@@ -115,7 +115,7 @@
                       function signature of the handler must be:
                     </p>
 <pre class="table-programlisting"> <span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span>
-  <span class="keyword">const</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">system</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">&amp;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error</span> <span class="error">`</span><span class="identifier">error</span><span class="error">`</span><span class="special">],</span> <span class="comment">// Result of operation.</span>
+  <span class="keyword">const</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">system</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">error</span><span class="special">,</span> <span class="comment">// Result of operation.</span>
   <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">bytes_transferred</span> <span class="comment">// Amount of buffers used in handshake.</span>
 <span class="special">);</span>
 </pre>

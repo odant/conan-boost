@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__http__is_body"></a><a class="link" href="boost__beast__http__is_body.html" title="http::is_body">http::is_body</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm76927"></a>
+        <a class="indexterm" name="idm74610"></a>
       </p>
 <p>
         Determine if a type meets the <span class="emphasis"><em>Body</em></span> named requirements.
@@ -93,9 +93,9 @@
         <span class="phrase"><a name="beast.ref.boost__beast__http__is_body.example"></a></span><a class="link" href="boost__beast__http__is_body.html#beast.ref.boost__beast__http__is_body.example">Example</a>
       </h5>
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">bool</span> <span class="identifier">isRequest</span><span class="special">,</span> <span class="keyword">class</span> <span class="identifier">Body</span><span class="special">,</span> <span class="keyword">class</span> <span class="identifier">Fields</span><span class="special">&gt;</span>
-<span class="keyword">void</span> <span class="identifier">check_body</span><span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__message</span> <span class="error">`</span><span class="identifier">message</span><span class="special">&lt;</span><span class="identifier">isRequest</span><span class="special">,</span> <span class="identifier">Body</span><span class="special">,</span> <span class="identifier">Fields</span><span class="special">&gt;</span><span class="error">`</span><span class="special">]</span> <span class="keyword">const</span> <span class="special">&amp;)</span>
+<span class="keyword">void</span> <span class="identifier">check_body</span><span class="special">(</span><span class="identifier">message</span><span class="special">&lt;</span><span class="identifier">isRequest</span><span class="special">,</span> <span class="identifier">Body</span><span class="special">,</span> <span class="identifier">Fields</span><span class="special">&gt;</span> <span class="keyword">const</span> <span class="special">&amp;)</span>
 <span class="special">{</span>
-    <span class="keyword">static_assert</span> <span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__is_body</span> <span class="error">`</span><span class="identifier">is_body</span><span class="special">&lt;</span><span class="identifier">Body</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="error">`</span><span class="special">],</span>
+    <span class="keyword">static_assert</span> <span class="special">(</span><span class="identifier">is_body</span><span class="special">&lt;</span><span class="identifier">Body</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span>
         <span class="string">"Body type requirements not met"</span> <span class="special">);</span>
 <span class="special">}</span>
 </pre>

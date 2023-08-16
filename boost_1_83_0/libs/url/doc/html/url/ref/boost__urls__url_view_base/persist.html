@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__url_view_base.persist"></a><a class="link" href="persist.html" title="url_view_base::persist">url_view_base::persist</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm186014"></a>
+          <a class="indexterm" name="idm140598"></a>
         </p>
 <p>
           Return a shared, persistent copy of the url.
@@ -57,7 +57,7 @@
 <pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">shared_ptr</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="keyword">const</span> <span class="special">&gt;</span> <span class="identifier">sp</span><span class="special">;</span>
 <span class="special">{</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">s</span><span class="special">(</span> <span class="string">"http://example.com"</span> <span class="special">);</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">]</span> <span class="identifier">u</span><span class="special">(</span> <span class="identifier">s</span> <span class="special">);</span>                        <span class="comment">// u references characters in s</span>
+    <span class="identifier">url_view</span> <span class="identifier">u</span><span class="special">(</span> <span class="identifier">s</span> <span class="special">);</span>                        <span class="comment">// u references characters in s</span>
 
     <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">u</span><span class="special">.</span><span class="identifier">data</span><span class="special">()</span> <span class="special">==</span> <span class="identifier">s</span><span class="special">.</span><span class="identifier">data</span><span class="special">()</span> <span class="special">);</span>         <span class="comment">// same buffer</span>
 

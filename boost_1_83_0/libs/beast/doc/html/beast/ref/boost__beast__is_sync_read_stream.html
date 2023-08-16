@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__is_sync_read_stream"></a><a class="link" href="boost__beast__is_sync_read_stream.html" title="is_sync_read_stream">is_sync_read_stream</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm68771"></a>
+        <a class="indexterm" name="idm66804"></a>
       </p>
 <p>
         Determine if at type meets the requirements of <span class="emphasis"><em>SyncReadStream</em></span>.
@@ -63,7 +63,7 @@
 <pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">class</span> <span class="identifier">SyncReadStream</span><span class="special">&gt;</span>
 <span class="keyword">void</span> <span class="identifier">f</span><span class="special">(</span><span class="identifier">SyncReadStream</span><span class="special">&amp;</span> <span class="identifier">stream</span><span class="special">)</span>
 <span class="special">{</span>
-    <span class="keyword">static_assert</span> <span class="special">([</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__is_sync_read_stream</span> <span class="error">`</span><span class="identifier">is_sync_read_stream</span><span class="special">&lt;</span><span class="identifier">SyncReadStream</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="error">`</span><span class="special">],</span>
+    <span class="keyword">static_assert</span> <span class="special">(</span><span class="identifier">is_sync_read_stream</span><span class="special">&lt;</span><span class="identifier">SyncReadStream</span><span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span>
         <span class="string">"SyncReadStream type requirements not met"</span> <span class="special">);</span>
 <span class="special">...</span>
 </pre>

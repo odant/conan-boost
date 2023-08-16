@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__static_url.set_scheme"></a><a class="link" href="set_scheme.html" title="static_url::set_scheme">static_url::set_scheme</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm78113"></a>
+          <a class="indexterm" name="idm68659"></a>
         </p>
 <p>
           Set the scheme.
@@ -54,7 +54,7 @@
 <a name="url.ref.boost__urls__static_url.set_scheme.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url.set_scheme.example"></a></span><a class="link" href="set_scheme.html#url.ref.boost__urls__static_url.set_scheme.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url</span><span class="special">(</span> <span class="string">"http://www.example.com"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">set_scheme</span> <span class="error">`</span><span class="identifier">set_scheme</span><span class="error">`</span><span class="special">](</span> <span class="string">"https"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__static_url</span><span class="special">.</span><span class="identifier">scheme_id</span> <span class="error">`</span><span class="identifier">scheme_id</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__scheme</span> <span class="error">`</span><span class="identifier">scheme</span><span class="special">::</span><span class="identifier">https</span><span class="error">`</span><span class="special">]</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url</span><span class="special">(</span> <span class="string">"http://www.example.com"</span> <span class="special">).</span><span class="identifier">set_scheme</span><span class="special">(</span> <span class="string">"https"</span> <span class="special">).</span><span class="identifier">scheme_id</span><span class="special">()</span> <span class="special">==</span> <span class="identifier">scheme</span><span class="special">::</span><span class="identifier">https</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url.set_scheme.h3"></a>
@@ -145,7 +145,7 @@
 <a name="url.ref.boost__urls__static_url.set_scheme.h7"></a>
           <span class="phrase"><a name="url.ref.boost__urls__static_url.set_scheme.bnf"></a></span><a class="link" href="set_scheme.html#url.ref.boost__urls__static_url.set_scheme.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__scheme</span> <span class="error">`</span><span class="identifier">scheme</span><span class="error">`</span><span class="special">]</span>        <span class="special">=</span> <span class="identifier">ALPHA</span> <span class="special">*(</span> <span class="identifier">ALPHA</span> <span class="special">/</span> <span class="identifier">DIGIT</span> <span class="special">/</span> <span class="string">"+"</span> <span class="special">/</span> <span class="string">"-"</span> <span class="special">/</span> <span class="string">"."</span> <span class="special">)</span>
+<pre class="programlisting"><span class="identifier">scheme</span>        <span class="special">=</span> <span class="identifier">ALPHA</span> <span class="special">*(</span> <span class="identifier">ALPHA</span> <span class="special">/</span> <span class="identifier">DIGIT</span> <span class="special">/</span> <span class="string">"+"</span> <span class="special">/</span> <span class="string">"-"</span> <span class="special">/</span> <span class="string">"."</span> <span class="special">)</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__static_url.set_scheme.h8"></a>

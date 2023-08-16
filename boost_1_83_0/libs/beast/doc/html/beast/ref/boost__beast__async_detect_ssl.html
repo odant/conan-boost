@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__async_detect_ssl"></a><a class="link" href="boost__beast__async_detect_ssl.html" title="async_detect_ssl">async_detect_ssl</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm71826"></a>
+        <a class="indexterm" name="idm69647"></a>
       </p>
 <p>
         Detect a TLS/SSL handshake asynchronously on a stream.
@@ -143,7 +143,7 @@
                   must be:
                 </p>
 <pre class="table-programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error</span> <span class="error">`</span><span class="identifier">error</span><span class="error">`</span><span class="special">],</span>    <span class="comment">// Set to the error, if any</span>
+    <span class="identifier">error_code</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">error</span><span class="special">,</span>    <span class="comment">// Set to the error, if any</span>
     <span class="keyword">bool</span> <span class="identifier">result</span>                 <span class="comment">// The result of the detector</span>
 <span class="special">);</span>
 </pre>

@@ -55,6 +55,7 @@
   <span class="keyword">static</span> <span class="identifier">threading</span><span class="special">::</span><span class="identifier">level</span> <a class="link" href="environment.html#id-1_3_25_7_10_2_1_1_10_9-bb"><span class="identifier">thread_level</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">static</span> <span class="keyword">bool</span> <a class="link" href="environment.html#id-1_3_25_7_10_2_1_1_10_10-bb"><span class="identifier">is_main_thread</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
   <span class="keyword">static</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">int</span><span class="special">,</span> <span class="keyword">int</span> <span class="special">&gt;</span> <a class="link" href="environment.html#id-1_3_25_7_10_2_1_1_10_11-bb"><span class="identifier">version</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
+  <span class="keyword">static</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a class="link" href="environment.html#id-1_3_25_7_10_2_1_1_10_12-bb"><span class="identifier">library_version</span></a><span class="special">(</span><span class="special">)</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
 <a name="id-1.3.25.7.11.7.4"></a><h2>Description</h2>
@@ -381,6 +382,9 @@
 </li>
 <li class="listitem">
 <pre class="literallayout"><span class="keyword">static</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span> <span class="keyword">int</span><span class="special">,</span> <span class="keyword">int</span> <span class="special">&gt;</span> <a name="id-1_3_25_7_10_2_1_1_10_11-bb"></a><span class="identifier">version</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>MPI version. <p>Returns a pair with the version and sub-version number. </p>
+</li>
+<li class="listitem">
+<pre class="literallayout"><span class="keyword">static</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <a name="id-1_3_25_7_10_2_1_1_10_12-bb"></a><span class="identifier">library_version</span><span class="special">(</span><span class="special">)</span><span class="special">;</span></pre>MPI library implementation version string. <p>This routine returns a string with an additional library version information. The actual form of this version string is unspecified, but may be documented by the underlying MPI implementation. This routine is implemented as a call to <code class="computeroutput">MPI_Get_library_version</code>, which is available from MPI-3. On older implementations the empty string will be returned. </p>
 </li>
 </ol></div>
 </div>

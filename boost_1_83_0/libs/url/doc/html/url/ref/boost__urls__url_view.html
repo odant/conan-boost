@@ -318,6 +318,18 @@
 <tr>
 <td>
                 <p>
+                  <span class="bold"><strong><a class="link" href="boost__urls__url_view/encoded_zone_id.html" title="url_view::encoded_zone_id">encoded_zone_id</a></strong></span>
+                </p>
+              </td>
+<td>
+                <p>
+                  Return the IPv6 Zone ID.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
                   <span class="bold"><strong><a class="link" href="boost__urls__url_view/fragment.html" title="url_view::fragment">fragment</a></strong></span>
                 </p>
               </td>
@@ -704,6 +716,18 @@
 <tr>
 <td>
                 <p>
+                  <span class="bold"><strong><a class="link" href="boost__urls__url_view/zone_id.html" title="url_view::zone_id">zone_id</a></strong></span>
+                </p>
+              </td>
+<td>
+                <p>
+                  Return the IPv6 Zone ID.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
                   <span class="bold"><strong><a class="link" href="boost__urls__url_view/_dtor_url_view.html" title="url_view::~url_view">~url_view</a> <span class="silver">[destructor]</span></strong></span>
                 </p>
               </td>
@@ -752,68 +776,17 @@
 </table></div>
 <h5>
 <a name="url.ref.boost__urls__url_view.h3"></a>
-        <span class="phrase"><a name="url.ref.boost__urls__url_view.friends"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.friends">Friends</a>
-      </h5>
-<div class="informaltable"><table class="table">
-<colgroup>
-<col>
-<col>
-</colgroup>
-<thead><tr>
-<th>
-                <p>
-                  Name
-                </p>
-              </th>
-<th>
-                <p>
-                  Description
-                </p>
-              </th>
-</tr></thead>
-<tbody>
-<tr>
-<td>
-                <p>
-                  <span class="bold"><strong><a class="link" href="../../">params_base</a></strong></span>
-                </p>
-              </td>
-<td>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <span class="bold"><strong><a class="link" href="../../">params_encoded_base</a></strong></span>
-                </p>
-              </td>
-<td>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <span class="bold"><strong><a class="link" href="../../">url_view_base</a></strong></span>
-                </p>
-              </td>
-<td>
-              </td>
-</tr>
-</tbody>
-</table></div>
-<h5>
-<a name="url.ref.boost__urls__url_view.h4"></a>
         <span class="phrase"><a name="url.ref.boost__urls__url_view.description"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.description">Description</a>
       </h5>
 <p>
         Objects of this type represent valid URL strings constructed from a parsed,
         external character buffer whose storage is managed by the caller. That is,
-        it acts like a core::string_view in terms of ownership. The caller is responsible
-        for ensuring that the lifetime of the underlying character buffer extends
-        until it is no longer referenced.
+        it acts like a <code class="computeroutput"><span class="identifier">core</span><span class="special">::</span><span class="identifier">string_view</span></code> in terms of ownership. The
+        caller is responsible for ensuring that the lifetime of the underlying character
+        buffer extends until it is no longer referenced.
       </p>
 <h5>
-<a name="url.ref.boost__urls__url_view.h5"></a>
+<a name="url.ref.boost__urls__url_view.h4"></a>
         <span class="phrase"><a name="url.ref.boost__urls__url_view.example_1"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.example_1">Example
         1</a>
       </h5>
@@ -822,10 +795,10 @@
         and throws an exception on error. Upon success, the constructed object points
         to the passed character buffer; ownership is not transferred.
       </p>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">]</span> <span class="identifier">u</span><span class="special">(</span> <span class="string">"https://www.example.com/index.htm?text=none#a1"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">url_view</span> <span class="identifier">u</span><span class="special">(</span> <span class="string">"https://www.example.com/index.htm?text=none#a1"</span> <span class="special">);</span>
 </pre>
 <h5>
-<a name="url.ref.boost__urls__url_view.h6"></a>
+<a name="url.ref.boost__urls__url_view.h5"></a>
         <span class="phrase"><a name="url.ref.boost__urls__url_view.example_2"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.example_2">Example
         2</a>
       </h5>
@@ -835,20 +808,20 @@
         they contain an error. The error can be converted to an exception by the
         caller if desired:
       </p>
-<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__parse_uri_reference</span> <span class="error">`</span><span class="identifier">parse_uri_reference</span><span class="error">`</span><span class="special">](</span> <span class="string">"https://www.example.com/index.htm?text=none#a1"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="identifier">url_view</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="identifier">parse_uri_reference</span><span class="special">(</span> <span class="string">"https://www.example.com/index.htm?text=none#a1"</span> <span class="special">);</span>
+</pre>
+<h5>
+<a name="url.ref.boost__urls__url_view.h6"></a>
+        <span class="phrase"><a name="url.ref.boost__urls__url_view.bnf"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.bnf">BNF</a>
+      </h5>
+<pre class="programlisting"><span class="identifier">URI</span><span class="special">-</span><span class="identifier">reference</span> <span class="special">=</span> <span class="identifier">URI</span> <span class="special">/</span> <span class="identifier">relative</span><span class="special">-</span><span class="identifier">ref</span>
+
+<span class="identifier">URI</span>           <span class="special">=</span> <span class="identifier">scheme</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="identifier">query</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="identifier">fragment</span> <span class="special">]</span>
+
+<span class="identifier">relative</span><span class="special">-</span><span class="identifier">ref</span>  <span class="special">=</span> <span class="identifier">relative</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="identifier">query</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="identifier">fragment</span> <span class="special">]</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__url_view.h7"></a>
-        <span class="phrase"><a name="url.ref.boost__urls__url_view.bnf"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.bnf">BNF</a>
-      </h5>
-<pre class="programlisting"><span class="identifier">URI</span><span class="special">-</span><span class="identifier">reference</span> <span class="special">=</span> <span class="identifier">URI</span> <span class="special">/</span> <span class="identifier">relative</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__ref</span> <span class="error">`</span><span class="identifier">ref</span><span class="error">`</span><span class="special">]</span>
-
-<span class="identifier">URI</span>           <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">scheme</span> <span class="error">`</span><span class="identifier">scheme</span><span class="error">`</span><span class="special">]</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">query</span> <span class="error">`</span><span class="identifier">query</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">fragment</span> <span class="error">`</span><span class="identifier">fragment</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
-
-<span class="identifier">relative</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__ref</span> <span class="error">`</span><span class="identifier">ref</span><span class="error">`</span><span class="special">]</span>  <span class="special">=</span> <span class="identifier">relative</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">query</span> <span class="error">`</span><span class="identifier">query</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view</span><span class="special">.</span><span class="identifier">fragment</span> <span class="error">`</span><span class="identifier">fragment</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
-</pre>
-<h5>
-<a name="url.ref.boost__urls__url_view.h8"></a>
         <span class="phrase"><a name="url.ref.boost__urls__url_view.specification"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.specification">Specification</a>
       </h5>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
@@ -856,7 +829,7 @@
             (URI): Generic Syntax (rfc3986)</a>
           </li></ul></div>
 <h5>
-<a name="url.ref.boost__urls__url_view.h9"></a>
+<a name="url.ref.boost__urls__url_view.h8"></a>
         <span class="phrase"><a name="url.ref.boost__urls__url_view.see_also"></a></span><a class="link" href="boost__urls__url_view.html#url.ref.boost__urls__url_view.see_also">See
         Also</a>
       </h5>

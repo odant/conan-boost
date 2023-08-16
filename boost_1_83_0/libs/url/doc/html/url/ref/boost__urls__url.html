@@ -356,6 +356,18 @@
 <tr>
 <td>
                 <p>
+                  <span class="bold"><strong><a class="link" href="boost__urls__url/encoded_zone_id.html" title="url::encoded_zone_id">encoded_zone_id</a></strong></span>
+                </p>
+              </td>
+<td>
+                <p>
+                  Return the IPv6 Zone ID.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
                   <span class="bold"><strong><a class="link" href="boost__urls__url/fragment.html" title="url::fragment">fragment</a></strong></span>
                 </p>
               </td>
@@ -1296,6 +1308,18 @@
 <tr>
 <td>
                 <p>
+                  <span class="bold"><strong><a class="link" href="boost__urls__url/zone_id.html" title="url::zone_id">zone_id</a></strong></span>
+                </p>
+              </td>
+<td>
+                <p>
+                  Return the IPv6 Zone ID.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
                   <span class="bold"><strong><a class="link" href="boost__urls__url/_dtor_url.html" title="url::~url">~url</a> <span class="silver">[destructor]</span></strong></span>
                 </p>
               </td>
@@ -1404,13 +1428,13 @@
 <a name="url.ref.boost__urls__url.h6"></a>
         <span class="phrase"><a name="url.ref.boost__urls__url.bnf"></a></span><a class="link" href="boost__urls__url.html#url.ref.boost__urls__url.bnf">BNF</a>
       </h5>
-<pre class="programlisting"><span class="identifier">URI</span><span class="special">-</span><span class="identifier">reference</span> <span class="special">=</span> <span class="identifier">URI</span> <span class="special">/</span> <span class="identifier">relative</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__ref</span> <span class="error">`</span><span class="identifier">ref</span><span class="error">`</span><span class="special">]</span>
+<pre class="programlisting"><span class="identifier">URI</span><span class="special">-</span><span class="identifier">reference</span> <span class="special">=</span> <span class="identifier">URI</span> <span class="special">/</span> <span class="identifier">relative</span><span class="special">-</span><span class="identifier">ref</span>
 
-<span class="identifier">URI</span>           <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__scheme</span> <span class="error">`</span><span class="identifier">scheme</span><span class="error">`</span><span class="special">]</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">query</span> <span class="error">`</span><span class="identifier">query</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">fragment</span> <span class="error">`</span><span class="identifier">fragment</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<span class="identifier">URI</span>           <span class="special">=</span> <span class="identifier">scheme</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="identifier">query</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="identifier">fragment</span> <span class="special">]</span>
 
-<span class="identifier">relative</span><span class="special">-[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__ref</span> <span class="error">`</span><span class="identifier">ref</span><span class="error">`</span><span class="special">]</span>  <span class="special">=</span> <span class="identifier">relative</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">query</span> <span class="error">`</span><span class="identifier">query</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">fragment</span> <span class="error">`</span><span class="identifier">fragment</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<span class="identifier">relative</span><span class="special">-</span><span class="identifier">ref</span>  <span class="special">=</span> <span class="identifier">relative</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="identifier">query</span> <span class="special">]</span> <span class="special">[</span> <span class="string">"#"</span> <span class="identifier">fragment</span> <span class="special">]</span>
 
-<span class="identifier">absolute</span><span class="special">-</span><span class="identifier">URI</span>  <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__scheme</span> <span class="error">`</span><span class="identifier">scheme</span><span class="error">`</span><span class="special">]</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url</span><span class="special">.</span><span class="identifier">query</span> <span class="error">`</span><span class="identifier">query</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<span class="identifier">absolute</span><span class="special">-</span><span class="identifier">URI</span>  <span class="special">=</span> <span class="identifier">scheme</span> <span class="string">":"</span> <span class="identifier">hier</span><span class="special">-</span><span class="identifier">part</span> <span class="special">[</span> <span class="string">"?"</span> <span class="identifier">query</span> <span class="special">]</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__url.h7"></a>

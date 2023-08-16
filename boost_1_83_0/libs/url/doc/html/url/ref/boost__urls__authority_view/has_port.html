@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__authority_view.has_port"></a><a class="link" href="has_port.html" title="authority_view::has_port">authority_view::has_port</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm23066"></a>
+          <a class="indexterm" name="idm21793"></a>
         </p>
 <p>
           Return true if a port is present.
@@ -51,7 +51,7 @@
 <a name="url.ref.boost__urls__authority_view.has_port.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__authority_view.has_port.example"></a></span><a class="link" href="has_port.html#url.ref.boost__urls__authority_view.has_port.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"wss://www.example.com:443"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">has_port</span> <span class="error">`</span><span class="identifier">has_port</span><span class="error">`</span><span class="special">]()</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"wss://www.example.com:443"</span> <span class="special">).</span><span class="identifier">has_port</span><span class="special">()</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__authority_view.has_port.h3"></a>
@@ -72,9 +72,9 @@
 <a name="url.ref.boost__urls__authority_view.has_port.h5"></a>
           <span class="phrase"><a name="url.ref.boost__urls__authority_view.has_port.bnf"></a></span><a class="link" href="has_port.html#url.ref.boost__urls__authority_view.has_port.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="identifier">authority</span>   <span class="special">=</span> <span class="special">[</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">userinfo</span> <span class="error">`</span><span class="identifier">userinfo</span><span class="error">`</span><span class="special">]</span> <span class="string">"@"</span> <span class="special">]</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">host</span> <span class="error">`</span><span class="identifier">host</span><span class="error">`</span><span class="special">]</span> <span class="special">[</span> <span class="string">":"</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span> <span class="special">]</span>
+<pre class="programlisting"><span class="identifier">authority</span>   <span class="special">=</span> <span class="special">[</span> <span class="identifier">userinfo</span> <span class="string">"@"</span> <span class="special">]</span> <span class="identifier">host</span> <span class="special">[</span> <span class="string">":"</span> <span class="identifier">port</span> <span class="special">]</span>
 
-<span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__authority_view</span><span class="special">.</span><span class="identifier">port</span> <span class="error">`</span><span class="identifier">port</span><span class="error">`</span><span class="special">]</span>        <span class="special">=</span> <span class="special">*</span><span class="identifier">DIGIT</span>
+<span class="identifier">port</span>        <span class="special">=</span> <span class="special">*</span><span class="identifier">DIGIT</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__authority_view.has_port.h6"></a>

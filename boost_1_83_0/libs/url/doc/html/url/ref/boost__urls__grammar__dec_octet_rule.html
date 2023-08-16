@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__grammar__dec_octet_rule"></a><a class="link" href="boost__urls__grammar__dec_octet_rule.html" title="grammar::dec_octet_rule">grammar::dec_octet_rule</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm203518"></a>
+        <a class="indexterm" name="idm153935"></a>
       </p>
 <p>
         Match a decimal octet.
@@ -63,7 +63,7 @@
 <p>
         Rules are used with the function <a class="link" href="boost__urls__grammar__parse.html" title="grammar::parse"><code class="computeroutput"><span class="identifier">parse</span></code></a>.
       </p>
-<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__parse</span> <span class="error">`</span><span class="identifier">parse</span><span class="error">`</span><span class="special">](</span> <span class="string">"255"</span> <span class="special">,</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__dec_octet_rule</span> <span class="error">`</span><span class="identifier">dec_octet_rule</span><span class="error">`</span><span class="special">]</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">system</span><span class="special">::</span><span class="identifier">result</span><span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> <span class="special">&gt;</span> <span class="identifier">rv</span> <span class="special">=</span> <span class="identifier">parse</span><span class="special">(</span> <span class="string">"255"</span> <span class="special">,</span> <span class="identifier">dec_octet_rule</span> <span class="special">);</span>
 </pre>
 <h5>
 <a name="url.ref.boost__urls__grammar__dec_octet_rule.h4"></a>

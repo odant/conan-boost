@@ -127,7 +127,7 @@
 <tr>
 <td>
                 <p>
-                  <span class="bold"><strong><a class="link" href="boost__urls__grammar__recycled_ptr/operator_arrow_.html" title="grammar::recycled_ptr::operator-&gt;">operator-&gt;</a></strong></span>
+                  <span class="bold"><strong><a class="link" href="boost__urls__grammar__recycled_ptr/operator__arrow_.html" title="grammar::recycled_ptr::operator-&gt;">operator-&gt;</a></strong></span>
                 </p>
               </td>
 <td>
@@ -139,7 +139,7 @@
 <tr>
 <td>
                 <p>
-                  <span class="bold"><strong><a class="link" href="boost__urls__grammar__recycled_ptr/operator_star_.html" title="grammar::recycled_ptr::operator*">operator*</a></strong></span>
+                  <span class="bold"><strong><a class="link" href="boost__urls__grammar__recycled_ptr/operator__star_.html" title="grammar::recycled_ptr::operator*">operator*</a></strong></span>
                 </p>
               </td>
 <td>
@@ -201,38 +201,6 @@
 </table></div>
 <h5>
 <a name="url.ref.boost__urls__grammar__recycled_ptr.h2"></a>
-        <span class="phrase"><a name="url.ref.boost__urls__grammar__recycled_ptr.friends"></a></span><a class="link" href="boost__urls__grammar__recycled_ptr.html#url.ref.boost__urls__grammar__recycled_ptr.friends">Friends</a>
-      </h5>
-<div class="informaltable"><table class="table">
-<colgroup>
-<col>
-<col>
-</colgroup>
-<thead><tr>
-<th>
-                <p>
-                  Name
-                </p>
-              </th>
-<th>
-                <p>
-                  Description
-                </p>
-              </th>
-</tr></thead>
-<tbody><tr>
-<td>
-                <p>
-                  <span class="bold"><strong><a class="link" href="../../">recycled&lt;
-                  T &gt;</a></strong></span>
-                </p>
-              </td>
-<td>
-              </td>
-</tr></tbody>
-</table></div>
-<h5>
-<a name="url.ref.boost__urls__grammar__recycled_ptr.h3"></a>
         <span class="phrase"><a name="url.ref.boost__urls__grammar__recycled_ptr.description"></a></span><a class="link" href="boost__urls__grammar__recycled_ptr.html#url.ref.boost__urls__grammar__recycled_ptr.description">Description</a>
       </h5>
 <p>
@@ -242,18 +210,18 @@
         Every recycled pointer references a valid recycle bin.
       </p>
 <h5>
-<a name="url.ref.boost__urls__grammar__recycled_ptr.h4"></a>
+<a name="url.ref.boost__urls__grammar__recycled_ptr.h3"></a>
         <span class="phrase"><a name="url.ref.boost__urls__grammar__recycled_ptr.example"></a></span><a class="link" href="boost__urls__grammar__recycled_ptr.html#url.ref.boost__urls__grammar__recycled_ptr.example">Example</a>
       </h5>
-<pre class="programlisting"><span class="keyword">static</span> <span class="identifier">recycled</span><span class="special">&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&gt;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__recycled_ptr</span><span class="special">.</span><span class="identifier">bin</span> <span class="error">`</span><span class="identifier">bin</span><span class="error">`</span><span class="special">];</span>
+<pre class="programlisting"><span class="keyword">static</span> <span class="identifier">recycled</span><span class="special">&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&gt;</span> <span class="identifier">bin</span><span class="special">;</span>
 
-<span class="identifier">recycled_ptr</span><span class="special">&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&gt;</span> <span class="identifier">ps</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__grammar__recycled_ptr</span><span class="special">.</span><span class="identifier">bin</span> <span class="error">`</span><span class="identifier">bin</span><span class="error">`</span><span class="special">]</span> <span class="special">);</span>
+<span class="identifier">recycled_ptr</span><span class="special">&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="special">&gt;</span> <span class="identifier">ps</span><span class="special">(</span> <span class="identifier">bin</span> <span class="special">);</span>
 
 <span class="comment">// Put the string into a known state</span>
 <span class="identifier">ps</span><span class="special">-&gt;</span><span class="identifier">clear</span><span class="special">();</span>
 </pre>
 <h5>
-<a name="url.ref.boost__urls__grammar__recycled_ptr.h5"></a>
+<a name="url.ref.boost__urls__grammar__recycled_ptr.h4"></a>
         <span class="phrase"><a name="url.ref.boost__urls__grammar__recycled_ptr.template_parameters"></a></span><a class="link" href="boost__urls__grammar__recycled_ptr.html#url.ref.boost__urls__grammar__recycled_ptr.template_parameters">Template
         Parameters</a>
       </h5>

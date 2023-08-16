@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__decode_view.remove_prefix"></a><a class="link" href="remove_prefix.html" title="decode_view::remove_prefix">decode_view::remove_prefix</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm25532"></a>
+          <a class="indexterm" name="idm23703"></a>
         </p>
 <p>
           Remove the first characters.
@@ -45,7 +45,7 @@
 <a name="url.ref.boost__urls__decode_view.remove_prefix.h1"></a>
           <span class="phrase"><a name="url.ref.boost__urls__decode_view.remove_prefix.example"></a></span><a class="link" href="remove_prefix.html#url.ref.boost__urls__decode_view.remove_prefix.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">decode_view</span> <span class="error">`</span><span class="identifier">decode_view</span><span class="error">`</span><span class="special">]</span> <span class="identifier">d</span><span class="special">(</span> <span class="string">"Program%20Files"</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">decode_view</span> <span class="identifier">d</span><span class="special">(</span> <span class="string">"Program%20Files"</span> <span class="special">);</span>
 <span class="identifier">d</span><span class="special">.</span><span class="identifier">remove_prefix</span><span class="special">(</span> <span class="number">8</span> <span class="special">);</span>
 <span class="identifier">assert</span><span class="special">(</span> <span class="identifier">d</span> <span class="special">==</span> <span class="string">"Files"</span> <span class="special">);</span>
 </pre>
@@ -53,7 +53,7 @@
 <a name="url.ref.boost__urls__decode_view.remove_prefix.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__decode_view.remove_prefix.preconditions"></a></span><a class="link" href="remove_prefix.html#url.ref.boost__urls__decode_view.remove_prefix.preconditions">Preconditions</a>
         </h6>
-<pre class="programlisting"><span class="keyword">not</span> <span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">empty</span> <span class="error">`</span><span class="identifier">empty</span><span class="error">`</span><span class="special">]()</span>
+<pre class="programlisting"><span class="keyword">not</span> <span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">empty</span><span class="special">()</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__decode_view.remove_prefix.h3"></a>

@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__decode_view.size"></a><a class="link" href="size.html" title="decode_view::size">decode_view::size</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm24807"></a>
+          <a class="indexterm" name="idm23185"></a>
         </p>
 <p>
           Return the number of decoded characters.
@@ -44,13 +44,13 @@
 <a name="url.ref.boost__urls__decode_view.size.h1"></a>
           <span class="phrase"><a name="url.ref.boost__urls__decode_view.size.example"></a></span><a class="link" href="size.html#url.ref.boost__urls__decode_view.size.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">decode_view</span> <span class="error">`</span><span class="identifier">decode_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"Program%20Files"</span> <span class="special">).[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">size</span> <span class="error">`</span><span class="identifier">size</span><span class="error">`</span><span class="special">]()</span> <span class="special">==</span> <span class="number">13</span> <span class="special">);</span>
+<pre class="programlisting"><span class="identifier">assert</span><span class="special">(</span> <span class="identifier">decode_view</span><span class="special">(</span> <span class="string">"Program%20Files"</span> <span class="special">).</span><span class="identifier">size</span><span class="special">()</span> <span class="special">==</span> <span class="number">13</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__decode_view.size.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__decode_view.size.effects"></a></span><a class="link" href="size.html#url.ref.boost__urls__decode_view.size.effects">Effects</a>
         </h6>
-<pre class="programlisting"><span class="keyword">return</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">distance</span><span class="special">(</span> <span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">begin</span> <span class="error">`</span><span class="identifier">begin</span><span class="error">`</span><span class="special">](),</span> <span class="keyword">this</span><span class="special">-&gt;[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__decode_view</span><span class="special">.</span><span class="identifier">end</span> <span class="error">`</span><span class="identifier">end</span><span class="error">`</span><span class="special">]()</span> <span class="special">);</span>
+<pre class="programlisting"><span class="keyword">return</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">distance</span><span class="special">(</span> <span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">begin</span><span class="special">(),</span> <span class="keyword">this</span><span class="special">-&gt;</span><span class="identifier">end</span><span class="special">()</span> <span class="special">);</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__decode_view.size.h3"></a>

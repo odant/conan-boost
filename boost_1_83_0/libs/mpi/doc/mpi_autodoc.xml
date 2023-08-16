@@ -141,6 +141,12 @@
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 </header>
@@ -305,6 +311,12 @@
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 </header>
@@ -330,6 +342,12 @@
           <template-type-parameter name="T"/>
         </template><parameter name="comm"><paramtype>const <classname>communicator</classname> &amp;</paramtype></parameter><parameter name="in_values"><paramtype>const T *</paramtype></parameter><parameter name="n"><paramtype>int</paramtype></parameter><parameter name="out_values"><paramtype>T *</paramtype></parameter></signature><purpose>Gather the values stored at every process into vectors of values from each process. </purpose><description><para><computeroutput>all_gather</computeroutput> is a collective algorithm that collects the values stored at each process into a vector of values indexed by the process number they came from. The type <computeroutput>T</computeroutput> of the values may be any type that is serializable or has an associated MPI data type.</para><para>When the type <computeroutput>T</computeroutput> has an associated MPI data type, this routine invokes <computeroutput>MPI_Allgather</computeroutput> to gather the values.</para><para>
 </para></description></overloaded-function>
+
+
+
+
+
+
 
 
 
@@ -788,6 +806,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 <function name="operator=="><type>BOOST_MPI_DECL bool</type><parameter name="comm1"><paramtype>const <classname>communicator</classname> &amp;</paramtype></parameter><parameter name="comm2"><paramtype>const <classname>communicator</classname> &amp;</paramtype></parameter><purpose>Determines whether two communicators are identical. </purpose><description><para>Equivalent to calling <computeroutput>MPI_Comm_compare</computeroutput> and checking whether the result is <computeroutput>MPI_IDENT</computeroutput>.</para><para>
 </para></description><returns><para>True when the two communicators refer to the same underlying MPI communicator. </para>
 </returns></function>
@@ -850,7 +874,7 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
       <template-type-parameter name="T"/>
     </template><inherit access="public">boost::mpl::false_</inherit><purpose>Type trait that determines if there exists a built-in complex MPI data type for a given C++ type. </purpose><description><para>This type trait determines when there is a direct mapping from a C++ type to an MPI data type that is classified as a complex data type. See <computeroutput><classname alt="boost::mpi::is_mpi_builtin_datatype">is_mpi_builtin_datatype</classname></computeroutput> for general information about built-in MPI data types. </para></description></struct><struct name="is_mpi_datatype"><template>
       <template-type-parameter name="T"/>
-    </template><inherit access="public">boost::mpi::is_mpi_builtin_datatype&lt; T &gt;</inherit><purpose>Type trait that determines if a C++ type can be mapped to an MPI data type. </purpose><description><para>This type trait determines if it is possible to build an MPI data type that represents a C++ data type. When this is the case, <computeroutput><classname alt="boost::mpi::is_mpi_datatype">is_mpi_datatype</classname></computeroutput> derives <computeroutput>mpl::true_</computeroutput> and the MPI data type will be accessible via <computeroutput>get_mpi_datatype</computeroutput>.</para><para>For any C++ type that maps to a built-in MPI data type (see <computeroutput><classname alt="boost::mpi::is_mpi_builtin_datatype">is_mpi_builtin_datatype</classname></computeroutput>), <computeroutput>is_mpi_data_type</computeroutput> is trivially true. However, any POD ("Plain Old Data") type containing types that themselves can be represented by MPI data types can itself be represented as an MPI data type. For instance, a <computeroutput>point3d</computeroutput> class containing three <computeroutput>double</computeroutput> values can be represented as an MPI data type. To do so, first make the data type Serializable (using the Boost.Serialization library); then, specialize the <computeroutput><classname alt="boost::mpi::is_mpi_datatype">is_mpi_datatype</classname></computeroutput> trait for the point type so that it will derive <computeroutput>mpl::true_:</computeroutput> </para><para><programlisting language="c++">namespace boost { namespace mpi {
+    </template><inherit access="public">boost::mpi::is_mpi_builtin_datatype&lt; T &gt;</inherit><purpose>Type trait that determines if a C++ type can be mapped to an MPI data type. </purpose><description><para>This type trait determines if it is possible to build an MPI data type that represents a C++ data type. When this is the case, <computeroutput><classname alt="boost::mpi::is_mpi_datatype">is_mpi_datatype</classname></computeroutput> derives <computeroutput>mpl::true_</computeroutput> and the MPI data type will be accessible via <computeroutput>get_mpi_datatype</computeroutput>.</para><para>For any C++ type that maps to a built-in MPI data type (see <computeroutput><classname alt="boost::mpi::is_mpi_builtin_datatype">is_mpi_builtin_datatype</classname></computeroutput>), <computeroutput><classname alt="boost::mpi::is_mpi_datatype">is_mpi_datatype</classname></computeroutput> is trivially true. However, any POD ("Plain Old Data") type containing types that themselves can be represented by MPI data types can itself be represented as an MPI data type. For instance, a <computeroutput>point3d</computeroutput> class containing three <computeroutput>double</computeroutput> values can be represented as an MPI data type. To do so, first make the data type Serializable (using the Boost.Serialization library); then, specialize the <computeroutput><classname alt="boost::mpi::is_mpi_datatype">is_mpi_datatype</classname></computeroutput> trait for the point type so that it will derive <computeroutput>mpl::true_:</computeroutput> </para><para><programlisting language="c++">namespace boost { namespace mpi {
   template&lt;&gt; struct is_mpi_datatype&lt;point&gt;
     : public mpl::true_ { };
 } }
@@ -861,6 +885,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
     </template><inherit access="public">boost::mpl::false_</inherit><purpose>Type trait that determines if there exists a built-in integer MPI data type for a given C++ type. </purpose><description><para>This type trait determines when there is a direct mapping from a C++ type to an MPI data type that is classified as an integer data type. See <computeroutput><classname alt="boost::mpi::is_mpi_builtin_datatype">is_mpi_builtin_datatype</classname></computeroutput> for general information about built-in MPI data types. </para></description></struct><struct name="is_mpi_logical_datatype"><template>
       <template-type-parameter name="T"/>
     </template><inherit access="public">boost::mpl::false_</inherit><purpose>Type trait that determines if there exists a built-in logical MPI data type for a given C++ type. </purpose><description><para>This type trait determines when there is a direct mapping from a C++ type to an MPI data type that is classified as an logical data type. See <computeroutput><classname alt="boost::mpi::is_mpi_builtin_datatype">is_mpi_builtin_datatype</classname></computeroutput> for general information about built-in MPI data types. </para></description></struct>
+
+
+
+
+
+
 
 
 
@@ -1021,6 +1051,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 <function name="get_mpi_datatype"><type>MPI_Datatype</type><template>
           <template-type-parameter name="T"/>
         </template></function>
@@ -1104,12 +1140,19 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 <method name="thread_level" specifiers="static"><type>threading::level</type><description><para>Query the current level of thread support. </para></description></method>
 <method name="is_main_thread" specifiers="static"><type>bool</type><description><para>Are we in the main thread? </para></description></method>
 <method name="version" specifiers="static"><type>std::pair&lt; int, int &gt;</type><purpose>MPI version. </purpose><description><para>Returns a pair with the version and sub-version number. </para></description></method>
+<method name="library_version" specifiers="static"><type>std::string</type><purpose>MPI library implementation version string. </purpose><description><para>This routine returns a string with an additional library version information. The actual form of this version string is unspecified, but may be documented by the underlying MPI implementation. This routine is implemented as a call to <computeroutput>MPI_Get_library_version</computeroutput>, which is available from MPI-3. On older implementations the empty string will be returned. </para></description></method>
 </method-group>
 </class><namespace name="threading">
-<enum name="level"><enumvalue name="single"><default>= MPI_THREAD_SINGLE</default><description><para>Only one thread will execute. </para></description></enumvalue><enumvalue name="funneled"><default>= MPI_THREAD_FUNNELED</default><description><para>Only main thread will do MPI calls.</para><para>The process may be multi-threaded, but only the main thread will make MPI calls (all MPI calls are `<lsquo/>funneled<rsquo/>' to the main thread). </para></description></enumvalue><enumvalue name="serialized"><default>= MPI_THREAD_SERIALIZED</default><description><para>Only one thread at the time do MPI calls.</para><para>The process may be multi-threaded, and multiple threads may make MPI calls, but only one at a time: MPI calls are not made concurrently from two distinct threads (all MPI calls are `<lsquo/>serialized<rsquo/>'). </para></description></enumvalue><enumvalue name="multiple"><default>= MPI_THREAD_MULTIPLE</default><description><para>Multiple thread may do MPI calls.</para><para>Multiple threads may call MPI, with no restrictions. </para></description></enumvalue><purpose>specify the supported threading level. </purpose><description><para>Based on MPI 2 standard/8.7.3 </para></description></enum>
+<enum name="level"><enumvalue name="single"><description><para>Only one thread will execute. </para></description></enumvalue><enumvalue name="funneled"><description><para>Only main thread will do MPI calls.</para><para>The process may be multi-threaded, but only the main thread will make MPI calls (all MPI calls are `<lsquo/>funneled<rsquo/>' to the main thread). </para></description></enumvalue><enumvalue name="serialized"><description><para>Only one thread at the time do MPI calls.</para><para>The process may be multi-threaded, and multiple threads may make MPI calls, but only one at a time: MPI calls are not made concurrently from two distinct threads (all MPI calls are `<lsquo/>serialized<rsquo/>'). </para></description></enumvalue><enumvalue name="multiple"><description><para>Multiple thread may do MPI calls.</para><para>Multiple threads may call MPI, with no restrictions. </para></description></enumvalue><purpose>specify the supported threading level. </purpose><description><para>Based on MPI 2 standard/8.7.3 </para></description></enum>
 <function name="operator&lt;&lt;"><type>std::ostream &amp;</type><parameter name="out"><paramtype>std::ostream &amp;</paramtype></parameter><parameter name="l"><paramtype>level</paramtype></parameter><description><para>Formated output for threading level. </para></description></function>
 <function name="operator&gt;&gt;"><type>std::istream &amp;</type><parameter name="in"><paramtype>std::istream &amp;</paramtype></parameter><parameter name="l"><paramtype>level &amp;</paramtype></parameter><description><para>Formated input for threading level. </para></description></function>
 </namespace>
+
+
+
+
+
+
 
 
 
@@ -1305,6 +1348,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 <macro name="BOOST_MPI_CHECK_RESULT" kind="functionlike"><macro-parameter name="MPIFunc"/><macro-parameter name="Args"/><description><para>Call the MPI routine MPIFunc with arguments Args (surrounded by parentheses). If the result is not MPI_SUCCESS, use boost::throw_exception to throw an exception or abort, depending on BOOST_NO_EXCEPTIONS. </para></description></macro>
@@ -1347,6 +1396,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 <method-group name="protected member functions">
 </method-group>
 </class>
+
+
+
+
+
+
 
 
 
@@ -1547,6 +1602,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 <function name="operator=="><type>BOOST_MPI_DECL bool</type><parameter name="g1"><paramtype>const <classname>group</classname> &amp;</paramtype></parameter><parameter name="g2"><paramtype>const <classname>group</classname> &amp;</paramtype></parameter><purpose>Determines whether two process groups are identical. </purpose><description><para>Equivalent to calling <computeroutput>MPI_Group_compare</computeroutput> and checking whether the result is <computeroutput>MPI_IDENT</computeroutput>.</para><para>
 </para></description><returns><para>True when the two process groups contain the same processes in the same order. </para>
 </returns></function>
@@ -1589,6 +1650,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 </method-group>
 <constructor><parameter name="inout"><paramtype>T *</paramtype></parameter></constructor>
 </struct-specialization>
+
+
+
+
+
+
 
 
 
@@ -1800,12 +1867,24 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 </header>
 <header name="boost/mpi/nonblocking.hpp">
 <para>This header defines operations for completing non-blocking communication requests. </para><namespace name="boost">
 <namespace name="mpi">
+
+
+
+
+
+
 
 
 
@@ -2100,6 +2179,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 </header>
@@ -2127,6 +2212,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 <constructor><parameter name="comm"><paramtype>MPI_Comm const &amp;</paramtype><description><para>The communicator over which this archive will be received.</para></description></parameter><parameter name="s"><paramtype>std::size_t</paramtype><default>0</default></parameter><parameter name="flags"><paramtype>unsigned int</paramtype><default>boost::archive::no_header</default><description><para>Control the serialization of the data types. Refer to the Boost.Serialization documentation before changing the default flags. </para></description></parameter><description><para>Construct a <computeroutput><classname alt="boost::mpi::packed_iarchive">packed_iarchive</classname></computeroutput> to receive data over the given MPI communicator.</para><para>
 </para></description></constructor>
 </class><typedef name="iprimitive"><type>packed_iprimitive</type></typedef>
+
+
+
+
+
+
 
 
 
@@ -2333,6 +2424,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 </header>
@@ -2349,6 +2446,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
         </template><parameter name="value"><paramtype>const T &amp;</paramtype><default>T()</default><description><para>A sample object of type T that will be used to determine the Python type associated with T, if <computeroutput>type</computeroutput> is not specified.</para></description></parameter><parameter name="type"><paramtype>PyTypeObject *</paramtype><default>0</default><description><para>The Python type associated with the C++ type <computeroutput>T</computeroutput>. If not provided, it will be computed from the same value <computeroutput>value</computeroutput>. </para></description></parameter><purpose>Registers a type for use with the skeleton/content mechanism in Python. </purpose><description><para>The skeleton/content mechanism can only be used from Python with C++ types that have previously been registered via a call to this function. Both the sender and the transmitter must register the type. It is permitted to call this function multiple times for the same type <computeroutput>T</computeroutput>, but only one call per process per type is required. The type <computeroutput>T</computeroutput> must be Serializable.</para><para>
 </para></description></function>
 </namespace>
+
+
+
+
+
+
 
 
 
@@ -2596,12 +2699,24 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 </header>
 <header name="boost/mpi/skeleton_and_content.hpp">
 <para>This header provides facilities that allow the structure of data types (called the "skeleton") to be transmitted and received separately from the content stored in those data types. These facilities are useful when the data in a stable data structure (e.g., a mesh or a graph) will need to be transmitted repeatedly. In this case, transmitting the skeleton only once saves both communication effort (it need not be sent again) and local computation (serialization need only be performed once for the content). </para><namespace name="boost">
 <namespace name="mpi">
+
+
+
+
+
+
 
 
 
@@ -2701,6 +2816,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 <struct name="skeleton_proxy"><template>
       <template-type-parameter name="T"/>
     </template></struct>
+
+
+
+
+
+
 
 
 
@@ -2906,6 +3027,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 
 
 
+
+
+
+
+
+
 </namespace>
 </namespace>
 </header>
@@ -2927,6 +3054,12 @@ If wrapped in a <computeroutput><classname alt="boost::mpi::inplace_t">inplace_t
 <method name="time_is_global" specifiers="static"><type>bool</type><description><para>Determines whether the elapsed time values are global times or local processor times. </para></description></method>
 </method-group>
 </class>
+
+
+
+
+
+
 
 
 

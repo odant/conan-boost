@@ -28,7 +28,7 @@
 <a name="url.ref.boost__urls__url_view_base.segments"></a><a class="link" href="segments.html" title="url_view_base::segments">url_view_base::segments</a>
 </h5></div></div></div>
 <p>
-          <a class="indexterm" name="idm192186"></a>
+          <a class="indexterm" name="idm144546"></a>
         </p>
 <p>
           Return the path as a container of segments.
@@ -54,7 +54,7 @@
 <a name="url.ref.boost__urls__url_view_base.segments.h2"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_view_base.segments.example"></a></span><a class="link" href="segments.html#url.ref.boost__urls__url_view_base.segments.example">Example</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">segments_view</span> <span class="error">`</span><span class="identifier">segments_view</span><span class="error">`</span><span class="special">]</span> <span class="identifier">sv</span> <span class="special">=</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">url_view</span> <span class="error">`</span><span class="identifier">url_view</span><span class="error">`</span><span class="special">](</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">segments</span><span class="special">();</span>
+<pre class="programlisting"><span class="identifier">segments_view</span> <span class="identifier">sv</span> <span class="special">=</span> <span class="identifier">url_view</span><span class="special">(</span> <span class="string">"/path/to/file.txt"</span> <span class="special">).</span><span class="identifier">segments</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_view_base.segments.h3"></a>
@@ -75,7 +75,7 @@
 <a name="url.ref.boost__urls__url_view_base.segments.h5"></a>
           <span class="phrase"><a name="url.ref.boost__urls__url_view_base.segments.bnf"></a></span><a class="link" href="segments.html#url.ref.boost__urls__url_view_base.segments.bnf">BNF</a>
         </h6>
-<pre class="programlisting"><span class="special">[</span><span class="identifier">link</span> <span class="identifier">url</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__urls__url_view_base</span><span class="special">.</span><span class="identifier">path</span> <span class="error">`</span><span class="identifier">path</span><span class="error">`</span><span class="special">]</span>          <span class="special">=</span> <span class="special">[</span> <span class="string">"/"</span> <span class="special">]</span> <span class="identifier">segment</span> <span class="special">*(</span> <span class="string">"/"</span> <span class="identifier">segment</span> <span class="special">)</span>
+<pre class="programlisting"><span class="identifier">path</span>          <span class="special">=</span> <span class="special">[</span> <span class="string">"/"</span> <span class="special">]</span> <span class="identifier">segment</span> <span class="special">*(</span> <span class="string">"/"</span> <span class="identifier">segment</span> <span class="special">)</span>
 </pre>
 <h6>
 <a name="url.ref.boost__urls__url_view_base.segments.h6"></a>

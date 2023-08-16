@@ -28,7 +28,7 @@
 <a name="beast.ref.boost__beast__http__async_read_header"></a><a class="link" href="boost__beast__http__async_read_header.html" title="http::async_read_header">http::async_read_header</a>
 </h4></div></div></div>
 <p>
-        <a class="indexterm" name="idm86201"></a>
+        <a class="indexterm" name="idm83642"></a>
       </p>
 <p>
         Read a complete message header asynchronously from a stream using a parser.
@@ -174,7 +174,7 @@
                   must be:
                 </p>
 <pre class="table-programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span>
-    <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__error_code</span> <span class="error">`</span><span class="identifier">error_code</span><span class="error">`</span><span class="special">]</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="special">[</span><span class="identifier">link</span> <span class="identifier">beast</span><span class="special">.</span><span class="identifier">ref</span><span class="special">.</span><span class="identifier">boost__beast__http__error</span> <span class="error">`</span><span class="identifier">error</span><span class="error">`</span><span class="special">],</span>        <span class="comment">// result of operation</span>
+    <span class="identifier">error_code</span> <span class="keyword">const</span> <span class="special">&amp;</span> <span class="identifier">error</span><span class="special">,</span>        <span class="comment">// result of operation</span>
     <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">bytes_transferred</span>   <span class="comment">// the total number of bytes transferred from the stream</span>
 <span class="special">);</span>
 </pre>
