@@ -1,0 +1,36 @@
+diff --git a/boost_1_83_0/boost/smart_ptr/weak_ptr.hpp b/boost_1_83_0/boost/smart_ptr/weak_ptr.hpp
+index 48f2a77941..9fd97fddae 100644
+--- a/boost_1_83_0/boost/smart_ptr/weak_ptr.hpp
++++ b/boost_1_83_0/boost/smart_ptr/weak_ptr.hpp
+@@ -276,6 +276,16 @@ template<class T, class U> inline bool operator<(weak_ptr<T> const & a, weak_ptr
+     return a.owner_before( b );
+ }
+ 
++template<class T, class U> inline bool operator==(weak_ptr<T> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT
++{
++    return a.owner_equals( b );
++}
++
++template<class T, class U> inline bool operator!=(weak_ptr<T> const & a, weak_ptr<U> const & b) BOOST_SP_NOEXCEPT
++{
++    return !a.owner_equals( b );
++}
++
+ template<class T> void swap(weak_ptr<T> & a, weak_ptr<T> & b) BOOST_SP_NOEXCEPT
+ {
+     a.swap(b);
+@@ -321,6 +331,14 @@ template<class T> struct equal_to< ::boost::weak_ptr<T> >
+     }
+ };
+ 
++template<class T> struct less< ::boost::weak_ptr<T> >
++{
++    bool operator()( ::boost::weak_ptr<T> const & a, ::boost::weak_ptr<T> const & b ) const BOOST_SP_NOEXCEPT
++    {
++        return a.owner_before( b );
++    }
++};
++
+ } // namespace std
+ 
+ #endif  // #ifndef BOOST_SMART_PTR_WEAK_PTR_HPP_INCLUDED
