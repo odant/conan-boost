@@ -320,6 +320,18 @@ add_test(
     COMMAND test_weak_ptr_hash
 )
 
+add_executable(test_weak_ptr_operator_equal test_weak_ptr_operator_equal.cpp)
+target_link_libraries(test_weak_ptr_operator_equal Boost::boost)
+set_target_properties(test_weak_ptr_operator_equal
+    PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH True
+)
+add_test(
+    NAME test_weak_ptr_operator_equal
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    COMMAND test_weak_ptr_operator_equal
+)
 
 add_executable(test_smart_ptr test_smart_ptr.cpp)
 target_link_libraries(test_smart_ptr Boost::boost)
