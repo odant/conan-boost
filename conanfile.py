@@ -228,7 +228,8 @@ class BoostConan(ConanFile):
             "--with-timer",
             "--with-type_erasure",
             #"--with-wave",
-            "--with-url"
+            "--with-url",
+            "--with-cobalt"
         ]
         return libs
 
