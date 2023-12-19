@@ -138,8 +138,10 @@ class BoostConan(ConanFile):
             "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32", "armv7": "32"}.get(str(self.settings.arch))
         ])
         # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
+        if self.settings.os == "Windows": 
+            if self.settings.compiler == "Visual Studio":
+                flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
+            flags.append("define=BOOST_USE_WINAPI_VERSION=0x0601")
         # locale use ICU
         if self.options.with_icu:
             icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
