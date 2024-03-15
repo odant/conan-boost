@@ -198,6 +198,7 @@ class BoostConan(ConanFile):
     def get_libraries_list(self):
         libs = [
             "--with-atomic",
+            "--with-charconv",
             "--with-chrono",
             "--with-container",
             "--with-context",
