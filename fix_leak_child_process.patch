@@ -1,5 +1,5 @@
---- a/boost_1_84_0/boost/process/detail/posix/executor.hpp
-+++ b/boost_1_84_0/boost/process/detail/posix/executor.hpp
+--- a/boost_1_85_0/boost/process/detail/posix/executor.hpp
++++ b/boost_1_85_0/boost/process/detail/posix/executor.hpp
 @@ -177,7 +177,10 @@ class executor
          if (this->pid == 0)
              write_error(ec, msg);
