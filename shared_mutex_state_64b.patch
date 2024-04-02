@@ -1,0 +1,80 @@
+diff --git a/boost_1_85_0/boost/thread/win32/shared_mutex.hpp b/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
+index 632089bfa9..cce76f8be5 100644
+--- a/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
++++ b/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
+@@ -24,11 +24,66 @@
+ 
+ #include <boost/config/abi_prefix.hpp>
+ 
++#include <boost/predef.h>
++
++#if BOOST_ARCH_X86_64
++
++#    ifndef WIN32_LEAN_AND_MEAN
++#        define WIN32_LEAN_AND_MEAN
++#    endif
++#    ifndef NOMINMAX
++#        define NOMINMAX
++#    endif
++
++#    include <windows.h>
++#    include <cstdint>
++
++#endif
++
+ namespace boost
+ {
+     class shared_mutex
+     {
+     private:
++
++#if BOOST_ARCH_X86_64
++
++#pragma pack(push, 1)
++        struct state_data
++        {
++            std::uint16_t shared_count;
++            std::uint16_t shared_waiting;
++            std::uint16_t exclusive_waiting;
++            std::uint16_t             
++                exclusive : 1,
++                          : 6, // 6 bit unused 
++                upgrade   : 1,
++                          : 7, // first 7 bit unused 
++                exclusive_waiting_blocked : 1;
++
++            friend bool operator==(state_data const& lhs, state_data const& rhs)
++            {
++                return std::memcmp(&lhs, &rhs, sizeof(lhs)) == 0;
++            }
++        };
++#pragma pack(pop)
++
++        static state_data interlocked_compare_exchange(state_data* target, state_data new_value, state_data comparand)
++        {
++            BOOST_STATIC_ASSERT(sizeof(state_data) == sizeof(std::int64_t));
++            std::int64_t new_val, comp;
++            std::memcpy(&new_val, &new_value, sizeof(new_value));
++            std::memcpy(&comp, &comparand, sizeof(comparand));
++            std::int64_t const res = InterlockedCompareExchange64(reinterpret_cast<std::int64_t*>(target),
++                                                                  new_val,
++                                                                  comp);
++            state_data result;
++            std::memcpy(&result, &res, sizeof(result));
++            return result;
++        }
++        
++#else
++    
+         struct state_data
+         {
+             unsigned long shared_count:11,
+@@ -58,6 +113,8 @@ namespace boost
+             return result;
+         }
+ 
++#endif
++
+         enum
+         {
+             unlock_sem = 0,
