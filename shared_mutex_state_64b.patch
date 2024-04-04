@@ -1,5 +1,5 @@
 diff --git a/boost_1_85_0/boost/thread/win32/shared_mutex.hpp b/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
-index 632089bfa9..cce76f8be5 100644
+index 632089bfa9..81ec5af227 100644
 --- a/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
 +++ b/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
 @@ -24,11 +24,66 @@
@@ -40,8 +40,8 @@ index 632089bfa9..cce76f8be5 100644
 +                exclusive : 1,
 +                          : 6, // 6 bit unused 
 +                upgrade   : 1,
-+                          : 7, // first 7 bit unused 
-+                exclusive_waiting_blocked : 1;
++                exclusive_waiting_blocked : 1,
++                          : 7; // high 7 bit unused 
 +
 +            friend bool operator==(state_data const& lhs, state_data const& rhs)
 +            {
