@@ -146,6 +146,10 @@
             <span class="identifier">emp</span><span class="special">.</span><span class="identifier">salary</span>
         <span class="special">);</span>
         <span class="identifier">is_first</span> <span class="special">=</span> <span class="keyword">false</span><span class="special">;</span>
+
+        <span class="comment">// If you find yourself repeating the formatting logic for a type</span>
+        <span class="comment">// like employee over and over, you can specialize boost::mysql::formatter&lt;employee&gt;</span>
+        <span class="comment">// employee objects usable as format arguments. See batch_inserts_generic for an example.</span>
     <span class="special">}</span>
 
     <span class="comment">// fomat_context::get() returns the result of our formatting operation.</span>

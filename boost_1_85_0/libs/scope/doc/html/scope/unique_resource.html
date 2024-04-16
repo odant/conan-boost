@@ -200,7 +200,7 @@
 </tr>
 <tr><td align="left" valign="top"><p>
         POSIX-like file descriptors are supported on Windows through non-standard
-        APIs like <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/open-wopen" target="_top"><code class="computeroutput"><span class="identifier">_open</span></code></a>, <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/close" target="_top"><code class="computeroutput"><span class="identifier">_close</span></code></a>, <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/write" target="_top"><code class="computeroutput"><span class="identifier">_write</span></code></a> and others. It is often
+        APIs like <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/open-wopen" target="_top"><code class="computeroutput"><span class="identifier">_open</span></code></a>, <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/close" target="_top"><code class="computeroutput"><span class="identifier">_close</span></code></a>, <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/read" target="_top"><code class="computeroutput"><span class="identifier">_read</span></code></a>, <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/write" target="_top"><code class="computeroutput"><span class="identifier">_write</span></code></a> and others. It is often
         possible to port a program performing simple IO with regular files and file
         descriptors to Windows by simple renaming. However, here and below we will
         be using the standard POSIX nomenclature.
@@ -509,8 +509,12 @@
             Resource values are allowed to be specified as <a href="https://en.cppreference.com/w/cpp/language/template_parameters" target="_top">non-type
             template parameters</a> in C++. The exact set of types that meet
             this requirement depends on the C++ standard version being used. For
-            example, integers, enumerations, pointers and lvalue references are generally
-            supported.
+            example, integers, enumerations, pointers and lvalue references are supported
+            since C++17. C++20 adds support for class types. Note that resource value
+            initialization expression must be a constant expression. In particular,
+            for pointers and references this means that the resource value initialization
+            expression must refer to an object or function or, in case of pointers,
+            produce a null pointer.
           </li>
 <li class="listitem">
             There is one or more unallocated resource values that can be individually
@@ -574,6 +578,23 @@
       </p>
 <pre class="programlisting"><span class="keyword">using</span> <span class="identifier">handle_traits</span> <span class="special">=</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">scope</span><span class="special">::</span><span class="identifier">unallocated_resource</span><span class="special">&lt;</span> <span class="identifier">INVALID_HANDLE_VALUE</span><span class="special">,</span> <span class="special">(</span><span class="identifier">HANDLE</span><span class="special">)</span><span class="identifier">NULL</span> <span class="special">&gt;;</span>
 </pre>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../../../../doc/src/images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top"><p>
+          Given that <code class="computeroutput"><span class="identifier">INVALID_HANDLE_VALUE</span></code>
+          is defined as <code class="computeroutput"><span class="special">(</span><span class="identifier">HANDLE</span><span class="special">)-</span><span class="number">1</span></code> in Windows
+          SDK, and <code class="computeroutput"><span class="identifier">HANDLE</span></code> is actually
+          a pointer type, in pure C++ one should not be able to specify this value
+          as a non-type template parameter because the pointer does not refer to
+          an object. However, MSVC accepts this code as an extension. With other
+          compilers, one would still have to implement proper resource traits similar
+          to <code class="computeroutput"><span class="identifier">handle_traits</span></code> in this
+          case.
+        </p></td></tr>
+</table></div>
 <p>
         We can also use <a href="https://www.boost.org/doc/libs/release/libs/core/doc/html/core/functor.html" target="_top"><code class="computeroutput"><span class="identifier">functor</span></code></a> to wrap the <a href="https://learn.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle" target="_top"><code class="computeroutput"><span class="identifier">CloseHandle</span></code></a> Windows API function,
         which is used to free handles, to define the resource deleter. Then the complete

@@ -32,13 +32,13 @@
   <span class="keyword">typedef</span> <span class="keyword">bool</span> <a name="boost.scope.error_code_checker.result_type"></a><span class="identifier">result_type</span><span class="special">;</span>  <span class="comment">// Predicate result type. </span>
 
   <span class="comment">// <a class="link" href="error_code_checker.html#boost.scope.error_code_checkerconstruct-copy-destruct">construct/copy/destruct</a></span>
-  <span class="keyword">explicit</span> <a class="link" href="error_code_checker.html#idm6472-bb"><span class="identifier">error_code_checker</span></a><span class="special">(</span><span class="identifier">ErrorCode</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="keyword">explicit</span> <a class="link" href="error_code_checker.html#idm6488-bb"><span class="identifier">error_code_checker</span></a><span class="special">(</span><span class="identifier">ErrorCode</span> <span class="special">&amp;</span><span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span>
 
-  <span class="comment">// <a class="link" href="error_code_checker.html#idm6460-bb">public member functions</a></span>
-  <span class="identifier">result_type</span> <a class="link" href="error_code_checker.html#idm6461-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
+  <span class="comment">// <a class="link" href="error_code_checker.html#idm6476-bb">public member functions</a></span>
+  <span class="identifier">result_type</span> <a class="link" href="error_code_checker.html#idm6477-bb"><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span></a><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span>
 <span class="special">}</span><span class="special">;</span></pre></div>
 <div class="refsect1">
-<a name="idm6791"></a><h2>Description</h2>
+<a name="idm6807"></a><h2>Description</h2>
 <p>The predicate captures a reference to an external error code object, which it tests for an error indication when called. The error code object must remain valid for the whole lifetime duration of the predicate.</p>
 <p>For an error code object <code class="computeroutput">ec</code>, an expression <code class="computeroutput">!ec</code> must be valid, never throw exceptions, and return a value contextually convertible to <code class="computeroutput">bool</code>. If the returned value converts to <code class="computeroutput">false</code>, then this is taken as an error indication, and the predicate returns <code class="computeroutput">true</code>. Otherwise, the predicate returns <code class="computeroutput">false</code>.</p>
 <p>A few examples of error code types:</p>
@@ -53,27 +53,27 @@
 
 </p>
 <div class="refsect2">
-<a name="idm6823"></a><h3>Template Parameters</h3>
+<a name="idm6839"></a><h3>Template Parameters</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
 <pre class="literallayout"><span class="keyword">typename</span> ErrorCode</pre>
 <p>Error code type. </p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="idm6832"></a><h3>
+<a name="idm6848"></a><h3>
 <a name="boost.scope.error_code_checkerconstruct-copy-destruct"></a><code class="computeroutput">error_code_checker</code> 
         public
        construct/copy/destruct</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="keyword">explicit</span> <a name="idm6472-bb"></a><span class="identifier">error_code_checker</span><span class="special">(</span><span class="identifier">ErrorCode</span> <span class="special">&amp;</span> ec<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Constructs the predicate. <p>Upon construction, the predicate saves a reference to the external error code object. The referenced object must remain valid for the whole lifetime duration of the predicate.</p>
+<pre class="literallayout"><span class="keyword">explicit</span> <a name="idm6488-bb"></a><span class="identifier">error_code_checker</span><span class="special">(</span><span class="identifier">ErrorCode</span> <span class="special">&amp;</span> ec<span class="special">)</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Constructs the predicate. <p>Upon construction, the predicate saves a reference to the external error code object. The referenced object must remain valid for the whole lifetime duration of the predicate.</p>
 <p><span class="bold"><strong>Throws:</strong></span> Nothing. </p>
 </li></ol></div>
 </div>
 <div class="refsect2">
-<a name="idm6852"></a><h3>
-<a name="idm6460-bb"></a><code class="computeroutput">error_code_checker</code> public member functions</h3>
+<a name="idm6868"></a><h3>
+<a name="idm6476-bb"></a><code class="computeroutput">error_code_checker</code> public member functions</h3>
 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-<pre class="literallayout"><span class="identifier">result_type</span> <a name="idm6461-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Checks if the error code indicates error. <p><span class="bold"><strong>Throws:</strong></span> Nothing.</p>
+<pre class="literallayout"><span class="identifier">result_type</span> <a name="idm6477-bb"></a><span class="keyword">operator</span><span class="special">(</span><span class="special">)</span><span class="special">(</span><span class="special">)</span> <span class="keyword">const</span> <span class="keyword">noexcept</span><span class="special">;</span></pre>Checks if the error code indicates error. <p><span class="bold"><strong>Throws:</strong></span> Nothing.</p>
 <p>
 </p>
 <div class="variablelist"><table border="0" class="variablelist compact">

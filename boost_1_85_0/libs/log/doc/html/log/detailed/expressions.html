@@ -70,13 +70,13 @@
           is the log <a class="link" href="../detailed.html#log.detailed.core.record" title="Logging records">record view</a>
           or <a class="link" href="attributes.html#log.detailed.attributes.related_components.attribute_value_set" title="Attribute value set">attribute
           value set</a>. <code class="computeroutput"><span class="identifier">T</span></code> can
-          be a <a href="http://www.boost.org/doc/libs/release/libs/mpl/doc/index.html" target="_top">Boost.MPL</a>
+          be a <a href="https://www.boost.org/doc/libs/release/libs/mpl/doc/index.html" target="_top">Boost.MPL</a>
           type sequence with possible expected types of the value; the extraction
           will succeed if the type of the value matches one of the types in the sequence.
         </p>
 <p>
           The <code class="computeroutput"><span class="identifier">attr</span></code> placeholder can
-          be used in <a href="http://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
+          be used in <a href="https://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
           expressions, including the <code class="computeroutput"><span class="identifier">bind</span></code>
           expression.
         </p>
@@ -740,10 +740,10 @@
 <p>
             The <code class="computeroutput"><a class="link" href="../../boost/log/expressions/matches_idm30070.html" title="Function template matches">matches</a></code> function creates
             a filter that apples a regular expression or a parser to a string attribute
-            value. The regular expression can be provided by <a href="http://www.boost.org/doc/libs/release/libs/regex/index.html" target="_top">Boost.Regex</a>
-            or <a href="http://www.boost.org/doc/libs/release/doc/html/xpressive.html" target="_top">Boost.Xpressive</a>.
-            Parsers from <a href="http://www.boost.org/doc/libs/release/libs/spirit/classic/index.html" target="_top">Boost.Spirit</a>
-            and <a href="http://www.boost.org/doc/libs/release/libs/spirit/doc/html/index.html" target="_top">Boost.Spirit2</a>
+            value. The regular expression can be provided by <a href="https://www.boost.org/doc/libs/release/libs/regex/doc/html/index.html" target="_top">Boost.Regex</a>
+            or <a href="https://www.boost.org/doc/libs/release/doc/html/xpressive.html" target="_top">Boost.Xpressive</a>.
+            Parsers from <a href="https://www.boost.org/doc/libs/release/libs/spirit/classic/index.html" target="_top">Boost.Spirit</a>
+            and <a href="https://www.boost.org/doc/libs/release/libs/spirit/doc/html/index.html" target="_top">Boost.Spirit2</a>
             are also supported. The filter returns <code class="computeroutput"><span class="keyword">true</span></code>
             if the regular expression matches or the parser successfully parses the
             attribute value.
@@ -935,7 +935,7 @@
 <p>
           As was noted in the <a class="link" href="../tutorial/formatters.html" title="Log record formatting">tutorial</a>,
           the library provides several ways of expressing formatters, most notable
-          being with a stream-style syntax and <a href="http://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>-style
+          being with a stream-style syntax and <a href="https://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>-style
           expression. Which of the two formats is chosen is determined by the appropriate
           anchor expression. To use stream-style syntax one should begin the formatter
           definition with the <code class="computeroutput"><span class="identifier">stream</span></code>
@@ -952,7 +952,7 @@
           in an object that supports putting into a standard library output stream.
         </p>
 <p>
-          To use <a href="http://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>-style
+          To use <a href="https://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>-style
           syntax one should use <code class="computeroutput"><span class="identifier">format</span></code>
           construct:
         </p>
@@ -990,7 +990,7 @@
             The library provides the <code class="computeroutput"><a class="link" href="../../boost/log/expressions/format_date_time_idm28051.html" title="Function template format_date_time">format_date_time</a></code> formatter
             dedicated to date and time-related attribute value types. The function
             accepts the attribute value name and the format string compatible with
-            <a href="http://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>.
+            <a href="https://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>.
           </p>
 <pre class="programlisting"><span class="identifier">sink</span><span class="special">-&gt;</span><span class="identifier">set_formatter</span>
 <span class="special">(</span>
@@ -1521,7 +1521,7 @@
 <br class="table-break"><p>
             Note that in order to use this formatter you will also have to include
             a supporting header. When <code class="computeroutput"><a class="link" href="../../other_libraries_support_layer.html#header.boost.log.support.date_time_hpp" title="Header &lt;boost/log/support/date_time.hpp&gt;">boost/log/support/date_time.hpp</a></code>
-            is included, the formatter supports the following types of <a href="http://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>:
+            is included, the formatter supports the following types of <a href="https://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>:
           </p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">
@@ -1546,7 +1546,7 @@
 <th align="left">Tip</th>
 </tr>
 <tr><td align="left" valign="top"><p>
-              <a href="http://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>
+              <a href="https://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>
               already provides formatting functionality implemented as a number of
               locale facets. This functionality can be used instead of this formatter,
               although the formatter is expected to provide better performance.
@@ -1869,7 +1869,7 @@
 <span class="special">]</span>
 </pre>
 <p>
-            Those familiar with <a href="http://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
+            Those familiar with <a href="https://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
             lambda expressions will find this syntax quite familiar. The <code class="computeroutput"><span class="identifier">filter</span></code> argument is a filter that is
             applied to the record being formatted. If it returns <code class="computeroutput"><span class="keyword">true</span></code>,
             the <code class="computeroutput"><span class="identifier">true_formatter</span></code> is
@@ -2200,7 +2200,7 @@
                 in multibyte encodings, it is important that the locale used by the
                 formatter is set up properly. In particular, the <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">codecvt</span></code>
                 facet in the locale must correctly recognize multibyte sequences
-                corresponding to a single character in the output. One can use <a href="http://www.boost.org/doc/libs/release/libs/locale/doc/html/index.html" target="_top">Boost.Locale</a>
+                corresponding to a single character in the output. One can use <a href="https://www.boost.org/doc/libs/release/libs/locale/doc/html/index.html" target="_top">Boost.Locale</a>
                 to generate the locale and then install it in the sink frontend by
                 calling <code class="computeroutput"><span class="identifier">imbue</span></code> (see
                 <code class="computeroutput"><a class="link" href="../../boost/log/sinks/basic_formatting__idm32541.html" title="Class template basic_formatting_sink_frontend">basic_formatting_sink_frontend</a></code>

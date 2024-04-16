@@ -369,9 +369,10 @@
       the unknown_character_set error</a>
     </h4>
 <p>
-      If you are getting a <code class="computeroutput"><span class="identifier">client_errc</span><span class="special">::</span><span class="identifier">unknown_character_set</span></code>
-      error, your connection is currently unaware of the character set it's using,
-      which is required by format operations. Try the following:
+      If you are getting a <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">system</span><span class="special">::</span><span class="identifier">system_error</span></code>
+      with a <code class="computeroutput"><span class="identifier">client_errc</span><span class="special">::</span><span class="identifier">unknown_character_set</span></code> error code (or getting
+      this error code by other means), your connection is currently unaware of the
+      character set it's using, which is required by format operations. Try the following:
     </p>
 <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
 <li class="listitem">

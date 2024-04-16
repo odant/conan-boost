@@ -51,18 +51,14 @@
 [include requirements/MoveAcceptToken.qbk]
 [include requirements/MutableBufferSequence.qbk]
 [include requirements/NullaryToken.qbk]
-[include requirements/OperationState.qbk]
 [include requirements/ProtoAllocator.qbk]
 [include requirements/Protocol.qbk]
 [include requirements/RangeConnectHandler.qbk]
 [include requirements/RangeConnectToken.qbk]
 [include requirements/ReadHandler.qbk]
 [include requirements/ReadToken.qbk]
-[include requirements/Receiver.qbk]
 [include requirements/ResolveHandler.qbk]
 [include requirements/ResolveToken.qbk]
-[include requirements/Scheduler.qbk]
-[include requirements/Sender.qbk]
 [include requirements/Service.qbk]
 [include requirements/SettableSerialPortOption.qbk]
 [include requirements/SettableSocketOption.qbk]
@@ -157319,7 +157315,7 @@ This function may be used to obtain the underlying implementation of the context
   
 The `native_handle()` function returns a pointer of type `SSL*` that is suitable for passing to functions such as `SSL_get_verify_result` and `SSL_get_peer_certificate:` 
 
-  boost::asio::ssl::stream<asio:ip::tcp::socket> sock(my_context, ctx);
+  boost::asio::ssl::stream<boost::asio::ip::tcp::socket> sock(io_ctx, ctx);
 
   // ... establish connection and perform handshake ...
 

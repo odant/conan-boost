@@ -196,7 +196,7 @@
           The only thing left to do in our factory is to define the <code class="computeroutput"><span class="identifier">create_formatter</span></code> method. The method analyzes
           the parameters from the format string which are passed as the <code class="computeroutput"><span class="identifier">args</span></code> argument, which is basically <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">map</span></code> of string keys (parameter names)
           to string values (the parameter values). We seek for the <code class="computeroutput"><span class="identifier">format</span></code> parameter and expect it to contain
-          a <a href="http://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>-compatible
+          a <a href="https://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>-compatible
           format string for our <code class="computeroutput"><span class="identifier">point</span></code>
           objects. If the parameter is found we create a formatter that invokes
           <code class="computeroutput"><span class="identifier">point_formatter</span></code> for the
@@ -208,8 +208,8 @@
         </p>
 <p>
           The <code class="computeroutput"><span class="identifier">point_formatter</span></code> is
-          our custom formatter based on <a href="http://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>.
-          With help of <a href="http://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
+          our custom formatter based on <a href="https://www.boost.org/doc/libs/release/libs/format/index.html" target="_top">Boost.Format</a>.
+          With help of <a href="https://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
           and <a class="link" href="../detailed/expressions.html#log.detailed.expressions.attr" title="Generic attribute placeholder">expression placeholders</a>
           we can construct a formatter that will extract the attribute value and
           pass it along with the target stream to the <code class="computeroutput"><span class="identifier">point_formatter</span></code>
@@ -485,7 +485,7 @@
           description). All we have to do is to construct the filter, which is implemented
           by our <code class="computeroutput"><span class="identifier">is_in_rectangle</span></code>
           function. We use <code class="computeroutput"><span class="identifier">bind</span></code> from
-          <a href="http://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
+          <a href="https://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html" target="_top">Boost.Phoenix</a>
           to compose the filter from the function and the <a class="link" href="../detailed/expressions.html#log.detailed.expressions.attr" title="Generic attribute placeholder">attribute
           placeholder</a>. You can find the complete code of this example <a href="../../../../../../libs/log/example/doc/extension_filter_parser_custom_rel.cpp" target="_top">here</a>.
         </p>

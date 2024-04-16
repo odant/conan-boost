@@ -77,7 +77,7 @@
         class template, which is instantiated on a sequence of features (don't worry,
         this will be shown in an example in a few moments). The constructor with
         a templated argument allows initializing features with named parameters,
-        using the <a href="http://www.boost.org/doc/libs/release/libs/parameter/doc/html/index.html" target="_top">Boost.Parameter</a>
+        using the <a href="https://www.boost.org/doc/libs/release/libs/parameter/doc/html/index.html" target="_top">Boost.Parameter</a>
         library.
       </p>
 <p>
@@ -263,7 +263,7 @@
         Now, since all locking is extracted into the public interface, we have the
         most of our feature logic to be implemented in the protected part of the
         interface. In order to set up tag value in the logger, we will have to introduce
-        a new <a href="http://www.boost.org/doc/libs/release/libs/parameter/doc/html/index.html" target="_top">Boost.Parameter</a>
+        a new <a href="https://www.boost.org/doc/libs/release/libs/parameter/doc/html/index.html" target="_top">Boost.Parameter</a>
         keyword. Following recommendations from that library documentation, it's
         better to introduce the keyword in a special namespace:
       </p>
@@ -321,7 +321,7 @@
         Here we add a new attribute with the tag value, if one is specified in call
         to <code class="computeroutput"><span class="identifier">open_record</span></code>. When a log
         record is opened, all attribute values are acquired and locked after the
-        record, so we remove the tag from the attribute set with the <a href="http://www.boost.org/doc/libs/release/libs/scope_exit/doc/html/index.html" target="_top">Boost.ScopeExit</a>
+        record, so we remove the tag from the attribute set with the <a href="https://www.boost.org/doc/libs/release/libs/scope_exit/doc/html/index.html" target="_top">Boost.ScopeExit</a>
         block.
       </p>
 <p>

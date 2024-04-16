@@ -314,7 +314,7 @@
           returns the current UTC time and the latter returns the current local time.
           In either case the returned time stamp is acquired with the maximum precision
           for the target platform. The attribute value is <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">posix_time</span><span class="special">::</span><span class="identifier">ptime</span></code>
-          (see <a href="http://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>).
+          (see <a href="https://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>).
           The usage is quite straightforward:
         </p>
 <pre class="programlisting"><span class="identifier">BOOST_LOG_DECLARE_GLOBAL_LOGGER</span><span class="special">(</span><span class="identifier">my_logger</span><span class="special">,</span> <span class="identifier">src</span><span class="special">::</span><span class="identifier">logger_mt</span><span class="special">)</span>
@@ -359,7 +359,7 @@
           is very useful when there is a need to estimate the duration of some prolonged
           process. The attribute returns the time elapsed since the attribute construction.
           The attribute value type is <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">posix_time</span><span class="special">::</span><span class="identifier">ptime</span><span class="special">::</span><span class="identifier">time_duration_type</span></code>
-          (see <a href="http://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>).
+          (see <a href="https://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_top">Boost.DateTime</a>).
         </p>
 <pre class="programlisting"><span class="comment">// The class represents a single peer-to-peer connection</span>
 <span class="keyword">class</span> <span class="identifier">network_connection</span>
@@ -543,7 +543,7 @@
 </table></div>
 <p>
           Another good use case is attaching the scope stack information to an exception.
-          With the help of <a href="http://www.boost.org/doc/libs/release/libs/exception/doc/boost-exception.html" target="_top">Boost.Exception</a>,
+          With the help of <a href="https://www.boost.org/doc/libs/release/libs/exception/doc/boost-exception.html" target="_top">Boost.Exception</a>,
           this is possible:
         </p>
 <pre class="programlisting"><span class="keyword">void</span> <span class="identifier">bar</span><span class="special">(</span><span class="keyword">int</span> <span class="identifier">x</span><span class="special">)</span>
@@ -580,7 +580,7 @@
 <th align="left">Note</th>
 </tr>
 <tr><td align="left" valign="top"><p>
-            In order this code to compile, the <a href="http://www.boost.org/doc/libs/release/libs/exception/doc/boost-exception.html" target="_top">Boost.Exception</a>
+            In order this code to compile, the <a href="https://www.boost.org/doc/libs/release/libs/exception/doc/boost-exception.html" target="_top">Boost.Exception</a>
             support header has to be included.
           </p></td></tr>
 </table></div>
@@ -707,7 +707,7 @@
 <span class="special">}</span>
 </pre>
 <p>
-          Auto-generated function objects, like the ones defined in <a href="http://www.boost.org/doc/libs/release/libs/bind/bind.html" target="_top">Boost.Bind</a>
+          Auto-generated function objects, like the ones defined in <a href="https://www.boost.org/doc/libs/release/libs/bind/doc/html/bind.html" target="_top">Boost.Bind</a>
           or C++ standard library, are also supported.
         </p>
 <div class="note"><table border="0" summary="Note">
@@ -1028,11 +1028,11 @@
 </tr>
 <tr><td align="left" valign="top"><p>
                 When there is no default state for the visitor result it is convenient
-                to use <a href="http://www.boost.org/doc/libs/release/libs/optional/index.html" target="_top">Boost.Optional</a>
+                to use <a href="https://www.boost.org/doc/libs/release/libs/optional/doc/html/index.html" target="_top">Boost.Optional</a>
                 to wrap the returned value. The <code class="computeroutput"><span class="identifier">optional</span></code>
                 will be initialized with the visitor result if visitation succeeded.
                 In case if visitor is polymorphic (i.e. it has different result types
-                depending on its argument type) <a href="http://www.boost.org/doc/libs/release/doc/html/variant.html" target="_top">Boost.Variant</a>
+                depending on its argument type) <a href="https://www.boost.org/doc/libs/release/doc/html/variant.html" target="_top">Boost.Variant</a>
                 can be used to receive the resulting value. It is also worthwhile
                 to use an empty type, such as <code class="computeroutput"><span class="identifier">boost</span><span class="special">::</span><span class="identifier">blank</span></code>,
                 to indicate the uninitialized state of the <code class="computeroutput"><span class="identifier">variant</span></code>.

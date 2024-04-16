@@ -592,6 +592,7 @@ Boost 1.85</h2>
 <li>(<a href="https://github.com/boostorg/redis/issues/168">Issue 168</a>). Provides a way of passing a custom SSL context to the connection. The design here differs from that of Boost.Beast and Boost.MySql since in Boost.Redis the connection owns the context instead of only storing a reference to a user provided one. This is ok so because apps need only one connection for their entire application, which makes the overhead of one ssl-context per connection negligible.</li>
 <li>(<a href="https://github.com/boostorg/redis/issues/181">Issue 181</a>). See a detailed description of this bug in <a href="https://github.com/boostorg/redis/issues/181#issuecomment-1913346983">this</a> comment.</li>
 <li>(<a href="https://github.com/boostorg/redis/issues/182">Issue 182</a>). Sets <code>"default"</code> as the default value of <code>config::username</code>. This makes it simpler to use the <code>requirepass</code> configuration in Redis.</li>
+<li>(<a href="https://github.com/boostorg/redis/issues/189">Issue 189</a>). Fixes narrowing convertion by using <code>std::size_t</code> instead of <code>std::uint64_t</code> for the sizes of bulks and aggregates. The code relies now on <code>std::from_chars</code> returning an error if a value greater than 32 is received on platforms on which the size of<code>std::size_t</code> is 32.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md22"></a>
 Boost 1.84 (First release in Boost)</h2>
@@ -735,7 +736,7 @@ v0.0.1</h2>
 </div> <!-- close #content-wrapper -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Mar 11 2024 21:00:30 for Boost.Redis by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Thu Apr 11 2024 18:51:59 for Boost.Redis by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </div> <!-- #page-wrapper -->

@@ -22,12 +22,12 @@
       on process termination when file sinks are used?</a>
 </h3></div></div></div>
 <p>
-        There are known problems with <a href="http://www.boost.org/doc/libs/release/libs/filesystem/doc/index.htm" target="_top">Boost.Filesystem</a>
+        There are known problems with <a href="https://www.boost.org/doc/libs/release/libs/filesystem/doc/index.htm" target="_top">Boost.Filesystem</a>
         (for example, <a href="https://svn.boost.org/trac/boost/ticket/8642" target="_top">#8642</a> and <a href="https://svn.boost.org/trac/boost/ticket/9219" target="_top">#9219</a>), which affect Boost.Log file sink backends.
         When the file sink is destroyed, it attempts to perform a final log file
-        rotation, which involves <a href="http://www.boost.org/doc/libs/release/libs/filesystem/doc/index.htm" target="_top">Boost.Filesystem</a>
+        rotation, which involves <a href="https://www.boost.org/doc/libs/release/libs/filesystem/doc/index.htm" target="_top">Boost.Filesystem</a>
         for moving files. This typically happens when Boost.Log core is deinitialized,
-        at the global deinitialization stage, after leaving <code class="computeroutput"><span class="identifier">main</span><span class="special">()</span></code>. The crux of the problem is that <a href="http://www.boost.org/doc/libs/release/libs/filesystem/doc/index.htm" target="_top">Boost.Filesystem</a>
+        at the global deinitialization stage, after leaving <code class="computeroutput"><span class="identifier">main</span><span class="special">()</span></code>. The crux of the problem is that <a href="https://www.boost.org/doc/libs/release/libs/filesystem/doc/index.htm" target="_top">Boost.Filesystem</a>
         uses a global locale object internally to perform character code conversion
         for <code class="computeroutput"><span class="identifier">path</span></code>s, and this locale
         may get destroyed before Boost.Log is deinitialized, which results in a crash.

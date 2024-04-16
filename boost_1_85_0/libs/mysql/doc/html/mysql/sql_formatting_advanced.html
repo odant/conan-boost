@@ -211,7 +211,7 @@
 <span class="special">{</span>
     <span class="comment">// We're trying to format a double infinity value, which is not</span>
     <span class="comment">// supported by MySQL. This will throw an exception.</span>
-    <span class="identifier">format_sql</span><span class="special">(</span><span class="identifier">opts</span><span class="special">,</span> <span class="string">"SELECT {}"</span><span class="special">,</span> <span class="identifier">HUGE_VAL</span><span class="special">);</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">formatted_query</span> <span class="special">=</span> <span class="identifier">format_sql</span><span class="special">(</span><span class="identifier">opts</span><span class="special">,</span> <span class="string">"SELECT {}"</span><span class="special">,</span> <span class="identifier">HUGE_VAL</span><span class="special">);</span>
 <span class="special">}</span>
 <span class="keyword">catch</span> <span class="special">(</span><span class="keyword">const</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">system</span><span class="special">::</span><span class="identifier">system_error</span><span class="special">&amp;</span> <span class="identifier">err</span><span class="special">)</span>
 <span class="special">{</span>
@@ -298,7 +298,9 @@
         value to formatting functions may cause escaping to generate incorrect values,
         which may generate vulnerabilities. Stay safe and always use <a class="link" href="ref/boost__mysql__any_connection/format_opts.html" title="any_connection::format_opts"><code class="literal">any_connection::format_opts</code></a>
         instead of hand-crafting <code class="computeroutput"><span class="identifier">format_options</span></code>
-        values.
+        values. Doing this, if the character set can't be safely determined, you
+        will get a <a class="link" href="sql_formatting.html#mysql.sql_formatting.unknown_character_set"><code class="computeroutput"><span class="identifier">client_errc</span><span class="special">::</span><span class="identifier">unknown_character_set</span></code></a> error instead
+        of a vulnerability.
       </p></td></tr>
 </table></div>
 <h4>
@@ -331,10 +333,18 @@
 <p>
       You can pass a string value to the context's constructor, to re-use memory:
     </p>
-<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">storage</span><span class="special">;</span>  <span class="comment">// we want to re-use memory held by storage</span>
+<pre class="programlisting"><span class="comment">// we want to re-use memory held by storage</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">storage</span><span class="special">;</span>
+
+<span class="comment">// storage is moved into ctx by the constructor. If any memory</span>
+<span class="comment">// had been allocated by the string, it will be re-used.</span>
 <span class="identifier">boost</span><span class="special">::</span><span class="identifier">mysql</span><span class="special">::</span><span class="identifier">format_context</span> <span class="identifier">ctx</span><span class="special">(</span><span class="identifier">conn</span><span class="special">.</span><span class="identifier">format_opts</span><span class="special">().</span><span class="identifier">value</span><span class="special">(),</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">storage</span><span class="special">));</span>
 
 <span class="comment">// Use ctx as you normally would</span>
+<span class="identifier">boost</span><span class="special">::</span><span class="identifier">mysql</span><span class="special">::</span><span class="identifier">format_sql_to</span><span class="special">(</span><span class="identifier">ctx</span><span class="special">,</span> <span class="string">"SELECT {}"</span><span class="special">,</span> <span class="number">42</span><span class="special">);</span>
+
+<span class="comment">// When calling get(), the string is moved out of the context</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">query</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">ctx</span><span class="special">).</span><span class="identifier">get</span><span class="special">().</span><span class="identifier">value</span><span class="special">();</span>
 </pre>
 <h4>
 <a name="mysql.sql_formatting_advanced.h6"></a>
