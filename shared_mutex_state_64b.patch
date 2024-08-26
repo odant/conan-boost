@@ -1,7 +1,7 @@
-diff --git a/boost_1_85_0/boost/thread/win32/shared_mutex.hpp b/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
+diff --git a/boost_1_86_0/boost/thread/win32/shared_mutex.hpp b/boost_1_86_0/boost/thread/win32/shared_mutex.hpp
 index 632089bfa9..81ec5af227 100644
---- a/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
-+++ b/boost_1_85_0/boost/thread/win32/shared_mutex.hpp
+--- a/boost_1_86_0/boost/thread/win32/shared_mutex.hpp
++++ b/boost_1_86_0/boost/thread/win32/shared_mutex.hpp
 @@ -24,11 +24,66 @@
  
  #include <boost/config/abi_prefix.hpp>
