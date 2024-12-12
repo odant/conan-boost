@@ -199,41 +199,7 @@ class BoostConan(ConanFile):
 
     def get_libraries_list(self):
         libs = [
-            "--with-atomic",
-            "--with-charconv",
-            "--with-chrono",
-            "--with-container",
-            "--with-context",
-            "--with-contract",
-            "--with-coroutine",
-            "--with-date_time",
-            "--with-exception",
-            "--with-fiber",
-            "--with-filesystem",
-            "--with-graph",
-            "--with-graph_parallel",
-            "--with-iostreams",
-            "--with-json",
-            "--with-locale",
-            "--with-log",
-            "--with-math",
-            "--with-mpi",
-            "--with-nowide",
-            "--with-program_options",
-            #"--with-python",
-            "--with-random",
-            "--with-regex",
-            "--with-serialization",
-            "--with-stacktrace",
-            "--with-system",
-            #"--with-test",
-            "--with-thread",
-            "--with-timer",
-            "--with-type_erasure",
-            #"--with-wave",
-            "--with-url",
-            "--with-cobalt",
-            "--with-process"
+            "--without-python"
         ]
         return libs
 
