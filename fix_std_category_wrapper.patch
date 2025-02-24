@@ -1,0 +1,13 @@
+diff --git a/boost_1_87_0/boost/system/detail/std_category.hpp b/boost_1_87_0/boost/system/detail/std_category.hpp
+index 16d9c166e1..8f031e1f79 100644
+--- a/boost_1_87_0/boost/system/detail/std_category.hpp
++++ b/boost_1_87_0/boost/system/detail/std_category.hpp
+@@ -45,7 +45,7 @@ public:
+     template<unsigned Id>
+     explicit std_category( boost::system::error_category const * pc, id_wrapper<Id> ): pc_( pc )
+     {
+-#if defined(_MSC_VER) && defined(_CPPLIB_VER) && _MSC_VER >= 1900 && _MSC_VER < 2000
++#if defined(_MSC_VER) && defined(_CPPLIB_VER) && _MSC_VER >= 1900 && _MSC_VER < 1943
+ 
+         // We used to assign to the protected _Addr member of std::error_category
+         // here when Id != 0, but this should never happen now because this code

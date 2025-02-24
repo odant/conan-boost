@@ -44,7 +44,8 @@ class BoostConan(ConanFile):
         "sp_debug_hooks.patch",
         "revert_filesystem_to_v1.81.patch",
         "add_weak_ptr_operator_equal.patch",
-        "shared_mutex_state_64b.patch"
+        "shared_mutex_state_64b.patch",
+        "fix_std_category_wrapper.patch"
     )
     #
     no_copy_source = True
@@ -69,6 +70,7 @@ class BoostConan(ConanFile):
         tools.patch(patch_file="revert_filesystem_to_v1.81.patch")
         tools.patch(patch_file="add_weak_ptr_operator_equal.patch")
         tools.patch(patch_file="shared_mutex_state_64b.patch")
+        tools.patch(patch_file="fix_std_category_wrapper.patch")
         if not tools.os_info.is_windows:
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
