@@ -1,9 +1,10 @@
 # Boost Conan package
-# Dmitriy Vetutnev, ODANT 2018-2020
+# Dmitriy Vetutnev, ODANT, 2018-2020
+# Arkady Yudintsev, ODANT, 2021-2025
 
-
-from conans import ConanFile, tools
-import os
+from conan import ConanFile, tools
+from collections import namedtuple
+import os, platform, re
 
 
 class BoostConan(ConanFile):
@@ -12,12 +13,7 @@ class BoostConan(ConanFile):
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
-    settings = {
-        "os": ["Windows", "Linux"],
-        "compiler": ["Visual Studio", "gcc"],
-        "build_type": ["Debug", "Release"],
-        "arch": ["x86_64", "x86", "mips", "armv7"]
-    }
+    settings = "os", "compiler", "build_type", "arch"
     options = {
         "with_unit_tests": [True, False],
         "with_icu": [True, False],
@@ -33,9 +29,6 @@ class BoostConan(ConanFile):
     #
     exports_sources = (
         _boost_name + "/*",
-        "!" + _boost_name + "/more*",
-        "!" + _boost_name + "/libs/wave*",
-        "FindBoost.cmake", "_FindBoost.cmake",
         "multiprecision.patch",
         "add_boost_log_codecvt_enable_param.patch",
         "icu_static_runtime.patch",
@@ -50,30 +43,37 @@ class BoostConan(ConanFile):
     #
     no_copy_source = True
     build_policy = "missing"
-    short_paths = True
-    #
-    _zlib_version = "[>=1.2.3]"
-    _icu_version = "[>=68.2]"
+    package_type = "static-library"
 
     def requirements(self):
-        self.requires("zlib/%s@%s/stable" % (self._zlib_version, self.user))
+        self.requires("zlib-ng/[>=2.2.4]@%s/stable" % self.user)
+        self.requires("zstd/[>=1.5.7]@%s/stable" % self.user)
         if self.options.with_icu:
-            self.requires("icu/%s@%s/stable" % (self._icu_version, self.user))
+            self.requires("icu/[>=68.2]@%s/stable" % self.user)
 
     def source(self):
-        tools.patch(patch_file="multiprecision.patch")
-        tools.patch(patch_file="add_boost_log_codecvt_enable_param.patch")
-        tools.patch(patch_file="icu_static_runtime.patch")
-        tools.patch(patch_file="use_old_jamfile_for_regex.patch")
-        tools.patch(patch_file="fix_leak_child_process.patch")
-        tools.patch(patch_file="sp_debug_hooks.patch")
-        tools.patch(patch_file="revert_filesystem_to_v1.81.patch")
-        tools.patch(patch_file="add_weak_ptr_operator_equal.patch")
-        tools.patch(patch_file="shared_mutex_state_64b.patch")
-        tools.patch(patch_file="fix_std_category_wrapper.patch")
-        if not tools.os_info.is_windows:
+        tools.files.patch(self, patch_file="multiprecision.patch")
+        tools.files.patch(self, patch_file="add_boost_log_codecvt_enable_param.patch")
+        tools.files.patch(self, patch_file="icu_static_runtime.patch")
+        tools.files.patch(self, patch_file="use_old_jamfile_for_regex.patch")
+        tools.files.patch(self, patch_file="fix_leak_child_process.patch")
+        tools.files.patch(self, patch_file="sp_debug_hooks.patch")
+        tools.files.patch(self, patch_file="revert_filesystem_to_v1.81.patch")
+        tools.files.patch(self, patch_file="add_weak_ptr_operator_equal.patch")
+        tools.files.patch(self, patch_file="shared_mutex_state_64b.patch")
+        tools.files.patch(self, patch_file="fix_std_category_wrapper.patch")
+        if platform.system() != "Windows":
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
+    
+    def generate(self):
+        benv = tools.env.VirtualBuildEnv(self)
+        benv.generate()
+        renv = tools.env.VirtualRunEnv(self)
+        renv.generate()
+        if tools.microsoft.is_msvc(self):
+            vc = tools.microsoft.VCVars(self)
+            vc.generate()         
 
     def build(self):
         source_folder = os.path.join(self.source_folder, self._boost_name)
@@ -90,16 +90,16 @@ class BoostConan(ConanFile):
         self.generate_user_config_jam(build_folder)
         self.output.info("-------------- Build libraries ------------------")
         flags = self.get_build_flags(build_folder, stage_folder)
-        build_env = self.get_build_environment()
         # location user-config.jam
-        build_env["BOOST_BUILD_PATH"] = build_folder
-        with tools.chdir(source_folder), tools.environment_append(build_env):
+        env = tools.env.Environment()
+        env.define("BOOST_BUILD_PATH", build_folder)
+        with tools.files.chdir(self, source_folder), env.vars(self).apply():
             self.output.info("-------------- Environment ----------------------")
             for k, v in sorted(os.environ.items()):
                 self.output.info("%s=%s" % (k, v))
                 self.output.info("-------------------------------------------------")
             self.output.info("Current directory => %s" % os.getcwd())
-            build_command = "%s -j%s %s stage" % (b2, tools.cpu_count(), " ".join(flags));
+            build_command = "%s -j%s %s stage" % (b2, tools.build.build_jobs(self), " ".join(flags));
             self.output.info("Build command:\n%s" % build_command)
             self.run(build_command)
         #
@@ -108,17 +108,16 @@ class BoostConan(ConanFile):
                 "disjoint_sets"
             ]
             self.output.info("-------------- Runnig tests ---------------------")
-            with tools.chdir(os.path.join(source_folder, "status")), tools.environment_append(build_env):
+            with tools.files.chdir(self, os.path.join(source_folder, "status")), env.vars(self).apply():
                 _exclude =  ','.join(exclude)
                 self.run("%s -j%s -q --check-libs-only, --exclude-tests=%s" % (b2, tools.cpu_count(), _exclude))
 
     def bootstrap(self, source_folder):
-        env = self.get_build_environment()
-        with tools.chdir(source_folder), tools.environment_append(env):
-            cmd = "bootstrap.bat" if tools.os_info.is_windows else "./bootstrap.sh"
+        with tools.files.chdir(self, source_folder):
+            cmd = "bootstrap.bat" if self.settings.os == "Windows" else "./bootstrap.sh"
             self.output.info("Current directory => %s" % os.getcwd())
             self.run(cmd)
-        b2_exe = "b2.exe" if tools.os_info.is_windows else "b2"
+        b2_exe = "b2.exe" if self.settings.os == "Windows" else "b2"
         return os.path.join(source_folder, b2_exe)
 
     def get_build_flags(self, build_folder, stage_folder):
@@ -131,24 +130,24 @@ class BoostConan(ConanFile):
         flags += self.get_libraries_list()
         toolset, _, _ = self.get_toolset()
         runtime_link = "shared"
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
+        if self.settings.os == "Windows" and self.settings.compiler == "msvc":
+            if self.settings.compiler.runtime == "static":
                 runtime_link = "static"
         flags.extend([
             "toolset=%s" % toolset,
             "link=static",
             "runtime-link=%s" % runtime_link,
-            "variant=%s" % str(self.settings.build_type).lower(),
+            "variant=%s" % str("Release" if self.settings.build_type == "RelWithDebInfo" else self.settings.build_type).lower(),
             "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32", "armv7": "32"}.get(str(self.settings.arch))
         ])
         # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
         if self.settings.os == "Windows": 
-            if self.settings.compiler == "Visual Studio":
+            if self.settings.compiler == "msvc":
                 flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
             flags.append("define=BOOST_USE_WINAPI_VERSION=0x0601")
         # locale use ICU
         if self.options.with_icu:
-            icu_path = self.deps_cpp_info["icu"].rootpath.replace("\\", "/")
+            icu_path = self.dependencies["icu"].package_folder.replace("\\", "/")
             flags.extend([
                 "boost.locale.icu=on",
                 "boost.locale.iconv=off",
@@ -157,17 +156,17 @@ class BoostConan(ConanFile):
                 "boost.locale.posix=off",
                 "-sICU_PATH=%s" % icu_path
             ])
-            if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-                icu_lib_path = self.deps_cpp_info["icu"].lib_paths[0]
+            if self.settings.os == "Windows" and self.settings.compiler == "msvc":
+                icu_lib_path = self.dependencies["icu"].cpp_info.libdirs[0]
                 icu_libs = []
-                for lib in self.deps_cpp_info["icu"].libs:
+                for lib in self.dependencies["icu"].cpp_info.aggregated_components().libs:
                     lib = "%s.lib" % lib
                     lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
                     icu_libs.append(lib)
                 flags.append("-sICU_LINK=\"%s\"" % " ".join(icu_libs))
-                if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
+                if self.settings.compiler.runtime == "static":
                     flags.append("-sICU_STATIC_RUNTIME=True")
-            for d in self.deps_cpp_info["icu"].defines:
+            for d in self.dependencies["icu"].cpp_info.defines:
                 flags.append("define=%s" % d)
         return flags
 
@@ -178,26 +177,30 @@ class BoostConan(ConanFile):
         compiler_flags = self.get_compiler_flags()
         compiler_options = "<compileflags>\"%s\"" % " ".join(compiler_flags)
         # Disable b2 setup environment for Visual Studio, use manual.
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+        if self.settings.os == "Windows" and self.settings.compiler == "msvc":
             fake_env = os.path.join(build_folder, "fake_env.bat").replace("\\", "/")
-            tools.save(fake_env, "echo fake_env")
+            tools.files.save(self, fake_env, "echo fake_env")
             compiler_options = "%s <setup>\"%s\"" % (compiler_options, fake_env)
-        content += "using %s : %s : %s : %s ;\n" % (compiler, compiler_version, compiler_exe, compiler_options)
+            content += "using %s : : %s : %s ;\n" % (compiler, compiler_exe, compiler_options)
+        else:    
+            content += "using %s : %s : %s : %s ;\n" % (compiler, compiler_version, compiler_exe, compiler_options)
         # zlib
-        zlib_version = self.deps_cpp_info["zlib"].version.split("+")[0]
-        zlib_include = self.deps_cpp_info["zlib"].include_paths[0].replace("\\", "/")
-        zlib_libpath = self.deps_cpp_info["zlib"].lib_paths[0].replace("\\", "/")
-        zlib_lib = self.deps_cpp_info["zlib"].libs[0]
+        zlib_version = str(self.dependencies["zlib-ng"].ref.version).split("+")[0]
+        zlib_cpp_info = self.dependencies["zlib-ng"].cpp_info.components["zlib-ng"] if "zlib-ng" in self.dependencies["zlib-ng"].cpp_info.components.keys() else self.dependencies["zlib-ng"].cpp_info
+        zlib_include = zlib_cpp_info.includedirs[0].replace("\\", "/")
+        zlib_libpath = zlib_cpp_info.libdirs[0].replace("\\", "/")
+        zlib_lib = zlib_cpp_info.libs[0]
         content += "using zlib : %s : <include>%s <search>%s <name>%s ;\n" % (zlib_version, zlib_include, zlib_libpath, zlib_lib)
+        #zstd
+        zstd_version = str(self.dependencies["zstd"].ref.version).split("+")[0]
+        zstd_cpp_info = self.dependencies["zstd"].cpp_info.components["zstdlib"] if "zstdlib" in self.dependencies["zstd"].cpp_info.components.keys() else self.dependencies["zstd"].cpp_info
+        zstd_include = zstd_cpp_info.includedirs[0].replace("\\", "/")
+        zstd_libpath = zstd_cpp_info.libdirs[0].replace("\\", "/")
+        zstd_lib = zstd_cpp_info.libs[0]
+        content += "using zstd : %s : <include>%s <search>%s <name>%s ;\n" % (zstd_version, zstd_include, zstd_libpath, zstd_lib)
         # write file
         self.output.info("Using current user-config.jam:\n%s" % content)
-        tools.save(os.path.join(build_folder, "user-config.jam"), content)
-
-    def get_build_environment(self):
-        env = {}
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            env = tools.vcvars_dict(self.settings, filter_known_paths=False, force=True)
-        return env
+        tools.files.save(self, os.path.join(build_folder, "user-config.jam"), content)
 
     def get_libraries_list(self):
         libs = [
@@ -207,7 +210,7 @@ class BoostConan(ConanFile):
 
     def get_toolset(self):
         compiler_version = str(self.settings.compiler.version)
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
+        if self.settings.os == "Windows" and self.settings.compiler == "msvc":
             vs_toolset = str(self.settings.compiler.toolset).lower()
             self.output.info("Using toolset: %s" % vs_toolset)
             if vs_toolset == "clangcl":
@@ -235,14 +238,14 @@ class BoostConan(ConanFile):
         if self.settings.os == "Windows":
             flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
             flags.append("/DBOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
-            if self.settings.compiler == "Visual Studio":
+            if self.settings.compiler == "msvc":
                 flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
                 flags.append("/D_CRT_SECURE_NO_WARNINGS")
                 flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
         #
         if self.options.with_icu:
             # Enable char16_t and char32_t
-            if self.settings.compiler == "Visual Studio":
+            if self.settings.compiler == "msvc":
                 pass
             else:
                 flags.extend([
@@ -256,49 +259,114 @@ class BoostConan(ConanFile):
         return flags
 
     def package(self):
-        if not self.in_local_cache:
-            self.copy("conanfile.py", dst=".", keep_path=False)
-        self.copy("FindBoost.cmake", dst=".", src=".")
-        self.copy("_FindBoost.cmake", dst=".", src=".")
-        self.copy(pattern="*", src="%s/boost" % self._boost_name, dst="include/boost")
-        self.copy("*.lib", src="stage", dst="lib", keep_path=False)
-        self.copy("*.a", src="stage", dst="lib", keep_path=False)
-        self.copy("*.cpp", src="%s/libs/smart_ptr/extras/src" % self._boost_name, dst="include/boost/smart_ptr/extras/src")
+        tools.files.copy(self, "*", src=os.path.join(self.source_folder, "%s/boost" % self._boost_name), dst=os.path.join(self.package_folder, "include/boost"), keep_path=True)
+        tools.files.copy(self, "*.lib", src=os.path.join(self.build_folder, "stage"), dst=os.path.join(self.package_folder, "lib"), keep_path=False)
+        tools.files.copy(self, "*.a", src=os.path.join(self.build_folder, "stage"), dst=os.path.join(self.package_folder, "lib"), keep_path=False)
+        tools.files.copy(self, "*.cpp", src=os.path.join(self.source_folder,"%s/libs/smart_ptr/extras/src" % self._boost_name), dst=os.path.join(self.package_folder, "include/boost/smart_ptr/extras/src"))
 
     def package_id(self):
         self.info.options.with_unit_tests = "any"
 
+    _BoostLib = namedtuple("_BoostLib", ("lib_mask", "dependencies"))
+    _BoostLibs = {
+        "atomic":                     _BoostLib("(?:lib)?boost_atomic(?:$|[\\.-]+.*)",                     []),
+        "charconv":                   _BoostLib("(?:lib)?boost_charconv(?:$|[\\.-]+.*)",                   []),
+        "chrono":                     _BoostLib("(?:lib)?boost_chrono(?:$|[\\.-]+.*)",                     ["system"]),
+        "cobalt":                     _BoostLib("(?:lib)?boost_cobalt(?:$|[\\.-]+.*)",                     ["container", "context", "system"]),
+        "container":                  _BoostLib("(?:lib)?boost_container(?:$|[\\.-]+.*)",                  []),
+        "context":                    _BoostLib("(?:lib)?boost_context(?:$|[\\.-]+.*)",                    []),
+        "contract":                   _BoostLib("(?:lib)?boost_contract(?:$|[\\.-]+.*)",                   ["exception", "thread"]),
+        "coroutine":                  _BoostLib("(?:lib)?boost_coroutine(?:$|[\\.-]+.*)",                  ["context", "exception", "system"]),
+        "date_time":                  _BoostLib("(?:lib)?boost_date_time(?:$|[\\.-]+.*)",                  []),
+        "exception":                  _BoostLib("(?:lib)?boost_exception(?:$|[\\.-]+.*)",                  []),
+        "fiber":                      _BoostLib("(?:lib)?boost_fiber(?:$|[\\.-]+.*)",                      ["context", "filesystem"]),
+        "fiber_numa":                 _BoostLib("(?:lib)?boost_fiber_numa(?:$|[\\.-]+.*)",                 ["fiber"]),
+        "filesystem":                 _BoostLib("(?:lib)?boost_filesystem(?:$|[\\.-]+.*)",                 ["atomic", "system"]),
+        "graph":                      _BoostLib("(?:lib)?boost_graph(?:$|[\\.-]+.*)",                      ["math", "random", "regex", "serialization"]),
+        "graph_parallel":             _BoostLib("(?:lib)?boost_graph_parallel(?:$|[\\.-]+.*)",             ["graph", "filesystem", "mpi", "random", "serialization"]),
+        "iostreams":                  _BoostLib("(?:lib)?boost_iostreams(?:$|[\\.-]+.*)",                  ["random", "regex"]),
+        "json":                       _BoostLib("(?:lib)?boost_json(?:$|[\\.-]+.*)",                       ["container", "system"]),
+        "locale":                     _BoostLib("(?:lib)?boost_locale(?:$|[\\.-]+.*)",                     ["thread"]),
+        "log":                        _BoostLib("(?:lib)?boost_log(?:$|[\\.-]+.*)",                        ["atomic", "date_time", "exception", "filesystem", "random", "regex", "system", "thread"]),
+        "log_setup":                  _BoostLib("(?:lib)?boost_log_setup(?:$|[\\.-]+.*)",                  ["log"]),
+        "math":                       _BoostLib(None,                                                      []),
+        "math_c99":                   _BoostLib("(?:lib)?boost_math_c99(?:$|[\\.-]+.*)",                   ["math"]),
+        "math_c99f":                  _BoostLib("(?:lib)?boost_math_c99f(?:$|[\\.-]+.*)",                  ["math"]),
+        "math_c99l":                  _BoostLib("(?:lib)?boost_math_c99l(?:$|[\\.-]+.*)",                  ["math"]),
+        "math_tr1":                   _BoostLib("(?:lib)?boost_math_tr1(?:$|[\\.-]+.*)",                   ["math"]),
+        "math_tr1f":                  _BoostLib("(?:lib)?boost_math_tr1f(?:$|[\\.-]+.*)",                  ["math"]),
+        "math_tr1l":                  _BoostLib("(?:lib)?boost_math_tr1l(?:$|[\\.-]+.*)",                  ["math"]),
+        "mpi":                        _BoostLib("(?:lib)?boost_mpi(?:$|[\\.-]+.*)",                        ["graph", "serialization"]),
+        "nowide":                     _BoostLib("(?:lib)?boost_nowide(?:$|[\\.-]+.*)",                     ["filesystem"]),
+        "prg_exec_monitor":           _BoostLib("(?:lib)?boost_prg_exec_monitor(?:$|[\\.-]+.*)",           ["test"]),
+        "process":                    _BoostLib("(?:lib)?boost_process(?:$|[\\.-]+.*)",                    ["filesystem", "system", "context"]),
+        "program_options":            _BoostLib("(?:lib)?boost_program_options(?:$|[\\.-]+.*)",            []),
+        "random":                     _BoostLib("(?:lib)?boost_random(?:$|[\\.-]+.*)",                     ["system"]),
+        "regex":                      _BoostLib("(?:lib)?boost_regex(?:$|[\\.-]+.*)",                      []),
+        "serialization":              _BoostLib("(?:lib)?boost_serialization(?:$|[\\.-]+.*)",              []),
+        "stacktrace":                 _BoostLib(None,                                                      []),
+        "stacktrace_addr2line":       _BoostLib("(?:lib)?boost_stacktrace_addr2line(?:$|[\\.-]+.*)",       ["stacktrace"]),
+        "stacktrace_backtrace":       _BoostLib("(?:lib)?boost_stacktrace_backtrace(?:$|[\\.-]+.*)",       ["stacktrace"]),
+        "stacktrace_basic":           _BoostLib("(?:lib)?boost_stacktrace_basic(?:$|[\\.-]+.*)",           ["stacktrace"]),
+        "stacktrace_from_exception":  _BoostLib("(?:lib)?boost_stacktrace_from_exception(?:$|[\\.-]+.*)",  ["stacktrace"]),
+        "stacktrace_noop":            _BoostLib("(?:lib)?boost_stacktrace_noop(?:$|[\\.-]+.*)",            ["stacktrace"]),
+        "stacktrace_windbg":          _BoostLib("(?:lib)?boost_stacktrace_windbg(?:$|[\\.-]+.*)",          ["stacktrace"]),
+        "stacktrace_windbg_cached":   _BoostLib("(?:lib)?boost_stacktrace_windbg_cached(?:$|[\\.-]+.*)",   ["stacktrace"]),
+        "system":                     _BoostLib("(?:lib)?boost_system(?:$|[\\.-]+.*)",                     []),
+        "test":                       _BoostLib(None,                                                      ["exception"]),
+        "test_exec_monitor":          _BoostLib("(?:lib)?boost_test_exec_monitor(?:$|[\\.-]+.*)",          ["test"]),
+        "thread":                     _BoostLib("(?:lib)?boost_thread(?:$|[\\.-]+.*)",                     ["atomic", "chrono", "container", "date_time", "exception", "system"]),
+        "timer":                      _BoostLib("(?:lib)?boost_timer(?:$|[\\.-]+.*)",                      []),
+        "type_erasure":               _BoostLib("(?:lib)?boost_type_erasure(?:$|[\\.-]+.*)",               ["thread"]),
+        "unit_test_framework":        _BoostLib("(?:lib)?boost_unit_test_framework(?:$|[\\.-]+.*)",        ["prg_exec_monitor", "test", "test_exec_monitor"]),
+        "url":                        _BoostLib("(?:lib)?boost_url(?:$|[\\.-]+.*)",                        ["system"]),
+        "wave":                       _BoostLib("(?:lib)?boost_wave(?:$|[\\.-]+.*)",                       ["filesystem", "serialization"]),
+        "wserialization":             _BoostLib("(?:lib)?boost_wserialization(?:$|[\\.-]+.*)",             ["serialization"])
+    }
+
     def package_info(self):
-        self.cpp_info.libs = tools.collect_libs(self)
-        self.cpp_info.defines = [
-            "BOOST_USE_STATIC_LIBS"
-        ]
-        if self.settings.compiler != "Visual Studio":
-            self.cpp_info.defines.append("BOOST_NO_AUTO_PTR")
+        self.cpp_info.set_property("cmake_find_mode", "both")
+        self.cpp_info.set_property("cmake_file_name", "Boost")
+
+        self.cpp_info.components["headers"].libs = []
+        self.cpp_info.components["headers"].libdirs = []
+        self.cpp_info.components["headers"].set_property("cmake_target_name", "Boost::headers")
+        self.cpp_info.components["headers"].defines = ["BOOST_USE_STATIC_LIBS", "BOOST_NO_AUTO_PTR"]
         if self.settings.os == "Windows":
-            self.cpp_info.defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
-            self.cpp_info.defines.append("BOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
-        if self.settings.os == "Windows" and self.settings.compiler == "Visual Studio":
-            self.cpp_info.defines.extend([
-                "BOOST_ALL_NO_LIB", # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
-                "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE"
-            ])
-            if self.settings.compiler.runtime == "MT" or self.settings.compiler.runtime == "MTd":
-                self.user_info.USE_STATIC_RUNTIME = True
+            self.cpp_info.components["headers"].defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
+            self.cpp_info.components["headers"].defines.append("BOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
+            if tools.microsoft.is_msvc(self):
+                self.cpp_info.components["headers"].defines.extend([
+                    "BOOST_ALL_NO_LIB",                            # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
+                    "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE"
+                ])
+        if self.options.sp_debug_hooks:
+            self.cpp_info.components["headers"].defines.append("BOOST_SP_ENABLE_DEBUG_HOOKS")
         if self.options.with_icu:
-            self.user_info.WITH_ICU = True
-            # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
-            if self.settings.compiler == "Visual Studio":
-                self.cpp_info.defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
-            # Enable char16_t and char32_t
-            if self.settings.compiler == "Visual Studio":
-                pass
+            if self.settings.compiler == "msvc":
+                self.cpp_info.components["headers"].defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
             else:
-                self.cpp_info.defines.extend([
+                # Enable char16_t and char32_t
+                self.cpp_info.components["headers"].defines.extend([
                     "BOOST_LOCALE_ENABLE_CHAR16_T",
                     "BOOST_LOCALE_ENABLE_CHAR32_T"
                 ])
-        if self.options.sp_debug_hooks:
-            self.user_info.SP_DEBUG_HOOKS = True
-            self.cpp_info.defines.append("BOOST_SP_ENABLE_DEBUG_HOOKS")
 
+        #Set external dependencies
+        if self.options.with_icu:
+            self._BoostLibs["regex"].dependencies.append("icu::icu")
+            self._BoostLibs["locale"].dependencies.append("icu::icu")
+        self._BoostLibs["iostreams"].dependencies.append("zlib-ng::zlib-ng")
+        self._BoostLibs["iostreams"].dependencies.append("zstd::zstdlib")
+        
+        all_libs = tools.files.collect_libs(self)
+        for libname, desc in self._BoostLibs.items():
+            libs = []
+            if not desc.lib_mask is None:
+                pattern = re.compile(desc.lib_mask)
+                libs = [lib for lib in all_libs if pattern.match(lib)]
+                if not libs:
+                    continue;
+            self.cpp_info.components[libname].libs = libs
+            self.cpp_info.components[libname].set_property(f"cmake_target_name", f"Boost::{libname}")
+            self.cpp_info.components[libname].requires = desc.dependencies + ["headers"]
