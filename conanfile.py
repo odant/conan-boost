@@ -9,7 +9,7 @@ import os, platform, re
 
 class BoostConan(ConanFile):
     name = "boost"
-    version = "1.87.0+1"
+    version = "1.88.0+0"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
     description = "Boost provides free peer-reviewed portable C++ source libraries"
     url = "https://github.com/odant/conan-boost"
@@ -31,7 +31,6 @@ class BoostConan(ConanFile):
         _boost_name + "/*",
         "multiprecision.patch",
         "add_boost_log_codecvt_enable_param.patch",
-        "icu_static_runtime.patch",
         "use_old_jamfile_for_regex.patch",
         "fix_leak_child_process.patch",
         "sp_debug_hooks.patch",
@@ -54,7 +53,6 @@ class BoostConan(ConanFile):
     def source(self):
         tools.files.patch(self, patch_file="multiprecision.patch")
         tools.files.patch(self, patch_file="add_boost_log_codecvt_enable_param.patch")
-        tools.files.patch(self, patch_file="icu_static_runtime.patch")
         tools.files.patch(self, patch_file="use_old_jamfile_for_regex.patch")
         tools.files.patch(self, patch_file="fix_leak_child_process.patch")
         tools.files.patch(self, patch_file="sp_debug_hooks.patch")
@@ -140,13 +138,12 @@ class BoostConan(ConanFile):
             "variant=%s" % str("Release" if self.settings.build_type == "RelWithDebInfo" else self.settings.build_type).lower(),
             "address-model=%s" % {"x86": "32", "x86_64": "64", "mips": "32", "armv7": "32"}.get(str(self.settings.arch))
         ])
-        # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
         if self.settings.os == "Windows": 
-            if self.settings.compiler == "msvc":
-                flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
             flags.append("define=BOOST_USE_WINAPI_VERSION=0x0601")
         # locale use ICU
         if self.options.with_icu:
+            # add BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE
+            flags.append("define=BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
             icu_path = self.dependencies["icu"].package_folder.replace("\\", "/")
             flags.extend([
                 "boost.locale.icu=on",
@@ -156,16 +153,6 @@ class BoostConan(ConanFile):
                 "boost.locale.posix=off",
                 "-sICU_PATH=%s" % icu_path
             ])
-            if self.settings.os == "Windows" and self.settings.compiler == "msvc":
-                icu_lib_path = self.dependencies["icu"].cpp_info.libdirs[0]
-                icu_libs = []
-                for lib in self.dependencies["icu"].cpp_info.aggregated_components().libs:
-                    lib = "%s.lib" % lib
-                    lib = os.path.join(icu_lib_path, lib).replace("\\", "/")
-                    icu_libs.append(lib)
-                flags.append("-sICU_LINK=\"%s\"" % " ".join(icu_libs))
-                if self.settings.compiler.runtime == "static":
-                    flags.append("-sICU_STATIC_RUNTIME=True")
             for d in self.dependencies["icu"].cpp_info.defines:
                 flags.append("define=%s" % d)
         return flags
@@ -333,8 +320,8 @@ class BoostConan(ConanFile):
         self.cpp_info.components["headers"].set_property("cmake_target_name", "Boost::headers")
         self.cpp_info.components["headers"].defines = ["BOOST_USE_STATIC_LIBS", "BOOST_NO_AUTO_PTR"]
         if self.settings.os == "Windows":
-            self.cpp_info.components["headers"].defines.append("_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
-            self.cpp_info.components["headers"].defines.append("BOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
+            self.cpp_info.components["headers"].defines.append("BOOST_USE_WINAPI_VERSION=0x0601") # 7 or Server 2008 R2
+            self.cpp_info.components["headers"].defines.append("BOOST_SYSTEM_USE_UTF8")           # boost::system_category return UTF-8 messages
             if tools.microsoft.is_msvc(self):
                 self.cpp_info.components["headers"].defines.extend([
                     "BOOST_ALL_NO_LIB",                            # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
@@ -343,9 +330,8 @@ class BoostConan(ConanFile):
         if self.options.sp_debug_hooks:
             self.cpp_info.components["headers"].defines.append("BOOST_SP_ENABLE_DEBUG_HOOKS")
         if self.options.with_icu:
-            if self.settings.compiler == "msvc":
-                self.cpp_info.components["headers"].defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
-            else:
+            self.cpp_info.components["headers"].defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
+            if self.settings.os != "Windows" or self.settings.compiler != "msvc":
                 # Enable char16_t and char32_t
                 self.cpp_info.components["headers"].defines.extend([
                     "BOOST_LOCALE_ENABLE_CHAR16_T",
