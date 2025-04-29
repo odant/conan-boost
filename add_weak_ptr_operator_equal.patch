@@ -1,7 +1,7 @@
 diff --git a/boost_1_86_0/boost/smart_ptr/weak_ptr.hpp b/boost_1_86_0/boost/smart_ptr/weak_ptr.hpp
 index 48f2a77941..9fd97fddae 100644
---- a/boost_1_87_0/boost/smart_ptr/weak_ptr.hpp
-+++ b/boost_1_87_0/boost/smart_ptr/weak_ptr.hpp
+--- a/boost_1_88_0/boost/smart_ptr/weak_ptr.hpp
++++ b/boost_1_88_0/boost/smart_ptr/weak_ptr.hpp
 @@ -222,6 +222,16 @@ template<class T, class U> inline bool operator<(weak_ptr<T> const & a, weak_ptr
      return a.owner_before( b );
  }

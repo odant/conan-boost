@@ -1,7 +1,7 @@
-diff --git a/boost_1_87_0/boost/filesystem/config.hpp b/boost_1_87_0/boost/filesystem/config.hpp
+diff --git a/boost_1_88_0/boost/filesystem/config.hpp b/boost_1_88_0/boost/filesystem/config.hpp
 index 79e5aeb0ce..fed4e0ab58 100644
---- a/boost_1_87_0/boost/filesystem/config.hpp
-+++ b/boost_1_87_0/boost/filesystem/config.hpp
+--- a/boost_1_88_0/boost/filesystem/config.hpp
++++ b/boost_1_88_0/boost/filesystem/config.hpp
 @@ -1,153 +1,184 @@
 -//  boost/filesystem/v3/config.hpp  ----------------------------------------------------//
 -
@@ -340,10 +340,10 @@ index 79e5aeb0ce..fed4e0ab58 100644
 +#endif
 +
 +#endif // BOOST_FILESYSTEM_CONFIG_HPP
-diff --git a/boost_1_87_0/boost/filesystem/cstdio.hpp b/boost_1_87_0/boost/filesystem/cstdio.hpp
+diff --git a/boost_1_88_0/boost/filesystem/cstdio.hpp b/boost_1_88_0/boost/filesystem/cstdio.hpp
 deleted file mode 100644
 index facf4f9e8e..0000000000
---- a/boost_1_87_0/boost/filesystem/cstdio.hpp
+--- a/boost_1_88_0/boost/filesystem/cstdio.hpp
 +++ /dev/null
 @@ -1,87 +0,0 @@
 -//  boost/filesystem/cstdio.hpp  ------------------------------------------------------//
@@ -433,10 +433,10 @@ index facf4f9e8e..0000000000
 -#include <boost/filesystem/detail/footer.hpp>
 -
 -#endif // BOOST_FILESYSTEM_CSTDIO_HPP
-diff --git a/boost_1_87_0/boost/filesystem/detail/footer.hpp b/boost_1_87_0/boost/filesystem/detail/footer.hpp
+diff --git a/boost_1_88_0/boost/filesystem/detail/footer.hpp b/boost_1_88_0/boost/filesystem/detail/footer.hpp
 index b520398c20..ce4bc1feed 100644
---- a/boost_1_87_0/boost/filesystem/detail/footer.hpp
-+++ b/boost_1_87_0/boost/filesystem/detail/footer.hpp
+--- a/boost_1_88_0/boost/filesystem/detail/footer.hpp
++++ b/boost_1_88_0/boost/filesystem/detail/footer.hpp
 @@ -1,23 +1,23 @@
 -/*
 - *             Copyright Andrey Semashev 2021.
@@ -484,10 +484,10 @@ index b520398c20..ce4bc1feed 100644
 +#endif // !defined(BOOST_FILESYSTEM_ENABLE_WARNINGS)
 +
 +#include <boost/config/abi_suffix.hpp>
-diff --git a/boost_1_87_0/boost/filesystem/detail/header.hpp b/boost_1_87_0/boost/filesystem/detail/header.hpp
+diff --git a/boost_1_88_0/boost/filesystem/detail/header.hpp b/boost_1_88_0/boost/filesystem/detail/header.hpp
 index aeb7d19d0a..9ee6fc8c60 100644
---- a/boost_1_87_0/boost/filesystem/detail/header.hpp
-+++ b/boost_1_87_0/boost/filesystem/detail/header.hpp
+--- a/boost_1_88_0/boost/filesystem/detail/header.hpp
++++ b/boost_1_88_0/boost/filesystem/detail/header.hpp
 @@ -1,54 +1,49 @@
 -/*
 - *             Copyright Andrey Semashev 2021.
@@ -592,10 +592,10 @@ index aeb7d19d0a..9ee6fc8c60 100644
 +#endif
 +
 +#endif // !defined(BOOST_FILESYSTEM_ENABLE_WARNINGS)
-diff --git a/boost_1_87_0/boost/filesystem/detail/path_traits.hpp b/boost_1_87_0/boost/filesystem/detail/path_traits.hpp
+diff --git a/boost_1_88_0/boost/filesystem/detail/path_traits.hpp b/boost_1_88_0/boost/filesystem/detail/path_traits.hpp
 index 035bb26878..0840c1edd9 100644
---- a/boost_1_87_0/boost/filesystem/detail/path_traits.hpp
-+++ b/boost_1_87_0/boost/filesystem/detail/path_traits.hpp
+--- a/boost_1_88_0/boost/filesystem/detail/path_traits.hpp
++++ b/boost_1_88_0/boost/filesystem/detail/path_traits.hpp
 @@ -1,763 +1,700 @@
 -//  filesystem path_traits.hpp  --------------------------------------------------------//
 -
@@ -2060,10 +2060,10 @@ index 035bb26878..0840c1edd9 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_DETAIL_PATH_TRAITS_HPP
-diff --git a/boost_1_87_0/boost/filesystem/detail/type_traits/conjunction.hpp b/boost_1_87_0/boost/filesystem/detail/type_traits/conjunction.hpp
+diff --git a/boost_1_88_0/boost/filesystem/detail/type_traits/conjunction.hpp b/boost_1_88_0/boost/filesystem/detail/type_traits/conjunction.hpp
 deleted file mode 100644
 index 2790abe4a5..0000000000
---- a/boost_1_87_0/boost/filesystem/detail/type_traits/conjunction.hpp
+--- a/boost_1_88_0/boost/filesystem/detail/type_traits/conjunction.hpp
 +++ /dev/null
 @@ -1,49 +0,0 @@
 -/*
@@ -2115,10 +2115,10 @@ index 2790abe4a5..0000000000
 -#endif
 -
 -#endif // BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_CONJUNCTION_HPP_INCLUDED_
-diff --git a/boost_1_87_0/boost/filesystem/detail/type_traits/disjunction.hpp b/boost_1_87_0/boost/filesystem/detail/type_traits/disjunction.hpp
+diff --git a/boost_1_88_0/boost/filesystem/detail/type_traits/disjunction.hpp b/boost_1_88_0/boost/filesystem/detail/type_traits/disjunction.hpp
 deleted file mode 100644
 index 609214633a..0000000000
---- a/boost_1_87_0/boost/filesystem/detail/type_traits/disjunction.hpp
+--- a/boost_1_88_0/boost/filesystem/detail/type_traits/disjunction.hpp
 +++ /dev/null
 @@ -1,49 +0,0 @@
 -/*
@@ -2170,10 +2170,10 @@ index 609214633a..0000000000
 -#endif
 -
 -#endif // BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_DISJUNCTION_HPP_INCLUDED_
-diff --git a/boost_1_87_0/boost/filesystem/detail/type_traits/negation.hpp b/boost_1_87_0/boost/filesystem/detail/type_traits/negation.hpp
+diff --git a/boost_1_88_0/boost/filesystem/detail/type_traits/negation.hpp b/boost_1_88_0/boost/filesystem/detail/type_traits/negation.hpp
 deleted file mode 100644
 index 5c47109b59..0000000000
---- a/boost_1_87_0/boost/filesystem/detail/type_traits/negation.hpp
+--- a/boost_1_88_0/boost/filesystem/detail/type_traits/negation.hpp
 +++ /dev/null
 @@ -1,49 +0,0 @@
 -/*
@@ -2225,10 +2225,10 @@ index 5c47109b59..0000000000
 -#endif
 -
 -#endif // BOOST_FILESYSTEM_DETAIL_TYPE_TRAITS_NEGATION_HPP_INCLUDED_
-diff --git a/boost_1_87_0/boost/filesystem/detail/utf8_codecvt_facet.hpp b/boost_1_87_0/boost/filesystem/detail/utf8_codecvt_facet.hpp
+diff --git a/boost_1_88_0/boost/filesystem/detail/utf8_codecvt_facet.hpp b/boost_1_88_0/boost/filesystem/detail/utf8_codecvt_facet.hpp
 index 45324a04fd..4df9a7c620 100644
---- a/boost_1_87_0/boost/filesystem/detail/utf8_codecvt_facet.hpp
-+++ b/boost_1_87_0/boost/filesystem/detail/utf8_codecvt_facet.hpp
+--- a/boost_1_88_0/boost/filesystem/detail/utf8_codecvt_facet.hpp
++++ b/boost_1_88_0/boost/filesystem/detail/utf8_codecvt_facet.hpp
 @@ -1,33 +1,33 @@
 -// Copyright (c) 2001 Ronald Garcia, Indiana University (garcia@osl.iu.edu)
 -// Andrew Lumsdaine, Indiana University (lums@osl.iu.edu).
@@ -2296,10 +2296,10 @@ index 45324a04fd..4df9a7c620 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_UTF8_CODECVT_FACET_HPP
-diff --git a/boost_1_87_0/boost/filesystem/directory.hpp b/boost_1_87_0/boost/filesystem/directory.hpp
+diff --git a/boost_1_88_0/boost/filesystem/directory.hpp b/boost_1_88_0/boost/filesystem/directory.hpp
 index 9260634357..c499006db7 100644
---- a/boost_1_87_0/boost/filesystem/directory.hpp
-+++ b/boost_1_87_0/boost/filesystem/directory.hpp
+--- a/boost_1_88_0/boost/filesystem/directory.hpp
++++ b/boost_1_88_0/boost/filesystem/directory.hpp
 @@ -1,1039 +1,775 @@
 -//  boost/filesystem/directory.hpp  ---------------------------------------------------//
 -
@@ -4115,10 +4115,10 @@ index 9260634357..c499006db7 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_DIRECTORY_HPP
-diff --git a/boost_1_87_0/boost/filesystem/exception.hpp b/boost_1_87_0/boost/filesystem/exception.hpp
+diff --git a/boost_1_88_0/boost/filesystem/exception.hpp b/boost_1_88_0/boost/filesystem/exception.hpp
 index 3560ffedaf..59807762e3 100644
---- a/boost_1_87_0/boost/filesystem/exception.hpp
-+++ b/boost_1_87_0/boost/filesystem/exception.hpp
+--- a/boost_1_88_0/boost/filesystem/exception.hpp
++++ b/boost_1_88_0/boost/filesystem/exception.hpp
 @@ -1,92 +1,92 @@
 -//  boost/filesystem/exception.hpp  -----------------------------------------------------//
 -
@@ -4304,10 +4304,10 @@ index 3560ffedaf..59807762e3 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_EXCEPTION_HPP
-diff --git a/boost_1_87_0/boost/filesystem/file_status.hpp b/boost_1_87_0/boost/filesystem/file_status.hpp
+diff --git a/boost_1_88_0/boost/filesystem/file_status.hpp b/boost_1_88_0/boost/filesystem/file_status.hpp
 index bc18da8491..c4f944c160 100644
---- a/boost_1_87_0/boost/filesystem/file_status.hpp
-+++ b/boost_1_87_0/boost/filesystem/file_status.hpp
+--- a/boost_1_88_0/boost/filesystem/file_status.hpp
++++ b/boost_1_88_0/boost/filesystem/file_status.hpp
 @@ -1,252 +1,244 @@
 -//  boost/filesystem/file_status.hpp  --------------------------------------------------//
 -
@@ -4805,10 +4805,10 @@ index bc18da8491..c4f944c160 100644
 +#include <boost/filesystem/detail/footer.hpp> // pops abi_prefix.hpp pragmas
 +
 +#endif // BOOST_FILESYSTEM_FILE_STATUS_HPP
-diff --git a/boost_1_87_0/boost/filesystem/fstream.hpp b/boost_1_87_0/boost/filesystem/fstream.hpp
+diff --git a/boost_1_88_0/boost/filesystem/fstream.hpp b/boost_1_88_0/boost/filesystem/fstream.hpp
 index edfef3f5e4..124ab39841 100644
---- a/boost_1_87_0/boost/filesystem/fstream.hpp
-+++ b/boost_1_87_0/boost/filesystem/fstream.hpp
+--- a/boost_1_88_0/boost/filesystem/fstream.hpp
++++ b/boost_1_88_0/boost/filesystem/fstream.hpp
 @@ -1,257 +1,207 @@
 -//  boost/filesystem/fstream.hpp  ------------------------------------------------------//
 -
@@ -5274,10 +5274,10 @@ index edfef3f5e4..124ab39841 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_FSTREAM_HPP
-diff --git a/boost_1_87_0/boost/filesystem/operations.hpp b/boost_1_87_0/boost/filesystem/operations.hpp
+diff --git a/boost_1_88_0/boost/filesystem/operations.hpp b/boost_1_88_0/boost/filesystem/operations.hpp
 index 6bc8ab1a83..112dba2f93 100644
---- a/boost_1_87_0/boost/filesystem/operations.hpp
-+++ b/boost_1_87_0/boost/filesystem/operations.hpp
+--- a/boost_1_88_0/boost/filesystem/operations.hpp
++++ b/boost_1_88_0/boost/filesystem/operations.hpp
 @@ -1,724 +1,729 @@
 -//  boost/filesystem/operations.hpp  ---------------------------------------------------//
 -
@@ -6732,10 +6732,10 @@ index 6bc8ab1a83..112dba2f93 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_OPERATIONS_HPP
-diff --git a/boost_1_87_0/boost/filesystem/path.hpp b/boost_1_87_0/boost/filesystem/path.hpp
+diff --git a/boost_1_88_0/boost/filesystem/path.hpp b/boost_1_88_0/boost/filesystem/path.hpp
 index 060ecc98da..fe29a9bd75 100644
---- a/boost_1_87_0/boost/filesystem/path.hpp
-+++ b/boost_1_87_0/boost/filesystem/path.hpp
+--- a/boost_1_88_0/boost/filesystem/path.hpp
++++ b/boost_1_88_0/boost/filesystem/path.hpp
 @@ -1,1710 +1,1502 @@
 -//  filesystem path.hpp  ---------------------------------------------------------------//
 -
@@ -9949,10 +9949,10 @@ index 060ecc98da..fe29a9bd75 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_PATH_HPP
-diff --git a/boost_1_87_0/libs/filesystem/CMakeLists.txt b/boost_1_87_0/libs/filesystem/CMakeLists.txt
+diff --git a/boost_1_88_0/libs/filesystem/CMakeLists.txt b/boost_1_88_0/libs/filesystem/CMakeLists.txt
 index 80f2ea2537..b2a3d7dd5b 100644
---- a/boost_1_87_0/libs/filesystem/CMakeLists.txt
-+++ b/boost_1_87_0/libs/filesystem/CMakeLists.txt
+--- a/boost_1_88_0/libs/filesystem/CMakeLists.txt
++++ b/boost_1_88_0/libs/filesystem/CMakeLists.txt
 @@ -1,271 +1,213 @@
 -# Copyright 2019 Mike Dev
 -# Copyright 2020-2022 Andrey Semashev
@@ -9963,7 +9963,7 @@ index 80f2ea2537..b2a3d7dd5b 100644
 -# NOTE: CMake support for Boost.Filesystem is currently experimental at best
 -#       and the interface is likely to change in the future
 -
--cmake_minimum_required(VERSION 3.5)
+-cmake_minimum_required(VERSION 3.5...3.16)
 -project(BoostFilesystem VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
 -
 -include(CheckCXXSourceCompiles)
@@ -10234,7 +10234,7 @@ index 80f2ea2537..b2a3d7dd5b 100644
 +# NOTE: CMake support for Boost.Filesystem is currently experimental at best
 +#       and the interface is likely to change in the future
 +
-+cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...3.16)
 +project(BoostFilesystem VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
 +
 +include(CheckCXXSourceCompiles)
@@ -10438,10 +10438,10 @@ index 80f2ea2537..b2a3d7dd5b 100644
 +            Boost::winapi
 +    )
 +endif()
-diff --git a/boost_1_87_0/libs/filesystem/README.md b/boost_1_87_0/libs/filesystem/README.md
+diff --git a/boost_1_88_0/libs/filesystem/README.md b/boost_1_88_0/libs/filesystem/README.md
 index 754dcbb3a5..9af3f0140d 100644
---- a/boost_1_87_0/libs/filesystem/README.md
-+++ b/boost_1_87_0/libs/filesystem/README.md
+--- a/boost_1_88_0/libs/filesystem/README.md
++++ b/boost_1_88_0/libs/filesystem/README.md
 @@ -1,28 +1,28 @@
 -# Boost.Filesystem
 -
@@ -10499,10 +10499,10 @@ index 754dcbb3a5..9af3f0140d 100644
 +### License
 +
 +Distributed under the [Boost Software License, Version 1.0](https://www.boost.org/LICENSE_1_0.txt).
-diff --git a/boost_1_87_0/libs/filesystem/bug/Jamfile.v2 b/boost_1_87_0/libs/filesystem/bug/Jamfile.v2
+diff --git a/boost_1_88_0/libs/filesystem/bug/Jamfile.v2 b/boost_1_88_0/libs/filesystem/bug/Jamfile.v2
 index ef77c3a41d..c6e8d6e6bf 100644
---- a/boost_1_87_0/libs/filesystem/bug/Jamfile.v2
-+++ b/boost_1_87_0/libs/filesystem/bug/Jamfile.v2
+--- a/boost_1_88_0/libs/filesystem/bug/Jamfile.v2
++++ b/boost_1_88_0/libs/filesystem/bug/Jamfile.v2
 @@ -1,17 +1,17 @@
 -# Boost Filesystem Library Bug report Jamfile
 - 
@@ -10538,10 +10538,10 @@ index ef77c3a41d..c6e8d6e6bf 100644
 +
 +# install in ./bin; invoke via "b2", not "b2 install"
 +install bin : bug ;
-diff --git a/boost_1_87_0/libs/filesystem/bug/bug.cpp b/boost_1_87_0/libs/filesystem/bug/bug.cpp
+diff --git a/boost_1_88_0/libs/filesystem/bug/bug.cpp b/boost_1_88_0/libs/filesystem/bug/bug.cpp
 index 695ff7a618..b36173118d 100644
---- a/boost_1_87_0/libs/filesystem/bug/bug.cpp
-+++ b/boost_1_87_0/libs/filesystem/bug/bug.cpp
+--- a/boost_1_88_0/libs/filesystem/bug/bug.cpp
++++ b/boost_1_88_0/libs/filesystem/bug/bug.cpp
 @@ -1,19 +1,19 @@
 -//  filesystem/bug/bug.cpp
 -
@@ -10581,10 +10581,10 @@ index 695ff7a618..b36173118d 100644
 +//  Copyright Beman Dawes 2014
 +//  Distributed under the Boost Software License, Version 1.0.
 +//  www.boost.org/LICENSE_1_0.txt
-diff --git a/boost_1_87_0/libs/filesystem/bug/index.html b/boost_1_87_0/libs/filesystem/bug/index.html
+diff --git a/boost_1_88_0/libs/filesystem/bug/index.html b/boost_1_88_0/libs/filesystem/bug/index.html
 index 2d1cf82b3f..985b9c0ccb 100644
---- a/boost_1_87_0/libs/filesystem/bug/index.html
-+++ b/boost_1_87_0/libs/filesystem/bug/index.html
+--- a/boost_1_88_0/libs/filesystem/bug/index.html
++++ b/boost_1_88_0/libs/filesystem/bug/index.html
 @@ -1,13 +1,13 @@
 -<html>
 -<head>
@@ -10612,10 +10612,10 @@ index 2d1cf82b3f..985b9c0ccb 100644
 +See http://www.boost.org/LICENSE_1_0.txt</p>
 +</body>
 +</html>
-diff --git a/boost_1_87_0/libs/filesystem/build.jam b/boost_1_87_0/libs/filesystem/build.jam
+diff --git a/boost_1_88_0/libs/filesystem/build.jam b/boost_1_88_0/libs/filesystem/build.jam
 deleted file mode 100644
 index 1da84459ac..0000000000
---- a/boost_1_87_0/libs/filesystem/build.jam
+--- a/boost_1_88_0/libs/filesystem/build.jam
 +++ /dev/null
 @@ -1,32 +0,0 @@
 -# Copyright René Ferdinand Rivera Morell 2023-2024
@@ -10650,10 +10650,10 @@ index 1da84459ac..0000000000
 -    : install boost_filesystem
 -    ;
 -
-diff --git a/boost_1_87_0/libs/filesystem/build/Jamfile.v2 b/boost_1_87_0/libs/filesystem/build/Jamfile.v2
+diff --git a/boost_1_88_0/libs/filesystem/build/Jamfile.v2 b/boost_1_88_0/libs/filesystem/build/Jamfile.v2
 index 5107e0ace8..afc8d374fb 100644
---- a/boost_1_87_0/libs/filesystem/build/Jamfile.v2
-+++ b/boost_1_87_0/libs/filesystem/build/Jamfile.v2
+--- a/boost_1_88_0/libs/filesystem/build/Jamfile.v2
++++ b/boost_1_88_0/libs/filesystem/build/Jamfile.v2
 @@ -1,225 +1,171 @@
 -# Boost Filesystem Library Build Jamfile
 -
@@ -11051,10 +11051,10 @@ index 5107e0ace8..afc8d374fb 100644
 +    ;
 +
 +boost-install boost_filesystem ;
-diff --git a/boost_1_87_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake b/boost_1_87_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake
+diff --git a/boost_1_88_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake b/boost_1_88_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake
 index 19e7982171..b875bbdba9 100644
---- a/boost_1_87_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake
-+++ b/boost_1_87_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake
+--- a/boost_1_88_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake
++++ b/boost_1_88_0/libs/filesystem/cmake/BoostLibraryIncludes.cmake
 @@ -1,37 +1,37 @@
 -# Copyright 2022 Andrey Semashev
 -#
@@ -11130,10 +11130,10 @@ index 19e7982171..b875bbdba9 100644
 +    unset(__BOOST_LIBRARY_INCLUDES)
 +    # message(STATUS "Boost library includes: ${BOOST_LIBRARY_INCLUDES}")
 +endif()
-diff --git a/boost_1_87_0/libs/filesystem/config/Jamfile.v2 b/boost_1_87_0/libs/filesystem/config/Jamfile.v2
+diff --git a/boost_1_88_0/libs/filesystem/config/Jamfile.v2 b/boost_1_88_0/libs/filesystem/config/Jamfile.v2
 index ac249f244c..b34d3aafe3 100644
---- a/boost_1_87_0/libs/filesystem/config/Jamfile.v2
-+++ b/boost_1_87_0/libs/filesystem/config/Jamfile.v2
+--- a/boost_1_88_0/libs/filesystem/config/Jamfile.v2
++++ b/boost_1_88_0/libs/filesystem/config/Jamfile.v2
 @@ -1,50 +1,41 @@
 -#
 -#          Copyright Andrey Semashev 2020 - 2021.
@@ -11226,10 +11226,10 @@ index ac249f244c..b34d3aafe3 100644
 +explicit has_bcrypt ;
 +obj is_windows_ce : is_windows_ce.cpp ;
 +explicit is_windows_ce ;
-diff --git a/boost_1_87_0/libs/filesystem/config/has_attribute_init_priority.cpp b/boost_1_87_0/libs/filesystem/config/has_attribute_init_priority.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_attribute_init_priority.cpp b/boost_1_88_0/libs/filesystem/config/has_attribute_init_priority.cpp
 index ba847f026b..87d3ebaf39 100644
---- a/boost_1_87_0/libs/filesystem/config/has_attribute_init_priority.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_attribute_init_priority.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_attribute_init_priority.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_attribute_init_priority.cpp
 @@ -1,20 +1,20 @@
 -//  Copyright 2021 Andrey Semashev
 -
@@ -11271,10 +11271,10 @@ index ba847f026b..87d3ebaf39 100644
 +{
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_bcrypt.cpp b/boost_1_87_0/libs/filesystem/config/has_bcrypt.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_bcrypt.cpp b/boost_1_88_0/libs/filesystem/config/has_bcrypt.cpp
 index 28038d60f5..855d16e64d 100644
---- a/boost_1_87_0/libs/filesystem/config/has_bcrypt.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_bcrypt.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_bcrypt.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_bcrypt.cpp
 @@ -1,34 +1,34 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11344,10 +11344,10 @@ index 28038d60f5..855d16e64d 100644
 +    status = boost::winapi::BCryptGenRandom(handle, reinterpret_cast< boost::winapi::PUCHAR_ >(static_cast< unsigned char* >(buf)), static_cast< boost::winapi::ULONG_ >(sizeof(buf)), 0);
 +    boost::winapi::BCryptCloseAlgorithmProvider(handle, 0);
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp b/boost_1_87_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp b/boost_1_88_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp
 index 2de6daaf80..1fb407f23c 100644
---- a/boost_1_87_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_cxx20_atomic_ref.cpp
 @@ -1,19 +1,19 @@
 -//  Copyright 2021 Andrey Semashev
 -
@@ -11387,10 +11387,10 @@ index 2de6daaf80..1fb407f23c 100644
 +    ref.store((func_t*)0, std::memory_order_relaxed);
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_dirent_d_type.cpp b/boost_1_87_0/libs/filesystem/config/has_dirent_d_type.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_dirent_d_type.cpp b/boost_1_88_0/libs/filesystem/config/has_dirent_d_type.cpp
 deleted file mode 100644
 index 5c0ad3a52a..0000000000
---- a/boost_1_87_0/libs/filesystem/config/has_dirent_d_type.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_dirent_d_type.cpp
 +++ /dev/null
 @@ -1,39 +0,0 @@
 -//  Copyright 2023 Andrey Semashev
@@ -11432,10 +11432,10 @@ index 5c0ad3a52a..0000000000
 -    }
 -    return 0;
 -}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_fallocate.cpp b/boost_1_87_0/libs/filesystem/config/has_fallocate.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_fallocate.cpp b/boost_1_88_0/libs/filesystem/config/has_fallocate.cpp
 deleted file mode 100644
 index 052a8fd300..0000000000
---- a/boost_1_87_0/libs/filesystem/config/has_fallocate.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_fallocate.cpp
 +++ /dev/null
 @@ -1,19 +0,0 @@
 -//  Copyright 2024 Andrey Semashev
@@ -11457,10 +11457,10 @@ index 052a8fd300..0000000000
 -    int err = fallocate(fd, FALLOC_FL_KEEP_SIZE, 0, 4096);
 -    return err != 0;
 -}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_fdopendir_nofollow.cpp b/boost_1_87_0/libs/filesystem/config/has_fdopendir_nofollow.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_fdopendir_nofollow.cpp b/boost_1_88_0/libs/filesystem/config/has_fdopendir_nofollow.cpp
 index ac1d71e640..009a730847 100644
---- a/boost_1_87_0/libs/filesystem/config/has_fdopendir_nofollow.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_fdopendir_nofollow.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_fdopendir_nofollow.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_fdopendir_nofollow.cpp
 @@ -1,22 +1,20 @@
 -//  Copyright 2022 Andrey Semashev
 -
@@ -11504,10 +11504,10 @@ index ac1d71e640..009a730847 100644
 +    DIR* dir = fdopendir(fd);
 +    return dir != 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_linkflag_no_undefined.cpp b/boost_1_87_0/libs/filesystem/config/has_linkflag_no_undefined.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_linkflag_no_undefined.cpp b/boost_1_88_0/libs/filesystem/config/has_linkflag_no_undefined.cpp
 deleted file mode 100644
 index b2115d15bc..0000000000
---- a/boost_1_87_0/libs/filesystem/config/has_linkflag_no_undefined.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_linkflag_no_undefined.cpp
 +++ /dev/null
 @@ -1,27 +0,0 @@
 -//  Copyright 2023 Andrey Semashev
@@ -11537,10 +11537,10 @@ index b2115d15bc..0000000000
 -{
 -    return 0;
 -}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_posix_at_apis.cpp b/boost_1_87_0/libs/filesystem/config/has_posix_at_apis.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_posix_at_apis.cpp b/boost_1_88_0/libs/filesystem/config/has_posix_at_apis.cpp
 index 1c7fd9b26c..094b629d9f 100644
---- a/boost_1_87_0/libs/filesystem/config/has_posix_at_apis.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_posix_at_apis.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_posix_at_apis.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_posix_at_apis.cpp
 @@ -1,41 +1,41 @@
 -//  Copyright 2022 Andrey Semashev
 -
@@ -11624,10 +11624,10 @@ index 1c7fd9b26c..094b629d9f 100644
 +
 +    return res != 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtim.cpp b/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtim.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtim.cpp b/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtim.cpp
 index 653c98945c..356439130d 100644
---- a/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtim.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtim.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtim.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtim.cpp
 @@ -1,19 +1,19 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11667,10 +11667,10 @@ index 653c98945c..356439130d 100644
 +    st.st_birthtim.tv_sec = 1;
 +    st.st_birthtim.tv_nsec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp b/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp b/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp
 index c6cc9e3634..0a20cc0c5f 100644
---- a/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimensec.cpp
 @@ -1,19 +1,19 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11710,10 +11710,10 @@ index c6cc9e3634..0a20cc0c5f 100644
 +    st.st_birthtime = 1;
 +    st.st_birthtimensec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp b/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp b/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp
 index f18b5b1e00..175b293691 100644
---- a/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_stat_st_birthtimespec.cpp
 @@ -1,19 +1,19 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11753,10 +11753,10 @@ index f18b5b1e00..175b293691 100644
 +    st.st_birthtimespec.tv_sec = 1;
 +    st.st_birthtimespec.tv_nsec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_stat_st_blksize.cpp b/boost_1_87_0/libs/filesystem/config/has_stat_st_blksize.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_stat_st_blksize.cpp b/boost_1_88_0/libs/filesystem/config/has_stat_st_blksize.cpp
 index d770cdc6bb..eafed7beec 100644
---- a/boost_1_87_0/libs/filesystem/config/has_stat_st_blksize.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_stat_st_blksize.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_stat_st_blksize.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_stat_st_blksize.cpp
 @@ -1,18 +1,18 @@
 -//  Copyright 2021 Andrey Semashev
 -
@@ -11794,10 +11794,10 @@ index d770cdc6bb..eafed7beec 100644
 +    struct stat st;
 +    st.st_blksize = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_stat_st_mtim.cpp b/boost_1_87_0/libs/filesystem/config/has_stat_st_mtim.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_stat_st_mtim.cpp b/boost_1_88_0/libs/filesystem/config/has_stat_st_mtim.cpp
 index dcce2c18f1..6d024d1fc0 100644
---- a/boost_1_87_0/libs/filesystem/config/has_stat_st_mtim.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_stat_st_mtim.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_stat_st_mtim.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_stat_st_mtim.cpp
 @@ -1,18 +1,18 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11835,10 +11835,10 @@ index dcce2c18f1..6d024d1fc0 100644
 +    struct stat st;
 +    st.st_mtim.tv_nsec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimensec.cpp b/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimensec.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimensec.cpp b/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimensec.cpp
 index e916b72e73..36f61176c8 100644
---- a/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimensec.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimensec.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimensec.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimensec.cpp
 @@ -1,18 +1,18 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11876,10 +11876,10 @@ index e916b72e73..36f61176c8 100644
 +    struct stat st;
 +    st.st_mtimensec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimespec.cpp b/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimespec.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimespec.cpp b/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimespec.cpp
 index 801914e400..02373f3872 100644
---- a/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimespec.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_stat_st_mtimespec.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimespec.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_stat_st_mtimespec.cpp
 @@ -1,18 +1,18 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11917,10 +11917,10 @@ index 801914e400..02373f3872 100644
 +    struct stat st;
 +    st.st_mtimespec.tv_nsec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_statx.cpp b/boost_1_87_0/libs/filesystem/config/has_statx.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_statx.cpp b/boost_1_88_0/libs/filesystem/config/has_statx.cpp
 index 027e0815cc..d2ea017bf0 100644
---- a/boost_1_87_0/libs/filesystem/config/has_statx.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_statx.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_statx.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_statx.cpp
 @@ -1,21 +1,21 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -11964,10 +11964,10 @@ index 027e0815cc..d2ea017bf0 100644
 +    st.stx_btime.tv_sec = 1;
 +    st.stx_btime.tv_nsec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/has_statx_syscall.cpp b/boost_1_87_0/libs/filesystem/config/has_statx_syscall.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/has_statx_syscall.cpp b/boost_1_88_0/libs/filesystem/config/has_statx_syscall.cpp
 index 605c46ec6c..571fe14885 100644
---- a/boost_1_87_0/libs/filesystem/config/has_statx_syscall.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/has_statx_syscall.cpp
+--- a/boost_1_88_0/libs/filesystem/config/has_statx_syscall.cpp
++++ b/boost_1_88_0/libs/filesystem/config/has_statx_syscall.cpp
 @@ -1,35 +1,35 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -12039,10 +12039,10 @@ index 605c46ec6c..571fe14885 100644
 +    st.stx_btime.tv_sec = 1;
 +    st.stx_btime.tv_nsec = 10;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/config/is_windows_ce.cpp b/boost_1_87_0/libs/filesystem/config/is_windows_ce.cpp
+diff --git a/boost_1_88_0/libs/filesystem/config/is_windows_ce.cpp b/boost_1_88_0/libs/filesystem/config/is_windows_ce.cpp
 index c4c2500fcd..8681670953 100644
---- a/boost_1_87_0/libs/filesystem/config/is_windows_ce.cpp
-+++ b/boost_1_87_0/libs/filesystem/config/is_windows_ce.cpp
+--- a/boost_1_88_0/libs/filesystem/config/is_windows_ce.cpp
++++ b/boost_1_88_0/libs/filesystem/config/is_windows_ce.cpp
 @@ -1,14 +1,14 @@
 -//  Copyright 2020 Andrey Semashev
 -
@@ -12072,10 +12072,10 @@ index c4c2500fcd..8681670953 100644
 +int main()
 +{
 +}
-diff --git a/boost_1_87_0/libs/filesystem/index.html b/boost_1_87_0/libs/filesystem/index.html
+diff --git a/boost_1_88_0/libs/filesystem/index.html b/boost_1_88_0/libs/filesystem/index.html
 index d386bb4533..1803c23ca2 100644
---- a/boost_1_87_0/libs/filesystem/index.html
-+++ b/boost_1_87_0/libs/filesystem/index.html
+--- a/boost_1_88_0/libs/filesystem/index.html
++++ b/boost_1_88_0/libs/filesystem/index.html
 @@ -1,13 +1,13 @@
 -<html>
 -<head>
@@ -12103,10 +12103,10 @@ index d386bb4533..1803c23ca2 100644
 +See http://www.boost.org/LICENSE_1_0.txt</p>
 +</body>
 +</html>
-diff --git a/boost_1_87_0/libs/filesystem/meta/libraries.json b/boost_1_87_0/libs/filesystem/meta/libraries.json
+diff --git a/boost_1_88_0/libs/filesystem/meta/libraries.json b/boost_1_88_0/libs/filesystem/meta/libraries.json
 index dc46f6142d..5578d3aef7 100644
---- a/boost_1_87_0/libs/filesystem/meta/libraries.json
-+++ b/boost_1_87_0/libs/filesystem/meta/libraries.json
+--- a/boost_1_88_0/libs/filesystem/meta/libraries.json
++++ b/boost_1_88_0/libs/filesystem/meta/libraries.json
 @@ -1,15 +1,15 @@
 -{
 -    "key": "filesystem",
@@ -12138,10 +12138,10 @@ index dc46f6142d..5578d3aef7 100644
 +    ],
 +    "cxxstd": "03"
 +}
-diff --git a/boost_1_87_0/libs/filesystem/src/atomic_ref.hpp b/boost_1_87_0/libs/filesystem/src/atomic_ref.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/atomic_ref.hpp b/boost_1_88_0/libs/filesystem/src/atomic_ref.hpp
 index d117e11f42..6e8208d39e 100644
---- a/boost_1_87_0/libs/filesystem/src/atomic_ref.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/atomic_ref.hpp
+--- a/boost_1_88_0/libs/filesystem/src/atomic_ref.hpp
++++ b/boost_1_88_0/libs/filesystem/src/atomic_ref.hpp
 @@ -1,32 +1,32 @@
 -//  atomic.hpp  ------------------------------------------------------------------------//
 -
@@ -12207,10 +12207,10 @@ index d117e11f42..6e8208d39e 100644
 +#endif // !defined(BOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF)
 +
 +#endif // BOOST_FILESYSTEM_SRC_ATOMIC_REF_HPP_
-diff --git a/boost_1_87_0/libs/filesystem/src/atomic_tools.hpp b/boost_1_87_0/libs/filesystem/src/atomic_tools.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/atomic_tools.hpp b/boost_1_88_0/libs/filesystem/src/atomic_tools.hpp
 index 37fd116847..a60e5d325a 100644
---- a/boost_1_87_0/libs/filesystem/src/atomic_tools.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/atomic_tools.hpp
+--- a/boost_1_88_0/libs/filesystem/src/atomic_tools.hpp
++++ b/boost_1_88_0/libs/filesystem/src/atomic_tools.hpp
 @@ -1,69 +1,69 @@
 -//  atomic_tools.hpp  ------------------------------------------------------------------//
 -
@@ -12350,10 +12350,10 @@ index 37fd116847..a60e5d325a 100644
 +#endif // !defined(BOOST_FILESYSTEM_SINGLE_THREADED)
 +
 +#endif // BOOST_FILESYSTEM_SRC_ATOMIC_TOOLS_HPP_
-diff --git a/boost_1_87_0/libs/filesystem/src/codecvt_error_category.cpp b/boost_1_87_0/libs/filesystem/src/codecvt_error_category.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/codecvt_error_category.cpp b/boost_1_88_0/libs/filesystem/src/codecvt_error_category.cpp
 index a2b7f3a1f5..a8d2a42732 100644
---- a/boost_1_87_0/libs/filesystem/src/codecvt_error_category.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/codecvt_error_category.cpp
+--- a/boost_1_88_0/libs/filesystem/src/codecvt_error_category.cpp
++++ b/boost_1_88_0/libs/filesystem/src/codecvt_error_category.cpp
 @@ -1,120 +1,120 @@
 -//  codecvt_error_category implementation file  ----------------------------------------//
 -
@@ -12595,10 +12595,10 @@ index a2b7f3a1f5..a8d2a42732 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/directory.cpp b/boost_1_87_0/libs/filesystem/src/directory.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/directory.cpp b/boost_1_88_0/libs/filesystem/src/directory.cpp
 index eb144c08b7..7eeda2613c 100644
---- a/boost_1_87_0/libs/filesystem/src/directory.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/directory.cpp
+--- a/boost_1_88_0/libs/filesystem/src/directory.cpp
++++ b/boost_1_88_0/libs/filesystem/src/directory.cpp
 @@ -1,1773 +1,1484 @@
 -//  directory.cpp  --------------------------------------------------------------------//
 -
@@ -15857,10 +15857,10 @@ index eb144c08b7..7eeda2613c 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/error_handling.hpp b/boost_1_87_0/libs/filesystem/src/error_handling.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/error_handling.hpp b/boost_1_88_0/libs/filesystem/src/error_handling.hpp
 index cce7881a62..97590a8712 100644
---- a/boost_1_87_0/libs/filesystem/src/error_handling.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/error_handling.hpp
+--- a/boost_1_88_0/libs/filesystem/src/error_handling.hpp
++++ b/boost_1_88_0/libs/filesystem/src/error_handling.hpp
 @@ -1,242 +1,220 @@
 -//  error_handling.hpp  --------------------------------------------------------------------//
 -
@@ -16324,10 +16324,10 @@ index cce7881a62..97590a8712 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_SRC_ERROR_HANDLING_HPP_
-diff --git a/boost_1_87_0/libs/filesystem/src/exception.cpp b/boost_1_87_0/libs/filesystem/src/exception.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/exception.cpp b/boost_1_88_0/libs/filesystem/src/exception.cpp
 index 8251286d83..91ee1c90a9 100644
---- a/boost_1_87_0/libs/filesystem/src/exception.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/exception.cpp
+--- a/boost_1_88_0/libs/filesystem/src/exception.cpp
++++ b/boost_1_88_0/libs/filesystem/src/exception.cpp
 @@ -1,188 +1,188 @@
 -//  boost/filesystem/exception.hpp  -----------------------------------------------------//
 -
@@ -16705,10 +16705,10 @@ index 8251286d83..91ee1c90a9 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/operations.cpp b/boost_1_87_0/libs/filesystem/src/operations.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/operations.cpp b/boost_1_88_0/libs/filesystem/src/operations.cpp
 index dccd0c74bc..b1c14d62e5 100644
---- a/boost_1_87_0/libs/filesystem/src/operations.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/operations.cpp
+--- a/boost_1_88_0/libs/filesystem/src/operations.cpp
++++ b/boost_1_88_0/libs/filesystem/src/operations.cpp
 @@ -1,5197 +1,4596 @@
 -//  operations.cpp  --------------------------------------------------------------------//
 -
@@ -26503,10 +26503,10 @@ index dccd0c74bc..b1c14d62e5 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/path.cpp b/boost_1_87_0/libs/filesystem/src/path.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/path.cpp b/boost_1_88_0/libs/filesystem/src/path.cpp
 index 52d9e5596e..8d2555bfc8 100644
---- a/boost_1_87_0/libs/filesystem/src/path.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/path.cpp
+--- a/boost_1_88_0/libs/filesystem/src/path.cpp
++++ b/boost_1_88_0/libs/filesystem/src/path.cpp
 @@ -1,1719 +1,1605 @@
 -//  filesystem path.cpp  -------------------------------------------------------------  //
 -
@@ -29832,10 +29832,10 @@ index 52d9e5596e..8d2555bfc8 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/path_traits.cpp b/boost_1_87_0/libs/filesystem/src/path_traits.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/path_traits.cpp b/boost_1_88_0/libs/filesystem/src/path_traits.cpp
 index a0d485805e..baed387b4d 100644
---- a/boost_1_87_0/libs/filesystem/src/path_traits.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/path_traits.cpp
+--- a/boost_1_88_0/libs/filesystem/src/path_traits.cpp
++++ b/boost_1_88_0/libs/filesystem/src/path_traits.cpp
 @@ -1,187 +1,187 @@
 -//  filesystem path_traits.cpp  --------------------------------------------------------//
 -
@@ -30211,10 +30211,10 @@ index a0d485805e..baed387b4d 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/platform_config.hpp b/boost_1_87_0/libs/filesystem/src/platform_config.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/platform_config.hpp b/boost_1_88_0/libs/filesystem/src/platform_config.hpp
 index acc10a8acb..941338b0a7 100644
---- a/boost_1_87_0/libs/filesystem/src/platform_config.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/platform_config.hpp
+--- a/boost_1_88_0/libs/filesystem/src/platform_config.hpp
++++ b/boost_1_88_0/libs/filesystem/src/platform_config.hpp
 @@ -1,83 +1,83 @@
 -//  platform_config.hpp  --------------------------------------------------------------------//
 -
@@ -30382,10 +30382,10 @@ index acc10a8acb..941338b0a7 100644
 +#include <boost/filesystem/config.hpp>
 +
 +#endif // BOOST_FILESYSTEM_PLATFORM_CONFIG_HPP_
-diff --git a/boost_1_87_0/libs/filesystem/src/portability.cpp b/boost_1_87_0/libs/filesystem/src/portability.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/portability.cpp b/boost_1_88_0/libs/filesystem/src/portability.cpp
 index 3b28f072d4..8e0e2e5d98 100644
---- a/boost_1_87_0/libs/filesystem/src/portability.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/portability.cpp
+--- a/boost_1_88_0/libs/filesystem/src/portability.cpp
++++ b/boost_1_88_0/libs/filesystem/src/portability.cpp
 @@ -1,83 +1,83 @@
 -//  portability.cpp  -------------------------------------------------------------------//
 -
@@ -30553,10 +30553,10 @@ index 3b28f072d4..8e0e2e5d98 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/posix_tools.hpp b/boost_1_87_0/libs/filesystem/src/posix_tools.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/posix_tools.hpp b/boost_1_88_0/libs/filesystem/src/posix_tools.hpp
 index 0ce244121e..52cd87b0a0 100644
---- a/boost_1_87_0/libs/filesystem/src/posix_tools.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/posix_tools.hpp
+--- a/boost_1_88_0/libs/filesystem/src/posix_tools.hpp
++++ b/boost_1_88_0/libs/filesystem/src/posix_tools.hpp
 @@ -1,78 +1,81 @@
 -//  posix_tools.hpp  -------------------------------------------------------------------//
 -
@@ -30717,10 +30717,10 @@ index 0ce244121e..52cd87b0a0 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_SRC_POSIX_TOOLS_HPP_
-diff --git a/boost_1_87_0/libs/filesystem/src/private_config.hpp b/boost_1_87_0/libs/filesystem/src/private_config.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/private_config.hpp b/boost_1_88_0/libs/filesystem/src/private_config.hpp
 index 63e10f8a43..c58d245ee1 100644
---- a/boost_1_87_0/libs/filesystem/src/private_config.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/private_config.hpp
+--- a/boost_1_88_0/libs/filesystem/src/private_config.hpp
++++ b/boost_1_88_0/libs/filesystem/src/private_config.hpp
 @@ -1,74 +1,74 @@
 -//  private_config.hpp  ----------------------------------------------------------------//
 -
@@ -30870,10 +30870,10 @@ index 63e10f8a43..c58d245ee1 100644
 +#endif
 +
 +#endif // BOOST_FILESYSTEM_SRC_PRIVATE_CONFIG_HPP_
-diff --git a/boost_1_87_0/libs/filesystem/src/unique_path.cpp b/boost_1_87_0/libs/filesystem/src/unique_path.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/unique_path.cpp b/boost_1_88_0/libs/filesystem/src/unique_path.cpp
 index de87e009a2..f0bc6058cb 100644
---- a/boost_1_87_0/libs/filesystem/src/unique_path.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/unique_path.cpp
+--- a/boost_1_88_0/libs/filesystem/src/unique_path.cpp
++++ b/boost_1_88_0/libs/filesystem/src/unique_path.cpp
 @@ -1,351 +1,331 @@
 -//  filesystem unique_path.cpp  --------------------------------------------------------//
 -
@@ -31557,10 +31557,10 @@ index de87e009a2..f0bc6058cb 100644
 +} // namespace boost
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/utf8_codecvt_facet.cpp b/boost_1_87_0/libs/filesystem/src/utf8_codecvt_facet.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/utf8_codecvt_facet.cpp b/boost_1_88_0/libs/filesystem/src/utf8_codecvt_facet.cpp
 index e19be69e93..7e5939bb71 100644
---- a/boost_1_87_0/libs/filesystem/src/utf8_codecvt_facet.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/utf8_codecvt_facet.cpp
+--- a/boost_1_88_0/libs/filesystem/src/utf8_codecvt_facet.cpp
++++ b/boost_1_88_0/libs/filesystem/src/utf8_codecvt_facet.cpp
 @@ -1,29 +1,29 @@
 -// Copyright Vladimir Prus 2004.
 -// Distributed under the Boost Software License, Version 1.0.
@@ -31620,10 +31620,10 @@ index e19be69e93..7e5939bb71 100644
 +#undef BOOST_UTF8_DECL
 +
 +#include <boost/filesystem/detail/footer.hpp>
-diff --git a/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.cpp b/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.cpp
+diff --git a/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.cpp b/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.cpp
 index 9f96296036..f86ba5111b 100644
---- a/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.cpp
-+++ b/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.cpp
+--- a/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.cpp
++++ b/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.cpp
 @@ -1,72 +1,72 @@
 -//  filesystem windows_file_codecvt.cpp  -----------------------------------------//
 -
@@ -31769,10 +31769,10 @@ index 9f96296036..f86ba5111b 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_WINDOWS_API
-diff --git a/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.hpp b/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.hpp b/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.hpp
 index 769db1d555..917dc2182f 100644
---- a/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/windows_file_codecvt.hpp
+--- a/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.hpp
++++ b/boost_1_88_0/libs/filesystem/src/windows_file_codecvt.hpp
 @@ -1,72 +1,72 @@
 -//  filesystem windows_file_codecvt.hpp  -----------------------------------------------//
 -
@@ -31918,10 +31918,10 @@ index 769db1d555..917dc2182f 100644
 +#endif // BOOST_WINDOWS_API
 +
 +#endif // BOOST_FILESYSTEM_WINDOWS_FILE_CODECVT_HPP
-diff --git a/boost_1_87_0/libs/filesystem/src/windows_tools.hpp b/boost_1_87_0/libs/filesystem/src/windows_tools.hpp
+diff --git a/boost_1_88_0/libs/filesystem/src/windows_tools.hpp b/boost_1_88_0/libs/filesystem/src/windows_tools.hpp
 index 4947682516..0b1d198fc1 100644
---- a/boost_1_87_0/libs/filesystem/src/windows_tools.hpp
-+++ b/boost_1_87_0/libs/filesystem/src/windows_tools.hpp
+--- a/boost_1_88_0/libs/filesystem/src/windows_tools.hpp
++++ b/boost_1_88_0/libs/filesystem/src/windows_tools.hpp
 @@ -1,310 +1,286 @@
 -//  windows_tools.hpp  -----------------------------------------------------------------//
 -
@@ -32519,10 +32519,10 @@ index 4947682516..0b1d198fc1 100644
 +#include <boost/filesystem/detail/footer.hpp>
 +
 +#endif // BOOST_FILESYSTEM_SRC_WINDOWS_TOOLS_HPP_
-diff --git a/boost_1_87_0/libs/filesystem/test/Jamfile.v2 b/boost_1_87_0/libs/filesystem/test/Jamfile.v2
+diff --git a/boost_1_88_0/libs/filesystem/test/Jamfile.v2 b/boost_1_88_0/libs/filesystem/test/Jamfile.v2
 index b76ff1fe4a..e2c3a311b8 100644
---- a/boost_1_87_0/libs/filesystem/test/Jamfile.v2
-+++ b/boost_1_87_0/libs/filesystem/test/Jamfile.v2
+--- a/boost_1_88_0/libs/filesystem/test/Jamfile.v2
++++ b/boost_1_88_0/libs/filesystem/test/Jamfile.v2
 @@ -1,115 +1,110 @@
 -# Boost Filesystem Library test Jamfile
 -
@@ -32749,10 +32749,10 @@ index b76ff1fe4a..e2c3a311b8 100644
 +{
 +    build-project ../example ;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/cf_path_nullptr_test.cpp b/boost_1_87_0/libs/filesystem/test/cf_path_nullptr_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/cf_path_nullptr_test.cpp b/boost_1_88_0/libs/filesystem/test/cf_path_nullptr_test.cpp
 deleted file mode 100644
 index bfd27f38b2..0000000000
---- a/boost_1_87_0/libs/filesystem/test/cf_path_nullptr_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/cf_path_nullptr_test.cpp
 +++ /dev/null
 @@ -1,15 +0,0 @@
 -// Copyright 2023 Andrey Semashev.
@@ -32770,10 +32770,10 @@ index bfd27f38b2..0000000000
 -    boost::filesystem::path p(nullptr);
 -    p = nullptr;
 -}
-diff --git a/boost_1_87_0/libs/filesystem/test/config_info.cpp b/boost_1_87_0/libs/filesystem/test/config_info.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/config_info.cpp b/boost_1_88_0/libs/filesystem/test/config_info.cpp
 index 50805e8494..aa3677482d 100644
---- a/boost_1_87_0/libs/filesystem/test/config_info.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/config_info.cpp
+--- a/boost_1_88_0/libs/filesystem/test/config_info.cpp
++++ b/boost_1_88_0/libs/filesystem/test/config_info.cpp
 @@ -1,50 +1,50 @@
 -//  boost/libs/filesystem/test/config_info.cpp  ----------------------------------------//
 -
@@ -32875,10 +32875,10 @@ index 50805e8494..aa3677482d 100644
 +
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/convenience_test.cpp b/boost_1_87_0/libs/filesystem/test/convenience_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/convenience_test.cpp b/boost_1_88_0/libs/filesystem/test/convenience_test.cpp
 index 48a688958d..67de427812 100644
---- a/boost_1_87_0/libs/filesystem/test/convenience_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/convenience_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/convenience_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/convenience_test.cpp
 @@ -1,178 +1,178 @@
 -//  libs/filesystem/test/convenience_test.cpp  -----------------------------------------//
 -
@@ -33236,10 +33236,10 @@ index 48a688958d..67de427812 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/copy_test.cpp b/boost_1_87_0/libs/filesystem/test/copy_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/copy_test.cpp b/boost_1_88_0/libs/filesystem/test/copy_test.cpp
 index 70dcfcf262..af9a35c7e5 100644
---- a/boost_1_87_0/libs/filesystem/test/copy_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/copy_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/copy_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/copy_test.cpp
 @@ -1,340 +1,340 @@
 -//  Copyright Andrey Semashev 2020.
 -
@@ -33921,10 +33921,10 @@ index 70dcfcf262..af9a35c7e5 100644
 +        return 1;
 +    }
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/cstdio_test.cpp b/boost_1_87_0/libs/filesystem/test/cstdio_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/cstdio_test.cpp b/boost_1_88_0/libs/filesystem/test/cstdio_test.cpp
 deleted file mode 100644
 index 88b73bddf0..0000000000
---- a/boost_1_87_0/libs/filesystem/test/cstdio_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/cstdio_test.cpp
 +++ /dev/null
 @@ -1,101 +0,0 @@
 -//  cstdio_test.cpp  ------------------------------------------------------------------//
@@ -34028,10 +34028,10 @@ index 88b73bddf0..0000000000
 -
 -    return ::boost::report_errors();
 -}
-diff --git a/boost_1_87_0/libs/filesystem/test/deprecated_test.cpp b/boost_1_87_0/libs/filesystem/test/deprecated_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/deprecated_test.cpp b/boost_1_88_0/libs/filesystem/test/deprecated_test.cpp
 index 521a207b9e..011fcea651 100644
---- a/boost_1_87_0/libs/filesystem/test/deprecated_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/deprecated_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/deprecated_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/deprecated_test.cpp
 @@ -1,134 +1,325 @@
 -//  deprecated_test program --------------------------------------------------//
 -
@@ -34492,10 +34492,10 @@ index 521a207b9e..011fcea651 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/design_use_cases.cpp b/boost_1_87_0/libs/filesystem/test/design_use_cases.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/design_use_cases.cpp b/boost_1_88_0/libs/filesystem/test/design_use_cases.cpp
 index e98155acf3..dbbf3ed22b 100644
---- a/boost_1_87_0/libs/filesystem/test/design_use_cases.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/design_use_cases.cpp
+--- a/boost_1_88_0/libs/filesystem/test/design_use_cases.cpp
++++ b/boost_1_88_0/libs/filesystem/test/design_use_cases.cpp
 @@ -1,81 +1,81 @@
 -#include <string>
 -#include <iostream>
@@ -34659,10 +34659,10 @@ index e98155acf3..dbbf3ed22b 100644
 +
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/equivalent.cpp b/boost_1_87_0/libs/filesystem/test/equivalent.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/equivalent.cpp b/boost_1_88_0/libs/filesystem/test/equivalent.cpp
 index 0a5b4827cd..92875a7760 100644
---- a/boost_1_87_0/libs/filesystem/test/equivalent.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/equivalent.cpp
+--- a/boost_1_88_0/libs/filesystem/test/equivalent.cpp
++++ b/boost_1_88_0/libs/filesystem/test/equivalent.cpp
 @@ -1,39 +1,39 @@
 -//  equivalent program -------------------------------------------------------//
 -
@@ -34742,10 +34742,10 @@ index 0a5b4827cd..92875a7760 100644
 +    std::cout << (eq ? "Paths are equivalent\n" : "Paths are not equivalent\n");
 +    return !eq;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/foreach_test.cpp b/boost_1_87_0/libs/filesystem/test/foreach_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/foreach_test.cpp b/boost_1_88_0/libs/filesystem/test/foreach_test.cpp
 index b4e3cafe5f..50a86c76e5 100644
---- a/boost_1_87_0/libs/filesystem/test/foreach_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/foreach_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/foreach_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/foreach_test.cpp
 @@ -1,62 +1,62 @@
 -
 -// Copyright 2018 Peter Dimov.
@@ -34871,10 +34871,10 @@ index b4e3cafe5f..50a86c76e5 100644
 +
 +#endif
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/fstream_test.cpp b/boost_1_87_0/libs/filesystem/test/fstream_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/fstream_test.cpp b/boost_1_88_0/libs/filesystem/test/fstream_test.cpp
 index 5b1a96b03d..77fa5c2c6e 100644
---- a/boost_1_87_0/libs/filesystem/test/fstream_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/fstream_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/fstream_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/fstream_test.cpp
 @@ -1,199 +1,164 @@
 -//  fstream_test.cpp  ------------------------------------------------------------------//
 -
@@ -35239,10 +35239,10 @@ index 5b1a96b03d..77fa5c2c6e 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/10038.cpp b/boost_1_87_0/libs/filesystem/test/issues/10038.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/10038.cpp b/boost_1_88_0/libs/filesystem/test/issues/10038.cpp
 index 6ca2c6d7f9..15b500571d 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/10038.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/10038.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/10038.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/10038.cpp
 @@ -1,7 +1,7 @@
 -#include <boost/filesystem.hpp>
 -
@@ -35258,10 +35258,10 @@ index 6ca2c6d7f9..15b500571d 100644
 +    boost::filesystem::copy_file("a", "b");
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/10205.cpp b/boost_1_87_0/libs/filesystem/test/issues/10205.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/10205.cpp b/boost_1_88_0/libs/filesystem/test/issues/10205.cpp
 index 5da94dd3cd..966d5d6383 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/10205.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/10205.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/10205.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/10205.cpp
 @@ -1,17 +1,17 @@
 -// Linux test; before running: export LANG=foo
 -
@@ -35297,10 +35297,10 @@ index 5da94dd3cd..966d5d6383 100644
 +
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/10485.cpp b/boost_1_87_0/libs/filesystem/test/issues/10485.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/10485.cpp b/boost_1_88_0/libs/filesystem/test/issues/10485.cpp
 index 8c74e3998e..aa9a03b07a 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/10485.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/10485.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/10485.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/10485.cpp
 @@ -1,14 +1,14 @@
 -//  Copyright iamvfx@gmail.com 2014
 -
@@ -35330,10 +35330,10 @@ index 8c74e3998e..aa9a03b07a 100644
 +    for (char c : dir.filename().string())
 +        printf("%c\n", c);
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/10641.cpp b/boost_1_87_0/libs/filesystem/test/issues/10641.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/10641.cpp b/boost_1_88_0/libs/filesystem/test/issues/10641.cpp
 index a1d616bca2..2107396448 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/10641.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/10641.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/10641.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/10641.cpp
 @@ -1,22 +1,22 @@
 -#include <iostream>
 -#include <boost/filesystem/path.hpp>
@@ -35379,10 +35379,10 @@ index a1d616bca2..2107396448 100644
 +    }
 +    return EXIT_SUCCESS;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/11166-remove-race.cpp b/boost_1_87_0/libs/filesystem/test/issues/11166-remove-race.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/11166-remove-race.cpp b/boost_1_88_0/libs/filesystem/test/issues/11166-remove-race.cpp
 index ac94b0432f..a871ad71ea 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/11166-remove-race.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/11166-remove-race.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/11166-remove-race.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/11166-remove-race.cpp
 @@ -1,40 +1,40 @@
 -#include <boost/filesystem.hpp>
 -#include <boost/thread.hpp>
@@ -35464,10 +35464,10 @@ index ac94b0432f..a871ad71ea 100644
 +    r2.interrupt();
 +    r2.join();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp b/boost_1_87_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp b/boost_1_88_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp
 index f1dda389bf..4e12bb7923 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/11228--filtered-recursive_directory_iterator-range.cpp
 @@ -1,24 +1,24 @@
 -#include <boost/filesystem.hpp>
 -#include <boost/range.hpp>
@@ -35517,10 +35517,10 @@ index f1dda389bf..4e12bb7923 100644
 +        std::cout << p << "\n";
  }
 \ No newline at end of file
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/3332/test.cpp b/boost_1_87_0/libs/filesystem/test/issues/3332/test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/3332/test.cpp b/boost_1_88_0/libs/filesystem/test/issues/3332/test.cpp
 index 7d48eecee5..f43acdc4ab 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/3332/test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/3332/test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/3332/test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/3332/test.cpp
 @@ -1,37 +1,37 @@
 -#include <boost/filesystem.hpp>
 -#include <cvt/cp950>
@@ -35596,10 +35596,10 @@ index 7d48eecee5..f43acdc4ab 100644
 +    }
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/4329.-basename.cpp b/boost_1_87_0/libs/filesystem/test/issues/4329.-basename.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/4329.-basename.cpp b/boost_1_88_0/libs/filesystem/test/issues/4329.-basename.cpp
 index c614300e6f..80ba03c957 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/4329.-basename.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/4329.-basename.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/4329.-basename.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/4329.-basename.cpp
 @@ -1,18 +1,18 @@
 -#include <iostream>
 -#include <boost/filesystem.hpp>
@@ -35637,10 +35637,10 @@ index c614300e6f..80ba03c957 100644
 +    std::cout << path("a/b/c/d/e/").stem() << std::endl;
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp b/boost_1_87_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp b/boost_1_88_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp
 index 0c9a9ce799..2bedbcdaee 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/6638-global-init-fails-3.cpp
 @@ -1,36 +1,36 @@
 -#include <boost/filesystem.hpp>
 -#include <boost/detail/lightweight_main.hpp>
@@ -35714,10 +35714,10 @@ index 0c9a9ce799..2bedbcdaee 100644
 +{
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/70-71-copy.cpp b/boost_1_87_0/libs/filesystem/test/issues/70-71-copy.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/70-71-copy.cpp b/boost_1_88_0/libs/filesystem/test/issues/70-71-copy.cpp
 index 85d5814d33..98e621be0f 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/70-71-copy.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/70-71-copy.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/70-71-copy.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/70-71-copy.cpp
 @@ -1,20 +1,20 @@
 -
 -// Copyright 2018 Peter Dimov.
@@ -35759,10 +35759,10 @@ index 85d5814d33..98e621be0f 100644
 +    BOOST_TEST_THROWS(fs::copy("/tmp/non-existent-a", "/tmp/non-existent-b"), std::exception);
 +    return boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/8930.cpp b/boost_1_87_0/libs/filesystem/test/issues/8930.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/8930.cpp b/boost_1_88_0/libs/filesystem/test/issues/8930.cpp
 index 0847118b5d..1c3c252a1a 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/8930.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/8930.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/8930.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/8930.cpp
 @@ -1,7 +1,7 @@
 -// Before running this test: export LANG=foo
 -
@@ -35778,10 +35778,10 @@ index 0847118b5d..1c3c252a1a 100644
 +{
 +    boost::filesystem::path("/abc").root_directory();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp b/boost_1_87_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp b/boost_1_88_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp
 index 7a6c06d442..53234b4a21 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/9054_static_const_codecvt_segfault_pre_main.cpp
 @@ -1,9 +1,9 @@
 -#include "boost/filesystem.hpp"
 -
@@ -35801,10 +35801,10 @@ index 7a6c06d442..53234b4a21 100644
 +{
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/9219.cpp b/boost_1_87_0/libs/filesystem/test/issues/9219.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/9219.cpp b/boost_1_88_0/libs/filesystem/test/issues/9219.cpp
 index 35cea8679e..7da6488e86 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/9219.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/9219.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/9219.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/9219.cpp
 @@ -1,40 +1,40 @@
 -//  Boost 9219.cpp  --------------------------------------------------------------------//
 -
@@ -35886,10 +35886,10 @@ index 35cea8679e..7da6488e86 100644
 +
 +    return ::boost::report_errors();
 +} // cpp_main
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp b/boost_1_87_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp b/boost_1_88_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp
 index e0d2529b97..38e3bc0789 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/99_canonical_with_junction_point.cpp
 @@ -1,98 +1,85 @@
 -//  Boost operations_test.cpp  ---------------------------------------------------------//
 -
@@ -36074,10 +36074,10 @@ index e0d2529b97..38e3bc0789 100644
 +}
 +
 +#endif // defined(BOOST_FILESYSTEM_HAS_MKLINK)
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/Jamfile.v2 b/boost_1_87_0/libs/filesystem/test/issues/Jamfile.v2
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/Jamfile.v2 b/boost_1_88_0/libs/filesystem/test/issues/Jamfile.v2
 index 38a123e130..47fce40754 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/Jamfile.v2
-+++ b/boost_1_87_0/libs/filesystem/test/issues/Jamfile.v2
+--- a/boost_1_88_0/libs/filesystem/test/issues/Jamfile.v2
++++ b/boost_1_88_0/libs/filesystem/test/issues/Jamfile.v2
 @@ -1,38 +1,38 @@
 -# Boost Filesystem test/issues Jamfile
 -
@@ -36155,10 +36155,10 @@ index 38a123e130..47fce40754 100644
 +
 +       ;
 +
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp b/boost_1_87_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp b/boost_1_88_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp
 index 20f40b7781..8c2ea398f1 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/copy_file-compilation-error-2015-05-04.cpp
 @@ -1,14 +1,14 @@
 -// Rob Conde <rob.conde@ai-solutions.com> reports this fails
 -// to compile for Boost 1.58 with g++ 4.4.7 but is OK with FC++ 2013
@@ -36188,10 +36188,10 @@ index 20f40b7781..8c2ea398f1 100644
 +    //   copy_file(path("p1"),path("p2"),opt);
  }
 \ No newline at end of file
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp b/boost_1_87_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp b/boost_1_88_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp
 index 9ad4c8feb0..ea5a619803 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/fchmodat_AT_SYMLINK_NOFOLLOW_6659.cpp
 @@ -1,41 +1,41 @@
 -// Test program to demonstrate that Linux does not support AT_SYMLINK_NOFOLLOW
 -
@@ -36275,10 +36275,10 @@ index 9ad4c8feb0..ea5a619803 100644
 +
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/hello_filesystem.cpp b/boost_1_87_0/libs/filesystem/test/issues/hello_filesystem.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/hello_filesystem.cpp b/boost_1_88_0/libs/filesystem/test/issues/hello_filesystem.cpp
 index f6f73f4aa4..69124e53aa 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/hello_filesystem.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/hello_filesystem.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/hello_filesystem.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/hello_filesystem.cpp
 @@ -1,39 +1,39 @@
 -//  Boost hello_filesystem.cpp  --------------------------------------------------------//
 -
@@ -36358,10 +36358,10 @@ index f6f73f4aa4..69124e53aa 100644
 +
 +    return ::boost::report_errors();
 +} // cpp_main
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/readme.txt b/boost_1_87_0/libs/filesystem/test/issues/readme.txt
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/readme.txt b/boost_1_88_0/libs/filesystem/test/issues/readme.txt
 index f40427e32d..cf8198e5c0 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/readme.txt
-+++ b/boost_1_87_0/libs/filesystem/test/issues/readme.txt
+--- a/boost_1_88_0/libs/filesystem/test/issues/readme.txt
++++ b/boost_1_88_0/libs/filesystem/test/issues/readme.txt
 @@ -1,9 +1,9 @@
 -This directory contains tests related to specific issues.
 -
@@ -36381,10 +36381,10 @@ index f40427e32d..cf8198e5c0 100644
 +Copyright Beman Dawes 2012
 +Distributed under the Boost Software License, Version 1.0.
 +See http://www.boost.org/LICENSE_1_0.txt
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp b/boost_1_87_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp b/boost_1_88_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp
 index e1ca7c9abf..ef6d0f4c2d 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/recurse_dir_iter_5403.cpp
 @@ -1,116 +1,116 @@
 -//  Boost Filesystem recurse_dir_iter_test.cpp  ----------------------------------------//
 -
@@ -36618,10 +36618,10 @@ index e1ca7c9abf..ef6d0f4c2d 100644
 +    cout << "returning from main()" << endl;
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp b/boost_1_87_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp b/boost_1_88_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp
 index f081d7ee00..6c423a440f 100644
---- a/boost_1_87_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp
+--- a/boost_1_88_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp
++++ b/boost_1_88_0/libs/filesystem/test/issues/reparse_tag_file_placeholder.cpp
 @@ -1,167 +1,169 @@
 -//  Boost reparse_tag_file_placeholder.cpp  ---------------------------------------------------------//
 -
@@ -36959,10 +36959,10 @@ index f081d7ee00..6c423a440f 100644
 +}
 +
 +#endif // defined(BOOST_FILESYSTEM_HAS_MKLINK)
-diff --git a/boost_1_87_0/libs/filesystem/test/large_file_support_test.cpp b/boost_1_87_0/libs/filesystem/test/large_file_support_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/large_file_support_test.cpp b/boost_1_88_0/libs/filesystem/test/large_file_support_test.cpp
 index ddc3bcc42e..75f4133df6 100644
---- a/boost_1_87_0/libs/filesystem/test/large_file_support_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/large_file_support_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/large_file_support_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/large_file_support_test.cpp
 @@ -1,36 +1,36 @@
 -//  Boost large_file_support_test.cpp  ---------------------------------------//
 -
@@ -37036,10 +37036,10 @@ index ddc3bcc42e..75f4133df6 100644
 +                 "mailing list.\n";
 +    return 1;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/locale_info.cpp b/boost_1_87_0/libs/filesystem/test/locale_info.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/locale_info.cpp b/boost_1_88_0/libs/filesystem/test/locale_info.cpp
 index 8af68219bf..e9a8147eb6 100644
---- a/boost_1_87_0/libs/filesystem/test/locale_info.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/locale_info.cpp
+--- a/boost_1_88_0/libs/filesystem/test/locale_info.cpp
++++ b/boost_1_88_0/libs/filesystem/test/locale_info.cpp
 @@ -1,85 +1,85 @@
 -//  locale_info.cpp  ---------------------------------------------------------//
 -
@@ -37211,10 +37211,10 @@ index 8af68219bf..e9a8147eb6 100644
 +#ifdef _MSC_VER
 +#pragma warning(pop)
 +#endif
-diff --git a/boost_1_87_0/libs/filesystem/test/long_path_test.cpp b/boost_1_87_0/libs/filesystem/test/long_path_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/long_path_test.cpp b/boost_1_88_0/libs/filesystem/test/long_path_test.cpp
 index 48735c2e46..2503bb35fa 100644
---- a/boost_1_87_0/libs/filesystem/test/long_path_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/long_path_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/long_path_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/long_path_test.cpp
 @@ -1,57 +1,57 @@
 -//  long_path_test.cpp  ----------------------------------------------------------------//
 -
@@ -37330,10 +37330,10 @@ index 48735c2e46..2503bb35fa 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/macro_default_test.cpp b/boost_1_87_0/libs/filesystem/test/macro_default_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/macro_default_test.cpp b/boost_1_88_0/libs/filesystem/test/macro_default_test.cpp
 index bd0c54e87e..96d9cf9a2a 100644
---- a/boost_1_87_0/libs/filesystem/test/macro_default_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/macro_default_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/macro_default_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/macro_default_test.cpp
 @@ -1,35 +1,35 @@
 -//  macro_default_test program  --------------------------------------------------------//
 -
@@ -37405,10 +37405,10 @@ index bd0c54e87e..96d9cf9a2a 100644
 +{
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/macro_value.hpp b/boost_1_87_0/libs/filesystem/test/macro_value.hpp
+diff --git a/boost_1_88_0/libs/filesystem/test/macro_value.hpp b/boost_1_88_0/libs/filesystem/test/macro_value.hpp
 index a9f230635a..de012d11c5 100644
---- a/boost_1_87_0/libs/filesystem/test/macro_value.hpp
-+++ b/boost_1_87_0/libs/filesystem/test/macro_value.hpp
+--- a/boost_1_88_0/libs/filesystem/test/macro_value.hpp
++++ b/boost_1_88_0/libs/filesystem/test/macro_value.hpp
 @@ -1,42 +1,42 @@
 -//  boost/filesystem/detail/macro_value.hpp  -------------------------------------------//
 -
@@ -37494,10 +37494,10 @@ index a9f230635a..de012d11c5 100644
 +#define BOOST_MACRO_VALUE(X) boost::detail::macro_value(#X, BOOST_STRINGIZE(=X))
 +
 +#endif // BOOST_FILESYSTEM_MACRO_VALUE_HPP
-diff --git a/boost_1_87_0/libs/filesystem/test/odr1_test.cpp b/boost_1_87_0/libs/filesystem/test/odr1_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/odr1_test.cpp b/boost_1_88_0/libs/filesystem/test/odr1_test.cpp
 index 9d3369b913..460df12e91 100644
---- a/boost_1_87_0/libs/filesystem/test/odr1_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/odr1_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/odr1_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/odr1_test.cpp
 @@ -1,22 +1,22 @@
 -//  Boost Filesystem odr1_test.cpp  ----------------------------------------------------//
 -
@@ -37543,10 +37543,10 @@ index 9d3369b913..460df12e91 100644
 +    boost::filesystem::tu2();
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/odr2_test.cpp b/boost_1_87_0/libs/filesystem/test/odr2_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/odr2_test.cpp b/boost_1_88_0/libs/filesystem/test/odr2_test.cpp
 index 219d494bb4..b016382c24 100644
---- a/boost_1_87_0/libs/filesystem/test/odr2_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/odr2_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/odr2_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/odr2_test.cpp
 @@ -1,20 +1,20 @@
 -//  Boost Filesystem odr2_test.cpp  ----------------------------------------------------//
 -
@@ -37588,10 +37588,10 @@ index 219d494bb4..b016382c24 100644
 +
 +} // namespace filesystem
 +} // namespace boost
-diff --git a/boost_1_87_0/libs/filesystem/test/operations_test.cpp b/boost_1_87_0/libs/filesystem/test/operations_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/operations_test.cpp b/boost_1_88_0/libs/filesystem/test/operations_test.cpp
 index e5fc4c25aa..4e3c2b9660 100644
---- a/boost_1_87_0/libs/filesystem/test/operations_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/operations_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/operations_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/operations_test.cpp
 @@ -1,3042 +1,2845 @@
 -//  Boost operations_test.cpp  ---------------------------------------------------------//
 -
@@ -43480,10 +43480,10 @@ index e5fc4c25aa..4e3c2b9660 100644
 +    cout << "returning from main()" << endl;
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/operations_unit_test.cpp b/boost_1_87_0/libs/filesystem/test/operations_unit_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/operations_unit_test.cpp b/boost_1_88_0/libs/filesystem/test/operations_unit_test.cpp
 index 8f6773551b..1e94e66220 100644
---- a/boost_1_87_0/libs/filesystem/test/operations_unit_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/operations_unit_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/operations_unit_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/operations_unit_test.cpp
 @@ -1,405 +1,380 @@
 -//  operations_unit_test.cpp  ----------------------------------------------------------//
 -
@@ -44270,10 +44270,10 @@ index 8f6773551b..1e94e66220 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/path_iter_ctor_overload_test.cpp b/boost_1_87_0/libs/filesystem/test/path_iter_ctor_overload_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/path_iter_ctor_overload_test.cpp b/boost_1_88_0/libs/filesystem/test/path_iter_ctor_overload_test.cpp
 deleted file mode 100644
 index 3e1b900401..0000000000
---- a/boost_1_87_0/libs/filesystem/test/path_iter_ctor_overload_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/path_iter_ctor_overload_test.cpp
 +++ /dev/null
 @@ -1,40 +0,0 @@
 -// Copyright 2023 Andrey Semashev.
@@ -44316,10 +44316,10 @@ index 3e1b900401..0000000000
 -}
 -
 -#endif // !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
-diff --git a/boost_1_87_0/libs/filesystem/test/path_operator_ambiguity.cpp b/boost_1_87_0/libs/filesystem/test/path_operator_ambiguity.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/path_operator_ambiguity.cpp b/boost_1_88_0/libs/filesystem/test/path_operator_ambiguity.cpp
 deleted file mode 100644
 index 962d1383f0..0000000000
---- a/boost_1_87_0/libs/filesystem/test/path_operator_ambiguity.cpp
+--- a/boost_1_88_0/libs/filesystem/test/path_operator_ambiguity.cpp
 +++ /dev/null
 @@ -1,53 +0,0 @@
 -// Copyright Andrey Semashev 2023
@@ -44375,10 +44375,10 @@ index 962d1383f0..0000000000
 -        test_lt(argv[0]) + test_gt(argv[0]) +
 -        test_le(argv[0]) + test_ge(argv[0]);
 -}
-diff --git a/boost_1_87_0/libs/filesystem/test/path_test.cpp b/boost_1_87_0/libs/filesystem/test/path_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/path_test.cpp b/boost_1_88_0/libs/filesystem/test/path_test.cpp
 index 130b74cecc..ce1a36a655 100644
---- a/boost_1_87_0/libs/filesystem/test/path_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/path_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/path_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/path_test.cpp
 @@ -1,3031 +1,2809 @@
 -//  path_test program  -----------------------------------------------------------------//
 -
@@ -50220,10 +50220,10 @@ index 130b74cecc..ce1a36a655 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/path_times.cpp b/boost_1_87_0/libs/filesystem/test/path_times.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/path_times.cpp b/boost_1_88_0/libs/filesystem/test/path_times.cpp
 index 7f64a80fe3..8d9a032e66 100644
---- a/boost_1_87_0/libs/filesystem/test/path_times.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/path_times.cpp
+--- a/boost_1_88_0/libs/filesystem/test/path_times.cpp
++++ b/boost_1_88_0/libs/filesystem/test/path_times.cpp
 @@ -1,97 +1,97 @@
 -//  Boost Filesystem path_times.cpp  ---------------------------------------------------//
 -
@@ -50419,10 +50419,10 @@ index 7f64a80fe3..8d9a032e66 100644
 +    cout << "returning from main()" << endl;
 +    return 0;
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/path_unit_test.cpp b/boost_1_87_0/libs/filesystem/test/path_unit_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/path_unit_test.cpp b/boost_1_88_0/libs/filesystem/test/path_unit_test.cpp
 index cfba155735..28b8aecae5 100644
---- a/boost_1_87_0/libs/filesystem/test/path_unit_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/path_unit_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/path_unit_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/path_unit_test.cpp
 @@ -1,1235 +1,1206 @@
 -//  filesystem path_unit_test.cpp  ---------------------------------------------------  //
 -
@@ -52865,10 +52865,10 @@ index cfba155735..28b8aecae5 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/quick.cpp b/boost_1_87_0/libs/filesystem/test/quick.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/quick.cpp b/boost_1_88_0/libs/filesystem/test/quick.cpp
 index a528c7a29c..b38ac4bc63 100644
---- a/boost_1_87_0/libs/filesystem/test/quick.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/quick.cpp
+--- a/boost_1_88_0/libs/filesystem/test/quick.cpp
++++ b/boost_1_88_0/libs/filesystem/test/quick.cpp
 @@ -1,24 +1,24 @@
 -
 -// Copyright 2017 Peter Dimov.
@@ -52918,10 +52918,10 @@ index a528c7a29c..b38ac4bc63 100644
 +
 +    return boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/relative_test.cpp b/boost_1_87_0/libs/filesystem/test/relative_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/relative_test.cpp b/boost_1_88_0/libs/filesystem/test/relative_test.cpp
 index 6712ab5d4e..e2d7b13e1f 100644
---- a/boost_1_87_0/libs/filesystem/test/relative_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/relative_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/relative_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/relative_test.cpp
 @@ -1,119 +1,119 @@
 -//  filesystem relative_test.cpp  ----------------------------------------------------  //
 -
@@ -53161,10 +53161,10 @@ index 6712ab5d4e..e2d7b13e1f 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/sample_test.cpp b/boost_1_87_0/libs/filesystem/test/sample_test.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/sample_test.cpp b/boost_1_88_0/libs/filesystem/test/sample_test.cpp
 index 0c2bb2d900..a014d6c21b 100644
---- a/boost_1_87_0/libs/filesystem/test/sample_test.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/sample_test.cpp
+--- a/boost_1_88_0/libs/filesystem/test/sample_test.cpp
++++ b/boost_1_88_0/libs/filesystem/test/sample_test.cpp
 @@ -1,62 +1,62 @@
 -//  filesystem sample_test.cpp  ----------------------------------------------//
 -
@@ -53290,10 +53290,10 @@ index 0c2bb2d900..a014d6c21b 100644
 +
 +    return ::boost::report_errors();
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/test_cmake/CMakeLists.txt b/boost_1_87_0/libs/filesystem/test/test_cmake/CMakeLists.txt
+diff --git a/boost_1_88_0/libs/filesystem/test/test_cmake/CMakeLists.txt b/boost_1_88_0/libs/filesystem/test/test_cmake/CMakeLists.txt
 index 3bedf536db..71e88c7bb9 100644
---- a/boost_1_87_0/libs/filesystem/test/test_cmake/CMakeLists.txt
-+++ b/boost_1_87_0/libs/filesystem/test/test_cmake/CMakeLists.txt
+--- a/boost_1_88_0/libs/filesystem/test/test_cmake/CMakeLists.txt
++++ b/boost_1_88_0/libs/filesystem/test/test_cmake/CMakeLists.txt
 @@ -1,20 +1,20 @@
 -# Copyright 2020 Andrey Semashev
 -#
@@ -53303,7 +53303,7 @@ index 3bedf536db..71e88c7bb9 100644
 -# NOTE: This does NOT run the unit tests for Boost.Filesystem.
 -#       It only tests, if the CMakeLists.txt file in it's root works as expected
 -
--cmake_minimum_required(VERSION 3.5)
+-cmake_minimum_required(VERSION 3.5...3.16)
 -
 -project(BoostFilesystemCMakeSelfTest)
 -
@@ -53323,7 +53323,7 @@ index 3bedf536db..71e88c7bb9 100644
 +# NOTE: This does NOT run the unit tests for Boost.Filesystem.
 +#       It only tests, if the CMakeLists.txt file in it's root works as expected
 +
-+cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...3.16)
 +
 +project(BoostFilesystemCMakeSelfTest)
 +
@@ -53335,10 +53335,10 @@ index 3bedf536db..71e88c7bb9 100644
 +
 +add_executable(boost_filesystem_cmake_self_test main.cpp)
 +target_link_libraries(boost_filesystem_cmake_self_test Boost::filesystem)
-diff --git a/boost_1_87_0/libs/filesystem/test/test_cmake/main.cpp b/boost_1_87_0/libs/filesystem/test/test_cmake/main.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/test_cmake/main.cpp b/boost_1_88_0/libs/filesystem/test/test_cmake/main.cpp
 index 525b864f47..ea18dee5a6 100644
---- a/boost_1_87_0/libs/filesystem/test/test_cmake/main.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/test_cmake/main.cpp
+--- a/boost_1_88_0/libs/filesystem/test/test_cmake/main.cpp
++++ b/boost_1_88_0/libs/filesystem/test/test_cmake/main.cpp
 @@ -1,13 +1,13 @@
 -//  Copyright (c) 2020 Andrey Semashev
 -//
@@ -53366,10 +53366,10 @@ index 525b864f47..ea18dee5a6 100644
 +    boost::filesystem::path p(".");
 +    boost::filesystem::is_directory(p);
 +}
-diff --git a/boost_1_87_0/libs/filesystem/test/test_codecvt.hpp b/boost_1_87_0/libs/filesystem/test/test_codecvt.hpp
+diff --git a/boost_1_88_0/libs/filesystem/test/test_codecvt.hpp b/boost_1_88_0/libs/filesystem/test/test_codecvt.hpp
 index 044cb4a09a..d5fc61701b 100644
---- a/boost_1_87_0/libs/filesystem/test/test_codecvt.hpp
-+++ b/boost_1_87_0/libs/filesystem/test/test_codecvt.hpp
+--- a/boost_1_88_0/libs/filesystem/test/test_codecvt.hpp
++++ b/boost_1_88_0/libs/filesystem/test/test_codecvt.hpp
 @@ -1,72 +1,72 @@
 -//  test_codecvt.hpp  ------------------------------------------------------------------//
 -
@@ -53515,10 +53515,10 @@ index 044cb4a09a..d5fc61701b 100644
 +};
 +
 +#endif // BOOST_FILESYSTEM_TEST_CODECVT_HPP
-diff --git a/boost_1_87_0/libs/filesystem/test/windows_attributes.cpp b/boost_1_87_0/libs/filesystem/test/windows_attributes.cpp
+diff --git a/boost_1_88_0/libs/filesystem/test/windows_attributes.cpp b/boost_1_88_0/libs/filesystem/test/windows_attributes.cpp
 index d2056cc88a..cdca5355ea 100644
---- a/boost_1_87_0/libs/filesystem/test/windows_attributes.cpp
-+++ b/boost_1_87_0/libs/filesystem/test/windows_attributes.cpp
+--- a/boost_1_88_0/libs/filesystem/test/windows_attributes.cpp
++++ b/boost_1_88_0/libs/filesystem/test/windows_attributes.cpp
 @@ -1,106 +1,106 @@
 -//  windows_attributes  ----------------------------------------------------------------//
 -
