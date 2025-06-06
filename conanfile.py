@@ -128,7 +128,7 @@ class BoostConan(ConanFile):
         flags += self.get_libraries_list()
         toolset, _, _ = self.get_toolset()
         runtime_link = "shared"
-        if self.settings.os == "Windows" and self.settings.compiler == "msvc":
+        if self.settings.os == "Windows" and (self.settings.compiler == "msvc" or (self.settings.compiler == "clang" and self.settings.compiler.get_safe("runtime_version"))):
             if self.settings.compiler.runtime == "static":
                 runtime_link = "static"
         flags.extend([
@@ -197,21 +197,25 @@ class BoostConan(ConanFile):
 
     def get_toolset(self):
         compiler_version = str(self.settings.compiler.version)
-        if self.settings.os == "Windows" and self.settings.compiler == "msvc":
-            vs_toolset = str(self.settings.compiler.toolset).lower()
-            self.output.info("Using toolset: %s" % vs_toolset)
-            if vs_toolset == "clangcl":
+        if self.settings.os == "Windows":
+            if self.settings.compiler == "msvc":
+                vs_toolset = str(self.settings.compiler.toolset).lower()
+                self.output.info("Using toolset: %s" % vs_toolset)
+                if compiler_version == "15":
+                    compiler_version = "14.1"
+                elif compiler_version == "16":
+                    compiler_version = "14.2"
+                elif compiler_version == "17":
+                    compiler_version = "14.3"
+                else:
+                    compiler_version = "%s.0" % compiler_version
+                return "msvc", compiler_version, "cl.exe"
+            elif self.settings.compiler == "clang" and self.settings.compiler.get_safe("runtime_version"):
                 self.output.info("Using Clang-win")
-                return "clang-win", "11", "clang-cl.exe"
-            if compiler_version == "15":
-                compiler_version = "14.1"
-            elif compiler_version == "16":
-                compiler_version = "14.2"
-            elif compiler_version == "17":
-                compiler_version = "14.3"
+                return "clang-win", compiler_version, "clang-cl.exe"
             else:
-                compiler_version = "%s.0" % compiler_version
-            return "msvc", compiler_version, "cl.exe"
+               raise Exception("Unsupported compiler on Windows!")
+
         elif self.settings.os == "Linux" and self.settings.compiler == "gcc":
             return "gcc", compiler_version[0], "g++"
 
@@ -225,16 +229,14 @@ class BoostConan(ConanFile):
         if self.settings.os == "Windows":
             flags.append("/D_WIN32_WINNT=0x0601") # 7 or Server 2008 R2
             flags.append("/DBOOST_SYSTEM_USE_UTF8") # boost::system_category return UTF-8 messages
-            if self.settings.compiler == "msvc":
+            if self.settings.compiler == "msvc" or (self.settings.compiler == "clang" and self.settings.compiler.get_safe("runtime_version")):
                 flags.append("/DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE")
                 flags.append("/D_CRT_SECURE_NO_WARNINGS")
                 flags.append("/D_CRT_NONSTDC_NO_DEPRECATE")
         #
         if self.options.with_icu:
-            # Enable char16_t and char32_t
-            if self.settings.compiler == "msvc":
-                pass
-            else:
+            if self.settings.os != "Windows":
+                # Enable char16_t and char32_t
                 flags.extend([
                     "-DBOOST_LOCALE_ENABLE_CHAR16_T",
                     "-DBOOST_LOCALE_ENABLE_CHAR32_T"
@@ -322,7 +324,7 @@ class BoostConan(ConanFile):
         if self.settings.os == "Windows":
             self.cpp_info.components["headers"].defines.append("BOOST_USE_WINAPI_VERSION=0x0601") # 7 or Server 2008 R2
             self.cpp_info.components["headers"].defines.append("BOOST_SYSTEM_USE_UTF8")           # boost::system_category return UTF-8 messages
-            if tools.microsoft.is_msvc(self):
+            if tools.microsoft.is_msvc(self) or (self.settings.compiler == "clang" and self.settings.compiler.get_safe("runtime_version")):
                 self.cpp_info.components["headers"].defines.extend([
                     "BOOST_ALL_NO_LIB",                            # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
                     "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE"
@@ -331,7 +333,7 @@ class BoostConan(ConanFile):
             self.cpp_info.components["headers"].defines.append("BOOST_SP_ENABLE_DEBUG_HOOKS")
         if self.options.with_icu:
             self.cpp_info.components["headers"].defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
-            if self.settings.os != "Windows" or self.settings.compiler != "msvc":
+            if self.settings.os != "Windows":
                 # Enable char16_t and char32_t
                 self.cpp_info.components["headers"].defines.extend([
                     "BOOST_LOCALE_ENABLE_CHAR16_T",
