@@ -347,6 +347,8 @@ class BoostConan(ConanFile):
         
         all_libs = tools.files.collect_libs(self)
         for libname, desc in self._BoostLibs.items():
+            self.cpp_info.components[libname].set_property(f"cmake_target_name", f"Boost::{libname}")
+            self.cpp_info.components[libname].requires = desc.dependencies + ["headers"]
             libs = []
             if not desc.lib_mask is None:
                 pattern = re.compile(desc.lib_mask)
@@ -354,5 +356,3 @@ class BoostConan(ConanFile):
                 if not libs:
                     continue;
             self.cpp_info.components[libname].libs = libs
-            self.cpp_info.components[libname].set_property(f"cmake_target_name", f"Boost::{libname}")
-            self.cpp_info.components[libname].requires = desc.dependencies + ["headers"]
