@@ -1,0 +1,63 @@
+diff --git a/boost_1_89_0/boost/filesystem/detail/path_traits.hpp b/boost_1_89_0/boost/filesystem/detail/path_traits.hpp
+index 035bb26878..81371f7999 100644
+--- a/boost_1_89_0/boost/filesystem/detail/path_traits.hpp
++++ b/boost_1_89_0/boost/filesystem/detail/path_traits.hpp
+@@ -521,13 +521,7 @@ struct check_is_convertible_to_path_source :
+  */
+ template< typename T >
+ struct is_convertible_to_path_source :
+-    public std::integral_constant<
+-        bool,
+-        detail::conjunction<
+-            detail::negation< std::is_convertible< T, path > >,
+-            check_is_convertible_to_path_source< T >
+-        >::value
+-    >
++    public check_is_convertible_to_path_source< T >
+ {
+ };
+ 
+@@ -592,12 +586,9 @@ template< typename T >
+ struct is_convertible_to_path_source :
+     public std::integral_constant<
+         bool,
+-        detail::conjunction<
+-            detail::negation< std::is_convertible< T, path > >,
+-            detail::disjunction<
+-                check_is_convertible_to_std_string_view< T >,
+-                check_is_convertible_to_path_source_non_std_string_view< T >
+-            >
++        detail::disjunction<
++            check_is_convertible_to_std_string_view< T >,
++            check_is_convertible_to_path_source_non_std_string_view< T >
+         >::value
+     >
+ {
+diff --git a/boost_1_89_0/boost/filesystem/path.hpp b/boost_1_89_0/boost/filesystem/path.hpp
+index 060ecc98da..748abafc78 100644
+--- a/boost_1_89_0/boost/filesystem/path.hpp
++++ b/boost_1_89_0/boost/filesystem/path.hpp
+@@ -350,7 +350,10 @@ public:
+         typename Source,
+         typename = typename std::enable_if<
+             detail::conjunction<
+-                detail::path_traits::is_path_source< typename std::remove_cv< Source >::type >,
++                detail::disjunction<
++                    detail::path_traits::is_path_source< typename std::remove_cv< Source >::type >,
++                    detail::path_traits::is_convertible_to_path_source< typename std::remove_cv< Source >::type >
++                >,
+                 detail::negation< detail::path_traits::is_native_path_source< typename std::remove_cv< Source >::type > >
+             >::value
+         >::type
+@@ -364,7 +367,10 @@ public:
+         typename Source,
+         typename = typename std::enable_if<
+             detail::conjunction<
+-                detail::path_traits::is_path_source< typename std::remove_cv< Source >::type >,
++                detail::disjunction<
++                    detail::path_traits::is_path_source< typename std::remove_cv< Source >::type >,
++                    detail::path_traits::is_convertible_to_path_source< typename std::remove_cv< Source >::type >
++                >,
+                 detail::negation< detail::path_traits::is_native_path_source< typename std::remove_cv< Source >::type > >
+             >::value
+         >::type

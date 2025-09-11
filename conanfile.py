@@ -33,10 +33,10 @@ class BoostConan(ConanFile):
         "add_boost_log_codecvt_enable_param.patch",
         "fix_leak_child_process.patch",
         "sp_debug_hooks.patch",
-        "revert_filesystem_to_v1.81.patch",
         "add_weak_ptr_operator_equal.patch",
         "shared_mutex_state_64b.patch",
-        "fix_std_category_wrapper.patch"
+        "fix_std_category_wrapper.patch",
+        "fix_filesystem_path_constructor.patch",
     )
     #
     no_copy_source = True
@@ -54,10 +54,10 @@ class BoostConan(ConanFile):
         tools.files.patch(self, patch_file="add_boost_log_codecvt_enable_param.patch")
         tools.files.patch(self, patch_file="fix_leak_child_process.patch")
         tools.files.patch(self, patch_file="sp_debug_hooks.patch")
-        tools.files.patch(self, patch_file="revert_filesystem_to_v1.81.patch")
         tools.files.patch(self, patch_file="add_weak_ptr_operator_equal.patch")
         tools.files.patch(self, patch_file="shared_mutex_state_64b.patch")
         tools.files.patch(self, patch_file="fix_std_category_wrapper.patch")
+        tools.files.patch(self, patch_file="fix_filesystem_path_constructor.patch")
         if platform.system() != "Windows":
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
