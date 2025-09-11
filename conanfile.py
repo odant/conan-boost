@@ -37,6 +37,8 @@ class BoostConan(ConanFile):
         "shared_mutex_state_64b.patch",
         "fix_std_category_wrapper.patch",
         "fix_filesystem_path_constructor.patch",
+        "revert_atomic_v1.88.patch",
+        "revert_log_v1.88.patch"
     )
     #
     no_copy_source = True
@@ -61,6 +63,9 @@ class BoostConan(ConanFile):
         if platform.system() != "Windows":
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "bootstrap.sh"))
             self.run("chmod a+x %s" % os.path.join(self.source_folder, self._boost_name, "tools/build/src/engine/build.sh"))
+        else:
+            tools.files.patch(self, patch_file="revert_atomic_v1.88.patch")
+            tools.files.patch(self, patch_file="revert_log_v1.88.patch")
     
     def generate(self):
         benv = tools.env.VirtualBuildEnv(self)
