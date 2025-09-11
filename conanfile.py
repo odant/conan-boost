@@ -31,7 +31,6 @@ class BoostConan(ConanFile):
         _boost_name + "/*",
         "multiprecision.patch",
         "add_boost_log_codecvt_enable_param.patch",
-        "use_old_jamfile_for_regex.patch",
         "fix_leak_child_process.patch",
         "sp_debug_hooks.patch",
         "revert_filesystem_to_v1.81.patch",
@@ -53,7 +52,6 @@ class BoostConan(ConanFile):
     def source(self):
         tools.files.patch(self, patch_file="multiprecision.patch")
         tools.files.patch(self, patch_file="add_boost_log_codecvt_enable_param.patch")
-        tools.files.patch(self, patch_file="use_old_jamfile_for_regex.patch")
         tools.files.patch(self, patch_file="fix_leak_child_process.patch")
         tools.files.patch(self, patch_file="sp_debug_hooks.patch")
         tools.files.patch(self, patch_file="revert_filesystem_to_v1.81.patch")
