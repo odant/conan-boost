@@ -255,6 +255,17 @@ class BoostConan(ConanFile):
         tools.files.copy(self, "*.lib", src=os.path.join(self.build_folder, "stage"), dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         tools.files.copy(self, "*.a", src=os.path.join(self.build_folder, "stage"), dst=os.path.join(self.package_folder, "lib"), keep_path=False)
         tools.files.copy(self, "*.cpp", src=os.path.join(self.source_folder,"%s/libs/smart_ptr/extras/src" % self._boost_name), dst=os.path.join(self.package_folder, "include/boost/smart_ptr/extras/src"))
+        # copy natvis files from lib on Windows
+        if self.settings.os == "Windows":
+            libs_path = os.path.join(self.source_folder, "%s/libs" % self._boost_name)
+            if os.path.isdir(libs_path):
+                for lib in os.listdir(libs_path):
+                    lib_path = os.path.join(libs_path, lib)
+                    if os.path.isdir(lib_path):
+                        extra_path = os.path.join(lib_path, "extra")
+                        if os.path.isdir(extra_path):
+                            tools.files.copy(self, "*", src=extra_path, dst=os.path.join(self.package_folder, "include/boost/%s" % lib), keep_path=False)
+            
 
     def package_id(self):
         self.info.options.with_unit_tests = "any"
