@@ -38,7 +38,8 @@ class BoostConan(ConanFile):
         "fix_std_category_wrapper.patch",
         "fix_filesystem_path_constructor.patch",
         "revert_atomic_v1.88.patch",
-        "revert_log_v1.88.patch"
+        "revert_log_v1.88.patch",
+        "vs2026.patch"
     )
     #
     no_copy_source = True
@@ -66,6 +67,7 @@ class BoostConan(ConanFile):
         else:
             tools.files.patch(self, patch_file="revert_atomic_v1.88.patch")
             tools.files.patch(self, patch_file="revert_log_v1.88.patch")
+            tools.files.patch(self, patch_file="vs2026.patch")
     
     def generate(self):
         benv = tools.env.VirtualBuildEnv(self)

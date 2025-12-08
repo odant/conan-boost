@@ -1,0 +1,169 @@
+diff --git a/boost_1_89_0/tools/build/src/engine/build.bat b/boost_1_89_0/tools/build/src/engine/build.bat
+index aea6ef86ca..ecd4b08507 100644
+--- a/boost_1_89_0/tools/build/src/engine/build.bat
++++ b/boost_1_89_0/tools/build/src/engine/build.bat
+@@ -29,7 +29,7 @@ ECHO ###     .\build.bat msvc
+ ECHO ###
+ ECHO ### Toolsets supported by this script are: borland, como, gcc,
+ ECHO ###     clang, clang-win, gcc-nocygwin, intel-win32, mingw,
+-ECHO ###     vc12, vc14, vc141, vc142, vc143
++ECHO ###     vc12, vc14, vc141, vc142, vc143, vc145
+ ECHO ###
+ ECHO ### If you have Visual Studio 2017 installed you will need to either update
+ ECHO ### the Visual Studio 2017 installer or run from VS 2017 Command Prompt
+diff --git a/boost_1_89_0/tools/build/src/engine/config_toolset.bat b/boost_1_89_0/tools/build/src/engine/config_toolset.bat
+index c24c11f822..5920f7467d 100644
+--- a/boost_1_89_0/tools/build/src/engine/config_toolset.bat
++++ b/boost_1_89_0/tools/build/src/engine/config_toolset.bat
+@@ -12,6 +12,7 @@ if "_%B2_TOOLSET%_" == "_vc14_" call :Config_VC14
+ if "_%B2_TOOLSET%_" == "_vc141_" call :Config_VC141
+ if "_%B2_TOOLSET%_" == "_vc142_" call :Config_VC142
+ if "_%B2_TOOLSET%_" == "_vc143_" call :Config_VC143
++if "_%B2_TOOLSET%_" == "_vc145_" call :Config_VC145
+ if "_%B2_TOOLSET%_" == "_borland_" call :Config_BORLAND
+ if "_%B2_TOOLSET%_" == "_como_" call :Config_COMO
+ if "_%B2_TOOLSET%_" == "_gcc_" call :Config_GCC
+@@ -161,6 +162,28 @@ set "B2_CXX_LINK=/link kernel32.lib advapi32.lib user32.lib"
+ set "_known_=1"
+ goto :Embed_Minafest_Via_Link
+ 
++:Config_VC145
++if not defined CXX ( set "CXX=cl" )
++call vswhere_usability_wrapper.cmd
++REM Reset ERRORLEVEL since from now on it's all based on ENV vars
++ver > nul 2> nul
++if "_%B2_TOOLSET_ROOT%_" == "__" (
++    if NOT "_%VS180COMNTOOLS%_" == "__" (
++        set "B2_TOOLSET_ROOT=%VS180COMNTOOLS%..\..\VC\"
++    ))
++
++if "_%B2_ARCH%_" == "__" set B2_ARCH=%PROCESSOR_ARCHITECTURE%
++set B2_BUILD_ARGS=%B2_BUILD_ARGS% %B2_ARCH%
++
++REM return to current directory as vsdevcmd_end.bat switches to %USERPROFILE%\Source if it exists.
++pushd %CD%
++if "_%VSINSTALLDIR%_" == "__" call :Call_If_Exists "%B2_TOOLSET_ROOT%Auxiliary\Build\vcvarsall.bat" %B2_BUILD_ARGS%
++popd
++set "B2_CXX="%CXX%" /nologo /MP /MT /TP /Feb2 /wd4996 /wd4675 /O2 /GL /EHsc /Zc:wchar_t /Gw"
++set "B2_CXX_LINK=/link kernel32.lib advapi32.lib user32.lib"
++set "_known_=1"
++goto :Embed_Minafest_Via_Link
++
+ :Config_VCUNK
+ if NOT "_%B2_TOOLSET%_" == "_vcunk_" goto Skip_VCUNK
+ call vswhere_usability_wrapper.cmd
+diff --git a/boost_1_89_0/tools/build/src/engine/guess_toolset.bat b/boost_1_89_0/tools/build/src/engine/guess_toolset.bat
+index 09f7808b0f..7f97190a91 100644
+--- a/boost_1_89_0/tools/build/src/engine/guess_toolset.bat
++++ b/boost_1_89_0/tools/build/src/engine/guess_toolset.bat
+@@ -33,6 +33,10 @@ REM Let vswhere tell us where msvc is at, if available.
+ call :Clear_Error
+ call vswhere_usability_wrapper.cmd
+ call :Clear_Error
++if NOT "_%VS180COMNTOOLS%_" == "__" (
++    set "B2_TOOLSET=vc145"
++    set "B2_TOOLSET_ROOT=%VS180COMNTOOLS%..\..\VC\"
++    goto :eof)
+ if NOT "_%VS170COMNTOOLS%_" == "__" (
+     set "B2_TOOLSET=vc143"
+     set "B2_TOOLSET_ROOT=%VS170COMNTOOLS%..\..\VC\"
+diff --git a/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd b/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
+index cc758e82e0..4971297143 100644
+--- a/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
++++ b/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
+@@ -17,7 +17,7 @@ if errorlevel 1 goto :no-vswhere
+ set VSWHERE_REQ=-requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64
+ set VSWHERE_PRP=-property installationPath
+ 
+-REM Visual Studio Unknown Version, Beyond 2022
++REM Visual Studio 2026
+ set VSWHERE_LMT=-version "[18.0,19.0)"
+ set VSWHERE_PRERELEASE=-prerelease
+ SET VSWHERE_ARGS=-latest -products * %VSWHERE_REQ% %VSWHERE_PRP% %VSWHERE_LMT% %VSWHERE_PRERELEASE%
+@@ -26,7 +26,7 @@ for /f "usebackq tokens=*" %%i in (`vswhere %VSWHERE_ARGS%`) do (
+ 	echo Found with vswhere %%i
+     @rem comment out setting VCINSTALLDIR for Boost.build
+     @rem set "VCINSTALLDIR=%%i\VC\"
+-    set "VSUNKCOMNTOOLS=%%i\Common7\Tools\"
++    set "VS180COMNTOOLS=%%i\Common7\Tools\"
+     exit /B 0
+ )
+ 
+diff --git a/boost_1_89_0/tools/build/src/tools/msvc.jam b/boost_1_89_0/tools/build/src/tools/msvc.jam
+index a4f5e2b41e..5d10361605 100644
+--- a/boost_1_89_0/tools/build/src/tools/msvc.jam
++++ b/boost_1_89_0/tools/build/src/tools/msvc.jam
+@@ -1154,7 +1154,15 @@ local rule generate-setup-cmd ( version : command : parent : options * : cpu : g
+         }
+         else
+         {
+-            if [ MATCH "(14.[34])" : $(version) ]
++            if [ MATCH "(14.[5])" : $(version) ]
++            {
++                if $(.debug-configuration)
++                {
++                    ECHO "notice: [generate-setup-cmd] $(version) is 14.5" ;
++                }
++                parent = [ path.native [ path.join  $(parent) "..\\..\\..\\..\\..\\Auxiliary\\Build" ] ] ;
++            }
++            else if [ MATCH "(14.[34])" : $(version) ]
+             {
+                 if $(.debug-configuration)
+                 {
+@@ -1340,7 +1348,11 @@ local rule configure-really ( version ? : options * )
+             # version from the path.
+             # FIXME: We currently detect both Microsoft Visual Studio 9.0 and
+             # 9.0express as 9.0 here.
+-            if [ MATCH "(MSVC\\\\14.[34])" : $(command) ]
++            if [ MATCH "(MSVC\\\\14.[5])" : $(command) ]
++            {
++                version = 14.5 ;
++            }
++            else if [ MATCH "(MSVC\\\\14.[34])" : $(command) ]
+             {
+                 version = 14.3 ;
+             }
+@@ -1767,15 +1779,19 @@ local rule default-path ( version )
+         # And fortunately, forward slashes do also work in native Windows.
+         local vswhere = "$(root)/Microsoft Visual Studio/Installer/vswhere.exe" ;
+         # The check for $(root) is to avoid a segmentation fault if not found.
+-        if $(version) in 14.1 14.2 14.3 default && $(root) && [ path.exists $(vswhere) ]
++        if $(version) in 14.1 14.2 14.3 14.5 default && $(root) && [ path.exists $(vswhere) ]
+         {
+             local req = "-requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64" ;
+             local prop = "-property installationPath" ;
+             local limit ;
+ 
+-            if $(version) = 14.3
++            if $(version) = 14.5
++            {
++                limit = "-version \"[18.0,19.0)\"" ;
++            }
++            else if $(version) = 14.3
+             {
+-                limit = "-version \"[17.0,18.0)\" -prerelease" ;
++                limit = "-version \"[17.0,18.0)\"" ;
+             }
+             else if $(version) = 14.2 || $(version) = "default"
+             {
+@@ -2197,7 +2213,7 @@ for local arch in [ MATCH "^\\.cpus-on-(.*)" : [ VARNAMES $(__name__) ] ]
+                      armv7 armv7s ;
+ 
+ # Known toolset versions, in order of preference.
+-.known-versions = 14.3 14.2 14.1 14.0 12.0 11.0 10.0 10.0express 9.0 9.0express 8.0 8.0express 7.1
++.known-versions = 14.5 14.3 14.2 14.1 14.0 12.0 11.0 10.0 10.0express 9.0 9.0express 8.0 8.0express 7.1
+     7.1toolkit 7.0 6.0 ;
+ 
+ # Version aliases.
+@@ -2249,6 +2265,11 @@ for local arch in [ MATCH "^\\.cpus-on-(.*)" : [ VARNAMES $(__name__) ] ]
+     "Microsoft Visual Studio/2022/*/VC/Tools/MSVC/*/bin/Host*/*"
+     ;
+ .version-14.3-env = VS170COMNTOOLS ProgramFiles ProgramFiles(x86) ;
++.version-14.5-path =
++    "../../VC/Tools/MSVC/*/bin/Host*/*"
++    "Microsoft Visual Studio/18/*/VC/Tools/MSVC/*/bin/Host*/*"
++    ;
++.version-14.5-env = VS180COMNTOOLS ProgramFiles ProgramFiles(x86) ;
+ 
+ 
+ # And finally trigger the actual Boost Build toolset registration.
