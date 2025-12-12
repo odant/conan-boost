@@ -1,7 +1,7 @@
-diff --git a/boost_1_89_0/boost/filesystem/detail/path_traits.hpp b/boost_1_89_0/boost/filesystem/detail/path_traits.hpp
+diff --git a/boost_1_90_0/boost/filesystem/detail/path_traits.hpp b/boost_1_90_0/boost/filesystem/detail/path_traits.hpp
 index 035bb26878..81371f7999 100644
---- a/boost_1_89_0/boost/filesystem/detail/path_traits.hpp
-+++ b/boost_1_89_0/boost/filesystem/detail/path_traits.hpp
+--- a/boost_1_90_0/boost/filesystem/detail/path_traits.hpp
++++ b/boost_1_90_0/boost/filesystem/detail/path_traits.hpp
 @@ -521,13 +521,7 @@ struct check_is_convertible_to_path_source :
   */
  template< typename T >
@@ -33,10 +33,10 @@ index 035bb26878..81371f7999 100644
          >::value
      >
  {
-diff --git a/boost_1_89_0/boost/filesystem/path.hpp b/boost_1_89_0/boost/filesystem/path.hpp
+diff --git a/boost_1_90_0/boost/filesystem/path.hpp b/boost_1_90_0/boost/filesystem/path.hpp
 index 060ecc98da..748abafc78 100644
---- a/boost_1_89_0/boost/filesystem/path.hpp
-+++ b/boost_1_89_0/boost/filesystem/path.hpp
+--- a/boost_1_90_0/boost/filesystem/path.hpp
++++ b/boost_1_90_0/boost/filesystem/path.hpp
 @@ -350,7 +350,10 @@ public:
          typename Source,
          typename = typename std::enable_if<

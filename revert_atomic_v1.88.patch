@@ -1,7 +1,7 @@
-diff --git a/boost_1_89_0/boost/atomic/atomic.hpp b/boost_1_89_0/boost/atomic/atomic.hpp
+diff --git a/boost_1_90_0/boost/atomic/atomic.hpp b/boost_1_90_0/boost/atomic/atomic.hpp
 index 30b5ae5a46..d00be52945 100644
---- a/boost_1_89_0/boost/atomic/atomic.hpp
-+++ b/boost_1_89_0/boost/atomic/atomic.hpp
+--- a/boost_1_90_0/boost/atomic/atomic.hpp
++++ b/boost_1_90_0/boost/atomic/atomic.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2011 Helge Bahmann
@@ -307,10 +307,10 @@ index 30b5ae5a46..d00be52945 100644
  using atomics::atomic_intptr_t;
  using atomics::atomic_uintptr_t;
  #endif
-diff --git a/boost_1_89_0/boost/atomic/atomic_flag.hpp b/boost_1_89_0/boost/atomic/atomic_flag.hpp
+diff --git a/boost_1_90_0/boost/atomic/atomic_flag.hpp b/boost_1_90_0/boost/atomic/atomic_flag.hpp
 index 45f840c54e..bb8af4ba5e 100644
---- a/boost_1_89_0/boost/atomic/atomic_flag.hpp
-+++ b/boost_1_89_0/boost/atomic/atomic_flag.hpp
+--- a/boost_1_90_0/boost/atomic/atomic_flag.hpp
++++ b/boost_1_90_0/boost/atomic/atomic_flag.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2011 Helge Bahmann
@@ -329,10 +329,10 @@ index 45f840c54e..bb8af4ba5e 100644
  
  } // namespace atomics
  
-diff --git a/boost_1_89_0/boost/atomic/atomic_ref.hpp b/boost_1_89_0/boost/atomic/atomic_ref.hpp
+diff --git a/boost_1_90_0/boost/atomic/atomic_ref.hpp b/boost_1_90_0/boost/atomic/atomic_ref.hpp
 index cab1492c7b..64755c530f 100644
---- a/boost_1_89_0/boost/atomic/atomic_ref.hpp
-+++ b/boost_1_89_0/boost/atomic/atomic_ref.hpp
+--- a/boost_1_90_0/boost/atomic/atomic_ref.hpp
++++ b/boost_1_90_0/boost/atomic/atomic_ref.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -411,10 +411,10 @@ index cab1492c7b..64755c530f 100644
  {
      return atomic_ref< T >(value);
  }
-diff --git a/boost_1_89_0/boost/atomic/detail/addressof.hpp b/boost_1_89_0/boost/atomic/detail/addressof.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/addressof.hpp b/boost_1_90_0/boost/atomic/detail/addressof.hpp
 index 3ffafdff46..0a1fbedd2d 100644
---- a/boost_1_89_0/boost/atomic/detail/addressof.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/addressof.hpp
+--- a/boost_1_90_0/boost/atomic/detail/addressof.hpp
++++ b/boost_1_90_0/boost/atomic/detail/addressof.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -436,10 +436,10 @@ index 3ffafdff46..0a1fbedd2d 100644
  {
  #if defined(BOOST_ATOMIC_DETAIL_HAS_BUILTIN_ADDRESSOF)
      return __builtin_addressof(value);
-diff --git a/boost_1_89_0/boost/atomic/detail/atomic_flag_impl.hpp b/boost_1_89_0/boost/atomic/detail/atomic_flag_impl.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/atomic_flag_impl.hpp b/boost_1_90_0/boost/atomic/detail/atomic_flag_impl.hpp
 index dbcafc414c..d6026a98f3 100644
---- a/boost_1_89_0/boost/atomic/detail/atomic_flag_impl.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/atomic_flag_impl.hpp
+--- a/boost_1_90_0/boost/atomic/detail/atomic_flag_impl.hpp
++++ b/boost_1_90_0/boost/atomic/detail/atomic_flag_impl.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2011 Helge Bahmann
@@ -597,10 +597,10 @@ index dbcafc414c..d6026a98f3 100644
  #endif
  
  } // namespace detail
-diff --git a/boost_1_89_0/boost/atomic/detail/atomic_impl.hpp b/boost_1_89_0/boost/atomic/detail/atomic_impl.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/atomic_impl.hpp b/boost_1_90_0/boost/atomic/detail/atomic_impl.hpp
 index d59667f665..1cd6fcc2f7 100644
---- a/boost_1_89_0/boost/atomic/detail/atomic_impl.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/atomic_impl.hpp
+--- a/boost_1_90_0/boost/atomic/detail/atomic_impl.hpp
++++ b/boost_1_90_0/boost/atomic/detail/atomic_impl.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2011 Helge Bahmann
@@ -2403,10 +2403,10 @@ index d59667f665..1cd6fcc2f7 100644
          expected = atomics::detail::bitwise_cast< value_type >(static_cast< uintptr_storage_type >(old_value));
          return res;
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/atomic_ref_impl.hpp b/boost_1_89_0/boost/atomic/detail/atomic_ref_impl.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/atomic_ref_impl.hpp b/boost_1_90_0/boost/atomic/detail/atomic_ref_impl.hpp
 index 539f213c93..384a2b9b98 100644
---- a/boost_1_89_0/boost/atomic/detail/atomic_ref_impl.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/atomic_ref_impl.hpp
+--- a/boost_1_90_0/boost/atomic/detail/atomic_ref_impl.hpp
++++ b/boost_1_90_0/boost/atomic/detail/atomic_ref_impl.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -4134,10 +4134,10 @@ index 539f213c93..384a2b9b98 100644
          expected = atomics::detail::bitwise_cast< value_type >(old_value);
          return res;
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/bitwise_cast.hpp b/boost_1_89_0/boost/atomic/detail/bitwise_cast.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/bitwise_cast.hpp b/boost_1_90_0/boost/atomic/detail/bitwise_cast.hpp
 index f7eae0d900..da5e6e6414 100644
---- a/boost_1_89_0/boost/atomic/detail/bitwise_cast.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/bitwise_cast.hpp
+--- a/boost_1_90_0/boost/atomic/detail/bitwise_cast.hpp
++++ b/boost_1_90_0/boost/atomic/detail/bitwise_cast.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -4292,10 +4292,10 @@ index f7eae0d900..da5e6e6414 100644
  {
      return atomics::detail::bitwise_cast< To, sizeof(From) >(from);
  }
-diff --git a/boost_1_89_0/boost/atomic/detail/bitwise_fp_cast.hpp b/boost_1_89_0/boost/atomic/detail/bitwise_fp_cast.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/bitwise_fp_cast.hpp b/boost_1_90_0/boost/atomic/detail/bitwise_fp_cast.hpp
 index be85c38c8e..09538c576c 100644
---- a/boost_1_89_0/boost/atomic/detail/bitwise_fp_cast.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/bitwise_fp_cast.hpp
+--- a/boost_1_90_0/boost/atomic/detail/bitwise_fp_cast.hpp
++++ b/boost_1_90_0/boost/atomic/detail/bitwise_fp_cast.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -4373,10 +4373,10 @@ index be85c38c8e..09538c576c 100644
  {
      return atomics::detail::bitwise_cast< To, BOOST_ATOMIC_DETAIL_BITWISE_FP_CAST_VALUE_SIZE_OF(From) >(from);
  }
-diff --git a/boost_1_89_0/boost/atomic/detail/cas_based_exchange.hpp b/boost_1_89_0/boost/atomic/detail/cas_based_exchange.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/cas_based_exchange.hpp b/boost_1_90_0/boost/atomic/detail/cas_based_exchange.hpp
 index 6a22bd5618..6fb4baac3c 100644
---- a/boost_1_89_0/boost/atomic/detail/cas_based_exchange.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/cas_based_exchange.hpp
+--- a/boost_1_90_0/boost/atomic/detail/cas_based_exchange.hpp
++++ b/boost_1_90_0/boost/atomic/detail/cas_based_exchange.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -4398,109 +4398,10 @@ index 6a22bd5618..6fb4baac3c 100644
      {
          storage_type old_val;
          atomics::detail::non_atomic_load(storage, old_val);
-diff --git a/boost_1_89_0/boost/atomic/detail/chrono.hpp b/boost_1_89_0/boost/atomic/detail/chrono.hpp
-deleted file mode 100644
-index 2eb399d5b4..0000000000
---- a/boost_1_89_0/boost/atomic/detail/chrono.hpp
-+++ /dev/null
-@@ -1,93 +0,0 @@
--/*
-- * Distributed under the Boost Software License, Version 1.0.
-- * (See accompanying file LICENSE_1_0.txt or copy at
-- * http://www.boost.org/LICENSE_1_0.txt)
-- *
-- * Copyright (c) 2025 Andrey Semashev
-- */
--/*!
-- * \file   atomic/detail/chrono.hpp
-- *
-- * This header contains \c std::chrono utilities.
-- */
--
--#ifndef BOOST_ATOMIC_DETAIL_CHRONO_HPP_INCLUDED_
--#define BOOST_ATOMIC_DETAIL_CHRONO_HPP_INCLUDED_
--
--#include <time.h>
--#include <chrono>
--#if !defined(__cpp_lib_chrono) || (__cpp_lib_chrono < 201510l)
--#include <ratio>
--#include <type_traits>
--#endif // !defined(__cpp_lib_chrono) || (__cpp_lib_chrono < 201510l)
--#if defined(CLOCK_REALTIME)
--#include <boost/atomic/posix_clock_traits_fwd.hpp>
--#endif // defined(CLOCK_REALTIME)
--#include <boost/atomic/detail/config.hpp>
--#include <boost/atomic/detail/header.hpp>
--
--#ifdef BOOST_HAS_PRAGMA_ONCE
--#pragma once
--#endif
--
--namespace boost {
--namespace atomics {
--namespace detail {
--namespace chrono {
--
--#if defined(__cpp_lib_chrono) && (__cpp_lib_chrono >= 201510l)
--
--using std::chrono::ceil;
--
--#else // defined(__cpp_lib_chrono) && (__cpp_lib_chrono >= 201510l)
--
--template< typename To, typename Rep, typename Period >
--inline constexpr To ceil(std::chrono::duration< Rep, Period > from) noexcept
--{
--    using conv_ratio = std::ratio_divide< Period, typename To::period >;
--    using common_rep = typename std::common_type< Rep, typename To::rep, decltype(conv_ratio::num) >::type;
--    return To(static_cast< typename To::rep >((static_cast< common_rep >(from.count()) * conv_ratio::num) / conv_ratio::den +
--        static_cast< common_rep >(((static_cast< common_rep >(from.count()) * conv_ratio::num) % conv_ratio::den) != static_cast< common_rep >(0))));
--}
--
--#endif // defined(__cpp_lib_chrono) && (__cpp_lib_chrono >= 201510l)
--
--} // namespace chrono
--} // namespace detail
--
--#if defined(CLOCK_REALTIME)
--
--//! Integrate `std::chrono::system_clock` with POSIX clocks
--template< >
--struct posix_clock_traits< std::chrono::system_clock >
--{
--    //! POSIX clock identifier
--    static constexpr clockid_t clock_id = CLOCK_REALTIME;
--
--    //! Function that converts a time point to a timespec structure
--    static timespec to_timespec(std::chrono::system_clock::time_point time_point) noexcept
--    {
--        timespec ts{};
--        std::chrono::nanoseconds::rep time_ns = std::chrono::duration_cast< std::chrono::nanoseconds >(time_point.time_since_epoch()).count();
--        // Note: The standard doesn't require that std::chrono::system_clock epoch matches the POSIX CLOCK_REALTIME epoch. Also, std::chrono::system_clock::to_time_t
--        //       is allowed to round or truncate the time point when converting to time_t resolution, which means to_time_t may return a time before or after time_point.
--        ts.tv_sec = std::chrono::system_clock::to_time_t(std::chrono::system_clock::time_point()) + static_cast< decltype(ts.tv_sec) >(time_ns / 1000000000);
--        time_ns %= 1000000000;
--        if (BOOST_UNLIKELY(time_ns < 0))
--        {
--            --ts.tv_sec;
--            time_ns += 1000000000;
--        }
--        ts.tv_nsec = static_cast< decltype(ts.tv_nsec) >(time_ns);
--        return ts;
--    }
--};
--
--#endif // defined(CLOCK_REALTIME)
--
--} // namespace atomics
--} // namespace boost
--
--#include <boost/atomic/detail/footer.hpp>
--
--#endif // BOOST_ATOMIC_DETAIL_CHRONO_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/classify.hpp b/boost_1_89_0/boost/atomic/detail/classify.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/classify.hpp b/boost_1_90_0/boost/atomic/detail/classify.hpp
 index a325e5e9e4..68096e72db 100644
---- a/boost_1_89_0/boost/atomic/detail/classify.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/classify.hpp
+--- a/boost_1_90_0/boost/atomic/detail/classify.hpp
++++ b/boost_1_90_0/boost/atomic/detail/classify.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -4594,10 +4495,10 @@ index a325e5e9e4..68096e72db 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/config.hpp b/boost_1_89_0/boost/atomic/detail/config.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/config.hpp b/boost_1_90_0/boost/atomic/detail/config.hpp
 index 6d3114479d..62872b5451 100644
---- a/boost_1_89_0/boost/atomic/detail/config.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/config.hpp
+--- a/boost_1_90_0/boost/atomic/detail/config.hpp
++++ b/boost_1_90_0/boost/atomic/detail/config.hpp
 @@ -4,7 +4,7 @@
   * http://www.boost.org/LICENSE_1_0.txt)
   *
@@ -4699,10 +4600,10 @@ index 6d3114479d..62872b5451 100644
  // This macro indicates that integer and floating point endianness is the same
  #define BOOST_ATOMIC_DETAIL_INT_FP_ENDIAN_MATCH
  #endif
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp
 index b3d9e94673..2284169eff 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch32.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -5557,10 +5458,10 @@ index b3d9e94673..2284169eff 100644
      {
          store(storage, (storage_type)0, order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp
 index dee3ce0977..1c39fb6cf6 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_aarch64.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -6783,10 +6684,10 @@ index dee3ce0977..1c39fb6cf6 100644
      {
          store(storage, (storage_type)0, order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp
 index b591a661ab..d26d53da85 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_alpha.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -7146,10 +7047,10 @@ index b591a661ab..d26d53da85 100644
      {
          store(storage, (storage_type)0, order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp
 index 044b3482c0..d9f8ad0f92 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_arm.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -7917,10 +7818,10 @@ index 044b3482c0..d9f8ad0f92 100644
      {
          store(storage, (storage_type)0, order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp
 index c0b34a188d..b37d99d8c8 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_ppc.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -8962,10 +8863,10 @@ index c0b34a188d..b37d99d8c8 100644
      {
          store(storage, (storage_type)0, order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp
 index 9feb78142f..d3cd23ffe0 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_sparc.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2010 Helge Bahmann
@@ -9107,10 +9008,10 @@ index 9feb78142f..d3cd23ffe0 100644
      {
          return compare_exchange_strong(storage, expected, desired, success_order, failure_order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp
 index 98fcfc6d3e..667618ed7f 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_gcc_x86.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -10022,10 +9923,10 @@ index 98fcfc6d3e..667618ed7f 100644
      }
  };
  
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp
 index 170c3c0926..bc8682193d 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_arm.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -10418,10 +10319,10 @@ index 170c3c0926..bc8682193d 100644
      {
          switch (order)
          {
-diff --git a/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp b/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp b/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp
 index 5f8cfabc34..a54c168305 100644
---- a/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_arch_ops_msvc_x86.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -11007,10 +10908,10 @@ index 5f8cfabc34..a54c168305 100644
      {
          return compare_exchange_strong(storage, expected, desired, success_order, failure_order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_operations_emulated.hpp b/boost_1_89_0/boost/atomic/detail/core_operations_emulated.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_operations_emulated.hpp b/boost_1_90_0/boost/atomic/detail/core_operations_emulated.hpp
 index 0543e66ff9..7d6eadc003 100644
---- a/boost_1_89_0/boost/atomic/detail/core_operations_emulated.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_operations_emulated.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_operations_emulated.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_operations_emulated.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -11168,10 +11069,10 @@ index 0543e66ff9..7d6eadc003 100644
      {
          static_assert(!is_interprocess, "Boost.Atomic: operation invoked on a non-lock-free inter-process atomic object");
          store(storage, (storage_type)0, order);
-diff --git a/boost_1_89_0/boost/atomic/detail/core_ops_cas_based.hpp b/boost_1_89_0/boost/atomic/detail/core_ops_cas_based.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_ops_cas_based.hpp b/boost_1_90_0/boost/atomic/detail/core_ops_cas_based.hpp
 index ef12046379..b7423e7e3a 100644
---- a/boost_1_89_0/boost/atomic/detail/core_ops_cas_based.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_ops_cas_based.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_ops_cas_based.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_ops_cas_based.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -11247,10 +11148,10 @@ index ef12046379..b7423e7e3a 100644
      {
          Base::store(storage, (storage_type)0, order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_ops_gcc_atomic.hpp b/boost_1_89_0/boost/atomic/detail/core_ops_gcc_atomic.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_ops_gcc_atomic.hpp b/boost_1_90_0/boost/atomic/detail/core_ops_gcc_atomic.hpp
 index f8582a70c5..7af176d039 100644
---- a/boost_1_89_0/boost/atomic/detail/core_ops_gcc_atomic.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_ops_gcc_atomic.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_ops_gcc_atomic.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_ops_gcc_atomic.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -11387,10 +11288,10 @@ index f8582a70c5..7af176d039 100644
      {
          __atomic_clear(const_cast< storage_type* >(&storage), atomics::detail::convert_memory_order_to_gcc(order));
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_ops_gcc_sync.hpp b/boost_1_89_0/boost/atomic/detail/core_ops_gcc_sync.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_ops_gcc_sync.hpp b/boost_1_90_0/boost/atomic/detail/core_ops_gcc_sync.hpp
 index 9a9757046a..c979643ebd 100644
---- a/boost_1_89_0/boost/atomic/detail/core_ops_gcc_sync.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_ops_gcc_sync.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_ops_gcc_sync.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_ops_gcc_sync.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2011 Helge Bahmann
@@ -11585,10 +11486,10 @@ index 9a9757046a..c979643ebd 100644
      {
          __sync_lock_release(&storage);
          if (order == memory_order_seq_cst)
-diff --git a/boost_1_89_0/boost/atomic/detail/core_ops_linux_arm.hpp b/boost_1_89_0/boost/atomic/detail/core_ops_linux_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_ops_linux_arm.hpp b/boost_1_90_0/boost/atomic/detail/core_ops_linux_arm.hpp
 index 48e06317c9..72cf33b1ce 100644
---- a/boost_1_89_0/boost/atomic/detail/core_ops_linux_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_ops_linux_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_ops_linux_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_ops_linux_arm.hpp
 @@ -7,7 +7,7 @@
   * Copyright (c) 2009 Phil Endecott
   * Copyright (c) 2013 Tim Blechmann
@@ -11679,10 +11580,10 @@ index 48e06317c9..72cf33b1ce 100644
          {
              return true;
          }
-diff --git a/boost_1_89_0/boost/atomic/detail/core_ops_windows.hpp b/boost_1_89_0/boost/atomic/detail/core_ops_windows.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/core_ops_windows.hpp b/boost_1_90_0/boost/atomic/detail/core_ops_windows.hpp
 index 638083cee1..9b2ee290b5 100644
---- a/boost_1_89_0/boost/atomic/detail/core_ops_windows.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/core_ops_windows.hpp
+--- a/boost_1_90_0/boost/atomic/detail/core_ops_windows.hpp
++++ b/boost_1_90_0/boost/atomic/detail/core_ops_windows.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -11825,10 +11726,10 @@ index 638083cee1..9b2ee290b5 100644
      {
  #if defined(BOOST_ATOMIC_INTERLOCKED_XOR)
          base_type::fence_before(order);
-diff --git a/boost_1_89_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp b/boost_1_89_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp b/boost_1_90_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp
 index 3059418e66..8384646a5d 100644
---- a/boost_1_89_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extending_cas_based_arithmetic.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -11861,10 +11762,10 @@ index 3059418e66..8384646a5d 100644
      {
          storage_type old_val;
          atomics::detail::non_atomic_load(storage, old_val);
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_fp_ops_emulated.hpp b/boost_1_89_0/boost/atomic/detail/extra_fp_ops_emulated.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_fp_ops_emulated.hpp b/boost_1_90_0/boost/atomic/detail/extra_fp_ops_emulated.hpp
 index 43219fefba..b8443b16ec 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_fp_ops_emulated.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_fp_ops_emulated.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_fp_ops_emulated.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_fp_ops_emulated.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -11942,10 +11843,10 @@ index 43219fefba..b8443b16ec 100644
      {
          static_assert(!base_type::is_interprocess, "Boost.Atomic: operation invoked on a non-lock-free inter-process atomic object");
          base_type::fetch_sub(storage, v, order);
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_fp_ops_generic.hpp b/boost_1_89_0/boost/atomic/detail/extra_fp_ops_generic.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_fp_ops_generic.hpp b/boost_1_90_0/boost/atomic/detail/extra_fp_ops_generic.hpp
 index 2600fe2f0a..cc95b08c58 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_fp_ops_generic.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_fp_ops_generic.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_fp_ops_generic.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_fp_ops_generic.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -12061,10 +11962,10 @@ index 2600fe2f0a..cc95b08c58 100644
      {
          base_type::fetch_sub(storage, v, order);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_emulated.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_emulated.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_emulated.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_emulated.hpp
 index 76e3b4a66c..64e78c822e 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_emulated.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_emulated.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_emulated.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_emulated.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -12287,10 +12188,10 @@ index 76e3b4a66c..64e78c822e 100644
      {
          static_assert(!base_type::is_interprocess, "Boost.Atomic: operation invoked on a non-lock-free inter-process atomic object");
          storage_type mask = static_cast< storage_type >(static_cast< storage_type >(1u) << bit_number);
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp
 index 3554bb417c..52b919ca20 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch32.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -13119,10 +13020,10 @@ index 3554bb417c..52b919ca20 100644
  
          return result;
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp
 index 3c257b0d0e..3e1f1b6eec 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_aarch64.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -14149,10 +14050,10 @@ index 3c257b0d0e..3e1f1b6eec 100644
  
          return result.as_storage;
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_arm.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_arm.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_arm.hpp
 index 821c087d4e..c7fb0b2e64 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_arm.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -14734,10 +14635,10 @@ index 821c087d4e..c7fb0b2e64 100644
          __asm__ __volatile__
          (
              BOOST_ATOMIC_DETAIL_ARM_ASM_START(%0)
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp
 index 49d7c5805d..9b5e9b98ce 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_ppc.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -15445,10 +15346,10 @@ index 49d7c5805d..9b5e9b98ce 100644
          return result;
      }
  };
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_x86.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_x86.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_x86.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_x86.hpp
 index 7ed0ee6619..38012b6279 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_x86.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_gcc_x86.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_x86.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_gcc_x86.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -16855,10 +16756,10 @@ index 7ed0ee6619..38012b6279 100644
          return res;
      }
  };
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_generic.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_generic.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_generic.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_generic.hpp
 index e4ac27bcfb..0d40443ecc 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_generic.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_generic.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_generic.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_generic.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -17268,10 +17169,10 @@ index e4ac27bcfb..0d40443ecc 100644
          storage_type old_val = base_type::fetch_xor(storage, mask, order);
          return !!(old_val & mask);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_arm.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_arm.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_arm.hpp
 index 9085b98897..280cc4e25e 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_arm.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -17304,10 +17205,10 @@ index 9085b98897..280cc4e25e 100644
      {
  #if defined(BOOST_ATOMIC_INTERLOCKED_BTR_RELAXED) && defined(BOOST_ATOMIC_INTERLOCKED_BTR_ACQUIRE) && defined(BOOST_ATOMIC_INTERLOCKED_BTR_RELEASE)
          bool result;
-diff --git a/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_x86.hpp b/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_x86.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_x86.hpp b/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_x86.hpp
 index 9aa4fe8846..87247d47c0 100644
---- a/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_x86.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/extra_ops_msvc_x86.hpp
+--- a/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_x86.hpp
++++ b/boost_1_90_0/boost/atomic/detail/extra_ops_msvc_x86.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18040,10 +17941,10 @@ index 9aa4fe8846..87247d47c0 100644
      {
          return !!BOOST_ATOMIC_INTERLOCKED_BTR64(&storage, bit_number);
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_operations.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_operations.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_operations.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_operations.hpp
 index 134c21044a..dcf39712d5 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_operations.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_operations.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_operations.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_operations.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18062,10 +17963,10 @@ index 134c21044a..dcf39712d5 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp
 index b0e08c4072..aff436c9bb 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch32.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18109,10 +18010,10 @@ index b0e08c4072..aff436c9bb 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp
 index 660ce7d459..90bd295c5c 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_aarch64.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18148,10 +18049,10 @@ index 660ce7d459..90bd295c5c 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp
 index a6c52f7015..0180df0c0e 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_alpha.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18185,10 +18086,10 @@ index a6c52f7015..0180df0c0e 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp
 index 715998c460..42fedc6144 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_arm.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18258,10 +18159,10 @@ index 715998c460..42fedc6144 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp
 index 5f2f04434a..3507d90cd1 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_ppc.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18298,10 +18199,10 @@ index 5f2f04434a..3507d90cd1 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp
 index 236dcd85a1..71115bc581 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_sparc.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18337,10 +18238,10 @@ index 236dcd85a1..71115bc581 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp
 index e9b29be39b..8845b9c6a1 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_gcc_x86.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18376,10 +18277,10 @@ index e9b29be39b..8845b9c6a1 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp
 index b0d016b8a1..eaf718049c 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_arm.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18421,10 +18322,10 @@ index b0d016b8a1..eaf718049c 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp
 index c18f66504f..2cfb961534 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_arch_ops_msvc_x86.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18477,10 +18378,10 @@ index c18f66504f..2cfb961534 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_operations.hpp b/boost_1_89_0/boost/atomic/detail/fence_operations.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_operations.hpp b/boost_1_90_0/boost/atomic/detail/fence_operations.hpp
 index 7a89ff0baf..e015c5dbc2 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_operations.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_operations.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_operations.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_operations.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18499,10 +18400,10 @@ index 7a89ff0baf..e015c5dbc2 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_operations_emulated.hpp b/boost_1_89_0/boost/atomic/detail/fence_operations_emulated.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_operations_emulated.hpp b/boost_1_90_0/boost/atomic/detail/fence_operations_emulated.hpp
 index cf335453fe..faf4a5f9ee 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_operations_emulated.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_operations_emulated.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_operations_emulated.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_operations_emulated.hpp
 @@ -30,12 +30,12 @@ namespace detail {
  //! Fence operations based on lock pool
  struct fence_operations_emulated
@@ -18518,10 +18419,10 @@ index cf335453fe..faf4a5f9ee 100644
      {
          atomics::detail::lock_pool::signal_fence();
      }
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp b/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp b/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp
 index 9a5adcd76c..b1520f73d7 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_atomic.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18559,10 +18460,10 @@ index 9a5adcd76c..b1520f73d7 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_sync.hpp b/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_sync.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_sync.hpp b/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_sync.hpp
 index 8ec982ad49..f803e8956d 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_sync.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_ops_gcc_sync.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_sync.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_ops_gcc_sync.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18596,10 +18497,10 @@ index 8ec982ad49..f803e8956d 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_ops_linux_arm.hpp b/boost_1_89_0/boost/atomic/detail/fence_ops_linux_arm.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_ops_linux_arm.hpp b/boost_1_90_0/boost/atomic/detail/fence_ops_linux_arm.hpp
 index bcbc7d2976..1848e9cec6 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_ops_linux_arm.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_ops_linux_arm.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_ops_linux_arm.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_ops_linux_arm.hpp
 @@ -7,7 +7,7 @@
   * Copyright (c) 2009 Phil Endecott
   * Copyright (c) 2013 Tim Blechmann
@@ -18643,10 +18544,10 @@ index bcbc7d2976..1848e9cec6 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fence_ops_windows.hpp b/boost_1_89_0/boost/atomic/detail/fence_ops_windows.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fence_ops_windows.hpp b/boost_1_90_0/boost/atomic/detail/fence_ops_windows.hpp
 index 0f24b0722a..4ce1b90060 100644
---- a/boost_1_89_0/boost/atomic/detail/fence_ops_windows.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fence_ops_windows.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fence_ops_windows.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fence_ops_windows.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18699,10 +18600,10 @@ index 0f24b0722a..4ce1b90060 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/fp_ops_emulated.hpp b/boost_1_89_0/boost/atomic/detail/fp_ops_emulated.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fp_ops_emulated.hpp b/boost_1_90_0/boost/atomic/detail/fp_ops_emulated.hpp
 index 472b03b1b3..88531da8a2 100644
---- a/boost_1_89_0/boost/atomic/detail/fp_ops_emulated.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fp_ops_emulated.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fp_ops_emulated.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fp_ops_emulated.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18739,10 +18640,10 @@ index 472b03b1b3..88531da8a2 100644
      {
          static_assert(!base_type::is_interprocess, "Boost.Atomic: operation invoked on a non-lock-free inter-process atomic object");
          storage_type& s = const_cast< storage_type& >(storage);
-diff --git a/boost_1_89_0/boost/atomic/detail/fp_ops_generic.hpp b/boost_1_89_0/boost/atomic/detail/fp_ops_generic.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/fp_ops_generic.hpp b/boost_1_90_0/boost/atomic/detail/fp_ops_generic.hpp
 index c4ceea0e4a..3d384f511f 100644
---- a/boost_1_89_0/boost/atomic/detail/fp_ops_generic.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/fp_ops_generic.hpp
+--- a/boost_1_90_0/boost/atomic/detail/fp_ops_generic.hpp
++++ b/boost_1_90_0/boost/atomic/detail/fp_ops_generic.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -18777,10 +18678,10 @@ index c4ceea0e4a..3d384f511f 100644
      {
          storage_type old_storage, new_storage;
          value_type old_val, new_val;
-diff --git a/boost_1_89_0/boost/atomic/detail/futex.hpp b/boost_1_89_0/boost/atomic/detail/futex.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/futex.hpp b/boost_1_90_0/boost/atomic/detail/futex.hpp
 index 1b13624b75..07fa483b8b 100644
---- a/boost_1_89_0/boost/atomic/detail/futex.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/futex.hpp
+--- a/boost_1_90_0/boost/atomic/detail/futex.hpp
++++ b/boost_1_90_0/boost/atomic/detail/futex.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -19048,10 +18949,10 @@ index 1b13624b75..07fa483b8b 100644
  }
  
  } // namespace detail
-diff --git a/boost_1_89_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp b/boost_1_89_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp b/boost_1_90_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp
 index dfb2b90826..b65abec47f 100644
---- a/boost_1_89_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp
+--- a/boost_1_90_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp
++++ b/boost_1_90_0/boost/atomic/detail/gcc_atomic_memory_order_utils.hpp
 @@ -50,7 +50,7 @@ namespace detail {
   *       propagate constants even when functions are marked with BOOST_FORCEINLINE. In this case
   *       all atomic operaions will be executed with seq_cst semantics.
@@ -19061,67 +18962,10 @@ index dfb2b90826..b65abec47f 100644
  {
      return (order == memory_order_relaxed ? __ATOMIC_RELAXED : (order == memory_order_consume ? __ATOMIC_CONSUME :
          (order == memory_order_acquire ? __ATOMIC_ACQUIRE : (order == memory_order_release ? __ATOMIC_RELEASE :
-diff --git a/boost_1_89_0/boost/atomic/detail/has_posix_clock_traits.hpp b/boost_1_89_0/boost/atomic/detail/has_posix_clock_traits.hpp
-deleted file mode 100644
-index 1ef058f465..0000000000
---- a/boost_1_89_0/boost/atomic/detail/has_posix_clock_traits.hpp
-+++ /dev/null
-@@ -1,51 +0,0 @@
--/*
-- * Distributed under the Boost Software License, Version 1.0.
-- * (See accompanying file LICENSE_1_0.txt or copy at
-- * http://www.boost.org/LICENSE_1_0.txt)
-- *
-- * Copyright (c) 2025 Andrey Semashev
-- */
--/*!
-- * \file   atomic/has_posix_clock_traits.hpp
-- *
-- * This header contains utilities for working with \c posix_clock_traits.
-- */
--
--#ifndef BOOST_ATOMIC_DETAIL_HAS_POSIX_CLOCK_TRAITS_HPP_INCLUDED_
--#define BOOST_ATOMIC_DETAIL_HAS_POSIX_CLOCK_TRAITS_HPP_INCLUDED_
--
--#include <sys/types.h> // clockid_t
--#include <type_traits>
--#include <boost/atomic/posix_clock_traits_fwd.hpp>
--#include <boost/atomic/detail/config.hpp>
--#include <boost/atomic/detail/header.hpp>
--
--#ifdef BOOST_HAS_PRAGMA_ONCE
--#pragma once
--#endif
--
--namespace boost {
--namespace atomics {
--namespace detail {
--
--template< typename Clock >
--struct has_posix_clock_traits_impl
--{
--    template< typename T, clockid_t = posix_clock_traits< T >::clock_id >
--    static std::true_type check_posix_clock_traits_clock_id(T*);
--    static std::false_type check_posix_clock_traits_clock_id(...);
--
--    using type = decltype(has_posix_clock_traits_impl< Clock >::check_posix_clock_traits_clock_id(static_cast< Clock* >(nullptr)));
--};
--
--//! Checks if there exists a specialization of \c posix_clock_traits for \c Clock
--template< typename Clock >
--using has_posix_clock_traits = typename has_posix_clock_traits_impl< Clock >::type;
--
--} // namespace detail
--} // namespace atomics
--} // namespace boost
--
--#include <boost/atomic/detail/footer.hpp>
--
--#endif // BOOST_ATOMIC_DETAIL_HAS_POSIX_CLOCK_TRAITS_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/int_sizes.hpp b/boost_1_89_0/boost/atomic/detail/int_sizes.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/int_sizes.hpp b/boost_1_90_0/boost/atomic/detail/int_sizes.hpp
 index da36692cb9..9ae5f964e4 100644
---- a/boost_1_89_0/boost/atomic/detail/int_sizes.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/int_sizes.hpp
+--- a/boost_1_90_0/boost/atomic/detail/int_sizes.hpp
++++ b/boost_1_90_0/boost/atomic/detail/int_sizes.hpp
 @@ -39,7 +39,7 @@
  #if defined(__SIZEOF_POINTER__)
  #define BOOST_ATOMIC_DETAIL_SIZEOF_POINTER __SIZEOF_POINTER__
@@ -19255,10 +19099,10 @@ index da36692cb9..9ae5f964e4 100644
  #define BOOST_ATOMIC_DETAIL_SIZEOF_WCHAR_T 8
  #endif
  #endif
-diff --git a/boost_1_89_0/boost/atomic/detail/integral_conversions.hpp b/boost_1_89_0/boost/atomic/detail/integral_conversions.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/integral_conversions.hpp b/boost_1_90_0/boost/atomic/detail/integral_conversions.hpp
 index 81f16ee1cf..54116a6b48 100644
---- a/boost_1_89_0/boost/atomic/detail/integral_conversions.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/integral_conversions.hpp
+--- a/boost_1_90_0/boost/atomic/detail/integral_conversions.hpp
++++ b/boost_1_90_0/boost/atomic/detail/integral_conversions.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -19365,10 +19209,10 @@ index 81f16ee1cf..54116a6b48 100644
  }
  
  } // namespace detail
-diff --git a/boost_1_89_0/boost/atomic/detail/interlocked.hpp b/boost_1_89_0/boost/atomic/detail/interlocked.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/interlocked.hpp b/boost_1_90_0/boost/atomic/detail/interlocked.hpp
 index 1f4b83837a..1c4eeeefcc 100644
---- a/boost_1_89_0/boost/atomic/detail/interlocked.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/interlocked.hpp
+--- a/boost_1_90_0/boost/atomic/detail/interlocked.hpp
++++ b/boost_1_90_0/boost/atomic/detail/interlocked.hpp
 @@ -46,8 +46,7 @@ extern "C" long __cdecl InterlockedDecrement(long*);
  
  #endif // _WIN32_WCE >= 0x600
@@ -19557,10 +19401,10 @@ index 1f4b83837a..1c4eeeefcc 100644
  #define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_POINTER(dest, newval) boost::atomics::detail::InterlockedExchangePointer((void**)(dest), (void*)(newval))
  #define BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD_POINTER(dest, byte_offset) ((void*)BOOST_ATOMIC_INTERLOCKED_EXCHANGE_ADD64(dest, byte_offset))
  
-diff --git a/boost_1_89_0/boost/atomic/detail/intptr.hpp b/boost_1_89_0/boost/atomic/detail/intptr.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/intptr.hpp b/boost_1_90_0/boost/atomic/detail/intptr.hpp
 index 0d85b21640..b007988b8a 100644
---- a/boost_1_89_0/boost/atomic/detail/intptr.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/intptr.hpp
+--- a/boost_1_90_0/boost/atomic/detail/intptr.hpp
++++ b/boost_1_90_0/boost/atomic/detail/intptr.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -19599,10 +19443,10 @@ index 0d85b21640..b007988b8a 100644
  #endif
  
  } // namespace detail
-diff --git a/boost_1_89_0/boost/atomic/detail/lock_pool.hpp b/boost_1_89_0/boost/atomic/detail/lock_pool.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/lock_pool.hpp b/boost_1_90_0/boost/atomic/detail/lock_pool.hpp
 index c1ecdf1936..65d4217e38 100644
---- a/boost_1_89_0/boost/atomic/detail/lock_pool.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/lock_pool.hpp
+--- a/boost_1_90_0/boost/atomic/detail/lock_pool.hpp
++++ b/boost_1_90_0/boost/atomic/detail/lock_pool.hpp
 @@ -16,18 +16,16 @@
  #define BOOST_ATOMIC_DETAIL_LOCK_POOL_HPP_INCLUDED_
  
@@ -19772,10 +19616,10 @@ index c1ecdf1936..65d4217e38 100644
  };
  
  } // namespace lock_pool
-diff --git a/boost_1_89_0/boost/atomic/detail/memory_order_utils.hpp b/boost_1_89_0/boost/atomic/detail/memory_order_utils.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/memory_order_utils.hpp b/boost_1_90_0/boost/atomic/detail/memory_order_utils.hpp
 index cb5e98a87a..335a84f6bd 100644
---- a/boost_1_89_0/boost/atomic/detail/memory_order_utils.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/memory_order_utils.hpp
+--- a/boost_1_90_0/boost/atomic/detail/memory_order_utils.hpp
++++ b/boost_1_90_0/boost/atomic/detail/memory_order_utils.hpp
 @@ -26,12 +26,12 @@ namespace boost {
  namespace atomics {
  namespace detail {
@@ -19791,10 +19635,10 @@ index cb5e98a87a..335a84f6bd 100644
  {
      // 15 == (memory_order_seq_cst | memory_order_consume), see memory_order.hpp
      // Given the enum values we can test the strength of memory order requirements with this single condition.
-diff --git a/boost_1_89_0/boost/atomic/detail/once_flag.hpp b/boost_1_89_0/boost/atomic/detail/once_flag.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/once_flag.hpp b/boost_1_90_0/boost/atomic/detail/once_flag.hpp
 index 840b1501ad..237777fe6f 100644
---- a/boost_1_89_0/boost/atomic/detail/once_flag.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/once_flag.hpp
+--- a/boost_1_90_0/boost/atomic/detail/once_flag.hpp
++++ b/boost_1_90_0/boost/atomic/detail/once_flag.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -19813,10 +19657,10 @@ index 840b1501ad..237777fe6f 100644
  
  struct once_flag
  {
-diff --git a/boost_1_89_0/boost/atomic/detail/ops_gcc_arm_common.hpp b/boost_1_89_0/boost/atomic/detail/ops_gcc_arm_common.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/ops_gcc_arm_common.hpp b/boost_1_90_0/boost/atomic/detail/ops_gcc_arm_common.hpp
 index 2ccc94800e..aceb3d6f63 100644
---- a/boost_1_89_0/boost/atomic/detail/ops_gcc_arm_common.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/ops_gcc_arm_common.hpp
+--- a/boost_1_90_0/boost/atomic/detail/ops_gcc_arm_common.hpp
++++ b/boost_1_90_0/boost/atomic/detail/ops_gcc_arm_common.hpp
 @@ -16,7 +16,7 @@
  #ifndef BOOST_ATOMIC_DETAIL_OPS_GCC_ARM_COMMON_HPP_INCLUDED_
  #define BOOST_ATOMIC_DETAIL_OPS_GCC_ARM_COMMON_HPP_INCLUDED_
@@ -19854,10 +19698,10 @@ index 2ccc94800e..aceb3d6f63 100644
      {
          if (order == memory_order_seq_cst)
              fence_arch_operations::hardware_full_fence();
-diff --git a/boost_1_89_0/boost/atomic/detail/ops_gcc_ppc_common.hpp b/boost_1_89_0/boost/atomic/detail/ops_gcc_ppc_common.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/ops_gcc_ppc_common.hpp b/boost_1_90_0/boost/atomic/detail/ops_gcc_ppc_common.hpp
 index 652898d8ac..bd8248324e 100644
---- a/boost_1_89_0/boost/atomic/detail/ops_gcc_ppc_common.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/ops_gcc_ppc_common.hpp
+--- a/boost_1_90_0/boost/atomic/detail/ops_gcc_ppc_common.hpp
++++ b/boost_1_90_0/boost/atomic/detail/ops_gcc_ppc_common.hpp
 @@ -41,10 +41,10 @@ namespace detail {
  
  struct core_arch_operations_gcc_ppc_base
@@ -19881,11 +19725,11 @@ index 652898d8ac..bd8248324e 100644
      {
          if ((static_cast< unsigned int >(order) & (static_cast< unsigned int >(memory_order_consume) | static_cast< unsigned int >(memory_order_acquire))) != 0u)
              __asm__ __volatile__ ("isync" ::: "memory");
-diff --git a/boost_1_89_0/boost/atomic/detail/pause.hpp b/boost_1_89_0/boost/atomic/detail/pause.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/pause.hpp b/boost_1_90_0/boost/atomic/detail/pause.hpp
 new file mode 100644
 index 0000000000..6c37a0d266
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/pause.hpp
++++ b/boost_1_90_0/boost/atomic/detail/pause.hpp
 @@ -0,0 +1,68 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -19955,10 +19799,10 @@ index 0000000000..6c37a0d266
 +#include <boost/atomic/detail/footer.hpp>
 +
 +#endif // BOOST_ATOMIC_DETAIL_PAUSE_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/platform.hpp b/boost_1_89_0/boost/atomic/detail/platform.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/platform.hpp b/boost_1_90_0/boost/atomic/detail/platform.hpp
 index f03b81ff3c..eb32d509b3 100644
---- a/boost_1_89_0/boost/atomic/detail/platform.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/platform.hpp
+--- a/boost_1_90_0/boost/atomic/detail/platform.hpp
++++ b/boost_1_90_0/boost/atomic/detail/platform.hpp
 @@ -82,13 +82,13 @@
  
  #define BOOST_ATOMIC_DETAIL_CORE_ARCH_BACKEND gcc_alpha
@@ -19986,10 +19830,10 @@ index f03b81ff3c..eb32d509b3 100644
  
  #define BOOST_ATOMIC_DETAIL_CORE_BACKEND windows
  
-diff --git a/boost_1_89_0/boost/atomic/detail/storage_traits.hpp b/boost_1_89_0/boost/atomic/detail/storage_traits.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/storage_traits.hpp b/boost_1_90_0/boost/atomic/detail/storage_traits.hpp
 index 76534f5fdf..7d1286994e 100644
---- a/boost_1_89_0/boost/atomic/detail/storage_traits.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/storage_traits.hpp
+--- a/boost_1_90_0/boost/atomic/detail/storage_traits.hpp
++++ b/boost_1_90_0/boost/atomic/detail/storage_traits.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2009 Helge Bahmann
@@ -20153,10 +19997,10 @@ index 76534f5fdf..7d1286994e 100644
  };
  
  } // namespace detail
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/alignment_of.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/alignment_of.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/alignment_of.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/alignment_of.hpp
 index f0dee80a55..61c4f323f8 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/alignment_of.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/alignment_of.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/alignment_of.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/alignment_of.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20176,11 +20020,11 @@ index f0dee80a55..61c4f323f8 100644
      (defined(BOOST_CLANG) && !defined(__apple_build_version__) && __clang_major__ < 9) ||\
      (defined(BOOST_CLANG) && defined(__apple_build_version__) && __clang_major__ < 10)
  // For some compilers std::alignment_of gives the wrong result for 64-bit types on 32-bit targets
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/conditional.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/conditional.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/conditional.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/conditional.hpp
 new file mode 100644
 index 0000000000..8002b8805a
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/conditional.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/conditional.hpp
 @@ -0,0 +1,42 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -20224,10 +20068,10 @@ index 0000000000..8002b8805a
 +} // namespace boost
 +
 +#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_CONDITIONAL_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp
 index 14abfe5bc2..c8210379ec 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/has_unique_object_representations.hpp
 @@ -14,8 +14,10 @@
  #ifndef BOOST_ATOMIC_DETAIL_TYPE_TRAITS_HAS_UNIQUE_OBJECT_REPRESENTATIONS_HPP_INCLUDED_
  #define BOOST_ATOMIC_DETAIL_TYPE_TRAITS_HAS_UNIQUE_OBJECT_REPRESENTATIONS_HPP_INCLUDED_
@@ -20257,11 +20101,11 @@ index 14abfe5bc2..c8210379ec 100644
  {
  };
  
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/integral_constant.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/integral_constant.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/integral_constant.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/integral_constant.hpp
 new file mode 100644
 index 0000000000..7b04af3833
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/integral_constant.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/integral_constant.hpp
 @@ -0,0 +1,46 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -20309,11 +20153,11 @@ index 0000000000..7b04af3833
 +} // namespace boost
 +
 +#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_INTEGRAL_CONSTANT_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_enum.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_enum.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_enum.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_enum.hpp
 new file mode 100644
 index 0000000000..f6cda1e1f6
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_enum.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_enum.hpp
 @@ -0,0 +1,42 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -20357,10 +20201,10 @@ index 0000000000..f6cda1e1f6
 +} // namespace boost
 +
 +#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_ENUM_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_floating_point.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_floating_point.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_floating_point.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_floating_point.hpp
 index 2576c18083..717052f498 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/is_floating_point.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_floating_point.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/is_floating_point.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_floating_point.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20388,11 +20232,11 @@ index 2576c18083..717052f498 100644
  using std::is_floating_point;
  #else
  using boost::is_floating_point;
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_function.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_function.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_function.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_function.hpp
 new file mode 100644
 index 0000000000..632cf4ce8a
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_function.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_function.hpp
 @@ -0,0 +1,42 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -20436,10 +20280,10 @@ index 0000000000..632cf4ce8a
 +} // namespace boost
 +
 +#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_FUNCTION_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_iec559.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_iec559.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_iec559.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_iec559.hpp
 index c635e62f13..d94bbcc9f8 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/is_iec559.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_iec559.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/is_iec559.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_iec559.hpp
 @@ -28,7 +28,7 @@ namespace detail {
  template< typename T >
  struct is_iec559
@@ -20458,10 +20302,10 @@ index c635e62f13..d94bbcc9f8 100644
  };
  #endif // defined(BOOST_HAS_FLOAT128)
  
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_integral.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_integral.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_integral.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_integral.hpp
 index 935d6cd8a3..ff46ee390e 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/is_integral.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_integral.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/is_integral.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_integral.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20489,11 +20333,11 @@ index 935d6cd8a3..ff46ee390e 100644
  using std::is_integral;
  #else
  using boost::is_integral;
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_nothrow_default_constructible.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_nothrow_default_constructible.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_nothrow_default_constructible.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_nothrow_default_constructible.hpp
 new file mode 100644
 index 0000000000..053532164c
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_nothrow_default_constructible.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_nothrow_default_constructible.hpp
 @@ -0,0 +1,46 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -20541,10 +20385,10 @@ index 0000000000..053532164c
 +} // namespace boost
 +
 +#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_NOTHROW_DEFAULT_CONSTRUCTIBLE_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_signed.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_signed.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_signed.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_signed.hpp
 index dafdd49814..6a69ad07b1 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/is_signed.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_signed.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/is_signed.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_signed.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20572,10 +20416,10 @@ index dafdd49814..6a69ad07b1 100644
  using std::is_signed;
  #else
  using boost::is_signed;
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp
 index cf90c5a237..e32fc7df21 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_copyable.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20637,10 +20481,10 @@ index cf90c5a237..e32fc7df21 100644
 +#endif // !defined(BOOST_ATOMIC_DETAIL_NO_CXX11_IS_TRIVIALLY_COPYABLE)
 +
  #endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_IS_TRIVIALLY_COPYABLE_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp
 index 7b99c5ad71..125c003fb6 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/is_trivially_default_constructible.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20691,10 +20535,10 @@ index 7b99c5ad71..125c003fb6 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/make_signed.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/make_signed.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/make_signed.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/make_signed.hpp
 index ae3a44f07f..8dee8043d5 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/make_signed.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/make_signed.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/make_signed.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/make_signed.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20722,10 +20566,10 @@ index ae3a44f07f..8dee8043d5 100644
  using std::make_signed;
  #else
  using boost::make_signed;
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/make_unsigned.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/make_unsigned.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/make_unsigned.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/make_unsigned.hpp
 index 7ba985e015..7ca92bdeab 100644
---- a/boost_1_89_0/boost/atomic/detail/type_traits/make_unsigned.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/make_unsigned.hpp
+--- a/boost_1_90_0/boost/atomic/detail/type_traits/make_unsigned.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/make_unsigned.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20753,11 +20597,11 @@ index 7ba985e015..7ca92bdeab 100644
  using std::make_unsigned;
  #else
  using boost::make_unsigned;
-diff --git a/boost_1_89_0/boost/atomic/detail/type_traits/remove_cv.hpp b/boost_1_89_0/boost/atomic/detail/type_traits/remove_cv.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/type_traits/remove_cv.hpp b/boost_1_90_0/boost/atomic/detail/type_traits/remove_cv.hpp
 new file mode 100644
 index 0000000000..7e07f02ce8
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/type_traits/remove_cv.hpp
++++ b/boost_1_90_0/boost/atomic/detail/type_traits/remove_cv.hpp
 @@ -0,0 +1,42 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -20801,10 +20645,10 @@ index 0000000000..7e07f02ce8
 +} // namespace boost
 +
 +#endif // BOOST_ATOMIC_DETAIL_TYPE_TRAITS_REMOVE_CV_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_caps_windows.hpp b/boost_1_89_0/boost/atomic/detail/wait_caps_windows.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_caps_windows.hpp b/boost_1_90_0/boost/atomic/detail/wait_caps_windows.hpp
 index 9fc8f4e59b..89097da756 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_caps_windows.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_caps_windows.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_caps_windows.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_caps_windows.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -20846,11 +20690,11 @@ index 9fc8f4e59b..89097da756 100644
 +#endif // BOOST_USE_WINAPI_VERSION >= BOOST_WINAPI_VERSION_WIN8 && (BOOST_WINAPI_PARTITION_APP || BOOST_WINAPI_PARTITION_SYSTEM)
 +
  #endif // BOOST_ATOMIC_DETAIL_WAIT_CAPS_WINDOWS_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_on_address.hpp b/boost_1_89_0/boost/atomic/detail/wait_on_address.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_on_address.hpp b/boost_1_90_0/boost/atomic/detail/wait_on_address.hpp
 new file mode 100644
 index 0000000000..ea466958a6
 --- /dev/null
-+++ b/boost_1_89_0/boost/atomic/detail/wait_on_address.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_on_address.hpp
 @@ -0,0 +1,64 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -20916,10 +20760,10 @@ index 0000000000..ea466958a6
 +#include <boost/atomic/detail/footer.hpp>
 +
 +#endif // BOOST_ATOMIC_DETAIL_WAIT_ON_ADDRESS_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp b/boost_1_89_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp b/boost_1_90_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp
 index 1543ab054f..2711684187 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_ops_darwin_ulock.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -21110,10 +20954,10 @@ index 1543ab054f..2711684187 100644
      public wait_operations_darwin_ulock_common< Base, ulock_op_compare_and_wait64_shared >
  {
  };
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp b/boost_1_89_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp b/boost_1_90_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp
 index 969e2f0613..56db240da1 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_ops_dragonfly_umtx.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -21248,10 +21092,10 @@ index 969e2f0613..56db240da1 100644
      }
  };
  
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_ops_emulated.hpp b/boost_1_89_0/boost/atomic/detail/wait_ops_emulated.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_ops_emulated.hpp b/boost_1_90_0/boost/atomic/detail/wait_ops_emulated.hpp
 index 98ae24130b..61a98b4c8c 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_ops_emulated.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_ops_emulated.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_ops_emulated.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_ops_emulated.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -21469,10 +21313,10 @@ index 98ae24130b..61a98b4c8c 100644
      {
          static_assert(!base_type::is_interprocess, "Boost.Atomic: operation invoked on a non-lock-free inter-process atomic object");
          scoped_lock lock(&storage);
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp b/boost_1_89_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp b/boost_1_90_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp
 index bd97a9704a..2d3f587ff7 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_ops_freebsd_umtx.hpp
 @@ -3,34 +3,24 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -21909,10 +21753,10 @@ index bd97a9704a..2d3f587ff7 100644
  
  } // namespace detail
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_ops_futex.hpp b/boost_1_89_0/boost/atomic/detail/wait_ops_futex.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_ops_futex.hpp b/boost_1_90_0/boost/atomic/detail/wait_ops_futex.hpp
 index dea774e7e9..bb748c8d45 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_ops_futex.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_ops_futex.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_ops_futex.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_ops_futex.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -22285,10 +22129,10 @@ index dea774e7e9..bb748c8d45 100644
      }
  };
  
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_ops_generic.hpp b/boost_1_89_0/boost/atomic/detail/wait_ops_generic.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_ops_generic.hpp b/boost_1_90_0/boost/atomic/detail/wait_ops_generic.hpp
 index 8fcb91095d..f8f7071a7b 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_ops_generic.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_ops_generic.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_ops_generic.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_ops_generic.hpp
 @@ -3,31 +3,21 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -22650,10 +22494,10 @@ index 8fcb91095d..f8f7071a7b 100644
      {
      }
  };
-diff --git a/boost_1_89_0/boost/atomic/detail/wait_ops_windows.hpp b/boost_1_89_0/boost/atomic/detail/wait_ops_windows.hpp
+diff --git a/boost_1_90_0/boost/atomic/detail/wait_ops_windows.hpp b/boost_1_90_0/boost/atomic/detail/wait_ops_windows.hpp
 index 740c14bb4b..1cea388ba4 100644
---- a/boost_1_89_0/boost/atomic/detail/wait_ops_windows.hpp
-+++ b/boost_1_89_0/boost/atomic/detail/wait_ops_windows.hpp
+--- a/boost_1_90_0/boost/atomic/detail/wait_ops_windows.hpp
++++ b/boost_1_90_0/boost/atomic/detail/wait_ops_windows.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -22866,10 +22710,10 @@ index 740c14bb4b..1cea388ba4 100644
  template< typename Base >
  struct wait_operations< Base, 1u, true, false > :
      public wait_operations_windows< Base, 1u >
-diff --git a/boost_1_89_0/boost/atomic/fences.hpp b/boost_1_89_0/boost/atomic/fences.hpp
+diff --git a/boost_1_90_0/boost/atomic/fences.hpp b/boost_1_90_0/boost/atomic/fences.hpp
 index 768e594c7a..6f25bcff57 100644
---- a/boost_1_89_0/boost/atomic/fences.hpp
-+++ b/boost_1_89_0/boost/atomic/fences.hpp
+--- a/boost_1_90_0/boost/atomic/fences.hpp
++++ b/boost_1_90_0/boost/atomic/fences.hpp
 @@ -5,7 +5,7 @@
   *
   * Copyright (c) 2011 Helge Bahmann
@@ -22902,10 +22746,10 @@ index 768e594c7a..6f25bcff57 100644
  {
      atomics::detail::fence_operations::signal_fence(order);
  }
-diff --git a/boost_1_89_0/boost/atomic/ipc_atomic.hpp b/boost_1_89_0/boost/atomic/ipc_atomic.hpp
+diff --git a/boost_1_90_0/boost/atomic/ipc_atomic.hpp b/boost_1_90_0/boost/atomic/ipc_atomic.hpp
 index d29206d800..9429bd541a 100644
---- a/boost_1_89_0/boost/atomic/ipc_atomic.hpp
-+++ b/boost_1_89_0/boost/atomic/ipc_atomic.hpp
+--- a/boost_1_90_0/boost/atomic/ipc_atomic.hpp
++++ b/boost_1_90_0/boost/atomic/ipc_atomic.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -22989,10 +22833,10 @@ index d29206d800..9429bd541a 100644
  };
  
  } // namespace atomics
-diff --git a/boost_1_89_0/boost/atomic/ipc_atomic_flag.hpp b/boost_1_89_0/boost/atomic/ipc_atomic_flag.hpp
+diff --git a/boost_1_90_0/boost/atomic/ipc_atomic_flag.hpp b/boost_1_90_0/boost/atomic/ipc_atomic_flag.hpp
 index 9e9cff1f43..2e0e3cab04 100644
---- a/boost_1_89_0/boost/atomic/ipc_atomic_flag.hpp
-+++ b/boost_1_89_0/boost/atomic/ipc_atomic_flag.hpp
+--- a/boost_1_90_0/boost/atomic/ipc_atomic_flag.hpp
++++ b/boost_1_90_0/boost/atomic/ipc_atomic_flag.hpp
 @@ -3,7 +3,7 @@
   * (See accompanying file LICENSE_1_0.txt or copy at
   * http://www.boost.org/LICENSE_1_0.txt)
@@ -23011,10 +22855,10 @@ index 9e9cff1f43..2e0e3cab04 100644
  
  } // namespace atomics
  
-diff --git a/boost_1_89_0/boost/atomic/ipc_atomic_ref.hpp b/boost_1_89_0/boost/atomic/ipc_atomic_ref.hpp
+diff --git a/boost_1_90_0/boost/atomic/ipc_atomic_ref.hpp b/boost_1_90_0/boost/atomic/ipc_atomic_ref.hpp
 index 3857497679..df48a75de7 100644
---- a/boost_1_89_0/boost/atomic/ipc_atomic_ref.hpp
-+++ b/boost_1_89_0/boost/atomic/ipc_atomic_ref.hpp
+--- a/boost_1_90_0/boost/atomic/ipc_atomic_ref.hpp
++++ b/boost_1_90_0/boost/atomic/ipc_atomic_ref.hpp
 @@ -14,7 +14,6 @@
  #ifndef BOOST_ATOMIC_IPC_ATOMIC_REF_HPP_INCLUDED_
  #define BOOST_ATOMIC_IPC_ATOMIC_REF_HPP_INCLUDED_
@@ -23084,246 +22928,11 @@ index 3857497679..df48a75de7 100644
  {
      return ipc_atomic_ref< T >(value);
  }
-diff --git a/boost_1_89_0/boost/atomic/posix_clock_traits_fwd.hpp b/boost_1_89_0/boost/atomic/posix_clock_traits_fwd.hpp
-deleted file mode 100644
-index 970be558bc..0000000000
---- a/boost_1_89_0/boost/atomic/posix_clock_traits_fwd.hpp
-+++ /dev/null
-@@ -1,59 +0,0 @@
--/*
-- * Distributed under the Boost Software License, Version 1.0.
-- * (See accompanying file LICENSE_1_0.txt or copy at
-- * http://www.boost.org/LICENSE_1_0.txt)
-- *
-- * Copyright (c) 2025 Andrey Semashev
-- */
--/*!
-- * \file   atomic/posix_clock_traits_fwd.hpp
-- *
-- * This header contains declaration of the \c posix_clock_traits class template.
-- */
--
--#ifndef BOOST_ATOMIC_POSIX_CLOCK_TRAITS_FWD_HPP_INCLUDED_
--#define BOOST_ATOMIC_POSIX_CLOCK_TRAITS_FWD_HPP_INCLUDED_
--
--#include <boost/atomic/detail/config.hpp>
--#include <boost/atomic/detail/header.hpp>
--
--#ifdef BOOST_HAS_PRAGMA_ONCE
--#pragma once
--#endif
--
--namespace boost {
--namespace atomics {
--
--/*!
-- * \brief The structure contains traits for compatibility between chrono clocks and POSIX clocks.
-- *
-- * This class template is meant to be specialized for clock types that are compatible with `std::chrono`
-- * requirements and are based on one of the POSIX clocks identified by
-- * a [`clockid_t`](https://man7.org/linux/man-pages/man3/clockid_t.3type.html) constant.
-- *
-- * Every specialization of this class must support the following interface:
-- *
-- * ```
-- * // POSIX clock identifier
-- * static constexpr clockid_t clock_id = ...;
-- *
-- * // Function that converts a time point to a timespec structure
-- * static timespec to_timespec(Clock::time_point time_point) noexcept;
-- * ```
-- *
-- * Note that the `timespec` structure returned from `to_timespec` must use the identified POSIX
-- * clock epoch and time units. There are no invalid input `time_point` values, so `to_timespec`
-- * must never fail with an exception.
-- *
-- * The second template parameter of this class template may be used by partial specializations
-- * to leverage SFINAE to selectively enable it for a set of clock types.
-- */
--template< typename Clock, typename = void >
--struct posix_clock_traits;
--
--} // namespace atomics
--} // namespace boost
--
--#include <boost/atomic/detail/footer.hpp>
--
--#endif // BOOST_ATOMIC_POSIX_CLOCK_TRAITS_FWD_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/thread_pause.hpp b/boost_1_89_0/boost/atomic/thread_pause.hpp
-deleted file mode 100644
-index b508bbcd46..0000000000
---- a/boost_1_89_0/boost/atomic/thread_pause.hpp
-+++ /dev/null
-@@ -1,102 +0,0 @@
--/*
-- * Distributed under the Boost Software License, Version 1.0.
-- *    (See accompanying file LICENSE_1_0.txt or copy at
-- *          http://www.boost.org/LICENSE_1_0.txt)
-- *
-- * (C) Copyright 2013 Tim Blechmann
-- * (C) Copyright 2013, 2020-2025 Andrey Semashev
-- */
--
--#ifndef BOOST_ATOMIC_THREAD_PAUSE_HPP_INCLUDED_
--#define BOOST_ATOMIC_THREAD_PAUSE_HPP_INCLUDED_
--
--#include <boost/atomic/detail/config.hpp>
--#if defined(_MSC_VER)
--#include <boost/atomic/detail/ops_msvc_common.hpp>
--#endif
--#include <boost/atomic/detail/header.hpp>
--
--#ifdef BOOST_HAS_PRAGMA_ONCE
--#pragma once
--#endif
--
--#if defined(_MSC_VER)
--// (sigh, shake head) _M_ARM64EC and _M_AMD64 may be defined both
--// https://learn.microsoft.com/en-us/windows/arm/arm64ec-abi
--#if defined(_M_ARM64) || defined(_M_ARM64EC)
--extern "C" void __isb(unsigned int);
--#if defined(BOOST_MSVC)
--#pragma intrinsic(__isb)
--#endif
--#elif defined(_M_ARM)
--extern "C" void __yield(void);
--#if defined(BOOST_MSVC)
--#pragma intrinsic(__yield)
--#endif
--#elif defined(_M_AMD64) || defined(_M_IX86)
--extern "C" void _mm_pause(void);
--#if defined(BOOST_MSVC)
--#pragma intrinsic(_mm_pause)
--#endif
--#endif
--#endif
--
--#if defined(sun) || defined(__sun)
--// Avoid including synch.h
--extern "C" void smt_pause(void);
--#endif
--
--namespace boost {
--namespace atomics {
--
--//! The function pauses for a number of CPU cycles, potentially freeing CPU resources, allowing sibling threads to progress. May be a no-op.
--BOOST_FORCEINLINE void thread_pause() noexcept
--{
--#if defined(_MSC_VER)
--
--    BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
--#if defined(_M_ARM64) || defined(_M_ARM64EC)
--    __isb(0xF); // ISB SY
--#elif defined(_M_ARM)
--    __yield();
--#elif defined(_M_AMD64) || defined(_M_IX86)
--    _mm_pause();
--#endif
--    BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
--
--#elif defined(__GNUC__)
--
--#if defined(__i386__) || defined(__x86_64__)
--    __asm__ __volatile__("pause" : : : "memory");
--#elif defined(__aarch64__)
--    // https://github.com/rust-lang/rust/commit/c064b6560b7ce0adeb9bbf5d7dcf12b1acb0c807
--    // https://web.archive.org/web/20231004132033/https://bugs.java.com/bugdatabase/view_bug.do?bug_id=8258604
--    __asm__ __volatile__("isb" : : : "memory");
--#elif (defined(__ARM_ARCH) && __ARM_ARCH >= 8) || defined(__ARM_ARCH_8A__)
--    __asm__ __volatile__("yield" : : : "memory");
--#elif (defined(__POWERPC__) || defined(__PPC__))
--    __asm__ __volatile__("or 27,27,27" : : : "memory"); // yield pseudo-instruction
--#elif defined(__riscv) && (__riscv_xlen == 64)
--#if defined(__riscv_zihintpause)
--    __asm__ __volatile__("pause" : : : "memory");
--#else
--    // Encoding of the pause instruction
--    __asm__ __volatile__ (".4byte 0x100000F" : : : "memory");
--#endif
--#elif defined(sun) || defined(__sun)
--    smt_pause();
--#endif
--
--#elif defined(sun) || defined(__sun)
--
--    smt_pause();
--
--#endif
--}
--
--} // namespace atomics
--} // namespace boost
--
--#include <boost/atomic/detail/footer.hpp>
--
--#endif // BOOST_ATOMIC_THREAD_PAUSE_HPP_INCLUDED_
-diff --git a/boost_1_89_0/boost/atomic/wait_result.hpp b/boost_1_89_0/boost/atomic/wait_result.hpp
-deleted file mode 100644
-index a573db6d46..0000000000
---- a/boost_1_89_0/boost/atomic/wait_result.hpp
-+++ /dev/null
-@@ -1,56 +0,0 @@
--/*
-- * Distributed under the Boost Software License, Version 1.0.
-- * (See accompanying file LICENSE_1_0.txt or copy at
-- * http://www.boost.org/LICENSE_1_0.txt)
-- *
-- * Copyright (c) 2025 Andrey Semashev
-- */
--/*!
-- * \file   atomic/wait_result.hpp
-- *
-- * This header contains definition of the \c wait_result class template.
-- */
--
--#ifndef BOOST_ATOMIC_WAIT_RESULT_HPP_INCLUDED_
--#define BOOST_ATOMIC_WAIT_RESULT_HPP_INCLUDED_
--
--#include <type_traits>
--#include <boost/atomic/detail/config.hpp>
--#include <boost/atomic/detail/header.hpp>
--
--#ifdef BOOST_HAS_PRAGMA_ONCE
--#pragma once
--#endif
--
--namespace boost {
--namespace atomics {
--
--//! The structure contains the result of a timed waiting operation
--template< typename T >
--struct wait_result
--{
--    //! Last value read as part of the waiting operation
--    T value;
--    //! Indicates whether the waiting operation has ended due to timeout
--    bool timeout;
--
--    constexpr wait_result() noexcept(std::is_nothrow_default_constructible< T >::value) :
--        value(),
--        timeout(false)
--    {
--    }
--
--    template< typename U, typename = typename std::enable_if< std::is_constructible< T, U&& >::value >::type >
--    constexpr wait_result(U&& val, bool tout) noexcept(std::is_nothrow_constructible< T, U&& >::value) :
--        value(static_cast< U&& >(val)),
--        timeout(tout)
--    {
--    }
--};
--
--} // namespace atomics
--} // namespace boost
--
--#include <boost/atomic/detail/footer.hpp>
--
--#endif // BOOST_ATOMIC_WAIT_RESULT_HPP_INCLUDED_
-diff --git a/boost_1_89_0/libs/atomic/CMakeLists.txt b/boost_1_89_0/libs/atomic/CMakeLists.txt
-index c37129d993..d21aa26091 100644
---- a/boost_1_89_0/libs/atomic/CMakeLists.txt
-+++ b/boost_1_89_0/libs/atomic/CMakeLists.txt
-@@ -1,6 +1,6 @@
+diff --git a/boost_1_90_0/libs/atomic/CMakeLists.txt b/boost_1_90_0/libs/atomic/CMakeLists.txt
+index a3d6b1f8f7..d21aa26091 100644
+--- a/boost_1_90_0/libs/atomic/CMakeLists.txt
++++ b/boost_1_90_0/libs/atomic/CMakeLists.txt
+@@ -1,11 +1,11 @@
  # Copyright 2018 Mike Dev
  # Copyright 2019 Peter Dimov
 -# Copyright 2020-2025 Andrey Semashev
@@ -23331,6 +22940,12 @@ index c37129d993..d21aa26091 100644
  #
  # Distributed under the Boost Software License, Version 1.0.
  # See accompanying file LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
+ 
+-cmake_minimum_required(VERSION 3.8...3.16)
++cmake_minimum_required(VERSION 3.5...3.16)
+ project(boost_atomic VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
+ 
+ include(CheckCXXSourceCompiles)
 @@ -71,14 +71,25 @@ if (BOOST_ATOMIC_TARGET_X86)
      endif()
  endif()
@@ -23392,10 +23007,25 @@ index c37129d993..d21aa26091 100644
  if (BOOST_ATOMIC_COMPILER_HAS_SSE2)
      target_compile_definitions(boost_atomic PRIVATE BOOST_ATOMIC_USE_SSE2)
  endif()
-diff --git a/boost_1_89_0/libs/atomic/build/Jamfile.v2 b/boost_1_89_0/libs/atomic/build/Jamfile.v2
+diff --git a/boost_1_90_0/libs/atomic/README.md b/boost_1_90_0/libs/atomic/README.md
+index 0c50bb136d..3af2bc06f0 100644
+--- a/boost_1_90_0/libs/atomic/README.md
++++ b/boost_1_90_0/libs/atomic/README.md
+@@ -20,8 +20,8 @@ Boost.Atomic, part of collection of the [Boost C++ Libraries](https://github.com
+ 
+ Branch          | GitHub Actions | AppVeyor | Test Matrix | Dependencies |
+ :-------------: | -------------- | -------- | ----------- | ------------ |
+-[`master`](https://github.com/boostorg/atomic/tree/master) | [![GitHub Actions](https://github.com/boostorg/atomic/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/boostorg/atomic/actions?query=branch%3Amaster) | [![AppVeyor](https://ci.appveyor.com/api/projects/status/c64xu59bydnmb7kt/branch/master?svg=true)](https://ci.appveyor.com/project/Lastique/atomic/branch/master) | [![Tests](https://img.shields.io/badge/matrix-master-brightgreen.svg)](https://regression.boost.io/master/developer/atomic.html) | [![Dependencies](https://img.shields.io/badge/deps-master-brightgreen.svg)](https://pdimov.github.io/boostdep-report/master/atomic.html)
+-[`develop`](https://github.com/boostorg/atomic/tree/develop) | [![GitHub Actions](https://github.com/boostorg/atomic/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/boostorg/atomic/actions?query=branch%3Adevelop) | [![AppVeyor](https://ci.appveyor.com/api/projects/status/c64xu59bydnmb7kt/branch/develop?svg=true)](https://ci.appveyor.com/project/Lastique/atomic/branch/develop) | [![Tests](https://img.shields.io/badge/matrix-develop-brightgreen.svg)](https://regression.boost.io/develop/developer/atomic.html) | [![Dependencies](https://img.shields.io/badge/deps-develop-brightgreen.svg)](https://pdimov.github.io/boostdep-report/develop/atomic.html)
++[`master`](https://github.com/boostorg/atomic/tree/master) | [![GitHub Actions](https://github.com/boostorg/atomic/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/boostorg/atomic/actions?query=branch%3Amaster) | [![AppVeyor](https://ci.appveyor.com/api/projects/status/c64xu59bydnmb7kt/branch/master?svg=true)](https://ci.appveyor.com/project/Lastique/atomic/branch/master) | [![Tests](https://img.shields.io/badge/matrix-master-brightgreen.svg)](http://www.boost.org/development/tests/master/developer/atomic.html) | [![Dependencies](https://img.shields.io/badge/deps-master-brightgreen.svg)](https://pdimov.github.io/boostdep-report/master/atomic.html)
++[`develop`](https://github.com/boostorg/atomic/tree/develop) | [![GitHub Actions](https://github.com/boostorg/atomic/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/boostorg/atomic/actions?query=branch%3Adevelop) | [![AppVeyor](https://ci.appveyor.com/api/projects/status/c64xu59bydnmb7kt/branch/develop?svg=true)](https://ci.appveyor.com/project/Lastique/atomic/branch/develop) | [![Tests](https://img.shields.io/badge/matrix-develop-brightgreen.svg)](http://www.boost.org/development/tests/develop/developer/atomic.html) | [![Dependencies](https://img.shields.io/badge/deps-develop-brightgreen.svg)](https://pdimov.github.io/boostdep-report/develop/atomic.html)
+ 
+ ### License
+ 
+diff --git a/boost_1_90_0/libs/atomic/build/Jamfile.v2 b/boost_1_90_0/libs/atomic/build/Jamfile.v2
 index 7b9c735c44..2bb609b123 100644
---- a/boost_1_89_0/libs/atomic/build/Jamfile.v2
-+++ b/boost_1_89_0/libs/atomic/build/Jamfile.v2
+--- a/boost_1_90_0/libs/atomic/build/Jamfile.v2
++++ b/boost_1_90_0/libs/atomic/build/Jamfile.v2
 @@ -1,7 +1,7 @@
  #  Boost.Atomic Library Jamfile
  #
@@ -23508,10 +23138,10 @@ index 7b9c735c44..2bb609b123 100644
 +      <conditional>@check-synchronization-lib
        $(cxx_requirements)
     ;
-diff --git a/boost_1_89_0/libs/atomic/config/Jamfile.v2 b/boost_1_89_0/libs/atomic/config/Jamfile.v2
+diff --git a/boost_1_90_0/libs/atomic/config/Jamfile.v2 b/boost_1_90_0/libs/atomic/config/Jamfile.v2
 index b431336309..2ef3494c95 100644
---- a/boost_1_89_0/libs/atomic/config/Jamfile.v2
-+++ b/boost_1_89_0/libs/atomic/config/Jamfile.v2
+--- a/boost_1_90_0/libs/atomic/config/Jamfile.v2
++++ b/boost_1_90_0/libs/atomic/config/Jamfile.v2
 @@ -1,23 +1,20 @@
  #
 -#           Copyright Andrey Semashev 2020-2025.
@@ -23544,150 +23174,11 @@ index b431336309..2ef3494c95 100644
 -
 -obj has_sufficient_cxx11_type_traits : has_sufficient_cxx11_type_traits.cpp : <library>/boost/config//boost_config ;
 -explicit has_sufficient_cxx11_type_traits ;
-diff --git a/boost_1_89_0/libs/atomic/config/has_cxx11_nontrivial_union.cpp b/boost_1_89_0/libs/atomic/config/has_cxx11_nontrivial_union.cpp
-deleted file mode 100644
-index e5bfc6735a..0000000000
---- a/boost_1_89_0/libs/atomic/config/has_cxx11_nontrivial_union.cpp
-+++ /dev/null
-@@ -1,30 +0,0 @@
--/*
-- *             Copyright Andrey Semashev 2025.
-- * Distributed under the Boost Software License, Version 1.0.
-- *    (See accompanying file LICENSE_1_0.txt or copy at
-- *          http://www.boost.org/LICENSE_1_0.txt)
-- */
--
--// The test verifies that the compiler supports unions with non-trivial default constructors.
--
--class test_class
--{
--public:
--    test_class() {}
--};
--
--union test_union
--{
--    unsigned char as_bytes[sizeof(test_class)];
--    test_class as_class;
--
--    test_union() {}
--};
--
--int main(int, char*[])
--{
--    test_union tu;
--    tu.as_class = test_class();
--
--    return 0;
--}
-diff --git a/boost_1_89_0/libs/atomic/config/has_pthread_cond_clockwait.cpp b/boost_1_89_0/libs/atomic/config/has_pthread_cond_clockwait.cpp
-deleted file mode 100644
-index 07c56ec950..0000000000
---- a/boost_1_89_0/libs/atomic/config/has_pthread_cond_clockwait.cpp
-+++ /dev/null
-@@ -1,40 +0,0 @@
--/*
-- *             Copyright Andrey Semashev 2025.
-- * Distributed under the Boost Software License, Version 1.0.
-- *    (See accompanying file LICENSE_1_0.txt or copy at
-- *          http://www.boost.org/LICENSE_1_0.txt)
-- */
--
--#include <errno.h>
--#include <time.h>
--#include <pthread.h>
--
--int main(int, char*[])
--{
--    pthread_mutex_t mut;
--    pthread_mutex_init(&mut, nullptr);
--
--    pthread_cond_t cond;
--    pthread_cond_init(&cond, nullptr);
--
--    pthread_mutex_lock(&mut);
--
--    timespec ts;
--    clock_gettime(CLOCK_REALTIME, &ts);
--
--    ts.tv_sec += 1;
--    ts.tv_nsec += (int)0;
--
--    int err = pthread_cond_clockwait(&cond, &mut, CLOCK_REALTIME, &ts);
--    if (err == ETIMEDOUT)
--    {
--        (void)0;
--    }
--
--    pthread_mutex_unlock(&mut);
--
--    pthread_cond_destroy(&cond);
--    pthread_mutex_destroy(&mut);
--
--    return 0;
--}
-diff --git a/boost_1_89_0/libs/atomic/config/has_sufficient_cxx11_type_traits.cpp b/boost_1_89_0/libs/atomic/config/has_sufficient_cxx11_type_traits.cpp
-deleted file mode 100644
-index f188376740..0000000000
---- a/boost_1_89_0/libs/atomic/config/has_sufficient_cxx11_type_traits.cpp
-+++ /dev/null
-@@ -1,51 +0,0 @@
--/*
-- *             Copyright Andrey Semashev 2025.
-- * Distributed under the Boost Software License, Version 1.0.
-- *    (See accompanying file LICENSE_1_0.txt or copy at
-- *          http://www.boost.org/LICENSE_1_0.txt)
-- */
--
--// The test verifies that the compiler provides a <type_traits> header that is
--// sufficient for Boost.Atomic needs.
--
--#include <type_traits>
--#include <boost/config.hpp>
--
--int main(int, char*[])
--{
--    using std::integral_constant;
--    using std::true_type;
--    using std::false_type;
--    using std::conditional;
--    using std::enable_if;
--
--    using std::alignment_of;
--    using std::is_signed;
--    using std::is_unsigned;
--    using std::make_signed;
--    using std::make_unsigned;
--    using std::is_integral;
--    using std::is_floating_point;
--
--    using std::remove_cv;
--    using std::remove_all_extents;
--
--    using std::is_enum;
--    using std::is_function;
--
--    using std::is_constructible;
--    using std::is_nothrow_default_constructible;
--
--    using std::is_trivially_destructible;
--
--#if !defined(BOOST_LIBSTDCXX_VERSION) || (BOOST_LIBSTDCXX_VERSION >= 50100)
--    using std::is_trivially_default_constructible;
--    using std::is_trivially_copyable;
--#else
--    using std::has_trivial_default_constructor;
--    using std::has_trivial_copy_constructor;
--    using std::has_trivial_copy_assign;
--#endif
--
--    return 0;
--}
-diff --git a/boost_1_89_0/libs/atomic/config/has_synchronization_lib.cpp b/boost_1_89_0/libs/atomic/config/has_synchronization_lib.cpp
+diff --git a/boost_1_90_0/libs/atomic/config/has_synchronization_lib.cpp b/boost_1_90_0/libs/atomic/config/has_synchronization_lib.cpp
 new file mode 100644
 index 0000000000..c5c4089ed6
 --- /dev/null
-+++ b/boost_1_89_0/libs/atomic/config/has_synchronization_lib.cpp
++++ b/boost_1_90_0/libs/atomic/config/has_synchronization_lib.cpp
 @@ -0,0 +1,33 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -23722,10 +23213,10 @@ index 0000000000..c5c4089ed6
 +    boost::winapi::WaitOnAddress(&n, &compare, sizeof(n), 0);
 +    return 0;
 +}
-diff --git a/boost_1_89_0/libs/atomic/doc/atomic.qbk b/boost_1_89_0/libs/atomic/doc/atomic.qbk
+diff --git a/boost_1_90_0/libs/atomic/doc/atomic.qbk b/boost_1_90_0/libs/atomic/doc/atomic.qbk
 index 49c1c32f31..6db8c49f39 100644
---- a/boost_1_89_0/libs/atomic/doc/atomic.qbk
-+++ b/boost_1_89_0/libs/atomic/doc/atomic.qbk
+--- a/boost_1_90_0/libs/atomic/doc/atomic.qbk
++++ b/boost_1_90_0/libs/atomic/doc/atomic.qbk
 @@ -1,6 +1,6 @@
  [/
   / Copyright (c) 2009 Helge Bahmann
@@ -24509,10 +24000,10 @@ index 49c1c32f31..6db8c49f39 100644
  
  [endsect]
  
-diff --git a/boost_1_89_0/libs/atomic/doc/changelog.qbk b/boost_1_89_0/libs/atomic/doc/changelog.qbk
+diff --git a/boost_1_90_0/libs/atomic/doc/changelog.qbk b/boost_1_90_0/libs/atomic/doc/changelog.qbk
 index a385d5e1da..97008e457a 100644
---- a/boost_1_89_0/libs/atomic/doc/changelog.qbk
-+++ b/boost_1_89_0/libs/atomic/doc/changelog.qbk
+--- a/boost_1_90_0/libs/atomic/doc/changelog.qbk
++++ b/boost_1_90_0/libs/atomic/doc/changelog.qbk
 @@ -1,5 +1,5 @@
  [/
 - / Copyright (c) 2021-2025 Andrey Semashev
@@ -24538,10 +24029,10 @@ index a385d5e1da..97008e457a 100644
  [heading Boost 1.87]
  
  * Fixed initialization of atomic wait state list on memory reallocation. ([github_issue 72])
-diff --git a/boost_1_89_0/libs/atomic/doc/examples.qbk b/boost_1_89_0/libs/atomic/doc/examples.qbk
+diff --git a/boost_1_90_0/libs/atomic/doc/examples.qbk b/boost_1_90_0/libs/atomic/doc/examples.qbk
 index b6b51bfd55..ac160bd469 100644
---- a/boost_1_89_0/libs/atomic/doc/examples.qbk
-+++ b/boost_1_89_0/libs/atomic/doc/examples.qbk
+--- a/boost_1_90_0/libs/atomic/doc/examples.qbk
++++ b/boost_1_90_0/libs/atomic/doc/examples.qbk
 @@ -27,12 +27,12 @@ soon as the reference counter reaches zero.
      mutable boost::atomic<int> refcount_;
      friend void intrusive_ptr_add_ref(const X * x)
@@ -24689,10 +24180,10 @@ index b6b51bfd55..ac160bd469 100644
      }
    private:
      boost::atomic<node *> head_;
-diff --git a/boost_1_89_0/libs/atomic/doc/html/atomic/acknowledgements.html b/boost_1_89_0/libs/atomic/doc/html/atomic/acknowledgements.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/atomic/acknowledgements.html b/boost_1_90_0/libs/atomic/doc/html/atomic/acknowledgements.html
 index 0e61e67a81..865edc6710 100644
---- a/boost_1_89_0/libs/atomic/doc/html/atomic/acknowledgements.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/atomic/acknowledgements.html
+--- a/boost_1_90_0/libs/atomic/doc/html/atomic/acknowledgements.html
++++ b/boost_1_90_0/libs/atomic/doc/html/atomic/acknowledgements.html
 @@ -32,7 +32,7 @@
            of Boost logos.
          </li></ul></div>
@@ -24702,10 +24193,10 @@ index 0e61e67a81..865edc6710 100644
          Distributed under the Boost Software License, Version 1.0. (See accompanying
          file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
        </p>
-diff --git a/boost_1_89_0/libs/atomic/doc/html/atomic/changelog.html b/boost_1_89_0/libs/atomic/doc/html/atomic/changelog.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/atomic/changelog.html b/boost_1_90_0/libs/atomic/doc/html/atomic/changelog.html
 index 7334275910..49d11e9829 100644
---- a/boost_1_89_0/libs/atomic/doc/html/atomic/changelog.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/atomic/changelog.html
+--- a/boost_1_90_0/libs/atomic/doc/html/atomic/changelog.html
++++ b/boost_1_90_0/libs/atomic/doc/html/atomic/changelog.html
 @@ -29,48 +29,6 @@
  </h2></div></div></div>
  <h4>
@@ -24971,10 +24462,10 @@ index 7334275910..49d11e9829 100644
          Distributed under the Boost Software License, Version 1.0. (See accompanying
          file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
        </p>
-diff --git a/boost_1_89_0/libs/atomic/doc/html/atomic/interface.html b/boost_1_89_0/libs/atomic/doc/html/atomic/interface.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/atomic/interface.html b/boost_1_90_0/libs/atomic/doc/html/atomic/interface.html
 index 4a9b9bbb86..42ff701948 100644
---- a/boost_1_89_0/libs/atomic/doc/html/atomic/interface.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/atomic/interface.html
+--- a/boost_1_90_0/libs/atomic/doc/html/atomic/interface.html
++++ b/boost_1_90_0/libs/atomic/doc/html/atomic/interface.html
 @@ -38,7 +38,6 @@
  <dt><span class="section"><a href="interface.html#atomic.interface.interface_ipc">Atomic types for inter-process
        communication</a></span></dt>
@@ -26673,10 +26164,10 @@ index 4a9b9bbb86..42ff701948 100644
          Distributed under the Boost Software License, Version 1.0. (See accompanying
          file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
        </p>
-diff --git a/boost_1_89_0/libs/atomic/doc/html/atomic/limitations.html b/boost_1_89_0/libs/atomic/doc/html/atomic/limitations.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/atomic/limitations.html b/boost_1_90_0/libs/atomic/doc/html/atomic/limitations.html
 index c91995260c..5516a57243 100644
---- a/boost_1_89_0/libs/atomic/doc/html/atomic/limitations.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/atomic/limitations.html
+--- a/boost_1_90_0/libs/atomic/doc/html/atomic/limitations.html
++++ b/boost_1_90_0/libs/atomic/doc/html/atomic/limitations.html
 @@ -56,29 +56,30 @@
          </li>
  <li class="listitem">
@@ -26738,10 +26229,10 @@ index c91995260c..5516a57243 100644
          Distributed under the Boost Software License, Version 1.0. (See accompanying
          file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
        </p>
-diff --git a/boost_1_89_0/libs/atomic/doc/html/atomic/porting.html b/boost_1_89_0/libs/atomic/doc/html/atomic/porting.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/atomic/porting.html b/boost_1_90_0/libs/atomic/doc/html/atomic/porting.html
 index 691ca5c3fe..9ae43f74fd 100644
---- a/boost_1_89_0/libs/atomic/doc/html/atomic/porting.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/atomic/porting.html
+--- a/boost_1_90_0/libs/atomic/doc/html/atomic/porting.html
++++ b/boost_1_90_0/libs/atomic/doc/html/atomic/porting.html
 @@ -116,20 +116,13 @@
              clang 3.5 and newer: i386, x86_64
            </li>
@@ -26765,10 +26256,10 @@ index 691ca5c3fe..9ae43f74fd 100644
          Distributed under the Boost Software License, Version 1.0. (See accompanying
          file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
        </p>
-diff --git a/boost_1_89_0/libs/atomic/doc/html/atomic/thread_coordination.html b/boost_1_89_0/libs/atomic/doc/html/atomic/thread_coordination.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/atomic/thread_coordination.html b/boost_1_90_0/libs/atomic/doc/html/atomic/thread_coordination.html
 index 3bde1f6672..72c220086b 100644
---- a/boost_1_89_0/libs/atomic/doc/html/atomic/thread_coordination.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/atomic/thread_coordination.html
+--- a/boost_1_90_0/libs/atomic/doc/html/atomic/thread_coordination.html
++++ b/boost_1_90_0/libs/atomic/doc/html/atomic/thread_coordination.html
 @@ -155,10 +155,10 @@
  
  <span class="identifier">thread1</span><span class="special">:</span>
@@ -26835,10 +26326,10 @@ index 3bde1f6672..72c220086b 100644
          Distributed under the Boost Software License, Version 1.0. (See accompanying
          file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
        </p>
-diff --git a/boost_1_89_0/libs/atomic/doc/html/atomic/usage_examples.html b/boost_1_89_0/libs/atomic/doc/html/atomic/usage_examples.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/atomic/usage_examples.html b/boost_1_90_0/libs/atomic/doc/html/atomic/usage_examples.html
 index ed7b4d680a..958f98e8c1 100644
---- a/boost_1_89_0/libs/atomic/doc/html/atomic/usage_examples.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/atomic/usage_examples.html
+--- a/boost_1_90_0/libs/atomic/doc/html/atomic/usage_examples.html
++++ b/boost_1_90_0/libs/atomic/doc/html/atomic/usage_examples.html
 @@ -69,12 +69,12 @@
    <span class="keyword">mutable</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">atomic</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;</span> <span class="identifier">refcount_</span><span class="special">;</span>
    <span class="keyword">friend</span> <span class="keyword">void</span> <span class="identifier">intrusive_ptr_add_ref</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">X</span> <span class="special">*</span> <span class="identifier">x</span><span class="special">)</span>
@@ -26998,10 +26489,10 @@ index ed7b4d680a..958f98e8c1 100644
          Distributed under the Boost Software License, Version 1.0. (See accompanying
          file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
        </p>
-diff --git a/boost_1_89_0/libs/atomic/doc/html/index.html b/boost_1_89_0/libs/atomic/doc/html/index.html
+diff --git a/boost_1_90_0/libs/atomic/doc/html/index.html b/boost_1_90_0/libs/atomic/doc/html/index.html
 index d875f5d4a2..2949476d8b 100644
---- a/boost_1_89_0/libs/atomic/doc/html/index.html
-+++ b/boost_1_89_0/libs/atomic/doc/html/index.html
+--- a/boost_1_90_0/libs/atomic/doc/html/index.html
++++ b/boost_1_90_0/libs/atomic/doc/html/index.html
 @@ -31,7 +31,7 @@
  </h3></div></div>
  <div><p class="copyright">Copyright © 2011 Helge Bahmann</p></div>
@@ -27019,10 +26510,10 @@ index d875f5d4a2..2949476d8b 100644
  <dt><span class="section"><a href="atomic/interface.html#atomic.interface.feature_macros">Feature testing macros</a></span></dt>
  </dl></dd>
  <dt><span class="section"><a href="atomic/usage_examples.html">Usage examples</a></span></dt>
-diff --git a/boost_1_89_0/libs/atomic/doc/platform.qbk b/boost_1_89_0/libs/atomic/doc/platform.qbk
+diff --git a/boost_1_90_0/libs/atomic/doc/platform.qbk b/boost_1_90_0/libs/atomic/doc/platform.qbk
 index 868d89248a..5c9f8b1465 100644
---- a/boost_1_89_0/libs/atomic/doc/platform.qbk
-+++ b/boost_1_89_0/libs/atomic/doc/platform.qbk
+--- a/boost_1_90_0/libs/atomic/doc/platform.qbk
++++ b/boost_1_90_0/libs/atomic/doc/platform.qbk
 @@ -94,11 +94,11 @@ These must be implemented as partial template specializations for
      explicit platform_atomic_integral(T v) : i(v) {}
      platform_atomic_integral(void) {}
@@ -27058,10 +26549,10 @@ index 868d89248a..5c9f8b1465 100644
      {
        // platform-specific code
      }
-diff --git a/boost_1_89_0/libs/atomic/src/cpuid.hpp b/boost_1_89_0/libs/atomic/src/cpuid.hpp
+diff --git a/boost_1_90_0/libs/atomic/src/cpuid.hpp b/boost_1_90_0/libs/atomic/src/cpuid.hpp
 index a9712fae48..25d728791a 100644
---- a/boost_1_89_0/libs/atomic/src/cpuid.hpp
-+++ b/boost_1_89_0/libs/atomic/src/cpuid.hpp
+--- a/boost_1_90_0/libs/atomic/src/cpuid.hpp
++++ b/boost_1_90_0/libs/atomic/src/cpuid.hpp
 @@ -21,7 +21,7 @@
  #if defined(_MSC_VER)
  #include <intrin.h> // __cpuid
@@ -27097,10 +26588,10 @@ index a9712fae48..25d728791a 100644
  #else // defined(__x86_64__)
      __asm__ __volatile__
      (
-diff --git a/boost_1_89_0/libs/atomic/src/find_address.hpp b/boost_1_89_0/libs/atomic/src/find_address.hpp
+diff --git a/boost_1_90_0/libs/atomic/src/find_address.hpp b/boost_1_90_0/libs/atomic/src/find_address.hpp
 index 2cac9eeb99..e1e4654a22 100644
---- a/boost_1_89_0/libs/atomic/src/find_address.hpp
-+++ b/boost_1_89_0/libs/atomic/src/find_address.hpp
+--- a/boost_1_90_0/libs/atomic/src/find_address.hpp
++++ b/boost_1_90_0/libs/atomic/src/find_address.hpp
 @@ -25,7 +25,7 @@ namespace atomics {
  namespace detail {
  
@@ -27110,10 +26601,10 @@ index 2cac9eeb99..e1e4654a22 100644
  
  extern find_address_t find_address_generic;
  
-diff --git a/boost_1_89_0/libs/atomic/src/find_address_sse2.cpp b/boost_1_89_0/libs/atomic/src/find_address_sse2.cpp
+diff --git a/boost_1_90_0/libs/atomic/src/find_address_sse2.cpp b/boost_1_90_0/libs/atomic/src/find_address_sse2.cpp
 index 92e406d43a..c733ebe11c 100644
---- a/boost_1_89_0/libs/atomic/src/find_address_sse2.cpp
-+++ b/boost_1_89_0/libs/atomic/src/find_address_sse2.cpp
+--- a/boost_1_90_0/libs/atomic/src/find_address_sse2.cpp
++++ b/boost_1_90_0/libs/atomic/src/find_address_sse2.cpp
 @@ -16,10 +16,10 @@
  
  #if BOOST_ARCH_X86 && defined(BOOST_ATOMIC_DETAIL_SIZEOF_POINTER) && (BOOST_ATOMIC_DETAIL_SIZEOF_POINTER == 8 || BOOST_ATOMIC_DETAIL_SIZEOF_POINTER == 4)
@@ -27190,10 +26681,10 @@ index 92e406d43a..c733ebe11c 100644
          if (mask)
          {
              pos += atomics::detail::count_trailing_zeros(mask);
-diff --git a/boost_1_89_0/libs/atomic/src/find_address_sse41.cpp b/boost_1_89_0/libs/atomic/src/find_address_sse41.cpp
+diff --git a/boost_1_90_0/libs/atomic/src/find_address_sse41.cpp b/boost_1_90_0/libs/atomic/src/find_address_sse41.cpp
 index ea7f53189e..6ac208a158 100644
---- a/boost_1_89_0/libs/atomic/src/find_address_sse41.cpp
-+++ b/boost_1_89_0/libs/atomic/src/find_address_sse41.cpp
+--- a/boost_1_90_0/libs/atomic/src/find_address_sse41.cpp
++++ b/boost_1_90_0/libs/atomic/src/find_address_sse41.cpp
 @@ -16,10 +16,10 @@
  
  #if BOOST_ARCH_X86 && defined(BOOST_ATOMIC_DETAIL_SIZEOF_POINTER) && (BOOST_ATOMIC_DETAIL_SIZEOF_POINTER == 8)
@@ -27243,10 +26734,10 @@ index ea7f53189e..6ac208a158 100644
          if (mask)
          {
              pos += atomics::detail::count_trailing_zeros(mask);
-diff --git a/boost_1_89_0/libs/atomic/src/lock_pool.cpp b/boost_1_89_0/libs/atomic/src/lock_pool.cpp
+diff --git a/boost_1_90_0/libs/atomic/src/lock_pool.cpp b/boost_1_90_0/libs/atomic/src/lock_pool.cpp
 index 8641ef7ec6..6f56868a2f 100644
---- a/boost_1_89_0/libs/atomic/src/lock_pool.cpp
-+++ b/boost_1_89_0/libs/atomic/src/lock_pool.cpp
+--- a/boost_1_90_0/libs/atomic/src/lock_pool.cpp
++++ b/boost_1_90_0/libs/atomic/src/lock_pool.cpp
 @@ -4,7 +4,7 @@
   * http://www.boost.org/LICENSE_1_0.txt)
   *
@@ -28819,11 +28310,11 @@ index 8641ef7ec6..6f56868a2f 100644
  {
      // This function is intentionally non-inline, even if empty. This forces the compiler to treat its call as a compiler barrier.
  #if BOOST_ATOMIC_SIGNAL_FENCE == 2
-diff --git a/boost_1_89_0/libs/atomic/src/wait_on_address.cpp b/boost_1_89_0/libs/atomic/src/wait_on_address.cpp
+diff --git a/boost_1_90_0/libs/atomic/src/wait_on_address.cpp b/boost_1_90_0/libs/atomic/src/wait_on_address.cpp
 new file mode 100644
 index 0000000000..5f46e81841
 --- /dev/null
-+++ b/boost_1_89_0/libs/atomic/src/wait_on_address.cpp
++++ b/boost_1_90_0/libs/atomic/src/wait_on_address.cpp
 @@ -0,0 +1,112 @@
 +/*
 + * Distributed under the Boost Software License, Version 1.0.
@@ -28937,10 +28428,10 @@ index 0000000000..5f46e81841
 +} // namespace boost
 +
 +#include <boost/atomic/detail/footer.hpp>
-diff --git a/boost_1_89_0/libs/atomic/src/x86_vector_tools.hpp b/boost_1_89_0/libs/atomic/src/x86_vector_tools.hpp
+diff --git a/boost_1_90_0/libs/atomic/src/x86_vector_tools.hpp b/boost_1_90_0/libs/atomic/src/x86_vector_tools.hpp
 index 0280cd1f13..2aaef7664a 100644
---- a/boost_1_89_0/libs/atomic/src/x86_vector_tools.hpp
-+++ b/boost_1_89_0/libs/atomic/src/x86_vector_tools.hpp
+--- a/boost_1_90_0/libs/atomic/src/x86_vector_tools.hpp
++++ b/boost_1_90_0/libs/atomic/src/x86_vector_tools.hpp
 @@ -20,7 +20,7 @@
  #if BOOST_ARCH_X86 && defined(BOOST_ATOMIC_DETAIL_SIZEOF_POINTER) && (BOOST_ATOMIC_DETAIL_SIZEOF_POINTER == 8)
  
@@ -28959,10 +28450,10 @@ index 0280cd1f13..2aaef7664a 100644
      return _mm_set_epi32(hi, lo, hi, lo);
  #endif
  }
-diff --git a/boost_1_89_0/libs/atomic/test/CMakeLists.txt b/boost_1_89_0/libs/atomic/test/CMakeLists.txt
+diff --git a/boost_1_90_0/libs/atomic/test/CMakeLists.txt b/boost_1_90_0/libs/atomic/test/CMakeLists.txt
 index 32d4643c4b..5f6d2ef78d 100644
---- a/boost_1_89_0/libs/atomic/test/CMakeLists.txt
-+++ b/boost_1_89_0/libs/atomic/test/CMakeLists.txt
+--- a/boost_1_90_0/libs/atomic/test/CMakeLists.txt
++++ b/boost_1_90_0/libs/atomic/test/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -# Copyright 2024-2025 Andrey Semashev
 +# Copyright 2024 Andrey Semashev
@@ -28989,10 +28480,10 @@ index 32d4643c4b..5f6d2ef78d 100644
      Boost::type_traits
  )
  
-diff --git a/boost_1_89_0/libs/atomic/test/Jamfile.v2 b/boost_1_89_0/libs/atomic/test/Jamfile.v2
+diff --git a/boost_1_90_0/libs/atomic/test/Jamfile.v2 b/boost_1_90_0/libs/atomic/test/Jamfile.v2
 index 2567668715..a00eab9d7c 100644
---- a/boost_1_89_0/libs/atomic/test/Jamfile.v2
-+++ b/boost_1_89_0/libs/atomic/test/Jamfile.v2
+--- a/boost_1_90_0/libs/atomic/test/Jamfile.v2
++++ b/boost_1_90_0/libs/atomic/test/Jamfile.v2
 @@ -2,44 +2,24 @@
  #
  #  Copyright (c) 2011 Helge Bahmann
@@ -29042,10 +28533,10 @@ index 2567668715..a00eab9d7c 100644
      ;
  
  test-suite atomic
-diff --git a/boost_1_89_0/libs/atomic/test/aligned_object.hpp b/boost_1_89_0/libs/atomic/test/aligned_object.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/aligned_object.hpp b/boost_1_90_0/libs/atomic/test/aligned_object.hpp
 index 8fc7ae5d4b..7446dc121b 100644
---- a/boost_1_89_0/libs/atomic/test/aligned_object.hpp
-+++ b/boost_1_89_0/libs/atomic/test/aligned_object.hpp
+--- a/boost_1_90_0/libs/atomic/test/aligned_object.hpp
++++ b/boost_1_90_0/libs/atomic/test/aligned_object.hpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -29098,10 +28589,10 @@ index 8fc7ae5d4b..7446dc121b 100644
  #endif
          unsigned char* p = m_storage;
          uintptr_type misalignment = ((uintptr_type)p) & (Alignment - 1u);
-diff --git a/boost_1_89_0/libs/atomic/test/api_test_helpers.hpp b/boost_1_89_0/libs/atomic/test/api_test_helpers.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/api_test_helpers.hpp b/boost_1_90_0/libs/atomic/test/api_test_helpers.hpp
 index 4b4bacef69..ee9cff1f2b 100644
---- a/boost_1_89_0/libs/atomic/test/api_test_helpers.hpp
-+++ b/boost_1_89_0/libs/atomic/test/api_test_helpers.hpp
+--- a/boost_1_90_0/libs/atomic/test/api_test_helpers.hpp
++++ b/boost_1_90_0/libs/atomic/test/api_test_helpers.hpp
 @@ -1,5 +1,5 @@
  //  Copyright (c) 2011 Helge Bahmann
 -//  Copyright (c) 2017-2025 Andrey Semashev
@@ -29564,10 +29055,10 @@ index 4b4bacef69..ee9cff1f2b 100644
      value_type i;
      test_struct_with_ctor() : i(0x01234567) {}
      inline bool operator==(test_struct_with_ctor const& c) const { return i == c.i; }
-diff --git a/boost_1_89_0/libs/atomic/test/atomic_api.cpp b/boost_1_89_0/libs/atomic/test/atomic_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/atomic_api.cpp b/boost_1_90_0/libs/atomic/test/atomic_api.cpp
 index ff88913dce..4aa4361361 100644
---- a/boost_1_89_0/libs/atomic/test/atomic_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/atomic_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/atomic_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/atomic_api.cpp
 @@ -1,5 +1,5 @@
  //  Copyright (c) 2011 Helge Bahmann
 -//  Copyright (c) 2020-2025 Andrey Semashev
@@ -29644,10 +29135,10 @@ index ff88913dce..4aa4361361 100644
 -
      return boost::report_errors();
  }
-diff --git a/boost_1_89_0/libs/atomic/test/atomic_ref_api.cpp b/boost_1_89_0/libs/atomic/test/atomic_ref_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/atomic_ref_api.cpp b/boost_1_90_0/libs/atomic/test/atomic_ref_api.cpp
 index 4268ac7709..894925257e 100644
---- a/boost_1_89_0/libs/atomic/test/atomic_ref_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/atomic_ref_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/atomic_ref_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/atomic_ref_api.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020-2021 Andrey Semashev
@@ -29715,10 +29206,10 @@ index 4268ac7709..894925257e 100644
  
      // https://svn.boost.org/trac/boost/ticket/9985
      test_struct_api< atomic_ref_wrapper, test_struct< double > >();
-diff --git a/boost_1_89_0/libs/atomic/test/atomic_wrapper.hpp b/boost_1_89_0/libs/atomic/test/atomic_wrapper.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/atomic_wrapper.hpp b/boost_1_90_0/libs/atomic/test/atomic_wrapper.hpp
 index 4ba0ef5624..c5e9618af0 100644
---- a/boost_1_89_0/libs/atomic/test/atomic_wrapper.hpp
-+++ b/boost_1_89_0/libs/atomic/test/atomic_wrapper.hpp
+--- a/boost_1_90_0/libs/atomic/test/atomic_wrapper.hpp
++++ b/boost_1_90_0/libs/atomic/test/atomic_wrapper.hpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -29786,10 +29277,10 @@ index 4ba0ef5624..c5e9618af0 100644
  
      aligned_object< T, atomic_type::required_alignment > object;
      const atomic_type a;
-diff --git a/boost_1_89_0/libs/atomic/test/atomicity.cpp b/boost_1_89_0/libs/atomic/test/atomicity.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/atomicity.cpp b/boost_1_90_0/libs/atomic/test/atomicity.cpp
 index 610e8fae3d..b21cbc633f 100644
---- a/boost_1_89_0/libs/atomic/test/atomicity.cpp
-+++ b/boost_1_89_0/libs/atomic/test/atomicity.cpp
+--- a/boost_1_90_0/libs/atomic/test/atomicity.cpp
++++ b/boost_1_90_0/libs/atomic/test/atomicity.cpp
 @@ -1,5 +1,4 @@
  //  Copyright (c) 2011 Helge Bahmann
 -//  Copyright (c) 2025 Andrey Semashev
@@ -29888,10 +29379,10 @@ index 610e8fae3d..b21cbc633f 100644
  
          bool success = concurrent_runner::execute(
              [&value](std::size_t instance) { return test_bitops< unsigned int, 0 >(value, instance); },
-diff --git a/boost_1_89_0/libs/atomic/test/atomicity_ref.cpp b/boost_1_89_0/libs/atomic/test/atomicity_ref.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/atomicity_ref.cpp b/boost_1_90_0/libs/atomic/test/atomicity_ref.cpp
 index bb97a76d10..ffe613ecdb 100644
---- a/boost_1_89_0/libs/atomic/test/atomicity_ref.cpp
-+++ b/boost_1_89_0/libs/atomic/test/atomicity_ref.cpp
+--- a/boost_1_90_0/libs/atomic/test/atomicity_ref.cpp
++++ b/boost_1_90_0/libs/atomic/test/atomicity_ref.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -29990,10 +29481,10 @@ index bb97a76d10..ffe613ecdb 100644
  
          bool success = concurrent_runner::execute(
              [&value](std::size_t instance) { return test_bitops< unsigned int, 0 >(value, instance); },
-diff --git a/boost_1_89_0/libs/atomic/test/ipc_atomic_api.cpp b/boost_1_89_0/libs/atomic/test/ipc_atomic_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/ipc_atomic_api.cpp b/boost_1_90_0/libs/atomic/test/ipc_atomic_api.cpp
 index 6a68a87c7b..4cacefedf3 100644
---- a/boost_1_89_0/libs/atomic/test/ipc_atomic_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/ipc_atomic_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/ipc_atomic_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/ipc_atomic_api.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -30036,10 +29527,10 @@ index 6a68a87c7b..4cacefedf3 100644
  
  #if defined(BOOST_HAS_INT128) && !defined(BOOST_ATOMIC_TESTS_NO_INT128)
      test_lock_free_integral_api< ipc_atomic_wrapper, boost::int128_type >();
-diff --git a/boost_1_89_0/libs/atomic/test/ipc_atomic_ref_api.cpp b/boost_1_89_0/libs/atomic/test/ipc_atomic_ref_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/ipc_atomic_ref_api.cpp b/boost_1_90_0/libs/atomic/test/ipc_atomic_ref_api.cpp
 index 54502c8ae2..3b19597240 100644
---- a/boost_1_89_0/libs/atomic/test/ipc_atomic_ref_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/ipc_atomic_ref_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/ipc_atomic_ref_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/ipc_atomic_ref_api.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020-2021 Andrey Semashev
@@ -30082,10 +29573,10 @@ index 54502c8ae2..3b19597240 100644
  
  #if defined(BOOST_HAS_INT128) && !defined(BOOST_ATOMIC_TESTS_NO_INT128)
      test_lock_free_integral_api< ipc_atomic_ref_wrapper, boost::int128_type >();
-diff --git a/boost_1_89_0/libs/atomic/test/ipc_wait_api.cpp b/boost_1_89_0/libs/atomic/test/ipc_wait_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/ipc_wait_api.cpp b/boost_1_90_0/libs/atomic/test/ipc_wait_api.cpp
 index add7ac5bca..fcc864737b 100644
---- a/boost_1_89_0/libs/atomic/test/ipc_wait_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/ipc_wait_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/ipc_wait_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/ipc_wait_api.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -30117,10 +29608,10 @@ index add7ac5bca..fcc864737b 100644
  #if defined(BOOST_HAS_INT128) && !defined(BOOST_ATOMIC_TESTS_NO_INT128)
      test_wait_notify_api< ipc_atomic_wrapper, boost::uint128_type >(1, 2, 3, BOOST_ATOMIC_HAS_NATIVE_INT128_IPC_WAIT_NOTIFY);
  #endif
-diff --git a/boost_1_89_0/libs/atomic/test/ipc_wait_ref_api.cpp b/boost_1_89_0/libs/atomic/test/ipc_wait_ref_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/ipc_wait_ref_api.cpp b/boost_1_90_0/libs/atomic/test/ipc_wait_ref_api.cpp
 index c9a1fb4295..222a97cecd 100644
---- a/boost_1_89_0/libs/atomic/test/ipc_wait_ref_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/ipc_wait_ref_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/ipc_wait_ref_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/ipc_wait_ref_api.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -30150,10 +29641,10 @@ index c9a1fb4295..222a97cecd 100644
  #if defined(BOOST_HAS_INT128) && !defined(BOOST_ATOMIC_TESTS_NO_INT128)
      test_wait_notify_api< ipc_atomic_ref_wrapper, boost::uint128_type >(1, 2, 3, BOOST_ATOMIC_HAS_NATIVE_INT128_IPC_WAIT_NOTIFY);
  #endif
-diff --git a/boost_1_89_0/libs/atomic/test/ipc_wait_test_helpers.hpp b/boost_1_89_0/libs/atomic/test/ipc_wait_test_helpers.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/ipc_wait_test_helpers.hpp b/boost_1_90_0/libs/atomic/test/ipc_wait_test_helpers.hpp
 index 30aaa22e9e..cbc82ad735 100644
---- a/boost_1_89_0/libs/atomic/test/ipc_wait_test_helpers.hpp
-+++ b/boost_1_89_0/libs/atomic/test/ipc_wait_test_helpers.hpp
+--- a/boost_1_90_0/libs/atomic/test/ipc_wait_test_helpers.hpp
++++ b/boost_1_90_0/libs/atomic/test/ipc_wait_test_helpers.hpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020-2023 Andrey Semashev
@@ -30758,10 +30249,10 @@ index 30aaa22e9e..cbc82ad735 100644
  
      bool received_value = f.wait(true);
      BOOST_TEST(!received_value);
-diff --git a/boost_1_89_0/libs/atomic/test/lightweight_test_stream.hpp b/boost_1_89_0/libs/atomic/test/lightweight_test_stream.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/lightweight_test_stream.hpp b/boost_1_90_0/libs/atomic/test/lightweight_test_stream.hpp
 index 6fd6199cc8..14c1b6c7c2 100644
---- a/boost_1_89_0/libs/atomic/test/lightweight_test_stream.hpp
-+++ b/boost_1_89_0/libs/atomic/test/lightweight_test_stream.hpp
+--- a/boost_1_90_0/libs/atomic/test/lightweight_test_stream.hpp
++++ b/boost_1_90_0/libs/atomic/test/lightweight_test_stream.hpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -30802,10 +30293,10 @@ index 6fd6199cc8..14c1b6c7c2 100644
      {
          std::cerr << manip;
          return *this;
-diff --git a/boost_1_89_0/libs/atomic/test/lockfree.cpp b/boost_1_89_0/libs/atomic/test/lockfree.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/lockfree.cpp b/boost_1_90_0/libs/atomic/test/lockfree.cpp
 index 6b4d967279..2a420339bc 100644
---- a/boost_1_89_0/libs/atomic/test/lockfree.cpp
-+++ b/boost_1_89_0/libs/atomic/test/lockfree.cpp
+--- a/boost_1_90_0/libs/atomic/test/lockfree.cpp
++++ b/boost_1_90_0/libs/atomic/test/lockfree.cpp
 @@ -185,7 +185,7 @@ void verify_lock_free(const char* type_name, int lock_free_macro_val, int lock_f
  #define EXPECT_SHORT_LOCK_FREE 2
  #define EXPECT_INT_LOCK_FREE 2
@@ -30815,10 +30306,10 @@ index 6b4d967279..2a420339bc 100644
  #define EXPECT_LLONG_LOCK_FREE 2
  #else
  #define EXPECT_LLONG_LOCK_FREE 0
-diff --git a/boost_1_89_0/libs/atomic/test/ordering.cpp b/boost_1_89_0/libs/atomic/test/ordering.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/ordering.cpp b/boost_1_90_0/libs/atomic/test/ordering.cpp
 index b325efccf3..861dcdd1b0 100644
---- a/boost_1_89_0/libs/atomic/test/ordering.cpp
-+++ b/boost_1_89_0/libs/atomic/test/ordering.cpp
+--- a/boost_1_90_0/libs/atomic/test/ordering.cpp
++++ b/boost_1_90_0/libs/atomic/test/ordering.cpp
 @@ -1,6 +1,6 @@
  //  Copyright (c) 2011 Helge Bahmann
  //  Copyright (c) 2012 Tim Blechmann
@@ -30907,10 +30398,10 @@ index b325efccf3..861dcdd1b0 100644
  
      std::cout << "run seq_cst for " << timeout_us.count() << " us\n";
  
-diff --git a/boost_1_89_0/libs/atomic/test/ordering_ref.cpp b/boost_1_89_0/libs/atomic/test/ordering_ref.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/ordering_ref.cpp b/boost_1_90_0/libs/atomic/test/ordering_ref.cpp
 index e24406857d..6624358727 100644
---- a/boost_1_89_0/libs/atomic/test/ordering_ref.cpp
-+++ b/boost_1_89_0/libs/atomic/test/ordering_ref.cpp
+--- a/boost_1_90_0/libs/atomic/test/ordering_ref.cpp
++++ b/boost_1_90_0/libs/atomic/test/ordering_ref.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020-2023 Andrey Semashev
@@ -30997,11 +30488,11 @@ index e24406857d..6624358727 100644
  
      std::cout << "run seq_cst for " << timeout_us.count() << " us\n";
  
-diff --git a/boost_1_89_0/libs/atomic/test/test_clock.hpp b/boost_1_89_0/libs/atomic/test/test_clock.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/test_clock.hpp b/boost_1_90_0/libs/atomic/test/test_clock.hpp
 new file mode 100644
 index 0000000000..489e500705
 --- /dev/null
-+++ b/boost_1_89_0/libs/atomic/test/test_clock.hpp
++++ b/boost_1_90_0/libs/atomic/test/test_clock.hpp
 @@ -0,0 +1,59 @@
 +//  Copyright (c) 2020 Andrey Semashev
 +//
@@ -31062,39 +30553,10 @@ index 0000000000..489e500705
 +#endif
 +
 +#endif // BOOST_ATOMIC_TEST_TEST_CLOCK_HPP_INCLUDED_
-diff --git a/boost_1_89_0/libs/atomic/test/test_config.hpp b/boost_1_89_0/libs/atomic/test/test_config.hpp
-deleted file mode 100644
-index b6c296b6bc..0000000000
---- a/boost_1_89_0/libs/atomic/test/test_config.hpp
-+++ /dev/null
-@@ -1,23 +0,0 @@
--//  Copyright (c) 2025 Andrey Semashev
--//
--//  Distributed under the Boost Software License, Version 1.0.
--//  See accompanying file LICENSE_1_0.txt or copy at
--//  http://www.boost.org/LICENSE_1_0.txt)
--
--#ifndef BOOST_ATOMIC_TEST_TEST_CONFIG_HPP_INCLUDED_
--#define BOOST_ATOMIC_TEST_TEST_CONFIG_HPP_INCLUDED_
--
--#include <boost/config.hpp>
--
--#if defined(TSAN) && defined(__GNUC__)
--
--// Suppresses TSAN for a marked function
--#define BOOST_ATOMIC_TEST_NO_SANITIZE_THREAD __attribute__((no_sanitize("thread")))
--
--#else // defined(TSAN) && defined(__GNUC__)
--
--#define BOOST_ATOMIC_TEST_NO_SANITIZE_THREAD
--
--#endif // defined(TSAN) && defined(__GNUC__)
--
--#endif // BOOST_ATOMIC_TEST_TEST_CONFIG_HPP_INCLUDED_
-diff --git a/boost_1_89_0/libs/atomic/test/test_thread.hpp b/boost_1_89_0/libs/atomic/test/test_thread.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/test_thread.hpp b/boost_1_90_0/libs/atomic/test/test_thread.hpp
 index e71f58c4c2..c3bcc264d4 100644
---- a/boost_1_89_0/libs/atomic/test/test_thread.hpp
-+++ b/boost_1_89_0/libs/atomic/test/test_thread.hpp
+--- a/boost_1_90_0/libs/atomic/test/test_thread.hpp
++++ b/boost_1_90_0/libs/atomic/test/test_thread.hpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2023-2025 Andrey Semashev
 +//  Copyright (c) 2023 Andrey Semashev
@@ -31118,10 +30580,10 @@ index e71f58c4c2..c3bcc264d4 100644
      }
  
      template< typename Clock, typename Duration >
-diff --git a/boost_1_89_0/libs/atomic/test/wait_api.cpp b/boost_1_89_0/libs/atomic/test/wait_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/wait_api.cpp b/boost_1_90_0/libs/atomic/test/wait_api.cpp
 index 0ba42c8595..624ac7f1a1 100644
---- a/boost_1_89_0/libs/atomic/test/wait_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/wait_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/wait_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/wait_api.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -31153,10 +30615,10 @@ index 0ba42c8595..624ac7f1a1 100644
  #if defined(BOOST_HAS_INT128) && !defined(BOOST_ATOMIC_TESTS_NO_INT128)
      test_wait_notify_api< atomic_wrapper, boost::uint128_type >(1, 2, 3, BOOST_ATOMIC_HAS_NATIVE_INT128_WAIT_NOTIFY);
  #endif
-diff --git a/boost_1_89_0/libs/atomic/test/wait_fuzz.cpp b/boost_1_89_0/libs/atomic/test/wait_fuzz.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/wait_fuzz.cpp b/boost_1_90_0/libs/atomic/test/wait_fuzz.cpp
 index e8181eb9f4..c8d82fadff 100644
---- a/boost_1_89_0/libs/atomic/test/wait_fuzz.cpp
-+++ b/boost_1_89_0/libs/atomic/test/wait_fuzz.cpp
+--- a/boost_1_90_0/libs/atomic/test/wait_fuzz.cpp
++++ b/boost_1_90_0/libs/atomic/test/wait_fuzz.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -31186,10 +30648,10 @@ index e8181eb9f4..c8d82fadff 100644
  
      while (true)
      {
-diff --git a/boost_1_89_0/libs/atomic/test/wait_ref_api.cpp b/boost_1_89_0/libs/atomic/test/wait_ref_api.cpp
+diff --git a/boost_1_90_0/libs/atomic/test/wait_ref_api.cpp b/boost_1_90_0/libs/atomic/test/wait_ref_api.cpp
 index 63aef62d2d..517994a60f 100644
---- a/boost_1_89_0/libs/atomic/test/wait_ref_api.cpp
-+++ b/boost_1_89_0/libs/atomic/test/wait_ref_api.cpp
+--- a/boost_1_90_0/libs/atomic/test/wait_ref_api.cpp
++++ b/boost_1_90_0/libs/atomic/test/wait_ref_api.cpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020 Andrey Semashev
@@ -31219,10 +30681,10 @@ index 63aef62d2d..517994a60f 100644
  #if defined(BOOST_HAS_INT128) && !defined(BOOST_ATOMIC_TESTS_NO_INT128)
      test_wait_notify_api< atomic_ref_wrapper, boost::uint128_type >(1, 2, 3, BOOST_ATOMIC_HAS_NATIVE_INT128_WAIT_NOTIFY);
  #endif
-diff --git a/boost_1_89_0/libs/atomic/test/wait_test_helpers.hpp b/boost_1_89_0/libs/atomic/test/wait_test_helpers.hpp
+diff --git a/boost_1_90_0/libs/atomic/test/wait_test_helpers.hpp b/boost_1_90_0/libs/atomic/test/wait_test_helpers.hpp
 index e2be27b292..144eb72481 100644
---- a/boost_1_89_0/libs/atomic/test/wait_test_helpers.hpp
-+++ b/boost_1_89_0/libs/atomic/test/wait_test_helpers.hpp
+--- a/boost_1_90_0/libs/atomic/test/wait_test_helpers.hpp
++++ b/boost_1_90_0/libs/atomic/test/wait_test_helpers.hpp
 @@ -1,4 +1,4 @@
 -//  Copyright (c) 2020-2025 Andrey Semashev
 +//  Copyright (c) 2020-2023 Andrey Semashev
@@ -31795,32 +31257,3 @@ index e2be27b292..144eb72481 100644
  
      bool received_value = f.wait(true);
      BOOST_TEST(!received_value);
-diff --git a/boost_1_89_0/boost/atomic.hpp b/boost_1_89_0/boost/atomic.hpp
-index 7aaa72cd17..00f3a33648 100644
---- a/boost_1_89_0/boost/atomic.hpp
-+++ b/boost_1_89_0/boost/atomic.hpp
-@@ -2,7 +2,7 @@
- #define BOOST_ATOMIC_HPP
- 
- //  Copyright (c) 2011 Helge Bahmann
--//  Copyright (c) 2020-2025 Andrey Semashev
-+//  Copyright (c) 2020 Andrey Semashev
- //
- //  Distributed under the Boost Software License, Version 1.0.
- //  See accompanying file LICENSE_1_0.txt or copy at
-@@ -12,15 +12,12 @@
- 
- #include <boost/memory_order.hpp>
- #include <boost/atomic/capabilities.hpp>
--#include <boost/atomic/posix_clock_traits_fwd.hpp>
--#include <boost/atomic/wait_result.hpp>
- #include <boost/atomic/atomic.hpp>
- #include <boost/atomic/atomic_ref.hpp>
- #include <boost/atomic/atomic_flag.hpp>
- #include <boost/atomic/ipc_atomic.hpp>
- #include <boost/atomic/ipc_atomic_ref.hpp>
- #include <boost/atomic/ipc_atomic_flag.hpp>
--#include <boost/atomic/thread_pause.hpp>
- #include <boost/atomic/fences.hpp>
- 
- #ifdef BOOST_HAS_PRAGMA_ONCE

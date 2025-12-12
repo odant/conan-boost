@@ -16,13 +16,11 @@ class BoostConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {
         "with_unit_tests": [True, False],
-        "with_icu": [True, False],
-        "sp_debug_hooks": [True, False]
+        "with_icu": [True, False]
     }
     default_options = {
         "with_unit_tests": False,
-        "with_icu": True,
-        "sp_debug_hooks": False
+        "with_icu": True
     }
     #
     _boost_name = "boost_%s" % version.replace(".", "_").split("+", 1)[0].split("-", 1)[0]
@@ -32,7 +30,6 @@ class BoostConan(ConanFile):
         "multiprecision.patch",
         "add_boost_log_codecvt_enable_param.patch",
         "fix_leak_child_process.patch",
-        "sp_debug_hooks.patch",
         "add_weak_ptr_operator_equal.patch",
         "shared_mutex_state_64b.patch",
         "fix_std_category_wrapper.patch",
@@ -56,7 +53,6 @@ class BoostConan(ConanFile):
         tools.files.patch(self, patch_file="multiprecision.patch")
         tools.files.patch(self, patch_file="add_boost_log_codecvt_enable_param.patch")
         tools.files.patch(self, patch_file="fix_leak_child_process.patch")
-        tools.files.patch(self, patch_file="sp_debug_hooks.patch")
         tools.files.patch(self, patch_file="add_weak_ptr_operator_equal.patch")
         tools.files.patch(self, patch_file="shared_mutex_state_64b.patch")
         tools.files.patch(self, patch_file="fix_std_category_wrapper.patch")
@@ -247,9 +243,6 @@ class BoostConan(ConanFile):
                     "-DBOOST_LOCALE_ENABLE_CHAR32_T"
                 ])
         #
-        if self.options.sp_debug_hooks:
-            flags.append("-DBOOST_SP_ENABLE_DEBUG_HOOKS")
-        #
         return flags
 
     def package(self):
@@ -345,8 +338,6 @@ class BoostConan(ConanFile):
                     "BOOST_ALL_NO_LIB",                            # DISABLES AUTO LINKING! NO SMART AND MAGIC DECISIONS THANKS!
                     "BOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE"
                 ])
-        if self.options.sp_debug_hooks:
-            self.cpp_info.components["headers"].defines.append("BOOST_SP_ENABLE_DEBUG_HOOKS")
         if self.options.with_icu:
             self.cpp_info.components["headers"].defines.append("BOOST_LOG_CXX11_CODECVT_FACETS_FORCE_ENABLE")
             if self.settings.os != "Windows":

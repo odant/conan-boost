@@ -1,7 +1,7 @@
-diff --git a/boost_1_89_0/tools/build/src/engine/build.bat b/boost_1_89_0/tools/build/src/engine/build.bat
+diff --git a/boost_1_90_0/tools/build/src/engine/build.bat b/boost_1_90_0/tools/build/src/engine/build.bat
 index aea6ef86ca..ecd4b08507 100644
---- a/boost_1_89_0/tools/build/src/engine/build.bat
-+++ b/boost_1_89_0/tools/build/src/engine/build.bat
+--- a/boost_1_90_0/tools/build/src/engine/build.bat
++++ b/boost_1_90_0/tools/build/src/engine/build.bat
 @@ -29,7 +29,7 @@ ECHO ###     .\build.bat msvc
  ECHO ###
  ECHO ### Toolsets supported by this script are: borland, como, gcc,
@@ -11,10 +11,10 @@ index aea6ef86ca..ecd4b08507 100644
  ECHO ###
  ECHO ### If you have Visual Studio 2017 installed you will need to either update
  ECHO ### the Visual Studio 2017 installer or run from VS 2017 Command Prompt
-diff --git a/boost_1_89_0/tools/build/src/engine/config_toolset.bat b/boost_1_89_0/tools/build/src/engine/config_toolset.bat
+diff --git a/boost_1_90_0/tools/build/src/engine/config_toolset.bat b/boost_1_90_0/tools/build/src/engine/config_toolset.bat
 index c24c11f822..5920f7467d 100644
---- a/boost_1_89_0/tools/build/src/engine/config_toolset.bat
-+++ b/boost_1_89_0/tools/build/src/engine/config_toolset.bat
+--- a/boost_1_90_0/tools/build/src/engine/config_toolset.bat
++++ b/boost_1_90_0/tools/build/src/engine/config_toolset.bat
 @@ -12,6 +12,7 @@ if "_%B2_TOOLSET%_" == "_vc14_" call :Config_VC14
  if "_%B2_TOOLSET%_" == "_vc141_" call :Config_VC141
  if "_%B2_TOOLSET%_" == "_vc142_" call :Config_VC142
@@ -52,10 +52,10 @@ index c24c11f822..5920f7467d 100644
  :Config_VCUNK
  if NOT "_%B2_TOOLSET%_" == "_vcunk_" goto Skip_VCUNK
  call vswhere_usability_wrapper.cmd
-diff --git a/boost_1_89_0/tools/build/src/engine/guess_toolset.bat b/boost_1_89_0/tools/build/src/engine/guess_toolset.bat
+diff --git a/boost_1_90_0/tools/build/src/engine/guess_toolset.bat b/boost_1_90_0/tools/build/src/engine/guess_toolset.bat
 index 09f7808b0f..7f97190a91 100644
---- a/boost_1_89_0/tools/build/src/engine/guess_toolset.bat
-+++ b/boost_1_89_0/tools/build/src/engine/guess_toolset.bat
+--- a/boost_1_90_0/tools/build/src/engine/guess_toolset.bat
++++ b/boost_1_90_0/tools/build/src/engine/guess_toolset.bat
 @@ -33,6 +33,10 @@ REM Let vswhere tell us where msvc is at, if available.
  call :Clear_Error
  call vswhere_usability_wrapper.cmd
@@ -67,10 +67,10 @@ index 09f7808b0f..7f97190a91 100644
  if NOT "_%VS170COMNTOOLS%_" == "__" (
      set "B2_TOOLSET=vc143"
      set "B2_TOOLSET_ROOT=%VS170COMNTOOLS%..\..\VC\"
-diff --git a/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd b/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
+diff --git a/boost_1_90_0/tools/build/src/engine/vswhere_usability_wrapper.cmd b/boost_1_90_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
 index cc758e82e0..4971297143 100644
---- a/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
-+++ b/boost_1_89_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
+--- a/boost_1_90_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
++++ b/boost_1_90_0/tools/build/src/engine/vswhere_usability_wrapper.cmd
 @@ -17,7 +17,7 @@ if errorlevel 1 goto :no-vswhere
  set VSWHERE_REQ=-requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64
  set VSWHERE_PRP=-property installationPath
@@ -89,10 +89,10 @@ index cc758e82e0..4971297143 100644
      exit /B 0
  )
  
-diff --git a/boost_1_89_0/tools/build/src/tools/msvc.jam b/boost_1_89_0/tools/build/src/tools/msvc.jam
+diff --git a/boost_1_90_0/tools/build/src/tools/msvc.jam b/boost_1_90_0/tools/build/src/tools/msvc.jam
 index a4f5e2b41e..5d10361605 100644
---- a/boost_1_89_0/tools/build/src/tools/msvc.jam
-+++ b/boost_1_89_0/tools/build/src/tools/msvc.jam
+--- a/boost_1_90_0/tools/build/src/tools/msvc.jam
++++ b/boost_1_90_0/tools/build/src/tools/msvc.jam
 @@ -1154,7 +1154,15 @@ local rule generate-setup-cmd ( version : command : parent : options * : cpu : g
          }
          else
